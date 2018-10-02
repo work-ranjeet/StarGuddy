@@ -1,0 +1,49 @@
+.home-section {
+  min-height: 340px;
+  padding-top: 5%;
+  background-color: #f3f3f3;
+}
+
+.home-hero-section {
+  font-size: 24px;
+  color: #fff;
+  /*background: url('../../../../../content/css/icons/search-section-bck.jpg') no-repeat center center fixed;*/
+  /*background: url('../../../../../wwwroot/css/icons/home-dance-banner.jpg') no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+  .home-hero-section .heading {
+    display: block;
+    font-size: 52px;
+    text-align: center;
+    line-height: 55px;
+    padding: 0px 10px 0px 10px;
+    text-shadow: 10px 12px 15px #333;
+    font-family: Papyrus, fantasy;
+    /*color: #F26522;*/
+  }
+
+  .home-hero-section .heading-title,
+  .home-hero-section .heading-subtitle {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px 10px 0px 10px;
+    text-shadow: 0 0 10px rgba(0,0,0,.4);
+  }
+
+  .home-hero-section .heading-title {
+  }
+
+  .home-hero-section .heading-subtitle {
+  }
+
+.home-hero-search-container {
+  text-align: center;
+  text-align: -webkit-center;
+  padding-top: 25px;
+}

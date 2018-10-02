@@ -1,0 +1,61 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "StarGuddy.Business.Interface/1.0.0": {
+        "dependencies": {
+          "StarGuddy.Api.Models": "1.0.0",
+          "StarGuddy.Api.Models.Interface": "1.0.0",
+          "StarGuddy.Data.Entities.Interface": "1.0.0"
+        },
+        "runtime": {
+          "StarGuddy.Business.Interface.dll": {}
+        }
+      },
+      "StarGuddy.Api.Models/1.0.0": {
+        "dependencies": {
+          "StarGuddy.Api.Models.Interface": "1.0.0"
+        },
+        "runtime": {
+          "StarGuddy.Api.Models.dll": {}
+        }
+      },
+      "StarGuddy.Api.Models.Interface/1.0.0": {
+        "runtime": {
+          "StarGuddy.Api.Models.Interface.dll": {}
+        }
+      },
+      "StarGuddy.Data.Entities.Interface/1.0.0": {
+        "runtime": {
+          "StarGuddy.Data.Entities.Interface.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StarGuddy.Business.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StarGuddy.Api.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StarGuddy.Api.Models.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StarGuddy.Data.Entities.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

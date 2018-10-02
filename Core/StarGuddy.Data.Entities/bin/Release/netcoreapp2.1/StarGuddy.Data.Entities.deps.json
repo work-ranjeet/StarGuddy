@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "StarGuddy.Data.Entities/1.0.0": {
+        "dependencies": {
+          "StarGuddy.Data.Entities.Interface": "1.0.0"
+        },
+        "runtime": {
+          "StarGuddy.Data.Entities.dll": {}
+        }
+      },
+      "StarGuddy.Data.Entities.Interface/1.0.0": {
+        "runtime": {
+          "StarGuddy.Data.Entities.Interface.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StarGuddy.Data.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StarGuddy.Data.Entities.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

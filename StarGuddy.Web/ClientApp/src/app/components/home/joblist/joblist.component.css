@@ -1,0 +1,47 @@
+﻿
+.home-joblist-section {
+    color: #f3f3f3;
+    padding: 10px 0px 10px 0px;
+}
+
+    .home-joblist-section .job-list-count-link-container {
+        height: 120px;
+        width: 100%;
+        line-height: 25px;
+        color: white;
+        background-color: #0F75BC;
+        margin: 15px 5px 5px 5px;
+    }
+
+        .home-joblist-section .job-list-count-link-container .job-list-title {
+            font-size: 22px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .home-joblist-section .job-list-count-link-container .job-count {
+            padding-top: 5px;
+            margin: auto;
+            margin-top: 2px;
+        }
+
+        .home-joblist-section .job-list-count-link-container:hover .job-count {
+            font-size: 18px;
+        }
+
+    .home-joblist-section .new-job-container {
+        margin-top: 15px;
+        min-height: 413px;
+        height: 100%;
+        border: solid thin #ccc;
+        border-bottom: none;
+    }
+
+        .home-joblist-section .new-job-container .new-job-heading {
+            height: 60px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 7px;
+            background-color: #9d3b0d;
+        }

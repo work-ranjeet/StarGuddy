@@ -1,0 +1,44 @@
+
+.home-casting-section {
+    color: #ededed;
+    min-height: 400px;
+    /*background: url('../../../../../content/css/icons/home-actor-back.jpg') no-repeat center center fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 2%;
+}
+
+    .home-casting-section .heading {
+        display: block;
+        font-size: 40px;
+        text-align: center;
+        line-height: 55px;
+        padding: 0px 20px 0px 20px;
+        text-shadow: 5px 4px 20px #333;
+    }
+
+    .home-casting-section .heading-title,
+    .home-casting-section .heading-subtitle {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px 20px 0px 20px;
+        text-shadow: 0 0 10px rgba(0,0,0,.4);
+    }
+
+    .home-casting-section .home-talent-directory,
+    .home-casting-section .home-place-casting-call {
+        height: 80px;
+        min-width: 320px;
+        width: 20%;
+        font-size: 25px;
+        color: white;
+        background-color: #006684;
+        margin: 15px 5px 5px 5px;
+    }
+
+      .home-casting-section .home-talent-directory a > i, .home-casting-section .home-place-casting-call a {
+        color:white;
+      }

@@ -1,0 +1,42 @@
+﻿
+.home-new-comers-section {
+    min-height: 550px;
+    padding: 10px 0px 10px 0px;
+}
+
+    .home-new-comers-section .heading {
+        display: block;
+        font-size: 32px;
+        text-align: center;
+        margin: 10px 0 0 0;
+        padding: 0px 10px 0px 10px;
+        text-shadow: 10px 12px 15px #333;
+    }
+
+    .home-new-comers-section .heading-title,
+    .home-new-comers-section .heading-subtitle {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        text-shadow: 0 0 10px rgba(0,0,0,.4);
+    }
+
+    .home-new-comers-section .new-comers-img-container {
+        /*position: relative;*/
+        height: 350px;
+    }
+
+.new-comers-img-container > img {
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+}
+
+.new-comers-img-container .img-name {
+    padding: 10px 0px 10px 0px;
+    font-size: 20px;
+}
+
+.new-comers-img-container .img-details {
+}

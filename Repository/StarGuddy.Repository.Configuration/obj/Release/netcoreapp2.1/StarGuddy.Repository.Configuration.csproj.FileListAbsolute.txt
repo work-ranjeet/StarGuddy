@@ -1,0 +1,9 @@
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\bin\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.deps.json
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\bin\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.dll
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\bin\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.csprojAssemblyReference.cache
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.csproj.CoreCompileInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.AssemblyInfoInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.AssemblyInfo.cs
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.dll
+C:\Work\Code\StarGuddy\StarGuddy\Repository\StarGuddy.Repository.Configuration\obj\Release\netcoreapp2.1\StarGuddy.Repository.Configuration.pdb

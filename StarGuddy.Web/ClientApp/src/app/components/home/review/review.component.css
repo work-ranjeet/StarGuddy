@@ -1,0 +1,44 @@
+﻿.home-review-section {
+    background-color: #222;
+    /*background: url('icons/aboutus.jpg');*/
+    background-size: cover;
+    color: #f3f3f3;
+    padding: 10px 0px 10px 0px;
+}
+
+.home-review-section .heading-title {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 10px 0 10px;
+    font-family: Papyrus, fantasy;
+}
+
+.home-review-section .img-container {
+    padding-top: 10px;
+}
+
+    .home-review-section .img-container > img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+    }
+
+    .home-review-section .img-container .img-details {
+        padding: 10px;
+        font-size: 15px;
+        text-align: center;
+        font-style: initial;
+        line-height: 20px;
+        color: #d6d6d6;
+        margin-top: 10px;
+    }
+
+.home-review-section .create-profile {
+    height: 50px;
+    min-width: 250px;
+    width: 30%;
+    font-size: 20px;
+    color: white;
+    margin: 15px 10px 5px 10px;
+}

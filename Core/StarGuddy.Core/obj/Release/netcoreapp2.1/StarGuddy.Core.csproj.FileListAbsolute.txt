@@ -1,0 +1,12 @@
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\bin\Release\netcoreapp2.1\StarGuddy.Core.deps.json
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\bin\Release\netcoreapp2.1\StarGuddy.Core.dll
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\bin\Release\netcoreapp2.1\StarGuddy.Core.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\bin\Release\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\bin\Release\netcoreapp2.1\System.Data.SqlClient.xml
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.csprojAssemblyReference.cache
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.csproj.CoreCompileInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.AssemblyInfoInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.AssemblyInfo.cs
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.csproj.CopyComplete
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.dll
+C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Core\obj\Release\netcoreapp2.1\StarGuddy.Core.pdb

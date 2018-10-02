@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dto\JobGroupModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="UserJobs\JobGroupModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarGuddy.Api.Models.Interface\StarGuddy.Api.Models.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

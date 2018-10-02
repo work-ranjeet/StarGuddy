@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\StarGuddy.Api.Models.Interface\StarGuddy.Api.Models.Interface.csproj" />
+    <ProjectReference Include="..\..\Core\StarGuddy.Api.Models\StarGuddy.Api.Models.csproj" />
+    <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities.Interface\StarGuddy.Data.Entities.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Business.Interface.deps.json
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Business.Interface.dll
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Business.Interface.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.dll
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.dll
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Data.Entities.Interface.dll
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\bin\Release\netcoreapp2.1\StarGuddy.Data.Entities.Interface.pdb
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.csprojAssemblyReference.cache
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.csproj.CoreCompileInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.AssemblyInfoInputs.cache
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.AssemblyInfo.cs
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.csproj.CopyComplete
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.dll
+C:\Work\Code\StarGuddy\StarGuddy\Business\StarGuddy.Business.Interface\obj\Release\netcoreapp2.1\StarGuddy.Business.Interface.pdb

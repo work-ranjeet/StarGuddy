@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Dapper" Version="1.50.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\StarGuddy.Core\StarGuddy.Core.csproj" />
+    <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities.Interface\StarGuddy.Data.Entities.Interface.csproj" />
+    <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities\StarGuddy.Data.Entities.csproj" />
+    <ProjectReference Include="..\StarGuddy.Repository.Configuration\StarGuddy.Repository.Configuration.csproj" />
+    <ProjectReference Include="..\StarGuddy.Repository.Interface\StarGuddy.Repository.Interface.csproj" />
+  </ItemGroup>
+
+</Project>
