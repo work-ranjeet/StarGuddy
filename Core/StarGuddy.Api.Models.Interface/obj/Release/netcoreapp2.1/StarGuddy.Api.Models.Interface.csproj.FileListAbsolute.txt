@@ -1,9 +1,0 @@
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.deps.json
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.dll
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\bin\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.pdb
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.csprojAssemblyReference.cache
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.csproj.CoreCompileInputs.cache
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.AssemblyInfoInputs.cache
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.AssemblyInfo.cs
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.dll
-C:\Work\Code\StarGuddy\StarGuddy\Core\StarGuddy.Api.Models.Interface\obj\Release\netcoreapp2.1\StarGuddy.Api.Models.Interface.pdb
