@@ -33,8 +33,8 @@
                 </a>
             </li>-->
             <li (click)="toggleUserSettingMenu()" [style.background-color]="!showUserSettingMenu? 'white':null" [style.color]="!showUserSettingMenu? '#F88017':null">
-                <span>{{UserFirstName}}</span>
-                <div [hidden]="showUserSettingMenu" class="user-setting-menu">
+                <span style="text-transform:capitalize;">{{UserFirstName}}</span>
+                <div [hidden]="showUserSettingMenu" class="user-setting-menu" (blur)="toggleUserSettingMenu()">
 
                     <!--<div class="heading">
                         <span class="fa fa-gears"></span>&nbsp;<span>Account & Settings</span>

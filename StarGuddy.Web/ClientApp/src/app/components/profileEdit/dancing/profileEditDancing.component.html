@@ -1,0 +1,201 @@
+<div id="dancing" class="row margin-top-15">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Dancing</span>
+                <a href="javascript:void(0);" class="pull-right">
+                    <i *ngIf="!showEditHtml" class="fa fa-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="fa fa-window-close-o text-danger" (click)="edit()"></i>
+                </a>
+            </div>
+            <div *ngIf="!showEditHtml" class="card-body">
+                <div *ngIf="showDancing">
+                    <div class="experiance">Dancing ability</div>
+                    <div class="padding-top-5 padding-left-20 text-l">{{dancingResult.danceAbilitiesText}}</div>
+                    <hr />
+                    <div *ngIf="dancingResult.choreographyAbilitiesText!=''">
+                        <div class="experiance">Teaching or Choreography ability</div>
+                        <div class="padding-top-5 padding-left-20 text-l">{{dancingResult.choreographyAbilitiesText}}</div>
+                    </div>
+                    <div *ngIf="dancingResult.hasDanceStyle">
+                        <hr />
+                        <div class="experiance padding-top-10">Dance styles</div>
+                        <div class="padding-top-5 padding-left-15 text-l">
+                            <span class="d-block padding-5" *ngFor="let danceStyle of dancingResult.dnacingStyles">
+                                <i class="fa fa-hand-o-right text-success" *ngIf="danceStyle.id==danceStyle.selectedValue"></i>
+                                <span *ngIf="danceStyle.id==danceStyle.selectedValue">{{danceStyle.name}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div *ngIf="dancingResult.experience!= null && dancingResult.experience!=''">
+                        <hr />
+                        <p class="padding-top-10 text-l text-muted">{{dancingResult.experience}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!showDancing">
+                    <span class="text-info text-m">Please enter your dancing detail.</span>
+                </div>
+            </div>
+            <div *ngIf="showEditHtml" class="card-body text-muted">
+                <form #frmUserDanceEdit="ngForm">
+
+                    <div class="form-group">
+                        <label class="profile-edit-label">Styles of dancing</label>
+                        <div class="profile-edit-container row">
+                            <div *ngFor="let danceStyle of dancingModel.dnacingStyles" class="col-xs-6 col-sm-3 margin-bottom-5">
+                                <input type="checkbox" value="{{danceStyle.id}}" name="{{danceStyle.id}}"
+                                       [checked]="danceStyle.id==danceStyle.selectedValue"
+                                       (change)="updateSelectedDanceStyle($event)"
+                                       class="padding-5 v-text-top">
+                                <label for="{{danceStyle.id}}" class="padding-5 text-l">{{danceStyle.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Dance ability</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="danceExpertLavelGroup_1" type="radio" name="danceExpertLavelGroup" [checked]="dancingModel.danceAbilities==1" [value]="1" (change)="onDanceExpertLavelGroupSelectionChange($event)" />
+                                <label for="danceExpertLavelGroup_1" class="text-l">Beginner</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="danceExpertLavelGroup_10" type="radio" name="danceExpertLavelGroup" [checked]="dancingModel.danceAbilities==10" [value]="10" (change)="onDanceExpertLavelGroupSelectionChange($event)" />
+                                <label for="danceExpertLavelGroup_10" class="text-l">Intermediate</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="danceExpertLavelGroup_20" type="radio" name="danceExpertLavelGroup" [checked]="dancingModel.danceAbilities==20" [value]="20" (change)="onDanceExpertLavelGroupSelectionChange($event)" />
+                                <label for="danceExpertLavelGroup_20" class="text-l">Expert</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Teaching\Choreography ability</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="choreographyAbilities_1" type="radio" name="teachingExpertLavelGroup" [checked]="dancingModel.choreographyAbilities==1" [value]="1" (change)="teachingExpertLavelGroupSelectionChange($event)" />
+                                <label for="choreographyAbilities_1" class="text-l">Beginner</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="choreographyAbilities_10" type="radio" name="teachingExpertLavelGroup" [checked]="dancingModel.choreographyAbilities==10" [value]="10" (change)="teachingExpertLavelGroupSelectionChange($event)" />
+                                <label for="choreographyAbilities_10" class="text-l">Intermediate</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="choreographyAbilities_20" type="radio" name="teachingExpertLavelGroup" [checked]="dancingModel.choreographyAbilities==20" [value]="20" (change)="teachingExpertLavelGroupSelectionChange($event)" />
+                                <label for="choreographyAbilities_20" class="text-l">Expert</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Dance school</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-xs-12 col-sm-6">
+                                <input id="chkDanceSchool" type="checkbox" [checked]="dancingModel.isAttendedSchool" (change)="chkDanceSchoolChange()" class="padding-5 v-text-top">
+                                <label for="chkDanceSchool" class="padding-5 text-l">I have attended a dance school</label>
+                            </div>
+                        </div>
+                        <div *ngIf="dancingModel.isAttendedSchool" class="fa fa-border padding-top-15">
+                            <span class="padding-bottom-10">
+                                <i>Enter your most recent school Or</i>
+                                <i class="text-right" style="font-size: 11px;">
+                                    <a href="#">Click here </a>
+                                    <span>to enter your latest training Institute\School. It will redirect to your </span>
+                                    <a href="#">Credits</a>
+                                </i>
+                            </span>
+                            <!--<div class="col-xs-12  form-group padding-top-15">
+                                <span class="required">School</span>
+                                <input type="text" placeholder="Enter your latest school name..." class="form-control" />
+                            </div>
+                            <div class="col-xs-12  form-group">
+                                <span>Course name</span>
+                                <input type="text" placeholder="Enter Course name..." class="form-control" />
+                            </div>
+                            <div class="col-xs-12  form-group">
+                                <span class="required">year</span>
+                                <input type="text" placeholder="Enter year..." class="form-control" />
+                            </div>-->
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Agent</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="agentNeed_1" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="dancingModel.agentNeed==100"
+                                       [value]="1"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeed_1" class="padding-5 text-l">I don't have an agent</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="agentNeed_10" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="dancingModel.agentNeed==101"
+                                       [value]="10"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeed_10" class="padding-5 text-l">I want an agent</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <input id="agentNeed_20" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="dancingModel.agentNeed==102"
+                                       [value]="20"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeed_20" class="padding-5 text-l">I have an agent</label>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Dancing experience</label>
+                        <div class="profile-edit-container">
+                            <textarea id="txtExperiance" name="txtExperiance" style="width:100%; min-height:100px;" class="form-control"
+                                      [(ngModel)]="dancingModel.experience"
+                                      #danceExperience="ngModel"></textarea>
+                            <div *ngIf="danceExperience.invalid && (danceExperience.dirty || danceExperience.touched)" class="error">
+                                <div *ngIf="danceExperience.errors.required">Dance experience is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center padding-15">
+                        <button id="btnSave" class="btn-profile-save btn btn-success" (click)="saveChanges()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <span class="required">Auditions & Jobs I'm interested in</span>
+            <div class="padding-top-10">
+                <div class="col-xs-6 col-sm-3 margin-bottom-5">
+                    <input id="checkbox2" type="checkbox" checked="" class="padding-5 v-text-top">
+                    <span class="padding-5 text-l">Agencies</span>
+                </div>
+                <div class="col-xs-6 col-sm-3 margin-bottom-5">
+                    <input id="actingCategories" class="padding-5 v-text-top" type="checkbox" name="actingCategories" checked="checked" value="32" />
+                    <span class="padding-5 text-l">Choreographers</span>
+                </div>
+                <div class="col-xs-6 col-sm-3 margin-bottom-5">
+                    <input id="checkbox2" type="checkbox" checked="" class="padding-5 v-text-top">
+                    <span class="padding-5 text-l">Companies</span>
+                </div>
+                <div class="col-xs-6 col-sm-3 margin-bottom-5">
+                    <input id="checkbox2" type="checkbox" checked="" class="padding-5 v-text-top">
+                    <span class="padding-5 text-l">Competitions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="seperator" />-->

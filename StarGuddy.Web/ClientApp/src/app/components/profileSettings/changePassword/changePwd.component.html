@@ -1,0 +1,36 @@
+<div id="changePassword123" class="form  container-small margin-top-5Per">   
+    <div class="card">
+        <div class="card-title">
+            <page-heading text="Change Password"></page-heading>
+            <hr class="style-three" />
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <!--<label class="required  label-control">Old Password</label>-->
+                <input type="password" id="OldPassword" class="form-control" [(ngModel)]="changePwd.Password" #oldPassword="ngModel" placeholder="Enter Old Password" required />
+                <div *ngIf="oldPassword.errors && (oldPassword.dirty || oldPassword.touched)" class="error">
+                    <div [hidden]="!oldPassword.hasError('required')">Required.</div>
+                </div>
+            </div>
+            <div class="form-group margin-top-20">
+                <!--<label class="required  label-control">New Password</label>-->
+                <input type="password" id="newPassword" class="form-control" [(ngModel)]="changePwd.NewPassword" #newPassword="ngModel" placeholder="Enter New Password" required />
+                <div *ngIf="newPassword.errors && (newPassword.dirty || newPassword.touched)" class="error">
+                    <div [hidden]="!newPassword.hasError('required')">Required.</div>
+                </div>
+            </div>
+            <div class="form-group margin-top-20">
+                <!--<label class="required  label-control">Confirm Password</label>-->
+                <input type="Password" id="confirmPassword" class="form-control" [(ngModel)]="changePwd.CnfPassword" #confirmPassword="ngModel" placeholder="Enter Confirm Password" required />
+                <div *ngIf="confirmPassword.errors && (confirmPassword.dirty || confirmPassword.touched)" class="error">
+                    <div [hidden]="!confirmPassword.hasError('required')">Required.</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center ">
+            <a class="btn btn-default" [routerLink]="['/profileSetting']">Cancel</a>
+            <button type="submit" class="btn btn-success">Change</button>
+        </div>
+    </div>
+</div>
+

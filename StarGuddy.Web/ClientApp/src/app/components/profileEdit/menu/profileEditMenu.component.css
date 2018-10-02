@@ -1,0 +1,25 @@
+﻿
+
+
+.profile-menu {
+    border: solid #ccc 1px;
+    background-color: #fcf9f9 !important;
+    height: 50px;
+    margin-top: -60px;
+}
+
+    .profile-menu > a {
+        padding: 0 10px 0 10px;
+        line-height: 45px;
+    }
+
+        .profile-menu > a:first-child {
+            margin-left: 260px;
+        }
+
+
+.profile-info-about {
+    min-height: 80px;
+    font-size: 13px;
+    line-height: 25px;
+}

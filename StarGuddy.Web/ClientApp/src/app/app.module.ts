@@ -5,11 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { ToastModule } from "ng5-toastr";
 
-import { AppIndexComponent } from "./components/appIndex/appIndex.component";
+import { AppIndexComponent } from "./appIndex/appIndex.component";
 import { CommonModuleShared } from "./components/common/common.module.shared";
 import { HomeModuleShared } from "./components/home/home.module.shared";
 import { AccountModuleShared } from "./components/account/account.module.shared";
+
+import { ProfileModuleShared } from "../app/components/profile/profile.module.shared";
+import { ProfileEditModuleShared } from "../app/components/profileEdit/profileEdit.module.shared";
+import { ProfileSettingModuleShared } from "../app/components/profileSettings/profileSettings.module.shared";
+
+import { SearchModuleShared } from "../app/components/search/search.module.shared";
 
 //// Providers
 import { AppConstant, DbOperation } from "./Constants/AppConstant";
@@ -25,21 +32,19 @@ import { ToastrService } from "./Services/ToastrService";
         AppIndexComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        BrowserAnimationsModule,
-        HttpClientModule,
-        FormsModule,
-        CommonModule,
-        CommonModuleShared,
-        HomeModuleShared,
-        AccountModuleShared,
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }), BrowserAnimationsModule,
+        HttpClientModule, FormsModule, CommonModule,
+        CommonModuleShared, HomeModuleShared, AccountModuleShared,
+        ProfileModuleShared, ProfileEditModuleShared, ProfileSettingModuleShared,
+        SearchModuleShared,
+        ToastModule.forRoot(),
         RouterModule.forRoot([
-            { path: "", redirectTo: "home", pathMatch: "full" },
-            { path: "**", redirectTo: "home" }
+            { path: "", redirectTo: "/home", pathMatch: "full" },
+            { path: "**", redirectTo: "/home" }
 
         ])
     ],
-    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService, ToastrService],
+    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService, ToastrService, ToastModule],
     bootstrap: [AppIndexComponent]
 })
 export class AppModule { }

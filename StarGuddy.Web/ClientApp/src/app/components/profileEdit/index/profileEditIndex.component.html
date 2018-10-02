@@ -1,0 +1,25 @@
+
+<div id="userProfileIndexForm" class="container">
+    <profile-edit-header [jobGroupNames]="GroupNames" [profileHeader]="ProfileHeader"></profile-edit-header>
+    <profile-edit-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-edit-menu>
+
+
+
+    <profile-edit-physicalDetails></profile-edit-physicalDetails>
+    <div id="1003" *ngIf="SetionVisbility.showExtras">
+        <profile-edit-credits></profile-edit-credits>
+    </div>
+    <div id="1001" *ngIf="SetionVisbility.showActing">
+        <profile-edit-acting></profile-edit-acting>
+    </div>
+    <div id="1008" *ngIf="SetionVisbility.showDancing">
+        <profile-edit-dancing></profile-edit-dancing>
+    </div>
+    <div id="1002" *ngIf="SetionVisbility.showModeling">
+        <profile-edit-modeling></profile-edit-modeling>
+    </div>
+</div>
+
+<!--<div id="photos">
+      <profile-edit-photos></profile-edit-photos>
+  </div>-->

@@ -17,6 +17,7 @@
             "prefix": "",
             "styles": [
                 "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "../node_modules/font-awesome/css/font-awesome.min.css",
                 "assets/css/bootstrap_4.0_custom.css",
                 "assets/css/bootstrap_alingment.css",
                 "assets/css/ng2-toastr.min.css",

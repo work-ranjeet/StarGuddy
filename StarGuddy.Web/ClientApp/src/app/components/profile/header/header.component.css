@@ -1,0 +1,114 @@
+﻿.profile-img-container {
+    width: 260px;
+    height: 270px;
+    z-index: 9;
+}
+
+    .profile-img-container .profile-img {
+        width: inherit;
+        height: inherit;
+    }
+
+        .profile-img-container .profile-img .img-size {
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            border: 5px solid #fcf9f9;
+        }
+
+.profile-img-container-mob {
+    width: 150px;
+    height: 170px;
+    margin: auto;
+}
+
+    .profile-img-container-mob .profile-img {
+        width: inherit;
+        height: inherit;
+        z-index: -1;
+    }
+
+        .profile-img-container-mob .profile-img .img-size {
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            border: 5px solid #fcf9f9;
+        }
+
+
+
+@media (max-width: 767px) {
+    .profile-info-detail-mob {
+        text-align: center;
+    }
+}
+
+.profile-info-detail > h2 {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    color: #27aae1;
+}
+
+.profile-info-detail-mob > h2 {
+    font-size: 25px;
+    padding: 5px;
+    color: #27aae1;
+}
+
+.profile-info-detail-mob > div {
+    padding: 5px 0 5px 0;
+    font-size: 13px;
+}
+
+.profile-info-detail .profile-address {
+    margin-top: 10px;
+}
+
+.profile-info-menu {
+    padding-top: 40px;
+}
+
+.profile-info-menu-mob {
+    padding-top: 10px;
+}
+
+    .profile-info-menu-mob > a, .profile-info-menu > a {
+        display: inline-block;
+        padding: 0 15px 0 15px;
+        vertical-align: bottom;
+    }
+
+        .profile-info-menu > a:first-child {
+            display: inline-block;
+            padding: 0 15px 0 5px;
+            vertical-align: bottom;
+        }
+
+        .profile-info-menu > a > .fa, .profile-info-menu-mob > a > .fa {
+            zoom: 2.5;
+            text-align: center;
+        }
+
+        .profile-info-menu > a > span, .profile-info-menu-mob > a > span {
+            display: block;
+            font-size: 10px;
+        }
+
+
+.profile-info-bar {
+    padding-top: 50px;
+    text-align: right;
+    padding-right: 0px !important;
+}
+
+    .profile-info-bar > a {
+        padding: 0px 0px 0px 0px;
+    }
+
+        .profile-info-bar > a > strong {
+        }
+
+        .profile-info-bar > a > span {
+            font-size: small;
+            padding-right: 20px;
+        }

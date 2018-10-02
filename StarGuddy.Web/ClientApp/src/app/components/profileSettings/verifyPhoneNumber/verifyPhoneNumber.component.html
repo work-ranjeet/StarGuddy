@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div id="verifyPhoneNumberForm" class="form form-horizontal">
+            <div class="page-heading">
+                <h1>Verify Phone Number</h1>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

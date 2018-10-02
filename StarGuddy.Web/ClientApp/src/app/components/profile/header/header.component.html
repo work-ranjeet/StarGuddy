@@ -1,0 +1,67 @@
+
+<div class="row hidden-sm hidden-xs">
+    <div class="col-lg-3 col-md-4">
+        <div class=" profile-img-container">
+            <div class="profile-img">
+                <img class="img-size" [src]="imageUrl" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-8 padding-top-5">
+        <div class="profile-info-detail">
+            <h2 class="display-inline-block">{{profileHeader.displayName}}</h2>
+            <div class="text-muted">
+                <span class="display-inline-block">{{jobGroupNames}}</span>
+            </div>
+            <div class="profile-address">
+                <i class="fa fa-map-marker"></i>
+                <span class="text-muted display-inline-block">{{computedAddress}}</span>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="profile-info-menu col-md-4 hidden-sm hidden-xs">
+                <a href="#"><span class="fa fa-envelope-o"></span><span>Message</span></a>
+                <a href="#"><span class="fa fa-star-o"></span><span>Follow</span></a>
+                <a href="#"><span class="fa fa-share-alt"></span><span>Share</span></a>
+            </div>
+            <div class="profile-info-bar col-md-8">
+                <a><strong>1,460</strong>&nbsp;<span class="text-muted">Followers</span></a>
+                <a><strong>108</strong>&nbsp;<span class="text-muted">Recommendations</span></a>
+                <a><strong>123</strong>&nbsp;<span class="text-muted">Castings</span></a>
+                <a><strong>70.4K</strong>&nbsp;<span class="text-muted"> Views</span></a>
+
+            </div>
+        </div>-->
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="row hidden-md hidden-lg ">
+    <div class="col-sm-4 col-xs-12 ">
+        <div class="profile-img-container-mob">
+            <div class="profile-img">
+                <img class="img-size"  [src]="imageUrl" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8  col-xs-12 hidden-md hidden-lg">
+        <div class="profile-info-detail-mob">
+            <h2 class="display-inline-block">{{profileHeader.displayName}}</h2>
+            <div class="profile-address">
+                <i class="fa fa-map-marker"></i>
+                <span class="text-muted">{{computedAddress}}</span>
+            </div>
+            <div class="text-muted hidden-xs">
+                {{jobGroupNames}}
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-sm-12 col-xs-12 profile-info-menu-mob text-center">
+                <a href="#"><span class="fa fa-envelope-o"></span><span>Message</span></a>
+                <a href="#"><span class="fa fa-star-o"></span><span>Follow</span></a>
+                <a href="#"><span class="fa fa-share-alt"></span><span>Share</span></a>
+            </div>
+        </div>-->
+    </div>
+</div>

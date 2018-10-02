@@ -1,0 +1,137 @@
+<div id="address" class="container" style="max-width:800px;">
+    <div class="row margin-top-15">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header card-title-m">
+                    <span>My Address</span>
+                    <a href="#" class="pull-right">
+                        <i  class="fa fa-undo text-success" (click)="reset()"></i>
+                    </a>
+                </div>
+                <form #frmAddress="ngForm" class="form padding-10">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <span class="text-muted display-block">Apartment/House</span>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="apartmentNo">No.</span>
+                                <input id="apartmentNo" name="apartmentNo" type="text" class="form-control border-left-none" maxlength="10"
+                                       aria-describedby="apartmentNo" pattern="^(0|[1-9][0-9]*)$" #apartmentNo="ngModel"
+                                       [(ngModel)]="address.flat" />
+                            </div>
+                            <div *ngIf="apartmentNo.errors && (apartmentNo.dirty || apartmentNo.touched)" class="error">
+                                <div [hidden]="!apartmentNo.hasError('pattern')">Only numeric allowed.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12">
+                            <span class="text-muted display-block">&nbsp;</span>
+                            <div class="input-group">
+                                <span id="apartmentName" class="input-group-addon">Name.</span>
+                                <input id="apartmentName" name="apartmentName" type="text" class="form-control  border-left-none" maxlength="140"
+                                       aria-describedby="apartmentName" pattern="[a-zA-Z][a-zA-Z ]+" #apartmentName="ngModel"
+                                       [(ngModel)]="address.appOrHouseName" />
+                            </div>
+                            <div *ngIf="apartmentName.errors && (apartmentName.dirty || apartmentName.touched)" class="error">
+                                <div [hidden]="!apartmentName.hasError('pattern')">Only alphabets allowed.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row padding-top-15">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-muted display-block">Address</span>
+                            <div class="input-group">
+                                <span id="addressOne" class="input-group-addon">Line one</span>
+                                <input id="addressOne" name="addressOne" type="text" class="form-control border-left-none"
+                                       aria-describedby="addressOne" pattern="^[A-Za-z0-9- ]+$" #addressOne="ngModel"
+                                       [(ngModel)]="address.lineOne" />
+                            </div>
+                            <div *ngIf="addressOne.errors && (addressOne.dirty || addressOne.touched)" class="error">
+                                <div [hidden]="!addressOne.hasError('pattern')">Only alphanumeric allowed.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-muted display-block">&nbsp;</span>
+                            <div class="input-group">
+                                <span id="addressTwo" class="input-group-addon">Line two</span>
+                                <input id="addressTwo" name="addressTwo" type="text" class="form-control border-left-none"
+                                       aria-describedby="addressTwo" pattern="^[A-Za-z0-9- ]+$" #addressTwo="ngModel"
+                                       [(ngModel)]="address.lineTwo" />
+                            </div>
+                            <div *ngIf="addressTwo.errors && (addressTwo.dirty || addressTwo.touched)" class="error">
+                                <div [hidden]="!addressTwo.hasError('pattern')">Only alphanumeric allowed.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row  padding-top-15">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <span for="landMark" class="text-muted">Landmark</span>
+                                <input id="landMark" name="landMark" type="text" class="form-control"
+                                       pattern="[a-zA-Z][a-zA-Z ]+"
+                                       #landMark="ngModel"
+                                       [(ngModel)]="address.landMark" />
+                                <div *ngIf="landMark.errors && (landMark.dirty || landMark.touched)" class="error">
+                                    <div [hidden]="!landMark.hasError('pattern')">Only alphabets allowed.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <span for="cityTown" class="text-muted required">City/Town</span>
+                                <input id="cityTown" name="cityTown" type="text" class="form-control" required pattern="[a-zA-Z][a-zA-Z ]+"
+                                       #cityTown="ngModel"
+                                       [(ngModel)]="address.cityOrTown" />
+                                <div *ngIf="cityTown.errors && (cityTown.dirty || cityTown.touched)" class="error">
+                                    <div [hidden]="!cityTown.hasError('required')">City/Town is required.</div>
+                                    <div [hidden]="!cityTown.hasError('pattern')">Only alphabets allowed.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row padding-top-15">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <span for="country" class="text-muted required">Country</span>
+                                <input id="country" name="apartmentName" type="text" class="form-control" required placeholder="country" [(ngModel)]="address.country" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <span for="state" class="text-muted required">State</span>
+                                <input id="state" name="state" type="text" class="form-control" required pattern="[a-zA-Z][a-zA-Z ]+"
+                                       #state="ngModel"
+                                       [(ngModel)]="address.stateOrProvince" />
+                                <div *ngIf="state.errors && (state.dirty || state.touched)" class="error">
+                                    <div [hidden]="!state.hasError('pattern')">Only alphabets allowed.</div>
+                                    <div [hidden]="!state.hasError('required')">State is required.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <span for="postalCode" class="text-muted required">Postal\ Zip code</span>
+                                <input id="postalCode" name="postalCode" type="text" class="form-control" required
+                                       #postalCode="ngModel"
+                                       [(ngModel)]="address.zipOrPostalCode" />
+                                <div *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)" class="error">
+                                    <div [hidden]="!postalCode.hasError('required')">Postal Code is required.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="col-sm-12 text-center padding-15">
+                        <button id="btnSave" class="btn-profile-save btn btn-success" [disabled]="!frmAddress.form.valid" (click)="save()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

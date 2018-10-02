@@ -1,0 +1,28 @@
+﻿
+.img-wrapper {
+    position: relative;
+}
+
+    .img-wrapper::after {
+        content: "";
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transition: all 1s ease 0s;
+    }
+
+    .img-wrapper:hover:after {
+        background-color: rgba(0,0,0, 0.4);
+    }
+
+    .img-wrapper img.album-image {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        height: 350px;
+        border: solid 2px white;
+        padding: 1px;
+    }

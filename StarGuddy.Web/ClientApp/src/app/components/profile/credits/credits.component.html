@@ -1,0 +1,23 @@
+<div id="credits" class="row margin-top-15">
+    <!--*ngIf="hasCredits"-->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Credits</span>
+            </div>
+            <div class="card-body">
+                <div *ngIf="hasCredits">
+                    <div class="padding-10 margin-bottom-10" *ngFor="let credit of CreditsList">
+                        <strong class="padding-5">{{credit.workYear}}</strong>
+                        <ul class="padding-left-20">
+                            <li>{{credit.workPlace}} : {{credit.workDetail}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div *ngIf="!hasCredits">
+                    <span class="text-info text-m">Credit details are not update yet.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

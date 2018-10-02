@@ -5,11 +5,11 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
+    return document.getElementsByTagName('base')[0].href;
 }
 
 export function getApiUrl() {
-    return "http://data.starguddy.com/";
+    return environment.apiUrl;
 }
 
 const providers = [
@@ -18,8 +18,10 @@ const providers = [
 ];
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 platformBrowserDynamic(providers).bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+    .catch(
+    err => console.log(err)
+    );

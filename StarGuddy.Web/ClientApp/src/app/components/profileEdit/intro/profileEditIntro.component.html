@@ -1,0 +1,49 @@
+<!--<div id="editName" class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-sm-12 col-xs-12 margin-auto" style="float:none;">
+            <form #frmProfileIntro="ngForm">
+                <div class="card">
+                    <div class="card-header card-title-s">Intro Summary</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="txtAboutMe" class="required">About me</label>
+                            <textarea id="txtAboutMe" name="txtAboutMe" style="width:100%; min-height:200px;" class="form-control" [(ngModel)]="userDetailModel.about" #about="ngModel"></textarea>
+                            <sub>{{1400-(userDetailModel.about==undefined? 0 :userDetailModel.about.length)}} characters remaining</sub>
+                            <div *ngIf="about.invalid && (about.dirty || about.touched)" class="error">
+                                <div *ngIf="about.errors.required">Dance experience is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 margin-top-20 padding-top-20">
+                            <label for="profileAddress" class="required display-block">Profile address</label>
+                            <sub style="vertical-align: super;">Choose the web address for your profile page</sub>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="profileAddress">https://www.StarGuddy.com/</span>
+                                <input id="profileAddress" name="profileAddress" type="text" class="form-control border-left-none" aria-describedby="profileAddress"
+                                       [(ngModel)]="userDetailModel.profileAddress" required #profileAddress="ngModel" />
+                            </div>
+                            <div *ngIf="profileAddress.errors && (profileAddress.dirty || profileAddress.touched)" class="error">
+                                <div [hidden]="!profileAddress.hasError('required')">Profile address is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="col-sm-12 text-center padding-15">
+                        <button id="btnSave" type="submit" class="btn-profile-save btn btn-success" (click)="save()" [disabled]="!frmProfileIntro.form.valid">Save</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

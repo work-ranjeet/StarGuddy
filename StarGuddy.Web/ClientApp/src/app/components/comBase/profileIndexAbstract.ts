@@ -1,4 +1,4 @@
-﻿import IProfileHeader = App.Client.PublicProfile.IProfileHeader;
+import IProfileHeader = App.Client.PublicProfile.IProfileHeader;
 import IJobGroupModel = App.Client.Profile.IJobGroupModel;
 import ISectionVesbility = App.Client.PublicProfile.ISectionVesbility;
 import * as _ from "lodash";

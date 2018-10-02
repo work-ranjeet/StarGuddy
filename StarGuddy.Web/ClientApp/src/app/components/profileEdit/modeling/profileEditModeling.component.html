@@ -1,0 +1,144 @@
+<div id="modeling" class="row margin-top-15">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Modeling</span>
+                <a href="javascript:void(0);" class="pull-right">
+                    <i *ngIf="!showEditHtml" class="fa fa-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="fa fa-window-close-o text-danger" (click)="edit()"></i>
+                </a>
+            </div>
+            <div *ngIf="!showEditHtml" class="card-body">
+                <div class="experiance">Modeling experience</div>
+                <div class="padding-top-5 padding-left-20 text-l">{{modelingDetailModel.expText}}</div>
+                <div *ngIf="showWebsite">
+                    <hr class="seperator" />
+                    <div class="experiance padding-top-10">Modeling website</div>
+                    <div class="padding-top-5 padding-left-15 text-l">
+                        <a href="http://{{modelingDetailModel.webSite}}" target="_blank"><i class="fa fa-hand-o-right text-success padding-5"></i>{{modelingDetailModel.webSite}}</a>
+                    </div>
+                </div>
+                <div *ngIf="showExperiance">
+                    <hr class="seperator" />
+                    <p class="padding-top-10 text-l text-muted">{{modelingDetailModel.experiance}}</p>
+                </div>
+            </div>
+            <div *ngIf="showEditHtml" class="card-body text-muted">
+
+                <form #frmUserModelingEdit="ngForm">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="required">Auditions & Jobs I'm interested in</label>
+                                <div class="text-l">
+                                    <div class="col-md-3 col-sm-4 col-xs-6 padding-top-10 padding-bottom-10" *ngFor="let role of modelingDetailModel.modelingRoles">
+                                        <input type="checkbox" id="{{role.code}}" value="{{role.code}}" name="{{role.code}}"
+                                               [checked]="role.code==role.selectedCode"
+                                               (change)="updateSelectedJobGroup($event)"
+                                               class="padding-5 v-text-top">
+                                        <label for="{{role.code}}" class="padding-5 text-l">{{role.name}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label class="profile-edit-label required">Modeling experience</label>
+                                <div class="profile-edit-container row">
+                                    <div class="col-md-3 col-sm-4 col-xs-12">
+                                        <input id="expCode_300" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                               [checked]="modelingDetailModel.expCode==300"
+                                               [value]="300"
+                                               (change)="onModelingExpSelectionChange($event)">
+                                        <label for="expCode_300" class="padding-5 text-l">Beginner, starting out</label>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12">
+                                        <input id="expCode_301" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                               [checked]="modelingDetailModel.expCode==301"
+                                               [value]="301"
+                                               (change)="onModelingExpSelectionChange($event)">
+                                        <label for="expCode_300" class="padding-5 text-l">Part-time model - paid commercial work</label>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12">
+                                        <input id="expCode_302" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                               [checked]="modelingDetailModel.expCode==302"
+                                               [value]="302"
+                                               (change)="onModelingExpSelectionChange($event)">
+                                        <label for="expCode_300" class="padding-5 text-l">Full-time model - paid commercial work</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 padding-bottom-5">
+                            <div class="form-group">
+                                <span class="pull-left padding-top-10">Modeling website</span>
+                                <div class="profile-edit-container col-sm-4">
+                                    <input id="txtWebSite" name="txtWebSite" type="url" placeholder="www.website.com"
+                                           [(ngModel)]="modelingDetailModel.webSite" class="form-control"
+                                           #modelingWebSite="ngModel" />
+                                    <div *ngIf="modelingWebSite.invalid" class="error">
+                                        <div *ngIf="modelingWebSite.errors.url">Modeling experience is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Agent</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_100" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="modelingDetailModel.agentNeedCode==100"
+                                       [value]="100"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_100" class="padding-5 text-l">I don't have an agent</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_101" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="modelingDetailModel.agentNeedCode==101"
+                                       [value]="101"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_101" class="padding-5 text-l">I want an agent</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_102" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="modelingDetailModel.agentNeedCode==102"
+                                       [value]="102"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_102" class="padding-5 text-l">I have an agent</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Modeling experience</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <textarea id="txtExperiance" name="txtExperiance" style="width:100%; min-height:100px;" class="form-control"
+                                          [(ngModel)]="modelingDetailModel.experiance"
+                                          #modelingExperience="ngModel"></textarea>
+                                <div *ngIf="modelingExperience.invalid && (modelingExperience.dirty || modelingExperience.touched)" class="error">
+                                    <div *ngIf="modelingExperience.errors.required">Modeling experience is required.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center padding-15">
+                        <button id="btnSave" class="btn-profile-save btn btn-success" (click)="saveChanges()">Save</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

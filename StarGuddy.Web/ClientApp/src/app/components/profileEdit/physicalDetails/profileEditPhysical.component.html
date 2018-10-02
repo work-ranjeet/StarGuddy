@@ -1,0 +1,143 @@
+<div id="physicalDetails" class="row margin-top-15">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Physical Details</span>
+                <a href="javascript:void(0);" class="pull-right">
+                    <i *ngIf="!showEditHtml" class="fa fa-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="fa fa-window-close-o text-danger" (click)="edit()"></i>
+                </a>
+            </div>
+            <div class="card-body">
+                <div *ngIf="!showEditHtml" class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Height&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.height || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Skin color&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.skinColor || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Weight&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.weight || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Ethnicity&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6"> {{PhysicalAppearanceResult.ethnicity || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Eye color&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.eyeColor || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Chest&nbsp;:</div>
+                        <div class="col-md-8  col-sm-8 col-xs-6">{{PhysicalAppearanceResult.chest || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Body Type&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.bodyType || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">HairLength&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.hairLength || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Hair Type&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.hairType || '--'}}</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  padding-10">
+                        <div class="col-md-3 col-sm-4 col-xs-6">Hair color&nbsp;:</div>
+                        <div class="col-md-8 col-sm-8 col-xs-6">{{PhysicalAppearanceResult.hairColor || '--'}}</div>
+                    </div>
+
+                </div>
+                <div *ngIf="showEditHtml">
+                    <section id="physicalAppreanceEdit" class="section-profile-edit text-muted">
+                        <div class="section row">
+                            <div id="frmPhysicalAppreance" name="frmPhysicalAppreance" class="form padding-10">
+                                <div class="col-sm-6">
+                                    <div class="form-group padding-bottom-15">
+                                        <label class="">Height</label>
+                                        <select [(ngModel)]="PhysicalAppearance.height" name="dropDownHeight" id="dropDownHeight" class="form-control width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of heightJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Ethnicity</label>
+                                        <select [(ngModel)]="PhysicalAppearance.ethnicity" name="dropDownEthnicity" id="dropDownEthnicity" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of EthnicityJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Eye color</label>
+                                        <select [(ngModel)]="PhysicalAppearance.eyeColor" name="dropCtrlEyeColor" id="dropCtrlEyeColor" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of eyeColorJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Body Type</label>
+                                        <select [(ngModel)]="PhysicalAppearance.bodyType" name="dropDownBodyType" id="dropDownCtrlWaist" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of bodyTypeJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Hair Type</label>
+                                        <select [(ngModel)]="PhysicalAppearance.hairType" name="dropDownHairType" id="dropDownHairType" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of hairTypeJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Weight</label>
+                                        <select [(ngModel)]="PhysicalAppearance.weight" name="dropDownWeight" id="dropDownWeight" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of weightJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Skin color</label>
+                                        <select [(ngModel)]="PhysicalAppearance.skinColor" name="dropDownSkinColor" id="dropDownSkinColor" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of skinColorJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Chest</label>
+                                        <select [(ngModel)]="PhysicalAppearance.chest" name="dropDownChest" id="dropDownChest" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of chestJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Hair Length</label>
+                                        <select [(ngModel)]="PhysicalAppearance.hairLength" name="dropDownHairLength" id="dropDownHairLength" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of hairLengthJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group padding-bottom-15">
+                                        <label>Hair color</label>
+                                        <select [(ngModel)]="PhysicalAppearance.hairColor" name="dropDownHairColor" id="dropDownHairColor" class="form-control  width-90">
+                                            <option value="0">(optional)</option>
+                                            <option *ngFor="let item of hairColorJson" [value]="item.key">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center padding-15">
+                                    <button id="btnSave" class="btn-profile-save btn btn-success" (click)="saveChanges()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

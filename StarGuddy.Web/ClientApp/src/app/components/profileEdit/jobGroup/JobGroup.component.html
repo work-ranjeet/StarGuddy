@@ -1,0 +1,30 @@
+
+<div id="jobGroup" class="container">
+    <div class="row margin-top-15">
+        <div class="col-md-12 page-heading padding-10">
+            <h1>Group's I am interested in.</h1>
+        </div>
+    </div>
+    <hr class="style-three" />
+    <form #frmuserJobGroupsSave="ngForm">
+        <div class="row  margin-top-15">
+            <div class="col-md-12 col-xs-12">
+                <div *ngFor="let interest of userInterestList" style="display:inline-block;" class="padding-15">
+                    <input id="{{interest.code}}" name="{{interest.code}}" type="checkbox"
+                           value="{{interest.code}}"
+                           [checked]="interest.code==interest.selectedCode"
+                           (change)="updateSelectedJobGroup($event)"
+                           class="invisible">
+                    <label for="{{interest.code}}" class="btn btn-category">{{interest.name}}</label>
+                </div>
+            </div>
+        </div>
+        <hr class="style-three" />
+        <div class="row  margin-top-15">
+            <div class="col-md-12 col-xs-12 text-center">
+                <input type="button" class="btn btn-success" value="Save Changes" (click)="saveChanges()" />
+                <input type="button" class="btn btn-default" value="Reset Changes" (click)="reset()" />
+            </div>
+        </div>
+    </form>
+</div>

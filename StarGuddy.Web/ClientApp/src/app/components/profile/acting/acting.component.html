@@ -1,0 +1,39 @@
+<div id="acting" class="row  margin-top-15">
+    <!--*ngIf="showActing"-->
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Acting</span>
+            </div>
+            <div class="card-body">
+                <div class="experiance">Acting experience</div>
+                <div class="padding-top-5 padding-left-20 text-l">{{actingDetailModel.actingExperiance}}</div>
+                <div *ngIf="showLanguage">
+                    <hr class="seperator" />
+                    <div class="experiance padding-top-10">Language</div>
+                    <div class="padding-top-5 padding-left-15">
+                        <span class="padding-5" *ngFor="let language of actingDetailModel.languages">
+                            <i *ngIf="language.code==language.selectedLanguageCode" class="fa fa-hand-o-right text-success"></i>
+                            <span *ngIf="language.code==language.selectedLanguageCode">{{language.name}}</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div *ngIf="showAccents">
+                    <hr class="seperator" />
+                    <div class="experiance padding-top-10">Accents</div>
+                    <div class="padding-top-5 padding-left-15">
+                        <span class="padding-5" *ngFor="let accent of actingDetailModel.accents">
+                            <i *ngIf="accent.code==accent.selectedAccent" class="fa fa-hand-o-right text-success"></i>
+                            <span *ngIf="accent.code==accent.selectedAccent">{{accent.name}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="actingDetailModel.experiance!=''">
+                    <hr class="seperator" />
+                    <p class="padding-top-10 text-l text-muted">{{actingDetailModel.experiance}}</p>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>

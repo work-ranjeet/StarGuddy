@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 hidden-sm hidden-xs padding-bottom-15" style="z-index:-100;">
+        <div class="profile-menu">
+            <a *ngFor="let group of selectedJobGroup" href="javascript:void(0)" target="_blank" (click)="menuSelectionChanged(group.code)">{{group.name}}</a>
+        </div>
+        <div style="height:1px; background-color:#F88017;"></div>
+        <div class="text-center padding-5" style="border: solid #ccc 1px; background-color: #fcf9f9 !important; border-top:none!important;">
+            <p class="text-muted profile-info-about">
+                {{about}}<a routerLink="/profile/intro" class="fa fa-edit edit-icon-m"></a>
+            </p>
+        </div>
+    </div>
+</div>

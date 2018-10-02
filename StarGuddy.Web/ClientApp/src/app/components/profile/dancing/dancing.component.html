@@ -1,0 +1,35 @@
+<div id="dancing" class="row margin-top-15">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Dancing</span>
+            </div>
+            <div class="card-body">
+                <div class="experiance">Dancing ability</div>
+                <div class="padding-top-5 padding-left-20 text-l">{{dancingModel.danceAbilitiesText}}</div>
+                <hr />
+                <div *ngIf="dancingModel.choreographyAbilitiesText!=''">
+                    <div class="experiance">Teaching or Choreography ability</div>
+                    <div class="padding-top-5 padding-left-20 text-l">{{dancingModel.choreographyAbilitiesText}}</div>
+                </div>
+                <div *ngIf="dancingModel.hasDanceStyle">
+                    <hr />
+                    <div class="experiance padding-top-10">Dance styles</div>
+                    <div class="padding-top-5 padding-left-15 text-l">
+                        <span class="d-block padding-5" *ngFor="let danceStyle of dancingModel.dnacingStyles">
+                            <i class="fa fa-hand-o-right text-success" *ngIf="danceStyle.id==danceStyle.selectedValue"></i>
+                            <span *ngIf="danceStyle.id==danceStyle.selectedValue">{{danceStyle.name}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="dancingModel.experience!= null && dancingModel.experience!=''">
+                    <hr />
+                    <p class="padding-top-10 text-l text-muted">{{dancingModel.experience}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

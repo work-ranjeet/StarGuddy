@@ -1,0 +1,171 @@
+<div id="acting" class="row margin-top-15">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-title-m">
+                <span>Acting</span>
+                <span class="pull-right">
+                    <i *ngIf="!showEditHtml" class="fa fa-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="fa fa-window-close-o text-danger" (click)="edit()"></i>
+                </span>
+            </div>
+            <div *ngIf="!showEditHtml" class="card-body">
+                <div *ngIf="showActing">
+                    <div class="experiance">Acting experience</div>
+                    <div class="padding-top-5 padding-left-20 text-muted text-l">{{actingDetailModel.actingExperiance}}</div>
+                    <div *ngIf="showLanguage">
+                        <hr class="seperator" />
+                        <div class="experiance padding-top-10">Language</div>
+                        <div class="padding-top-5 padding-left-15 text-l">
+                            <span class="padding-5" *ngFor="let language of actingDetailModel.languages">
+                                <i *ngIf="language.code==language.selectedLanguageCode" class="fa fa-hand-o-right text-success"></i>
+                                <span *ngIf="language.code==language.selectedLanguageCode">{{language.name}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div *ngIf="showAccents">
+                        <hr class="seperator" />
+                        <div class="experiance padding-top-10">Accents</div>
+                        <div class="padding-top-5 padding-left-15">
+                            <span class=" padding-5" *ngFor="let accent of actingDetailModel.accents">
+                                <i *ngIf="accent.code==accent.selectedAccent" class="fa fa-hand-o-right text-success"></i>
+                                <span *ngIf="accent.code==accent.selectedAccent">{{accent.name}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div *ngIf="actingDetailModel.experiance!=''">
+                        <hr class="seperator" />
+                        <p class="padding-top-10 text-l text-muted">{{actingDetailModel.experiance}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!showActing">
+                    <span class="text-info text-m">Please enter your acting detail.</span>
+                </div>
+            </div>
+            <div id="physicalAppreanceEdit" *ngIf="showEditHtml" class="card-body text-muted">
+                <form action="#" method="post" class="form" role="form">
+                    <div class="form-group padding-top-10">
+                        <label class="profile-edit-label required">Auditions & Jobs I'm interested in</label>
+                        <div class="text-l row">
+                            <div class="col-md-3 col-sm-4 col-xs-6 padding-top-10 padding-bottom-10" *ngFor="let job of actingDetailModel.auditionsAndJobsGroup">
+                                <input type="checkbox" id="{{job.code}}" value="{{job.code}}" name="{{job.code}}"
+                                       [checked]="job.code==job.selectedCode"
+                                       (change)="updateSelectedJobGroup($event)"
+                                       class="padding-5 v-text-top">
+                                <label for="{{job.code}}" class="padding-5 text-l">{{job.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="seperator" />
+                    <div class="form-group display-block">
+                        <label class="profile-edit-label required">Acting experience</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <input id="actingExperienceGroup_200" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.actingExperianceCode==200"
+                                       [value]="200"
+                                       (change)="onActingExpSelectionChange($event)">
+                                <label for="actingExperienceGroup_200" class="padding-5 text-l">No previous acting experience</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <input id="actingExperienceGroup_201" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.actingExperianceCode==201"
+                                       [value]="201"
+                                       (change)="onActingExpSelectionChange($event)">
+                                <label for="actingExperienceGroup_201" class="padding-5 text-l">Credits</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <input id="actingExperienceGroup_202" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.actingExperianceCode==202"
+                                       [value]="202"
+                                       (change)="onActingExpSelectionChange($event)">
+                                <label for="actingExperienceGroup_202" class="padding-5 text-l">Previous unpaid speaking roles</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <input id="actingExperienceGroup_203" type="radio" name="actingExperienceGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.actingExperianceCode==203"
+                                       [value]="203"
+                                       (change)="onActingExpSelectionChange($event)">
+                                <label for="actingExperienceGroup_203" class="padding-5 text-l">Previous paid speaking roles</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label required">Languages</label>
+                        <div class="text-l row">
+                            <div class="col-md-3 col-sm-4 col-xs-6  padding-10" *ngFor="let language of actingDetailModel.languages">
+                                <input id="{language.code}}" type="checkbox" value="{{language.code}}" name="{{language.code}}"
+                                       [checked]="language.code==language.selectedLanguageCode"
+                                       (change)="updateSelectedLanguageChange($event)"
+                                       class="padding-5 v-text-top">
+                                <label for="{language.code}}" class="padding-5 text-l">{{language.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label required">Accents</label>
+                        <div class="text-l row">
+                            <div class="col-md-3 col-sm-4 col-xs-6 padding-10" *ngFor="let accent of actingDetailModel.accents">
+                                <input id="{{accent.code}}" type="checkbox" value="{{accent.code}}" name="{{accent.code}}"
+                                       [checked]="accent.code==accent.selectedAccent"
+                                       (change)="updateSelectedAccentChange($event)"
+                                       class="padding-5 v-text-top">
+                                <label for="{{accent.code}}" class="padding-5 text-l">{{accent.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Agent</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_100" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.agentNeedCode==100"
+                                       [value]="100"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_100" class="padding-5 text-l">I don't have an agent</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_101" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.agentNeedCode==101"
+                                       [value]="101"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_101" class="padding-5 text-l">I want an agent</label>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                <input id="agentNeedCode_102" type="radio" name="agentGroup" class="padding-5 v-text-top"
+                                       [checked]="actingDetailModel.agentNeedCode==102"
+                                       [value]="102"
+                                       (change)="onAgentGroupSelectionChange($event)">
+                                <label for="agentNeedCode_102" class="padding-5 text-l">I have an agent</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="seperator" />
+                    <div class="form-group">
+                        <label class="profile-edit-label">Acting experience</label>
+                        <div class="profile-edit-container row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <textarea id="txtExperiance" name="txtExperiance" style="width:100%; min-height:100px;" class="form-control"
+                                          [(ngModel)]="actingDetailModel.experiance"
+                                          #actingExperience="ngModel"></textarea>
+                                <div *ngIf="actingExperience.invalid && (actingExperience.dirty || actingExperience.touched)" class="error">
+                                    <div *ngIf="actingExperience.errors.required">Acting experience is required.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 text-center padding-15">
+                        <button id="btnSave" class="btn-profile-save btn btn-success" (click)="saveChanges()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
