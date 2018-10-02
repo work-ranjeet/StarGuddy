@@ -1,0 +1,93 @@
+﻿
+.theme-red {
+    color: #d80b32;
+}
+
+.theme-color {
+    color: #F88017;
+}
+
+.theme-button {
+    color: #fff;
+    background-color: #d80b32;
+    border-color: #8f031d;
+    text-transform: uppercase;
+}
+
+    .theme-button:hover {
+        color: #fff;
+        background: #bc072a;
+    }
+
+.yellow-txt {
+    color: #F88017;
+}
+
+.required:after {
+    content: " *";
+    font-weight: bold;
+    color: #f00
+}
+
+.theme-label,
+.theme-control-label {
+    color: #F88017;
+    font-size: 16px;
+    font-family: 'Roboto Condensed', Helvetica Neue, Helvetica,'Roboto Condensed',Arial,sans-serif;
+}
+
+.theme-control-padding {
+    padding: 5px 12px 5px 12px;
+}
+
+/*.theme-control-label {
+}*/
+
+.theme-texbox-custom {
+    height: 40px;
+    border: solid 1px #efefef;
+    background-color: #efefef;
+    border-radius: 5px;
+    padding: 2px;
+    padding-left: 8px;
+}
+
+/****************************************************** Validation color **************************************************/
+.error {
+    padding: 0 0 5px 2px;
+    color: red;
+    font-size: 12px;
+}
+
+.text-error {
+    color: red;
+    padding-left: 10px;
+    font-size: 11px;
+}
+
+.ng-dirty,
+input.ng-dirty,
+input.ng-valid,
+input.ng-valid[required],
+input.ng-dirty[required] {
+    border-left: 5px solid #42A948; /* green */
+}
+
+input.ng-invalid {
+    border-left: 5px solid #a94442; /* red */
+}
+
+input.border-left-none {
+    border-left: 1px solid #CCC !important;
+}
+
+form.ng-invalid, form.ng-dirty, form.ng-touched {
+    border: none !important;
+}
+
+
+/*------------------------------------------------------End Validation color ---------------------------------------------*/
+.box-white {
+    border: solid #ccc 1px;
+    background-color: #fcf9f9 !important;
+}

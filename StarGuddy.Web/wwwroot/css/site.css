@@ -1,0 +1,155 @@
+﻿/*.body-content {
+    padding: 0px !important;
+}*/
+.form-group {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.form-center-small,
+.form-center-medium,
+.form-center-small {
+    margin: auto;
+    margin-top: 10% !important;
+    background: #fff;
+    padding: 10px;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.form-center-small {
+    max-width: 450px;
+}
+
+.form-center-medium {
+    max-width: 550px;
+}
+
+.form-center-big {
+    max-width: 650px;
+}
+
+.page-heading {
+    font-family: Papyrus, fantasy;
+}
+
+    .page-heading h1 {
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .page-heading h2 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .page-heading h3 {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+.main-heading-container {
+    padding: 1px;
+}
+
+    .main-heading-container .main-heading {
+        font-size: 20px;
+    }
+
+.container-box {
+    max-width: 500px;
+    background: #fff;
+    padding: 30px;
+    margin: auto;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
+}
+
+
+    .container-box h1 {
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 24px;
+        color: #000;
+        font-weight: lighter;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 18px;
+        color: #333;
+    }
+
+    .container-box h2 {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 18px;
+        color: #000;
+        margin-top: -5px;
+        margin-bottom: 18px;
+        font-weight: lighter;
+        text-align: center;
+        color: #333;
+    }
+
+    .container-box h3 {
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 18px;
+        color: #000;
+        margin-top: -5px;
+        font-weight: lighter;
+        text-align: center;
+        color: #333;
+    }
+
+.signup-container {
+    background: url('./icons/home-actor-back.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.disclosure-text {
+    font-size: 11px;
+    line-height: 14px;
+    color: #337ab7;
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .disclosure-text a {
+        -webkit-transition: color 250ms linear;
+        -moz-transition: color 250ms linear;
+        -o-transition: color 250ms linear;
+        transition: color 250ms linear;
+        color: #000;
+        text-decoration: none;
+    }
+
+        .disclosure-text a:hover {
+            color: #F88017;
+        }
+
+.form-header {
+    background: #FFF;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 2%;
+}
+
+form-header .heading-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.btn-profile-save,
+.btn-profile-cancle {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
