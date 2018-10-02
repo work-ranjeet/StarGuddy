@@ -23,6 +23,35 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="ClientApp\src\assets\css\bootstrap_4.0_custom.css" />
+    <Content Include="ClientApp\src\assets\css\bootstrap_alingment.css" />
+    <Content Include="ClientApp\src\assets\css\common.css" />
+    <Content Include="ClientApp\src\assets\css\ng2-toastr.min.css" />
+    <Content Include="ClientApp\src\assets\css\site.css" />
+    <Content Include="ClientApp\src\assets\css\theme.css" />
+    <Content Include="ClientApp\src\assets\css\icons\black-thin-bg.jpg" />
+    <Content Include="ClientApp\src\assets\css\icons\femail.png" />
+    <Content Include="ClientApp\src\assets\css\icons\home-actor-back.jpg" />
+    <Content Include="ClientApp\src\assets\css\icons\home-dance-banner.jpg" />
+    <Content Include="ClientApp\src\assets\css\icons\mail.png" />
+    <Content Include="ClientApp\src\assets\css\icons\pixel_weave.png" />
+    <Content Include="ClientApp\src\assets\css\icons\search-section-bck.jpg" />
+    <Content Include="ClientApp\src\assets\css\img\arti.jpg" />
+    <Content Include="ClientApp\src\assets\css\img\artiwa.JPG" />
+    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ClientApp\src\assets\fonts\FontAwesome.otf" />
+    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

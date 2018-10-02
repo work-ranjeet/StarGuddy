@@ -5,14 +5,15 @@
 }
 
 .home-hero-section {
-  font-size: 24px;
-  color: #fff;
-  /*background: url('../../../../../content/css/icons/search-section-bck.jpg') no-repeat center center fixed;*/
-  /*background: url('../../../../../wwwroot/css/icons/home-dance-banner.jpg') no-repeat center center fixed;*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    font-size: 24px;
+    color: #fff;
+    background: url('../../../../assets/css/icons/search-section-bck.jpg') no-repeat center center fixed;
+    /*background: url('../../../../../wwwroot/css/icons/home-dance-banner.jpg') no-repeat center center fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 

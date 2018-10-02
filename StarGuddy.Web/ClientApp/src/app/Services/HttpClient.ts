@@ -1,7 +1,5 @@
-﻿import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient,  HttpParams, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { isPlatformBrowser } from "@angular/common";
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable()
 export class HttpService {

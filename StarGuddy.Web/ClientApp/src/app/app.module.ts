@@ -7,17 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppIndexComponent } from "./components/appIndex/appIndex.component";
-//import { CommonModuleShared } from "./components/common/common.module.shared";
+import { CommonModuleShared } from "./components/common/common.module.shared";
 import { HomeModuleShared } from "./components/home/home.module.shared";
-//import { HomeComponent } from "./components/home/home.component";
 
 //// Providers
-//import { AppConstant, DbOperation } from "./Constants/AppConstant";
-//import { DataConverter } from "./Helper/DataConverter";
-//import { DataValidator } from "./Helper/DataValidator";
-//import { AuthGuard } from "./Services/AuthenticationGuard";
-//import { BaseService } from "./Services/BaseService";
-//import { HttpService } from "./Services/HttpClient";
+import { AppConstant, DbOperation } from "./Constants/AppConstant";
+import { DataConverter } from "./Helper/DataConverter";
+import { DataValidator } from "./Helper/DataValidator";
+import { AuthGuard } from "./Services/AuthenticationGuard";
+import { BaseService } from "./Services/BaseService";
+import { HttpService } from "./Services/HttpClient";
 
 @NgModule({
     declarations: [
@@ -29,15 +28,15 @@ import { HomeModuleShared } from "./components/home/home.module.shared";
         HttpClientModule,
         FormsModule,
         CommonModule,
-        //CommonModuleShared,
+        CommonModuleShared,
         HomeModuleShared,
         RouterModule.forRoot([
             { path: "", redirectTo: "home", pathMatch: "full" },
             { path: "**", redirectTo: "home" }
-           
+
         ])
     ],
-    providers: [],
+    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService],
     bootstrap: [AppIndexComponent]
 })
 export class AppModule { }

@@ -7,7 +7,6 @@ import { AppConstant } from "../Constants/AppConstant";
 import { HttpService } from "../Services/HttpClient";
 
 @Injectable()
-
 export class BaseService {
     public isLoggedInSource = new BehaviorSubject<boolean>(false);
 

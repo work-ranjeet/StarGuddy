@@ -1,0 +1,57 @@
+<div id="logInOut" style="color: white;">
+    <div *ngIf="!isLoggedIn" class="nav-sign-in" style="height:50px; padding:14px;">
+        <span class="fa fa-sign-in"></span>
+        <a class="" [routerLink]="['/login']">Log In</a>
+    </div>
+    <div *ngIf="isLoggedIn">
+        <ul class="pull-right nav-logout-menu">
+            <!--<li class="hidden-sm hidden-xs">
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-briefcase">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+            <li class="hidden-sm hidden-xs">
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-envelope-o">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+            <li class="hidden-sm hidden-xs">
+                <a class="menu-link-button" href="#">
+                    <div class="fa fa-comment-o">
+                        <span class="menu-link-count-container">
+                            <span class="counter" id="requestsCountValue">1</span>
+                        </span>
+                    </div>
+                </a>
+            </li>-->
+            <li (click)="toggleUserSettingMenu()" [style.background-color]="!showUserSettingMenu? 'white':null" [style.color]="!showUserSettingMenu? '#F88017':null">
+                <span>{{UserFirstName}}</span>
+                <div [hidden]="showUserSettingMenu" class="user-setting-menu">
+
+                    <!--<div class="heading">
+                        <span class="fa fa-gears"></span>&nbsp;<span>Account & Settings</span>
+                    </div>-->
+                    <div class="content">
+                        <ul>
+                            <li class="pull-left"><a class="fa fa-user-o" [routerLink]="['/profile']"> &nbsp;&nbsp; My Profile</a></li>
+                            <!--<li class="pull-left"><a class="fa fa-bell-o" [routerLink]="['/Notification']"> &nbsp;&nbsp; Notifications</a></li>-->
+                            <li class="pull-left"><a class="fa fa-gears" [routerLink]="['/profileSetting']"> &nbsp;&nbsp; Settings</a></li>
+                            <li class="pull-left">
+                                <span class="fa fa-sign-out">&nbsp;</span>
+                                <a style="font-size: 13px; color: #CC0000;" (click)="logOut()">Sign Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

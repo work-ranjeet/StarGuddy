@@ -2,12 +2,13 @@
 .home-casting-section {
     color: #ededed;
     min-height: 400px;
-    /*background: url('../../../../../content/css/icons/home-actor-back.jpg') no-repeat center center fixed;*/
+    background: url('../../../../assets/css/icons/home-actor-back.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     padding-top: 2%;
+    background-position: center;
 }
 
     .home-casting-section .heading {
