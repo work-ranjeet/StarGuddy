@@ -1,0 +1,38 @@
+<!--<div style="padding-top:140px;">
+    <div class="container-box">
+        <h2 class="margin-bottom-10">Log In</h2>
+        <hr />
+        <div class="form-group">
+            <label for="Email" class="required">Email address</label>
+            <input type="email" id="Email" class="form-control"
+                   [(ngModel)]="loginData.Email"
+                   #username="ngModel"
+                   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                   placeholder="Email address" required autofocus />
+            <div *ngIf="username.errors && (username.dirty || username.touched)"  class="error">
+                <div [hidden]="!username.hasError('required')">Email is required.</div>
+                <div [hidden]="!username.hasError('pattern')">Email format should be &nbsp;<small><b>joe@abc.com</b></small></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="required">Password</label>
+            <input type="password" id="Password" class="form-control" [(ngModel)]="loginData.Password" #password="ngModel" placeholder="Password" required />
+            <div *ngIf="password.errors && (password.dirty || password.touched)"  class="error">
+                <div [hidden]="!password.hasError('required')">Email is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg theme-button btn-block margin-bottom-10" (click)="login()">Sign in</button>
+        </div>
+        <div class="form-group">
+            <p>
+                <span>Not yet registered?&nbsp;&nbsp;</span>
+                <a class="" [routerLink]="['/signup']">Signup here as a new user.</a>
+            </p>
+            <p>
+                <a>Forgot your password?</a>
+            </p>
+        </div>
+    </div>
+   
+</div>-->

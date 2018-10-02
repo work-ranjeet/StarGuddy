@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AppIndexComponent } from "./components/appIndex/appIndex.component";
 import { CommonModuleShared } from "./components/common/common.module.shared";
 import { HomeModuleShared } from "./components/home/home.module.shared";
+import { AccountModuleShared } from "./components/account/account.module.shared";
 
 //// Providers
 import { AppConstant, DbOperation } from "./Constants/AppConstant";
@@ -17,6 +18,7 @@ import { DataValidator } from "./Helper/DataValidator";
 import { AuthGuard } from "./Services/AuthenticationGuard";
 import { BaseService } from "./Services/BaseService";
 import { HttpService } from "./Services/HttpClient";
+import { ToastrService } from "./Services/ToastrService";
 
 @NgModule({
     declarations: [
@@ -30,13 +32,14 @@ import { HttpService } from "./Services/HttpClient";
         CommonModule,
         CommonModuleShared,
         HomeModuleShared,
+        AccountModuleShared,
         RouterModule.forRoot([
             { path: "", redirectTo: "home", pathMatch: "full" },
             { path: "**", redirectTo: "home" }
 
         ])
     ],
-    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService],
+    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService, ToastrService],
     bootstrap: [AppIndexComponent]
 })
 export class AppModule { }

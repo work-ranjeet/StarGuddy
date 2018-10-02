@@ -1,0 +1,97 @@
+<div class="signup-container job-seeker-container padding-10">
+    <div class="container-box">
+
+        <div class="row padding-top-15">
+            <div class="col-lg-12">
+                <div class="form-header text-center padding-bottom-15">
+                    <span class="heading-title">Discover talents or be discovered</span>
+                </div>
+                <h3> Get started - it's free. It takes few minutes to create your profile.</h3>
+                <h3>Already a member? <a [routerLink]="['/login']">Sign in</a></h3>
+            </div>
+        </div>
+
+
+
+        <div id="signUpForm">
+            <div class="row padding-top-15">
+                <div class="col-xs-6 col-md-6">
+                    <input id="FirstName" type="text" class="form-control" autofocus
+                           placeholder="First Name" pattern="[a-zA-Z][a-zA-Z ]+" required
+                           [(ngModel)]="applicationUser.FirstName"
+                           #firstName="ngModel" />
+                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="error">
+                        <div [hidden]="!firstName.hasError('required')">First name is required.</div>
+                        <div [hidden]="!firstName.hasError('pattern')">Only alphabets allowed.</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <input id="LastName" name="LastName" type="text" class="form-control" placeholder="Last Name" required
+                           [(ngModel)]="applicationUser.LastName" #lastname="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" />
+                    <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)" class="error">
+                        <div [hidden]="!lastname.hasError('required')">Last name is required.</div>
+                        <div [hidden]="!lastname.hasError('pattern')">Only alphabets allowed.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padding-top-15">
+                <div class="col-lg-12">
+                    <input type="email" class="form-control" placeholder="Your Email" required
+                           [(ngModel)]="applicationUser.Email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="error">
+                        <div [hidden]="!email.hasError('required')">Email is required.</div>
+                        <div [hidden]="!email.hasError('pattern')">Email format should be &nbsp;<small><b>joe@abc.com</b></small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-top-15">
+                <div class="col-lg-12">
+                    <input id="Password" type="password" class="form-control" placeholder="Enter Password" required
+                           [(ngModel)]="applicationUser.Password" #password="ngModel" />
+                    <div *ngIf="password.errors && (password.dirty || password.touched)" class="error">
+                        <div [hidden]="!password.hasError('required')">Password is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-top-15">
+                <div class="col-lg-12">
+                    <input id="ConfirmPassword" type="password" class="form-control" placeholder="Re-enter Password" required
+                           [(ngModel)]="applicationUser.CnfPassword" #cnfpassword="ngModel" validateEqual="password" />
+                    <div *ngIf="cnfpassword.errors && (cnfpassword.dirty || cnfpassword.touched)" class="error">
+                        <div [hidden]="!cnfpassword.hasError('required')">Password is required.</div>
+                        <div [hidden]="!cnfpassword.hasError('validateequal')">Password and confirm-password are not matching.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padding-top-15">
+                <div class="col-lg-12">
+                    <label class="required">Gender</label>
+                    <br />
+                    <div class="btn-group" data-toggle="buttons" style="padding: 15px; padding-top: 0px;">
+                        <label class="btn btn-default" style="width: 100px;" [ngClass]="{'active': applicationUser.Gender == 'M'}">
+                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'M'" [checked]="applicationUser.Gender == 'M'" />Male
+                        </label>
+                        <label class="btn btn-default" style="width: 100px;">
+                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'F'" [checked]="applicationUser.Gender == 'F'" />Female
+                        </label>
+                        <label class="btn btn-default" style="width: 100px;">
+                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'O'" [checked]="applicationUser.Gender == 'O'" />Others
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <p class="disclosure-text">
+                By clicking
+                <span id="disclosure-cta">Join now</span>, you agree to StarIn's
+                <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/user-agreement?trk=uno-reg-guest-home-user-agreement">User Agreement</a>,
+                <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/privacy-policy?trk=uno-reg-guest-home-privacy-policy">Privacy Policy</a>, and
+                <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/cookie-policy?trk=uno-reg-guest-home-cookie-policy">Cookie Policy</a>.
+            </p>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="save()">Sign up</button>
+        </div>
+    </div>
+
+</div>

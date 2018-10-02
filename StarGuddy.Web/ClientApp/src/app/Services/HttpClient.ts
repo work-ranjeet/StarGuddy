@@ -4,17 +4,20 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 @Injectable()
 export class HttpService {
 
-    private readonly baseUrl: string;
+    private readonly apiUrl: string;
 
     constructor(
-        @Inject("BASE_URL") baseUrl: string,
+        @Inject("API_URL") apiUrl: string,
         @Inject(PLATFORM_ID) private platformId: Object,
         private http: HttpClient) {
-        this.baseUrl = baseUrl;
+        this.apiUrl = apiUrl;
 
     }
 
-    private get UrlPrifix() { return this.baseUrl + "api/"; }
+    private get UrlPrifix()
+    {
+        return this.apiUrl + "api/";
+    }
 
     get(Url: string) {
         return this.http.get(this.UrlPrifix + Url);
