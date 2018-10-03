@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: "http://data.starguddy.com/"
+    apiUrl: "http://localhost:8092/"
 };
 
 /*
