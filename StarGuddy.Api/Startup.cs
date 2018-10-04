@@ -16,7 +16,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using StarGuddy.Business.Modules.Mapper;
 using StarGuddy.Core.Constants;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace StarGuddy.Api
 {
@@ -33,7 +35,14 @@ namespace StarGuddy.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(option => { option.AllowEmptyInputInBodyModelBinding = true; }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddAutoMapper();
+            services.AddAutoMapper(x =>
+            {
+                x.AllowNullCollections = true;
+                x.AllowNullDestinationValues = true;
+                x.ValidateInlineMaps = false;
+                x.AddProfile<InitMapper>();
+            });
+
             services.AddCors(options => options.AddPolicy("Cors", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
             services.AddAuthentication(options =>
             {
@@ -70,6 +79,18 @@ namespace StarGuddy.Api
                 //        return Task.CompletedTask;
                 //    }
                 //};
+
+                //services.AddSwaggerGen(c =>
+                //{
+                //    c.SwaggerDoc("v1", new Info
+                //    {
+                //        Version = "v1",
+                //        Title = "My First API",
+                //        Description = "My First ASP.NET Core 2.0 Web API",
+                //        TermsOfService = "None",
+                //        Contact = new Contact() { Name = "Neel Bhatt", Email = "neel.bhatt40@gmail.com", Url = "https://neelbhatt40.wordpress.com/" }
+                //    });
+                //});
             });
 
             services.AddAuthorization(authOption =>
@@ -106,11 +127,12 @@ namespace StarGuddy.Api
             app.UseCors("Cors");
             app.UseAuthentication();
             app.UseMvc();
-            //app.UseMvc(routes =>
+
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c =>
             //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            //    c.RoutePrefix = "";
             //});
         }
     }

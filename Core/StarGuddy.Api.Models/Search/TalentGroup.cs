@@ -5,10 +5,9 @@ using System.Text;
 
 namespace StarGuddy.Api.Models.Search
 {
-    public class TalentGroup: JobGroupModel
+    public class TalentGroup : JobGroupModel
     {
-        public string ImageUrl { get; set; }
-
         public int MemberCount { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -6,14 +6,14 @@ import { Router } from "@angular/router";
     template: `<div class="container">
                     <div style="width:600px; padding-top:16%" class="margin-auto">
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-6">                              
-                                    <div (click)="loadPage('jobseeker')" style="height:160px; background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
-                                        <p style="padding: 40px;text-align: center;font-size: 22px; text-align: center;">Are you have talent?</p>
+                            <div class="col-sm-12 col-md-6 col-lg-6">                              
+                                    <div (click)="loadPage('jobseeker')" style="background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
+                                        <p style="padding: 10px;text-align: center;font-size: 22px; text-align: center;">Are you have talent?</p>
                                     </div>
                             </div>
-                            <div class="col-sm-6  col-lg-6 col-md-6">
-                                <div (click)="loadPage('jobprovider')" style="height:160px; background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
-                                        <p style="padding: 40px;text-align: center;font-size: 22px; text-align: center;">Are you searching for talent?</p>
+                            <div class="col-sm-12  col-lg-6 col-md-6">
+                                <div (click)="loadPage('jobprovider')" style="background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
+                                        <p style="padding: 10px;text-align: center;font-size: 22px; text-align: center;">Are you searching for talent?</p>
                                  </div>
                             </div>
                         </div>
