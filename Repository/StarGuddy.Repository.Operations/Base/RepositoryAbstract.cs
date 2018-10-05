@@ -268,9 +268,7 @@ namespace StarGuddy.Repository.Base
         {
             using (var conn = OpenConnectionAsync)
             {
-                return (await SqlMapper.QueryAsync<T>(
-                    conn,
-                    "SELECT * FROM " + this.tableName + " WHERE UserId = @UserId AND IsActive = @IsActive AND IsDeleted = @IsDeleted",
+                return (await SqlMapper.QueryAsync<T>(conn, "SELECT * FROM " + this.tableName + " WHERE UserId = @UserId AND IsActive = @IsActive AND IsDeleted = @IsDeleted",
                     new { UserId = userId, IsActive = 1, IsDeleted = 0 },
                     commandType: CommandType.Text)).FirstOrDefault();
             }

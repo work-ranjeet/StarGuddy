@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "account-confirm-email-sent",
-    template: `<div style="padding-top:140px;">
+    template: `<div style="padding: 10px; padding-top:140px!important;">
                     <div class="container-box">
-                        <strong class="text-info">We sent you verification link to your email. Please verify it to proceed....</strong>
-                        <div style="width:100px; margin:auto; margin-top: 40px;">
+                        <p class="text-info text-center">We sent, email verification link to your email address. Please verify it to proceed....</p>
+                        <div style="min-width:100px; margin:auto; margin-top: 40px; text-align: center;">
                             <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" class="btn btn-success display-bloack">Go to Gmail</a>
                         </div>  
                    </div>

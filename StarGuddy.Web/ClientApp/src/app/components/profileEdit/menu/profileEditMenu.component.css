@@ -1,4 +1,4 @@
-﻿
+
 
 
 .profile-menu {
@@ -11,10 +11,12 @@
     .profile-menu > a {
         padding: 0 10px 0 10px;
         line-height: 45px;
+        cursor:pointer;
     }
 
         .profile-menu > a:first-child {
             margin-left: 260px;
+            cursor: pointer;
         }
 
 

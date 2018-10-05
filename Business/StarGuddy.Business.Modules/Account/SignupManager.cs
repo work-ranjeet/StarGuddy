@@ -37,22 +37,25 @@ namespace StarGuddy.Business.Modules.Account
         /// <summary>
         /// The user repository
         /// </summary>
-        private readonly IUserRepository userRepository;
+        private readonly IUserRepository _userRepository;
 
         /// <summary>
         /// The security manager
         /// </summary>
-        private readonly ISecurityManager securityManager;
+        private readonly ISecurityManager _securityManager;
+
+        private readonly IUserEmailsRepository _userEmailsRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SignupManager" /> class.
         /// </summary>
         /// <param name="securityManager">The security manager.</param>
         /// <param name="userRepository">The user repository.</param>
-        public SignupManager(ISecurityManager securityManager, IUserRepository userRepository)
+        public SignupManager(ISecurityManager securityManager, IUserRepository userRepository, IUserEmailsRepository userEmailsRepository)
         {
-            this.userRepository = userRepository;
-            this.securityManager = securityManager;
+            _userRepository = userRepository;
+            _securityManager = securityManager;
+            _userEmailsRepository = userEmailsRepository;
         }
 
         /// <summary>
@@ -67,16 +70,18 @@ namespace StarGuddy.Business.Modules.Account
         /// </returns>
         public async Task<IApplicationUser> PasswordSignInAsync(string userName, string password, bool rememberMe = false, bool lockoutOnFailure = false)
         {
-            var user = await userRepository.FindByUserName(userName);
+            var user = await _userRepository.FindByUserName(userName);
             if (user.IsNull())
             {
                 return null;
             }
 
-            if (!await this.securityManager.VerifyHashedPassword(user.PasswordHash, password))
+            if (!await this._securityManager.VerifyHashedPassword(user.PasswordHash, password))
             {
                 return null;
             }
+
+            var email = await _userEmailsRepository.GetUserEmailAsync(user.Id);
 
             return new ApplicationUser
             {
@@ -89,7 +94,8 @@ namespace StarGuddy.Business.Modules.Account
                 OrgName = user.OrgName,
                 OrgWebsite = user.OrgWebsite,
                 UserName = user.UserName,
-                Email = user.Email,
+                Email = email?.Email ?? string.Empty,
+                IsEmailVerified = email?.EmailConfirmed ?? false,
                 SecurityStamp = user.SecurityStamp
             };
         }

@@ -43,7 +43,6 @@ namespace StarGuddy.Api.Controllers.Account
         {
             try
             {
-
                 if (applicationUser.IsNull())
                 {
                     return BadRequest();
@@ -70,19 +69,17 @@ namespace StarGuddy.Api.Controllers.Account
 
                     var emailVerificationToken = _securityManager.GetEmailVerificationCodeAsync(userResult);
 
-                    if (await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com"))
-                    {
-                        return Ok($"We sent you verification link to your email. Please verify it to proceed....");
-                    }
-
-                    return StatusCode(StatusCodes.Status417ExpectationFailed, "There are some error. Please try again...");
+                    await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com");
+                    
+                    return Ok($"Welcome :)");
                 }
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-              
+                throw ex;
             }
+
             return BadRequest();
         }
 

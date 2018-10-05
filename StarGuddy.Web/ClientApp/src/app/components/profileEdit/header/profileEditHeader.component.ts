@@ -12,13 +12,18 @@ import IJobGroupModel = App.Client.Profile.IJobGroupModel;
 export class ProfileEditHeader {
 
     public imageUrl: string = "";
-    public computedAddress: string = "Address not update.";
+    public computedAddress: string = "Address not update yet.";
     private _jobGroupName: string = "";
     private _profileHeader: IProfileHeader = {} as IProfileHeader
 
     @Input()
     set jobGroupNames(jobGroupNames: string) { this._jobGroupName = jobGroupNames; }
-    get jobGroupNames(): string { return this._jobGroupName; }
+    get jobGroupNames(): string {
+        if (this._jobGroupName == undefined || this._jobGroupName == "") {
+            this._jobGroupName = "Your interest not updated yet.";
+        }
+        return this._jobGroupName;
+    }
 
     @Input()
     set profileHeader(profileHeader: IProfileHeader) {
@@ -26,7 +31,7 @@ export class ProfileEditHeader {
             this._profileHeader = profileHeader;
 
             this.computedAddress = profileHeader.cityOrTown != null && profileHeader.stateOrProvince != null && profileHeader.country != null ?
-                profileHeader.cityOrTown + ", " + profileHeader.stateOrProvince + ", " + profileHeader.country : "Address not update.";
+                profileHeader.cityOrTown + ", " + profileHeader.stateOrProvince + ", " + profileHeader.country : "Address not update yet.";
 
             this.imageUrl = profileHeader.dataUrl == "" ? profileHeader.imageUrl : profileHeader.dataUrl;
             var v = "";

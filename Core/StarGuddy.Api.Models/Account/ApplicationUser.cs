@@ -68,13 +68,15 @@ namespace StarGuddy.Api.Models.Account
         /// </value>
         public string Email { get; set; }
 
-        /// <summary>
-        /// Gets or sets the first name.
-        /// </summary>
-        /// <value>
-        /// The first name.
-        /// </value>
-        public string FirstName { get; set; }
+        public bool IsEmailVerified { get; set; }
+
+    /// <summary>
+    /// Gets or sets the first name.
+    /// </summary>
+    /// <value>
+    /// The first name.
+    /// </value>
+    public string FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets the last name.

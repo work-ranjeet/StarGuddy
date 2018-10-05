@@ -35,11 +35,4 @@ export class ProfileEditIndex extends ProfileIndexAbstract {
         });
     } 
 
-    setToTop() {
-        let el = document.getElementById("userProfileIndexForm");
-        if (el != null) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            window.scroll(0, 100);
-        }
-    }
 }

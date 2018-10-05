@@ -17,7 +17,7 @@ export class AccountLoginComponent {
     returnUrl: string;
     authenticateRoute: ActivatedRoute;
 
-    
+
 
     private readonly dataValidator: DataValidator
 
@@ -35,7 +35,14 @@ export class AccountLoginComponent {
 
     login() {
         if (this.dataValidator.IsValidObject(this.loginData)) {
-            this.accountService.login(this.loginData).subscribe(() => {
+            this.accountService.login(this.loginData).subscribe(
+                data => {
+                    //if (data.isEmailVerified)
+                    //    this.router.navigate([this.returnUrl]);
+                    //else {
+                    //    this.router.navigate(['acc-cnf-email-sent']);
+                    //}
+
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {

@@ -79,7 +79,8 @@ namespace StarGuddy.Business.Modules.Common
                 UserId = applicationUser.UserId.ToString(),
                 Token = await GetJwtSecurityTokenAsync(applicationUser),
                 FirstName = applicationUser.FirstName,
-                UserName = applicationUser.UserName
+                UserName = applicationUser.UserName,
+                IsEmailVerified = applicationUser.IsEmailVerified
             };
         }
 

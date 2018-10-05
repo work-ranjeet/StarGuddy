@@ -66,7 +66,7 @@ namespace StarGuddy.Api.Models.Account
         /// <value>
         /// The email.
         /// </value>
-        public string Email { get; set; }
+        public bool IsEmailVerified { get; set; }
 
     }
 }

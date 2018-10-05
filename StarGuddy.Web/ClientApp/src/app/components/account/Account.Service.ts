@@ -18,7 +18,7 @@ export class AccountService {
         private readonly router: Router,
         private readonly dataConverter: DataConverter) {
         this.IsAuthenticated ? baseService.isLoggedInSource.next(true) : baseService.isLoggedInSource.next(false);
-    }   
+    }
 
     get IsAuthenticated() { return this.baseService.IsAuthenticated; }
 
@@ -29,9 +29,13 @@ export class AccountService {
     login(loginData: ILoginData): Observable<any> {
         return this.baseService.HttpService.postSimple("Account/login", loginData).map(response => {
             if (response != null && response.token != null && response.token != "") {
+                //if (response.isEmailVerified) {
                 this.baseService.isLoggedInSource.next(true);
                 this.baseService.authenticate(response);
+                //}
             }
+
+            return response;
         });
     }
 

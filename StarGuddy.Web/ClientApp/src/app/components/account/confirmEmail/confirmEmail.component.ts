@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from "@angular/router";
     template: `<div style="padding-top:140px;">
                     <div class="container-box">
                             <p>
-                                Thank you for confirming your email. Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
+                                Thank you for confirming your email. Please <a [routerLink]="['/login']">Click here to Log in</a>.
                             </p>
                      </div>
                  </div>`

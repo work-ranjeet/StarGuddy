@@ -6,8 +6,8 @@ import IJobGroupModel = App.Client.Profile.IJobGroupModel;
 
 @Component({
     selector: "job-group",
-    templateUrl: "./jobGroup.component.html",
-    styleUrls: ["./jobGroup.component.css"]
+    templateUrl: "././jobGroup.component.html",
+    styleUrls: ["././jobGroup.component.css"]
 })
 export class JobGroupComponent {
     public userInterestList: Array<IJobGroupModel> = [];

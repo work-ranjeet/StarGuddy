@@ -1,4 +1,4 @@
-﻿namespace App.Client.Account {
+namespace App.Client.Account {
     export interface IJwtPacket {
         UserId: string;
         Token: string;
@@ -30,6 +30,7 @@
         CnfPassword: string;
         Gender: string;
         IsCastingProfessional: boolean;
+        IsEmailVerified: boolean;
         OrgName: string;
         OrgWebsite: string;
         Designation: string;

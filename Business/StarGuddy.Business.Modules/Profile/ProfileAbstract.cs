@@ -124,7 +124,7 @@ namespace StarGuddy.Business.Modules.Profile
             var dancingStyle = await _userDancingRepository.GetDancingStyleSelectedAsync(userId);
 
             if (userDancing.IsNotNull())
-            {               
+            {
                 dancingModel = new DancingModel
                 {
                     Id = userDancing.Id,
@@ -221,7 +221,7 @@ namespace StarGuddy.Business.Modules.Profile
                     Id = result.Id,
                     FirstName = result.FirstName,
                     LastName = result.LastName,
-                    DisplayName = result.DisplayName,
+                    DisplayName = string.IsNullOrWhiteSpace(result.DisplayName) ? result.FirstName + (!string.IsNullOrWhiteSpace(result.LastName) ? " " + result.LastName : "") : result.DisplayName,
                     OrgName = result.OrgName
                 };
             }

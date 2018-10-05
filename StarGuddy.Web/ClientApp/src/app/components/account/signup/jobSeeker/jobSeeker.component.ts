@@ -31,11 +31,11 @@ export class SignUpJobSeekerComponent {
                 result => {
                     if (result != undefined) {
                         this.toastr.info(result);
-                        this.router.navigate(["/acc-cnf-email-sent"]);
+                        this.router.navigate(["acc-cnf-email-sent"]);
                     }
                 },
-                error => {
-                    //this.router.navigate(["/error"]);
+                () => {
+                    this.router.navigate(["error"]);
                 });
         }
     }

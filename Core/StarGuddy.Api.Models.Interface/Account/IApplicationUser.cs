@@ -99,6 +99,8 @@ namespace StarGuddy.Api.Models.Interface.Account
         /// </value>
         bool IsCastingProfessional { get; set; }
 
+        bool IsEmailVerified { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the org.
         /// </summary>
