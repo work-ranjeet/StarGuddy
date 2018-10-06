@@ -6,8 +6,9 @@ namespace StarGuddy.Core.Enums
 {
     public enum ExpertLavel
     {
-        Beginner = 0,
+        Beginner = 1,
         Intermediate = 10,
         Expert = 20
     }
+
 }
