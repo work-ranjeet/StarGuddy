@@ -7,7 +7,7 @@
                    #username="ngModel"
                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                    placeholder="Email address" required autofocus />
-            <div *ngIf="username.errors && (username.dirty || username.touched)"  class="error">
+            <div *ngIf="username.errors && (username.dirty || username.touched)" class="error">
                 <div [hidden]="!username.hasError('required')">Email is required.</div>
                 <div [hidden]="!username.hasError('pattern')">Email format should be &nbsp;<small><b>joe@abc.com</b></small></div>
             </div>
@@ -15,14 +15,14 @@
         <div class="form-group">
             <label class="required">Password</label>
             <input type="password" id="Password" class="form-control" [(ngModel)]="loginData.Password" #password="ngModel" placeholder="Password" required />
-            <div *ngIf="password.errors && (password.dirty || password.touched)"  class="error">
+            <div *ngIf="password.errors && (password.dirty || password.touched)" class="error">
                 <div [hidden]="!password.hasError('required')">Email is required.</div>
             </div>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-lg theme-button btn-block margin-bottom-10" (click)="login()">
-                    <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
-                    <span *ngIf="!showSpinner">Sign in</span>
+                <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
+                <span>Sign in</span>
             </button>
         </div>
         <div class="form-group">

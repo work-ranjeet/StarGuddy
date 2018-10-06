@@ -1,4 +1,4 @@
-﻿
+
 .theme-red {
     color: #d80b32;
 }
@@ -98,4 +98,8 @@ form.ng-invalid, form.ng-dirty, form.ng-touched {
 .btn-success > .btn-spinner
 {
     color:white!important;
+}
+
+span.text-shadow, label.text-shadow {
+    text-shadow: 1px 4px 10px #b1b1b1;
 }
