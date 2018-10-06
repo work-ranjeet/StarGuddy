@@ -19,50 +19,50 @@
         margin: auto;
     }
 
-.loader .loader--dot {
+.loader .loader-dot {
     animation-name: loader;
     animation-timing-function: ease-in-out;
-    animation-duration: 3s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     border-radius: 100%;
     background-color: black;
     position: absolute;
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
-    .loader .loader--dot:first-child {
+    .loader .loader-dot:first-child {
         background-color: #8cc759;
         animation-delay: 0.5s;
     }
 
-    .loader .loader--dot:nth-child(2) {
+    .loader .loader-dot:nth-child(2) {
         background-color: #8c6daf;
         animation-delay: 0.4s;
     }
 
-    .loader .loader--dot:nth-child(3) {
+    .loader .loader-dot:nth-child(3) {
         background-color: #ef5d74;
         animation-delay: 0.3s;
     }
 
-    .loader .loader--dot:nth-child(4) {
+    .loader .loader-dot:nth-child(4) {
         background-color: #f9a74b;
         animation-delay: 0.2s;
     }
 
-    .loader .loader--dot:nth-child(5) {
+    .loader .loader-dot:nth-child(5) {
         background-color: #60beeb;
         animation-delay: 0.1s;
     }
 
-    .loader .loader--dot:nth-child(6) {
+    .loader .loader-dot:nth-child(6) {
         background-color: #fbef5a;
         animation-delay: 0s;
     }
 
-.loader .loader--text {
+.loader .loader-text {
     position: absolute;
     top: 200%;
     left: 0;
@@ -71,7 +71,7 @@
     margin: auto;
 }
 
-    .loader .loader--text:after {
+    .loader .loader-text:after {
         content: "Loading....";
         animation-name: loading-text;
         animation-duration: 3s;

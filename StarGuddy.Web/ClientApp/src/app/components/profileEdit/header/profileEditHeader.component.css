@@ -1,6 +1,6 @@
-﻿.profile-img-container {
-    width: 260px;
-    height: 270px;
+.profile-img-container {
+    width: 235px;
+    height: 265px;
     z-index: 9;
 }
 
@@ -19,7 +19,7 @@
     .profile-img-container .img-edit-icon {
         position: absolute;
         margin-top: -64px;
-        margin-left: 209px;
+        margin-left: 187px;
     }
 
         .profile-img-container .img-edit-icon > a {
@@ -70,7 +70,6 @@
 }
 
 .profile-info-detail-mob > h2 {
-    font-size: 25px;
     padding: 5px;
     color: #27aae1;
 }

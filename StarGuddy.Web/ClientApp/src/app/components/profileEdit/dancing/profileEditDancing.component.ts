@@ -1,9 +1,8 @@
-import * as _ from "lodash";
 import { Component } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { ProfileEditService } from "../../profileEdit/profileEdit.Service";
-import { DataValidator } from "../../../Helper/DataValidator";
+import * as _ from "lodash";
 import { Expertlavel } from "../../../Enums/enums";
+import { DataValidator } from "../../../Helper/DataValidator";
+import { ProfileEditService } from "../../profileEdit/profileEdit.Service";
 import IDancingStyle = App.Client.Profile.IDancingStyleModel;
 import IDancingModel = App.Client.Profile.IDancingModel;
 

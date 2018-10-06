@@ -40,20 +40,20 @@
                 <form #frmUserDanceEdit="ngForm">
 
                     <div class="form-group">
-                        <label class="profile-edit-label">Styles of dancing</label>
+                        <span class="profile-edit-label">Styles of dancing</span>
                         <div class="profile-edit-container row">
                             <div *ngFor="let danceStyle of dancingModel.dnacingStyles" class="col-xs-6 col-sm-3 margin-bottom-5">
                                 <input type="checkbox" value="{{danceStyle.id}}" name="{{danceStyle.id}}"
                                        [checked]="danceStyle.id==danceStyle.selectedValue"
                                        (change)="updateSelectedDanceStyle($event)"
-                                       class="padding-5 v-text-top">
+                                       class="v-text-top">
                                 <label for="{{danceStyle.id}}" class="padding-5 text-l">{{danceStyle.name}}</label>
                             </div>
                         </div>
                     </div>
                     <hr class="seperator" />
                     <div class="form-group">
-                        <label class="profile-edit-label">Dance ability</label>
+                        <span class="profile-edit-label">Dance ability</span>
                         <div class="profile-edit-container row">
                             <div class="col-xs-6 col-sm-3">
                                 <input id="danceExpertLavelGroup_1" type="radio" name="danceExpertLavelGroup" [checked]="dancingModel.danceAbilities==1" [value]="1" (change)="onDanceExpertLavelGroupSelectionChange($event)" />
@@ -71,7 +71,7 @@
                     </div>
                     <hr class="seperator" />
                     <div class="form-group">
-                        <label class="profile-edit-label">Teaching\Choreography ability</label>
+                        <span class="profile-edit-label">Teaching\Choreography ability</span>
                         <div class="profile-edit-container row">
                             <div class="col-xs-6 col-sm-3">
                                 <input id="choreographyAbilities_1" type="radio" name="teachingExpertLavelGroup" [checked]="dancingModel.choreographyAbilities==1" [value]="1" (change)="teachingExpertLavelGroupSelectionChange($event)" />
@@ -89,7 +89,7 @@
                     </div>
                     <hr class="seperator" />
                     <div class="form-group">
-                        <label class="profile-edit-label">Dance school</label>
+                        <span class="profile-edit-label">Dance school</span>
                         <div class="profile-edit-container row">
                             <div class="col-xs-12 col-sm-6">
                                 <input id="chkDanceSchool" type="checkbox" [checked]="dancingModel.isAttendedSchool" (change)="chkDanceSchoolChange()" class="padding-5 v-text-top">
@@ -121,7 +121,7 @@
                     </div>
                     <hr class="seperator" />
                     <div class="form-group">
-                        <label class="profile-edit-label">Agent</label>
+                        <span class="profile-edit-label">Agent</span>
                         <div class="profile-edit-container row">
                             <div class="col-xs-6 col-sm-3">
                                 <input id="agentNeed_1" type="radio" name="agentGroup" class="padding-5 v-text-top"
@@ -151,7 +151,7 @@
                     </div>
                     <hr class="seperator" />
                     <div class="form-group">
-                        <label class="profile-edit-label">Dancing experience</label>
+                        <span class="profile-edit-label">Dancing experience</span>
                         <div class="profile-edit-container">
                             <textarea id="txtExperiance" name="txtExperiance" style="width:100%; min-height:100px;" class="form-control"
                                       [(ngModel)]="dancingModel.experience"

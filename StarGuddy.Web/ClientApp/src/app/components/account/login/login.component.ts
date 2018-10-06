@@ -11,14 +11,12 @@ import ILoginData = App.Client.Account.ILoginData;
 })
 
 export class AccountLoginComponent {
-    loginData: ILoginData;
-    accountService: AccountService;
-    router: Router;
-    returnUrl: string;
-    authenticateRoute: ActivatedRoute;
-
-
-
+    public loginData: ILoginData;
+    public accountService: AccountService;
+    public router: Router;
+    public returnUrl: string;
+    public authenticateRoute: ActivatedRoute;
+    public showSpinner: boolean = false;
     private readonly dataValidator: DataValidator
 
     constructor(router: Router, authRoute: ActivatedRoute, accountService: AccountService, dataValidator: DataValidator, private toastr: ToastrService) {
@@ -34,18 +32,20 @@ export class AccountLoginComponent {
     }
 
     login() {
+        this.showSpinner = true;
         if (this.dataValidator.IsValidObject(this.loginData)) {
             this.accountService.login(this.loginData).subscribe(
-                data => {
+                data => {                    
                     //if (data.isEmailVerified)
                     //    this.router.navigate([this.returnUrl]);
                     //else {
                     //    this.router.navigate(['acc-cnf-email-sent']);
                     //}
-
+                    this.showSpinner = false;
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
+                    this.showSpinner = false;
                     this.toastr.error(error.error);
                 });
         }

@@ -1,6 +1,7 @@
 <!--<a [routerLink]="['/profile/head-shot','m']"  class="fa fa-camera" title="User Image"></a>-->
+<!-- <div style="height:50px;">&nbsp;</div> -->
 <div class="row hidden-sm hidden-xs">
-    <div class="col-lg-3 col-md-4">
+    <div class="col-lg-3 col-md-4" style="z-index:1; max-width:275px!important;">
         <div class=" profile-img-container">
             <div class="profile-img">
                 <img class="img-size" [src]="imageUrl" />
@@ -49,10 +50,6 @@
                 <i class="fa fa-map-marker"></i>
                 <span class="text-muted">{{computedAddress}}</span>
                 <a routerLink="/profile/address" class="fa fa-edit edit-icon-s"></a>
-            </div>
-            <div class="text-muted">
-                {{jobGroupNames}}&nbsp;
-                <a routerLink="/profile/interests" class="fa fa-edit edit-icon-s"></a>
             </div>
         </div>
 

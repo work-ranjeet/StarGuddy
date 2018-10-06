@@ -1,4 +1,4 @@
-﻿namespace App.Client.Profile {
+namespace App.Client.Profile {
 
 
     export interface IPhysicalAppearanceModal {

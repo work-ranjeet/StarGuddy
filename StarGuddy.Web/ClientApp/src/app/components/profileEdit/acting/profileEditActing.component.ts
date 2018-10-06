@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import * as _ from "lodash";
 import { ActingExperiance } from "../../../Enums/enums";
 import { DataValidator } from "../../../Helper/DataValidator";
 import { ProfileEditService } from "../../profileEdit/profileEdit.Service";
 
 import IActingDetailModel = App.Client.Profile.IUserActingModel;
+import { ProfileEditMenu } from "../menu/profileEditMenu.component";
 
 @Component({
     selector: "profile-edit-acting",
@@ -119,7 +120,7 @@ export class ProfileEditActingComponent {
             }
             else {
                 console.warn(response.statusText);
-            }
+            }           
         });
     }
 }

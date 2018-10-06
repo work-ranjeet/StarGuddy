@@ -1,6 +1,6 @@
 .profile-img-container {
-    width: 245px;
-    height: 270px;
+    width: 235px;
+    height: 265px;
     z-index: 9;
 }
 
@@ -14,6 +14,17 @@
             height: inherit;
             border-radius: 50%;
             border: 5px solid #fcf9f9;
+        }
+
+    .profile-img-container .img-edit-icon {
+        position: absolute;
+        margin-top: -64px;
+        margin-left: 187px;
+    }
+
+        .profile-img-container .img-edit-icon > a {
+            font-size: 30px;
+            color: cornflowerblue;
         }
 
 .profile-img-container-mob {
@@ -35,7 +46,16 @@
             border: 5px solid #fcf9f9;
         }
 
+    .profile-img-container-mob .img-edit-icon {
+        position: absolute;
+        margin-top: -40px;
+        margin-left: 110px;
+    }
 
+        .profile-img-container-mob .img-edit-icon > a {
+            font-size: 30px;
+            color: cornflowerblue;
+        }
 
 @media (max-width: 767px) {
     .profile-info-detail-mob {
@@ -50,7 +70,6 @@
 }
 
 .profile-info-detail-mob > h2 {
-    font-size: 25px;
     padding: 5px;
     color: #27aae1;
 }

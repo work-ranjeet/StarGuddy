@@ -1,8 +1,8 @@
-﻿
+
 export enum Expertlavel {
-    Beginner = 1,
-    Intermediate = 10,
-    Expert = 20
+    "Beginner" = 1,
+    "Intermediate" = 10,
+    "Expert" = 20
 };
 
 export enum AgentNeed {
@@ -14,8 +14,8 @@ export enum AgentNeed {
 export enum ActingExperiance {
     "No previous acting experience" = 200,
     "Credits" = 201,
-    "Previous unpaid speaking roles" = 202,
-    "Previous paid speaking roles" = 203
+    "Previous paid speaking roles" = 202,
+    "Previous unpaid speaking roles" = 203
 };
 
 export enum ModelingExperiance {
@@ -26,4 +26,4 @@ export enum ModelingExperiance {
 
 
 // Exporting all enums
-export * from "../Enums/enums";
+//export * from "../Enums/enums";

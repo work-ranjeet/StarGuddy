@@ -17,9 +17,6 @@ export class ProfileIndexAbstract {
     
     get AboutMe(): string { return this._aboutMe; } 
     set AboutMe(aboutMe: string) { this._aboutMe = aboutMe; }
-    
-    //get GroupNameArray(): Array<string> { return this._jobGroupNameArray; }
-    //set GroupNameArray(groupName: Array<string>) { this._jobGroupNameArray = groupName; }
    
     get ProfileHeader(): IProfileHeader { return this._profileHeader; }
     set ProfileHeader(profileHeader: IProfileHeader) { this._profileHeader = profileHeader; }
@@ -30,13 +27,17 @@ export class ProfileIndexAbstract {
     get SelectedGroups(): Array<IJobGroupModel> { return this._selectedGroups; }
     set SelectedGroups(selectedGroups: Array<IJobGroupModel>) { this._selectedGroups = selectedGroups; }
 
+    constructor() {
+        this._aboutMe = "";
+        this._jobGroupName = "";
+    }
 
     FilterData(jobGroups: Array<IJobGroupModel>) {
-        if (this.ProfileHeader.displayName == "" || this.ProfileHeader.displayName == undefined) {
+        if (this.ProfileHeader.displayName == undefined || this.ProfileHeader.displayName == null || this.ProfileHeader.displayName == "" ) {
             this.ProfileHeader.displayName = this.ProfileHeader.firstName + " " + this.ProfileHeader.lastName;
         }
 
-        if (this.AboutMe == undefined || this.AboutMe == "") {
+        if (this.AboutMe == undefined || this.AboutMe == null || this.AboutMe == "") {
             this.AboutMe = "A brief introduction of who you are.";
         }
 
@@ -48,6 +49,12 @@ export class ProfileIndexAbstract {
         let el = document.getElementById(menuCode);
         if (el != null)
             el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
+
+    SetSectionCenter(menuCode: string) {
+        let el = document.getElementById(menuCode);
+        if (el != null)
+            el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
     }
 
     LoadSection() {

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 hidden-sm hidden-xs padding-bottom-15" style="z-index:-100;">
+    <div class="col-lg-12 col-md-12 col-sm-12 hidden-sm hidden-xs padding-bottom-15">
         <div class="profile-menu">
             <a *ngFor="let group of selectedJobGroup" href="#" target="_blank" (click)="menuSelectionChanged(group.code)">{{group.name}}</a>
         </div>
@@ -11,3 +11,15 @@
         </div>
     </div>
 </div>
+
+<div class="profile-menu hidden-sm hidden-lg hidden-md">
+    <a *ngFor="let group of selectedJobGroup" href="#" target="_blank" (click)="menuSelectionChanged(group.code)">{{group.name}}</a>
+    <a routerLink="/profile/interests" class="fa fa-edit edit-icon-s"></a>
+</div>
+
+<div class="profile-menu hidden-xs hidden-lg hidden-md" style="margin-top: -50px;">
+    <a *ngFor="let group of selectedJobGroup" href="#" target="_blank" (click)="menuSelectionChanged(group.code)">{{group.name}}</a>
+    <a routerLink="/profile/interests" class="fa fa-edit edit-icon-s"></a>
+</div>
+
+

@@ -61,8 +61,7 @@ BEGIN
 		INSERT INTO UserEmails (UserId, Email, EmailConfirmed, IsActive, IsDeleted)
 		VALUES (@userId, @Email, 0, 1, 0)
 
-		--INSERT INTO UserDetail(UserId, Age, BloodGroup, DateOfBirth, MaritalStatus, IsActive, IsDeleted)
-			--VALUES (@userId, 0, '', GETUTCDATE(), 0, 1, 
+		INSERT INTO UserDetail(UserId)VALUES (@userId) 
 
 		INSERT INTO UserSettings(UserId, ProfileUrl, Visibility, IsCommnetAlowed, IsActive, IsDeleted)
 	    VALUES (@userId, NEWID(), 0, 0, 1, 0)
@@ -715,7 +714,7 @@ BEGIN
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	UPDATE UserDetail SET About =@About, ProfileAddress = @ProfileAddress WHERE	UserId = @UserId
+	UPDATE UserDetail SET About =@About WHERE	UserId = @UserId
 	UPDATE UserSettings SET ProfileUrl = @ProfileAddress WHERE	UserId = @UserId
 END
 GO

@@ -17,5 +17,6 @@ export class ProfileMenu {
 
     menuSelectionChanged(menuCode: string) {
         this.menuSelectionChange.emit(menuCode);
+        return false;
     }
 }

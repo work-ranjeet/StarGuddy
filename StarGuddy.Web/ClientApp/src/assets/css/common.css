@@ -125,9 +125,9 @@ ul {
         margin: 0px;
     }
 
-        ul > li > a {
+        /*ul > li > a {
             color: #ebdfdf;
-        }
+        }*/
 
 li.border-bottom {
     border-bottom: solid 1px #ccc;
@@ -251,9 +251,7 @@ hr {
     margin: 0px !important;
 }
 
-.fa {
-    color: rgb(113, 112, 112);
-}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
@@ -747,3 +745,6 @@ margin-right-10 {
     color: white;
     margin-right: -10px;
 }
+
+
+

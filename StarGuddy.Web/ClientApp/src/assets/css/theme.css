@@ -91,3 +91,11 @@ form.ng-invalid, form.ng-dirty, form.ng-touched {
     border: solid #ccc 1px;
     background-color: #fcf9f9 !important;
 }
+
+
+/* spinner */
+.theme-button > .btn-spinner
+.btn-success > .btn-spinner
+{
+    color:white!important;
+}

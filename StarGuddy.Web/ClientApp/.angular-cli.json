@@ -1,5 +1,5 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "$schema": "../node_modules/@angular/cli/lib/config/schema.json",
     "project": {
         "name": "StarGuddy"
     },
@@ -25,7 +25,10 @@
                 "assets/css/site.css",
                 "assets/css/theme.css"
             ],
-            "scripts": [],
+            "scripts": [
+                "../node_modules/jquery/dist/jquery.min.js",
+                "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "environmentSource": "environments/environment.ts",
             "environments": {
                 "dev": "environments/environment.ts",
