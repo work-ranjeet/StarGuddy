@@ -23,6 +23,9 @@ export class SignUpJobProviderComponent {
         this.applicationUser = { Gender: 'M', IsCastingProfessional: true } as IApplicationUser;
     }
    
+    changeGender(gender: string) {
+        this.applicationUser.Gender = gender;
+    }
 
     save() {
         if (this.dataValidator.IsValidObject(this.applicationUser)) {

@@ -66,7 +66,7 @@ BEGIN
 		INSERT INTO UserSettings(UserId, ProfileUrl, Visibility, IsCommnetAlowed, IsActive, IsDeleted)
 	    VALUES (@userId, NEWID(), 0, 0, 1, 0)
 
-		DECLARE @imageUrl NVARCHAR(200) = (CASE WHEN @Gender ='M' THEN '/css/icons/mail.png' WHEN @Gender ='F' THEN '/css/icons/femail.png' ELSE '/css/icons/other.png' END) 
+		DECLARE @imageUrl NVARCHAR(200) = (CASE WHEN @Gender ='M' THEN 'assets/css/icons/mail.png' WHEN @Gender ='F' THEN 'assets/css/icons/femail.png' ELSE 'assets/css/icons/other.png' END) 
 		INSERT INTO UserImage(Id, UserId, Name, Caption, ImageUrl, DataUrl, ImageType, IsActive, IsDeleted)
 	    VALUES (NEWID(), @userId, 'initial image', '', @imageUrl, '', 1, 1, 0)
 

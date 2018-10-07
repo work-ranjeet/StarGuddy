@@ -66,18 +66,17 @@
                 <div class="col-lg-12">
                     <label class="required">Gender</label>
                     <br />
-                    <div class="btn-group" data-toggle="buttons" style="padding: 15px; padding-top: 0px;">
-                        <label class="btn btn-default" style="width: 100px;" [ngClass]="{'active': applicationUser.Gender == 'M'}">
-                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'M'" [checked]="applicationUser.Gender == 'M'" />Male
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-default" [ngClass]="{'active': applicationUser.Gender == 'M'}" (click)="changeGender('M')">
+                            <input type="radio" name="gender" id="male" autocomplete="off" [(ngModel)]="applicationUser.Gender" [checked]="applicationUser.Gender == 'M'"> Male
                         </label>
-                        <label class="btn btn-default" style="width: 100px;">
-                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'F'" [checked]="applicationUser.Gender == 'F'" />Female
+                        <label class="btn btn-default" [ngClass]="{'active': applicationUser.Gender == 'F'}" (click)="changeGender('F')">
+                            <input type="radio" name="gender" id="female" autocomplete="off" [(ngModel)]="applicationUser.Gender" [checked]="applicationUser.Gender == 'F'"> Female
                         </label>
-                        <label class="btn btn-default" style="width: 100px;">
-                            <input type="radio" name="Gender" id="Gender" [(ngModel)]="applicationUser.Gender" (click)="applicationUser.Gender = 'O'" [checked]="applicationUser.Gender == 'O'" />Others
+                        <label class="btn btn-default" [ngClass]="{'active': applicationUser.Gender == 'O'}" (click)="changeGender('O')">
+                            <input type="radio" name="gender" id="others" autocomplete="off" [(ngModel)]="applicationUser.Gender" [checked]="applicationUser.Gender == 'O'"> Others
                         </label>
                     </div>
-
                 </div>
             </div>
 

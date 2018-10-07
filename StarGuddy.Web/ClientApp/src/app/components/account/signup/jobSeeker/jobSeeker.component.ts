@@ -25,6 +25,10 @@ export class SignUpJobSeekerComponent {
         this.applicationUser = { Gender: 'M' } as IApplicationUser;
     }
 
+    changeGender(gender: string) {
+        this.applicationUser.Gender = gender;
+    }
+
     save() {
         if (this.dataValidator.IsValidObject(this.applicationUser)) {
             this.accountService.signup(this.applicationUser).subscribe(

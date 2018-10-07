@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Business.Modules.Search
 {
-    public class SearchManager: ISearchManager
+    public class SearchManager : ISearchManager
     {
         private readonly IMapper _mapper;
         private readonly IJobGroupRepository _jobGroupRepository;
@@ -26,7 +26,7 @@ namespace StarGuddy.Business.Modules.Search
             var result = await _jobGroupRepository.GetTalentGroup();
             if (result != null && result.Any())
             {
-                return _mapper.Map<List<TalentGroup>>(result);
+                return _mapper.Map<List<TalentGroup>>(result).Where(x => x.Code != 1003);
             }
 
             return null;
@@ -43,7 +43,7 @@ namespace StarGuddy.Business.Modules.Search
             {
                 throw;
             }
-          
+
         }
     }
 }
