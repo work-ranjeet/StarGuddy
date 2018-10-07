@@ -14,7 +14,7 @@ export class ProfileEditHeader {
     public imageUrl: string = "";
     public computedAddress: string = "Address not update yet.";
     private _jobGroupName: string = "";
-    private _profileHeader: IProfileHeader = {} as IProfileHeader
+    private _profileHeader: IProfileHeader = {} as IProfileHeader   
 
     @Input()
     set jobGroupNames(jobGroupNames: string) { this._jobGroupName = jobGroupNames; }
@@ -34,7 +34,6 @@ export class ProfileEditHeader {
                 profileHeader.cityOrTown + ", " + profileHeader.stateOrProvince + ", " + profileHeader.country : "Address not update yet.";
 
             this.imageUrl = profileHeader.dataUrl == "" ? profileHeader.imageUrl : profileHeader.dataUrl;
-            var v = "";
         }
     }
     get profileHeader() { return this._profileHeader; }

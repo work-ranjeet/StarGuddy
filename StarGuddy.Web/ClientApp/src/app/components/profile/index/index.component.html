@@ -1,24 +1,15 @@
-<div class="container">
+<div *ngIf="!showLoadingSpinner"  class="container">
     <profile-header [jobGroupNames]="GroupNames" [profileHeader]="ProfileHeader"></profile-header>
-    <profile-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-menu>
-    
-    <!--<div id="photos">
-        <profile-photos></profile-photos>
-    </div>-->
-
+    <profile-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-menu>    
+    <!--<div id="photos"><profile-photos></profile-photos></div>-->
 
     <profile-physicalDetails></profile-physicalDetails>
 
-    <div id="1003" *ngIf="SetionVisbility.showExtras">
-        <profile-credits></profile-credits>
-    </div>
-    <div id="1001" *ngIf="SetionVisbility.showActing">
-        <profile-acting></profile-acting>
-    </div>
-    <div id="1008" *ngIf="SetionVisbility.showDancing">
-        <profile-dancing></profile-dancing>
-    </div>
-    <div id="1002" *ngIf="SetionVisbility.showModeling">
-        <profile-modeling></profile-modeling>
-    </div>
+    <div id="1003" *ngIf="SetionVisbility.showExtras"><profile-credits></profile-credits></div>
+    <div id="1001" *ngIf="SetionVisbility.showActing"><profile-acting></profile-acting></div>
+    <div id="1008" *ngIf="SetionVisbility.showDancing"><profile-dancing></profile-dancing></div>
+    <div id="1002" *ngIf="SetionVisbility.showModeling"><profile-modeling></profile-modeling></div>
+</div>
+<div *ngIf="showLoadingSpinner" class="container">
+    <div class="loading"><ul class="spinner"><li></li><li></li><li></li></ul></div>
 </div>

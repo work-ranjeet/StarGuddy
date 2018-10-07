@@ -7,43 +7,38 @@ export class ProfileIndexAbstract {
     private _jobGroupName: string = "";
     private _aboutMe: string = "";
     private _selectedGroups: Array<IJobGroupModel> = [];
-    private _jobGroupNameArray: Array<string> = [];
+    private _selectedGroupsName: Array<string> = [];
     private _profileHeader: IProfileHeader = {} as IProfileHeader;
     private _setionVisbility: ISectionVesbility = {} as ISectionVesbility;
 
-    
+
     get GroupNames(): string { return this._jobGroupName; }
-    set GroupNames(jobGroupNames: string) { this._jobGroupName = jobGroupNames; }
-    
-    get AboutMe(): string { return this._aboutMe; } 
-    set AboutMe(aboutMe: string) { this._aboutMe = aboutMe; }
-   
-    get ProfileHeader(): IProfileHeader { return this._profileHeader; }
-    set ProfileHeader(profileHeader: IProfileHeader) { this._profileHeader = profileHeader; }
-    
-    get SetionVisbility(): ISectionVesbility { return this._setionVisbility; }
-    set SetionVisbility(section: ISectionVesbility) { this._setionVisbility = section; }
-  
     get SelectedGroups(): Array<IJobGroupModel> { return this._selectedGroups; }
-    set SelectedGroups(selectedGroups: Array<IJobGroupModel>) { this._selectedGroups = selectedGroups; }
-
-    constructor() {
-        this._aboutMe = "";
-        this._jobGroupName = "";
+    set SelectedGroups(selectedGroups: Array<IJobGroupModel>) {
+        this._selectedGroups = selectedGroups;
+        this._selectedGroups.forEach(x => this._selectedGroupsName.push(x.name));
+        this._jobGroupName = this._selectedGroupsName.join(", ");
     }
 
-    FilterData(jobGroups: Array<IJobGroupModel>) {
-        if (this.ProfileHeader.displayName == undefined || this.ProfileHeader.displayName == null || this.ProfileHeader.displayName == "" ) {
-            this.ProfileHeader.displayName = this.ProfileHeader.firstName + " " + this.ProfileHeader.lastName;
+    get AboutMe(): string { return this._aboutMe; }
+    set AboutMe(aboutMe: string) {
+        if (aboutMe == undefined || aboutMe == null || aboutMe == "") {
+            aboutMe = "A brief introduction of who you are.";
         }
-
-        if (this.AboutMe == undefined || this.AboutMe == null || this.AboutMe == "") {
-            this.AboutMe = "A brief introduction of who you are.";
-        }
-
-        jobGroups.forEach(x => this._jobGroupNameArray.push(x.name));
-        this.GroupNames = this._jobGroupNameArray.join(", ");
+        this._aboutMe = aboutMe;
     }
+
+    get ProfileHeader(): IProfileHeader { return this._profileHeader; }
+    set ProfileHeader(profileHeader: IProfileHeader) {
+        if (profileHeader.displayName == undefined || profileHeader.displayName == null || profileHeader.displayName == "") {
+            profileHeader.displayName = profileHeader.firstName + " " + profileHeader.lastName;
+        }
+
+        this._profileHeader = profileHeader;
+    }
+
+    get SetionVisbility(): ISectionVesbility { return this._setionVisbility; }
+    set SetionVisbility(section: ISectionVesbility) { this._setionVisbility = section; }  
 
     ChangeMenuSelection(menuCode: string) {
         let el = document.getElementById(menuCode);

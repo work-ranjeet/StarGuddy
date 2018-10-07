@@ -3,6 +3,24 @@
     color: #d80b32;
 }
 
+.theme-brand {
+    color: white;
+    font-size: 25px !important;
+}
+
+    .theme-brand .theme-brand-star {
+        color: rgb(248, 128, 23) !important;
+    }
+
+    .theme-brand:hover {
+        color: rgb(248, 128, 23) !important;
+    }
+
+        .theme-brand:hover .theme-brand-star {
+            color: white!important;
+        }
+
+
 .theme-color {
     color: #F88017;
 }
@@ -18,6 +36,9 @@
         color: #fff;
         background: #bc072a;
     }
+
+
+
 
 .yellow-txt {
     color: #F88017;
@@ -95,9 +116,8 @@ form.ng-invalid, form.ng-dirty, form.ng-touched {
 
 /* spinner */
 .theme-button > .btn-spinner
-.btn-success > .btn-spinner
-{
-    color:white!important;
+.btn-success > .btn-spinner {
+    color: white !important;
 }
 
 span.text-shadow, label.text-shadow {

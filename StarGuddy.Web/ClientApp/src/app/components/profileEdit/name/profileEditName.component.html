@@ -54,25 +54,31 @@
                             <label class="required">Display Name</label>
                             <sub style="display:block;">Name will show on your profile.</sub>
                             <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
-                                <input id="dispFullName" type="radio" name="agentGroup" class="padding-5 v-text-top"
-                                       [value]="fullName"
-                                       [(ngModel)]="userNameModel.displayName"
-                                       [checked]="userNameModel.displayName==''||userNameModel.displayName==fullName">
-                                <label for="dispFullName" class="padding-5 text-l">My full name:&nbsp;<strong>{{fullName}}</strong></label>
+                                <div class="form-check">
+                                    <input id="dispFullName" type="radio" name="agentGroup" class="form-check-input"
+                                           [value]="fullName"
+                                           [(ngModel)]="userNameModel.displayName"
+                                           [checked]="userNameModel.displayName==''||userNameModel.displayName==fullName">
+                                    <label for="dispFullName" style="vertical-align:middle;" class="form-check-label text-l">My full name:&nbsp;<strong>{{fullName}}</strong></label>
+                                </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input id="dispShortName" type="radio" name="agentGroup" class="padding-5 v-text-top"
-                                       [value]="shortName"
-                                       [(ngModel)]="userNameModel.displayName"
-                                       [checked]="userNameModel.displayName==shortName">
-                                <label for="dispShortName" class="padding-5 text-l">My short name:&nbsp;<strong>{{shortName}}</strong></label>
+                                <div class="form-check">
+                                    <input id="dispShortName" type="radio" name="agentGroup" class="form-check-input"
+                                           [value]="shortName"
+                                           [(ngModel)]="userNameModel.displayName"
+                                           [checked]="userNameModel.displayName==shortName">
+                                    <label for="dispShortName" style="vertical-align:middle;" class="form-check-label text-l">My short name:&nbsp;<strong>{{shortName}}</strong></label>
+                                </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input id="dispOrgName" type="radio" name="agentGroup" class="padding-5 v-text-top"
-                                       [value]="userNameModel.orgName"
-                                       [(ngModel)]="userNameModel.displayName"
-                                       [checked]="userNameModel.displayName==orgName">
-                                <label for="dispOrgName" class="padding-5 text-l">Organization name:&nbsp;<strong>{{userNameModel.orgName}}</strong></label>
+                                <div class="form-check">
+                                    <input id="dispOrgName" type="radio" name="agentGroup" class="form-check-input"
+                                           [value]="userNameModel.orgName"
+                                           [(ngModel)]="userNameModel.displayName"
+                                           [checked]="userNameModel.displayName==orgName">
+                                    <label for="dispOrgName" style="vertical-align:middle;" class="form-check-label text-l">Organization name:&nbsp;<strong>{{userNameModel.orgName}}</strong></label>
+                                </div>
                             </div>
                         </div>
                         <hr class="seperator" />

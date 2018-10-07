@@ -1,7 +1,8 @@
-<div id="logInOut" style="color: white;">
-    <div *ngIf="!isLoggedIn" class="nav-sign-in" style="height:50px; padding:14px;">
-        <span class="fa fa-sign-in"></span>
-        <a class="" [routerLink]="['/login']">Log In</a>
+<div id="logInOut">
+    <div *ngIf="!isLoggedIn" class="nav-sign-in" style="height:50px; padding:14px;">       
+        <a style="color:#e4e4e4!important" [routerLink]="['/login']">
+            <i class="fa fa-sign-in"></i>&nbsp;<span>Log In</span>
+        </a>
     </div>
     <div *ngIf="isLoggedIn">
         <ul class="pull-right nav-logout-menu">

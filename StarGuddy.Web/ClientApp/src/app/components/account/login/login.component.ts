@@ -28,7 +28,7 @@ export class AccountLoginComponent {
         this.loginData = {} as ILoginData;
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
+        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/profile";
     }
 
     login() {
