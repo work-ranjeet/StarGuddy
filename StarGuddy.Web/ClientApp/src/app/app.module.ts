@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -15,6 +14,7 @@ import { AppIndexComponent } from "./appIndex/appIndex.component";
 import { AccountModuleShared } from "./components/account/account.module.shared";
 import { CommonModuleShared } from "./components/common/common.module.shared";
 import { HomeModuleShared } from "./components/home/home.module.shared";
+
 
 //// Providers
 import { AppConstant, DbOperation } from "./Constants/AppConstant";
@@ -32,7 +32,7 @@ import { ToastrService } from "./Services/ToastrService";
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }), BrowserAnimationsModule,
-        HttpClientModule, FormsModule, CommonModule,
+        HttpClientModule, CommonModule,
         CommonModuleShared, HomeModuleShared, AccountModuleShared,
         ProfileModuleShared, ProfileEditModuleShared, ProfileSettingModuleShared,
         SearchModuleShared,

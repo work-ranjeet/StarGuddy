@@ -1,0 +1,36 @@
+.ng-dirty,
+input.ng-dirty,
+input.ng-valid,
+input.ng-valid[required],
+input.ng-dirty[required] {
+    border-left: none !important;
+}
+
+input.ng-invalid {
+    border-left: none !important;
+}
+
+input.border-left-none {
+    border-left: none !important;
+}
+
+mat-card {
+    border: solid 1px #CCC;
+    border-radius: 10px
+}
+
+.mat-step-label-selected {
+    font-size: 13px!important;
+    font-weight: 500;
+}
+
+.mat-step-label {
+    font-size: 12px!important;
+    font-weight: 400;
+}
+
+@media (max-width: 767px) {
+    ::ng-deep .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
+}

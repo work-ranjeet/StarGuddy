@@ -1,13 +1,14 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule } from "@angular/material";
+import { CommonModuleShared } from "../common/common.module.shared";
 
 import { AccountService } from "./Account.Service";
 import { AccountLoginComponent } from "./login/login.component";
 import { SignUpComponent } from "./signup/signup.component";
-import { SignUpJobProviderComponent } from "./signup/jobProvider/jobProvider.component";
-import { SignUpJobSeekerComponent } from "./signup/jobSeeker/jobSeeker.component";
+
 
 import { AccountConfirmEmailComponent } from "./confirmEmail/confirmEmail.component";
 import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSent.component";
@@ -20,8 +21,6 @@ import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSen
     declarations: [
         AccountLoginComponent,
         SignUpComponent,
-        SignUpJobProviderComponent,
-        SignUpJobSeekerComponent,
         AccountConfirmEmailComponent,
         AccountConfirmEmailSentComponent
         //AccountForgotPwdComponent
@@ -29,13 +28,12 @@ import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSen
         //AccountVerifyCodeComponent
     ],
     imports: [
-        CommonModule,
-        FormsModule,
+        CommonModule, CommonModuleShared,
+        FormsModule, ReactiveFormsModule,
+        MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule,
         RouterModule.forRoot([
             { path: "login", component: AccountLoginComponent },
             { path: "signup", component: SignUpComponent },
-            { path: "jobseeker", component: SignUpJobSeekerComponent },
-            { path: "jobprovider", component: SignUpJobProviderComponent },
             { path: "acc-cnf-email", component: AccountConfirmEmailComponent },
             { path: "acc-cnf-email-sent", component: AccountConfirmEmailSentComponent }
             //{ path: "acc-forgot-pwd", component: AccountForgotPwdComponent }
@@ -47,8 +45,6 @@ import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSen
     exports: [
         AccountLoginComponent,
         SignUpComponent,
-        SignUpJobProviderComponent,
-        SignUpJobSeekerComponent,
         AccountConfirmEmailComponent,
         AccountConfirmEmailSentComponent
         //AccountForgotPwdComponent

@@ -1,0 +1,187 @@
+<div class="containr-signup padding-top-20" style="border-radius:10px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card style="border:solid 1px #CCC; border-radius:10px">
+                    <page-heading text="Sign up"></page-heading>
+                    <div class="padding-5 margin-top-10"><sub> Get started - it's free. It takes few minutes to create your profile.</sub></div>
+                    <hr class="seperator" />
+                    <mat-card-content>
+                        <mat-horizontal-stepper [linear]="true" #stepper>
+
+                            <mat-step [stepControl]="accountDetailsForm">
+                                <form [formGroup]="accountDetailsForm">
+                                    <ng-template matStepLabel>Account Details</ng-template>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <input matInput placeholder="Enter your email" formControlName="email" required autocomplete="off" [(ngModel)]="applicationUser.email">
+                                            <mat-error *ngFor="let validation of signup_validation_messages.email">
+                                                <mat-error class="error-message" *ngIf="accountDetailsForm.get('email').hasError(validation.type) &&
+                                                       (accountDetailsForm.get('email').dirty || accountDetailsForm.get('email').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="margin-top-10 hidden-xs"></div>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <input matInput placeholder="Password" formControlName="password" required autocomplete="off" [(ngModel)]="applicationUser.password">
+                                            <mat-error *ngFor="let validation of signup_validation_messages.password">
+                                                <mat-error class="error-message" *ngIf="accountDetailsForm.get('password').hasError(validation.type) &&
+                                                       (accountDetailsForm.get('password').dirty || accountDetailsForm.get('password').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="margin-top-10 hidden-xs"></div>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <input matInput placeholder="Confirm password" formControlName="cnfPassword" required autocomplete="off" [(ngModel)]="applicationUser.cnfPassword">
+                                            <mat-error *ngFor="let validation of signup_validation_messages.cnfPassword">
+                                                <mat-error class="error-message" *ngIf="accountDetailsForm.get('cnfPassword').hasError(validation.type) &&
+                                                       (accountDetailsForm.get('cnfPassword').dirty || accountDetailsForm.get('cnfPassword').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="row margin-top-20">
+                                        <div class="col-md-12 col-sm-12">
+                                            <button class="btn btn-success" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="profileDetailForm">
+                                <form [formGroup]="profileDetailForm">
+                                    <ng-template matStepLabel>Profile Details</ng-template>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <input matInput placeholder="First name" formControlName="firstName" required autocomplete="off" [(ngModel)]="applicationUser.firstName">
+                                            <mat-error *ngFor="let validation of signup_validation_messages.name">
+                                                <mat-error class="error-message" *ngIf="profileDetailForm.get('firstName').hasError(validation.type) &&
+                                                       (profileDetailForm.get('firstName').dirty || profileDetailForm.get('firstName').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="margin-top-10 hidden-xs"></div>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <input matInput placeholder="Last name" formControlName="lastName" required autocomplete="off" [(ngModel)]="applicationUser.lastName">
+                                            <mat-error *ngFor="let validation of signup_validation_messages.name">
+                                                <mat-error class="error-message" *ngIf="profileDetailForm.get('lastName').hasError(validation.type) &&
+                                                       (profileDetailForm.get('lastName').dirty || profileDetailForm.get('lastName').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="margin-top-10 hidden-xs"></div>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <mat-select placeholder="Gender" formControlName="gender" [(ngModel)]="applicationUser.gender">
+                                                <mat-option *ngFor="let gender of genders" [value]="gender.key">
+                                                    {{gender.value}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="row margin-top-20">
+                                        <div class="col-md-12 col-sm-12">
+                                            <button class="btn btn-default" matStepperPrevious>Back</button>
+                                            &nbsp;
+                                            <button class="btn btn-success" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="orgDetailForm">
+                                <form [formGroup]="orgDetailForm">
+                                    <ng-template matStepLabel>Organization Details</ng-template>
+                                    <div class="row">
+                                        <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                            <mat-select placeholder="Sign up to..." formControlName="signupType" [(ngModel)]="signTypeSelected">
+                                                <mat-option *ngFor="let type of signupTypes" [value]="type.key">
+                                                    {{type.value}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                    </div>
+                                    <div class="margin-top-10 hidden-xs"></div>
+                                    <div *ngIf="signTypeSelected==1">
+                                        <div class="row">
+                                            <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                                <input matInput placeholder="Enter your company name (optional)" formControlName="orgName" autocomplete="off" [(ngModel)]="applicationUser.orgName">
+                                                <mat-error *ngFor="let validation of signup_validation_messages.orgName">
+                                                    <mat-error class="error-message" *ngIf="orgDetailForm.get('orgName').hasError(validation.type) && (orgDetailForm.get('orgName').dirty || orgDetailForm.get('orgName').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                        </div>
+                                        <div class="margin-top-10 hidden-xs"></div>
+                                        <div class="row">
+                                            <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                                <input matInput placeholder="Enter your company website (optional)" formControlName="orgWebsite" autocomplete="off" [(ngModel)]="applicationUser.orgWebsite">
+                                                <!--<mat-error *ngFor="let validation of signup_validation_messages.orgWebsite">
+                                                    <mat-error class="error-message" *ngIf="orgDetailForm.get('orgWebsite').hasError(validation.type) && (orgDetailForm.get('orgWebsite').dirty || orgDetailForm.get('orgWebsite').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>-->
+
+
+                                            </mat-form-field>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                        </div>
+                                        <div class="margin-top-10 hidden-xs"></div>
+                                        <div class="row">
+                                            <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
+                                                <input matInput placeholder="Enter your desiganation (optional)" formControlName="designation" autocomplete="off" [(ngModel)]="applicationUser.designation">
+                                                <!--<mat-error *ngFor="let validation of signup_validation_messages.orgWebsite">
+                                                    <mat-error class="error-message" *ngIf="orgDetailForm.get('designation').hasError(validation.type) && (orgDetailForm.get('designation').dirty || orgDetailForm.get('designation').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>-->
+                                            </mat-form-field>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-top-20">
+                                        <div class="col-md-12 col-sm-12">
+                                            <button class="btn btn-default" matStepperPrevious>Back</button>
+                                            &nbsp;
+                                            <button class="btn btn-success" matStepperNext>Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Done <span class="fa fa-smile"></span></ng-template>
+                                <p class="padding-top-20 text-info">
+                                    You are almost done! Please click 'Complete Sign up' to Finish..
+                                </p>
+                                <button class="btn btn-default" matStepperPrevious>Back</button>
+                                <button type="submit" class="btn btn-primary" (click)="save()">
+                                    <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
+                                    <span>Sign up</span>
+                                </button>
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

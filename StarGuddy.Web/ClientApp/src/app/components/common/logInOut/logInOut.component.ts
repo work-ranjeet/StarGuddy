@@ -12,6 +12,7 @@ export class LogInOutComponent {
 
     public isLoggedIn: boolean = false;
     public showUserSettingMenu: boolean = true;
+    public showJoinFreeMenu: boolean = false;
     public subscription: any;
     private router: Router;
     private baseService: BaseService;
@@ -31,6 +32,10 @@ export class LogInOutComponent {
 
     toggleUserSettingMenu() {
         this.showUserSettingMenu = !this.showUserSettingMenu;
+    }
+
+    showJoinFreeToggle() {
+        this.showJoinFreeMenu = !this.showJoinFreeMenu;
     }
     
     logOut() {

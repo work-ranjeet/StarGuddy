@@ -1,4 +1,4 @@
-﻿
+
 ul.nav-logout-menu {
     list-style: none;
     margin-bottom: 0px !important;
@@ -54,7 +54,7 @@ ul.nav-logout-menu {
         color: #F88017;
     }
 
-    /*.nav-logout-menu > li:hover {
+/*.nav-logout-menu > li:hover {
         background: white;
     }*/
 
@@ -83,33 +83,55 @@ ul.nav-logout-menu {
     background: white;
     margin-top: 18px;
     margin-left: -140px;
-    border:solid 1px black;
+    border: solid 1px black;
     border-top: none;
 }
 
     .user-setting-menu .content {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     }
-    
-            .user-setting-menu .content > ul > li {
-                width:100%;
-                border-bottom: solid 1px #ccc;
-                padding: 15px 5px 15px 5px;
-                font-size: 15px;
+
+        .user-setting-menu .content > ul > li {
+            width: 100%;
+            border-bottom: solid 1px #ccc;
+            padding: 15px 5px 15px 5px;
+            font-size: 15px;
+        }
+
+            .user-setting-menu .content > ul > li,
+            .user-setting-menu .content > ul > li > a {
+                text-decoration: none;
+                cursor: pointer;
+                -webkit-transition: color .2s ease-in-out;
+                -moz-transition: color .2s ease-in-out;
+                -o-transition: color .2s ease-in-out;
+                -ms-transition: color .2s ease-in-out;
+                transition: color .2s ease-in-out;
             }
 
-                .user-setting-menu .content > ul > li,
-                .user-setting-menu .content > ul > li > a {
-                    text-decoration: none;
-                    cursor: pointer;
-                    -webkit-transition: color .2s ease-in-out;
-                    -moz-transition: color .2s ease-in-out;
-                    -o-transition: color .2s ease-in-out;
-                    -ms-transition: color .2s ease-in-out;
-                    transition: color .2s ease-in-out;
+                .user-setting-menu .content > ul > li:hover {
+                    color: #F88017;
+                    background-color: #e9e7e7;
                 }
 
-                    .user-setting-menu .content > ul > li:hover {
-                        color: #F88017;
-                        background-color: #e9e7e7;
-                    }
+
+.nav-login-menu {
+    border: solid 1px #323131;
+    padding: 12px 0px 12px 0px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+    .nav-login-menu:hover {
+        border: solid 1px #464646;
+        padding: 12px 0px 12px 0px;
+        background: #323131;
+    }
+
+.join-free {
+    color: #5cb85c !important;
+}
+
+    .join-free:hover > span {
+        color: white !important;
+    }

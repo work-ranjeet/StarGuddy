@@ -35,4 +35,9 @@ namespace App.Client.Account {
         OrgWebsite: string;
         Designation: string;
     }
+
+    export interface IKeyValuePair {
+        key: string;
+        value: string;
+    }
 }

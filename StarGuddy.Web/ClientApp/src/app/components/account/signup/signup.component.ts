@@ -1,48 +1,135 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { MatCard } from "@angular/material";
 import { Router } from "@angular/router";
+import { DataValidator } from "../../../Helper/DataValidator";
+import { ToastrService } from "../../../Services/ToastrService";
+import { AccountService } from "../Account.Service";
+import IApplicationUser = App.Client.Account.IApplicationUser;
+import IKeyValuePair = App.Client.Account.IKeyValuePair;
 
+
+/**
+ * @title Stepper with editable steps
+ */
 @Component({
-    selector: 'account-signup',
-    template: `<div class="container">
-                    <div style="width:600px; padding-top:16%" class="margin-auto">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6">                              
-                                    <div (click)="loadPage('jobseeker')" style="background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
-                                        <p style="padding: 10px;text-align: center;font-size: 22px; text-align: center;">Are you have talent?</p>
-                                    </div>
-                            </div>
-                            <div class="col-sm-12  col-lg-6 col-md-6">
-                                <div (click)="loadPage('jobprovider')" style="background-color: #006684; border-radius:5px; padding:5px; color:white; cursor: pointer;">                                      
-                                        <p style="padding: 10px;text-align: center;font-size: 22px; text-align: center;">Are you searching for talent?</p>
-                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
+    selector: 'signup',
+    templateUrl: '././signup.component.html',
+    styleUrls: ['././signup.component.css']
 })
-
 export class SignUpComponent {
+    public accountDetailsForm: FormGroup;
+    public profileDetailForm: FormGroup;
+    public orgDetailForm: FormGroup;
+    public applicationUser: IApplicationUser;
+    public genders: Array<IKeyValuePair> = [];
+    public signupTypes: Array<IKeyValuePair> = [];
+    public showSpinner: boolean = false;
+    public signTypeSelected: string;
+    public signup_validation_messages: any;
 
-    constructor(private readonly router: Router) { }
+    constructor(private _formBuilder: FormBuilder, public router: Router, private readonly accountService: AccountService, private readonly dataValidator: DataValidator,
+        private toastr: ToastrService) {
+        this.router = router;
+        this.accountService = accountService;
+        this.dataValidator = dataValidator;
+        this.applicationUser = { Gender: 'M', IsCastingProfessional: true } as IApplicationUser;
+    }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.initFormData();
+        this.initLoginForm();
+    }
 
-    loadPage(value: string) {
-        this.router.navigate(["/" + value]);
+    initLoginForm() {
+        this.accountDetailsForm = this._formBuilder.group({
+            email: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            ])),
+            password: new FormControl('', Validators.required),
+            cnfPassword: new FormControl('', Validators.required)
+        });
+
+        this.profileDetailForm = this._formBuilder.group({
+            firstName: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('[a-zA-Z][a-zA-Z]+')
+            ])),
+            lastName: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('[a-zA-Z][a-zA-Z]+')
+            ])),
+            gender: new FormControl('', [Validators.required])
+        });
+
+        this.orgDetailForm = this._formBuilder.group({
+            signupType: new FormControl('', [Validators.required]),
+            orgName: new FormControl('', Validators.compose([Validators.pattern('[a-zA-Z][a-zA-Z]+')])),
+            orgWebsite: new FormControl(''),
+            designation: new FormControl('')
+            //orgWebsite: new FormControl('', Validators.compose([Validators.pattern('/(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/')]))
+        });
+    }
+
+    initFormData() {
+        this.genders = [
+            { key: "M", value: "Male" },
+            { key: "F", value: "Female" },
+            { key: "O", value: "Others" }
+        ];
+
+        this.signupTypes = [
+            { key: "0", value: "Find Work" },
+            { key: "1", value: "Find Talent" }
+        ];
+
+        this.signup_validation_messages = {
+            'email': [
+                { type: 'required', message: 'Email is required' },
+                { type: 'pattern', message: 'Enter a valid email' }
+            ],
+            'password': [
+                { type: 'required', message: 'Password is required' }
+            ],
+            'cnfPassword': [
+                { type: 'required', message: 'Confirm password is required' },
+                { type: 'areEqual', message: 'Password mismatch' }
+            ],
+            'name': [
+                { type: 'required', message: 'Name is required' },
+                { type: 'pattern', message: 'Only alphabets allowed' }
+            ],
+            'orgName': [
+                { type: 'pattern', message: 'Only alphabets allowed' }
+            ],
+            'orgWebsite': [
+                { type: 'pattern', message: 'Invalid web url.' }
+            ]
+        }
+    }
+
+    save() {
+        try {
+            this.showSpinner = true;
+            this.applicationUser.IsCastingProfessional = this.signTypeSelected === "1";
+            if (this.dataValidator.IsValidObject(this.applicationUser)) {
+                this.accountService.signup(this.applicationUser).subscribe(
+                    result => {
+                        this.showSpinner = false;
+                        if (result != undefined) {
+                            this.toastr.info(result);
+                            this.router.navigate(["acc-cnf-email-sent"]);
+                        }
+                    },
+                    (error) => {
+                        this.showSpinner = false;
+                        this.toastr.error(error.message);
+                        this.router.navigate(["error"]);
+                    });
+            }
+        } catch (e) {
+            this.showSpinner = false;
+        }
     }
 }
-
-//<div style="height: 30px; font-size: 22px;" >
-//    <i class="glyphicon glyphicon-globe" style = "font-size:22px; float:left; padding-top: 5px;" > </i>
-//        <span>& nbsp; Talent Directory < /span>
-//            < /div>
-//            < hr style = "margin-top:5px; margin-bottom:5px;" />
-
-
-
-
-//<div style="height: 30px; font-size: 22px;" >
-//    <i class="glyphicon glyphicon-bullhorn" style = "font-size:22px; float:leftpadding-top: 5px; " > </i>
-//        <span>& nbsp; Talent Search < /span>
-//            < /div>
-//            < hr style = "margin-top:5px; margin-bottom:5px;" />

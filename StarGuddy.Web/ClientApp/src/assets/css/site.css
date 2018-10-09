@@ -291,63 +291,6 @@
         font-size: 20px;
     }
 
-.container-box {
-    max-width: 500px;
-    background: #fff;
-    padding: 30px;
-    margin: auto;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
-    -moz-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
-}
-
-
-    .container-box h1 {
-        font-size: 22px;
-        font-weight: bold;
-        line-height: 24px;
-        color: #000;
-        font-weight: lighter;
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 18px;
-        color: #333;
-    }
-
-    .container-box h2 {
-        font-size: 16px;
-        font-weight: bold;
-        line-height: 18px;
-        color: #000;
-        margin-top: -5px;
-        margin-bottom: 18px;
-        font-weight: lighter;
-        text-align: center;
-        color: #333;
-    }
-
-    .container-box h3 {
-        font-size: 13px;
-        font-weight: bold;
-        line-height: 18px;
-        color: #000;
-        margin-top: -5px;
-        font-weight: lighter;
-        text-align: center;
-        color: #333;
-    }
-
-.signup-container {
-    background: url('./icons/home-actor-back.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
 .disclosure-text {
     font-size: 11px;
     line-height: 14px;

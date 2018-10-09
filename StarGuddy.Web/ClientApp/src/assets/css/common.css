@@ -11,7 +11,7 @@ body {
 }
 
 .body-content {
-    min-height: 565px;
+    min-height: 530px;
     padding: 0px;
     margin: 0px;
     margin-top: 52px;
@@ -22,43 +22,61 @@ body {
     margin: auto !important;
 }
 
-.container-medium, .container-small {
-    padding-right: 15px;
-    padding-left: 15px;
+.full-width {
+    width: 99% !important;
+}
+
+/* --------------------------------------------------------- Container ------------------------------------------------*/
+.container-login {
+    padding: 5px;
+    margin: auto;
+    max-width: 500px;
+}
+
+.container-signup {
+    background: url('./icons/home-actor-back.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container-l, .container-m, .container-s {
+    padding: 10px;
     margin-right: auto;
     margin-left: auto;
 }
 
 @media (min-width: 768px) {
-    .container-medium {
+    .container-m {
         width: 450px;
     }
 
-    .container-small {
+    .container-s {
         width: 350px;
     }
 }
 
 @media (min-width: 992px) {
-    .container-medium {
+    .container-m {
         width: 670px;
     }
 
-    .container-small {
+    .container-s {
         width: 470px;
     }
 }
 
 @media (min-width: 1200px) {
-    .container-medium {
+    .container-m {
         width: 770px;
     }
 
-    .container-small {
+    .container-s {
         width: 570px;
     }
 }
-
+/* -------------------------------------------------------------------End Container ----------------------------------------------------*/
 a {
     cursor: pointer !important;
 }
@@ -125,7 +143,7 @@ ul {
         margin: 0px;
     }
 
-        /*ul > li > a {
+/*ul > li > a {
             color: #ebdfdf;
         }*/
 
@@ -256,6 +274,9 @@ hr {
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+}
+.btn{
+    min-width:90px!important;
 }
 
 .btn-bracketed::before {
@@ -701,50 +722,58 @@ margin-right-10 {
     border-radius: 50%;
 }
 
-.item-avatar-50, .item-avatar-80 {
+.item-avatar-80, .item-avatar-100 {
     margin: auto;
     position: relative;
     border: solid 5px white;
 }
 
-.item-avatar-50 {
-    width: 55px;
-    height: 55px;
+
+.item-avatar-100 {
+    width: 95px;
+    height: 110px;
 }
 
-.item-avatar-80 {
-    width: 85px;
-    height: 85px;
-}
-
-    .item-avatar-50 img, .item-avatar-80 img {
-        padding: 5px 2px 5px 2px;
+    .item-avatar-100 img {
+        width: 85px;
+        height: 100px;
     }
 
-.item-avatar-50 img {
-    width: 55px;
-    height: 55px;
+    .item-avatar-100 .member-count {
+        border-radius: 10px;
+        font-size: 11px;
+        line-height: 17px;
+        padding: 1px 8px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: #367bb7;
+        border: solid 2px white;
+        color: white;
+        margin-right: -10px;
+    }
+
+.item-avatar-80 {
+    width: 75px;
+    height: 95px;
 }
 
-.item-avatar-80 img {
-    width: 85px;
-    height: 85px;
-}
+    .item-avatar-80 img {
+        width: 65px;
+        height: 85px;
+    }
 
-.item-avatar-50 .member-count, .item-avatar-80 .member-count {
-    border-radius: 10px;
-    border-width: 1px;
-    font-size: 11px;
-    line-height: 17px;
-    padding: 1px 8px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: #367bb7;
-    border: solid 2px white;
-    color: white;
-    margin-right: -10px;
-}
-
-
-
+    .item-avatar-80 .member-count {
+        border-radius: 10px;
+        border-width: 1px;
+        font-size: 11px;
+        line-height: 17px;
+        padding: 1px 8px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: #367bb7;
+        border: solid 2px white;
+        color: white;
+        margin-right: -10px;
+    }

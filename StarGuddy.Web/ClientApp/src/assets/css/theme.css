@@ -17,7 +17,7 @@
     }
 
         .theme-brand:hover .theme-brand-star {
-            color: white!important;
+            color: white !important;
         }
 
 
@@ -72,8 +72,20 @@
     padding: 2px;
     padding-left: 8px;
 }
+/* form controls */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
 
 /****************************************************** Validation color **************************************************/
+.info-color {
+    background-color: #337ab7 !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
 .error {
     padding: 0 0 5px 2px;
     color: red;
@@ -91,11 +103,11 @@ input.ng-dirty,
 input.ng-valid,
 input.ng-valid[required],
 input.ng-dirty[required] {
-    border-left: 5px solid #42A948; /* green */
+    border-left: 5px solid #42A948; 
 }
 
 input.ng-invalid {
-    border-left: 5px solid #a94442; /* red */
+    border-left: 5px solid #a94442; 
 }
 
 input.border-left-none {
@@ -123,3 +135,44 @@ form.ng-invalid, form.ng-dirty, form.ng-touched {
 span.text-shadow, label.text-shadow {
     text-shadow: 1px 4px 10px #b1b1b1;
 }
+
+
+/* ----------------------------------- Angular Materials -----------------------------------------*/
+/* fallback */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.mat-step-header .mat-step-icon {
+    background-color: rgb(248, 128, 23);
+    color: #fff;
+}
+
+.mat-form-field-valid .mat-form-field-label {
+    color: #42A948 !important;
+}
+
+.mat-icon.material-icons.ng-star-inserted {
+    color: white;
+    position: relative;
+}
+/* --------------------------------- End Angular Materials ----------------------------------------*/

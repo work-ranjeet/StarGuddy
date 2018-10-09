@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -16,6 +16,7 @@ import { LogInOutComponent } from "./logInOut/logInOut.component";
         FooterComponent, NavMenuComponent, LogInOutComponent, HeadingComponent, PageHeadingComponent
     ],
     imports: [RouterModule, FormsModule, CommonModule],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [FooterComponent, NavMenuComponent, LogInOutComponent, HeadingComponent, PageHeadingComponent]
 })
 
