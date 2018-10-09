@@ -8,9 +8,9 @@ namespace App.Client.Account {
     }
 
     export interface ILoginData {
-        UserName: string;
-        Password: string;
-        RememberMe: boolean;
+        userName: string;
+        password: string;
+        rememberMe: boolean;
     }
 
     export interface IChangePassword {
@@ -21,19 +21,19 @@ namespace App.Client.Account {
     }
 
     export interface IApplicationUser {
-        UserId: string;
-        UserName: string;
-        Email: string;
-        FirstName: string;
-        LastName: string;
-        Password: string;
-        CnfPassword: string;
-        Gender: string;
-        IsCastingProfessional: boolean;
-        IsEmailVerified: boolean;
-        OrgName: string;
-        OrgWebsite: string;
-        Designation: string;
+        userId: string;
+        userName: string;
+        email: string;
+        firstName: string;
+        lastName: string;
+        password: string;
+        cnfPassword: string;
+        gender: string;
+        isCastingProfessional: boolean;
+        isEmailVerified: boolean;
+        orgName: string;
+        orgWebsite: string;
+        designation: string;
     }
 
     export interface IKeyValuePair {

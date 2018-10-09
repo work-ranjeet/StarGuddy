@@ -119,7 +119,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">&nbsp;</div>
                                     </div>
                                     <div class="margin-top-10 hidden-xs"></div>
-                                    <div *ngIf="signTypeSelected==1">
+                                    <div *ngIf="signTypeSelected=='1'">
                                         <div class="row">
                                             <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
                                                 <input matInput placeholder="Enter your company name (optional)" formControlName="orgName" autocomplete="off" [(ngModel)]="applicationUser.orgName">

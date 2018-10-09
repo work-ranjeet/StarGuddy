@@ -33,7 +33,7 @@ export class SignUpComponent {
         this.router = router;
         this.accountService = accountService;
         this.dataValidator = dataValidator;
-        this.applicationUser = { Gender: 'M', IsCastingProfessional: true } as IApplicationUser;
+        this.applicationUser = { gender: 'M', isCastingProfessional: true } as IApplicationUser;
     }
 
     ngOnInit() {
@@ -112,7 +112,7 @@ export class SignUpComponent {
     save() {
         try {
             this.showSpinner = true;
-            this.applicationUser.IsCastingProfessional = this.signTypeSelected === "1";
+            this.applicationUser.isCastingProfessional = this.signTypeSelected === "1";
             if (this.dataValidator.IsValidObject(this.applicationUser)) {
                 this.accountService.signup(this.applicationUser).subscribe(
                     result => {
