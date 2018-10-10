@@ -42,14 +42,19 @@ export class SignUpComponent {
     }
 
     initLoginForm() {
-        this.accountDetailsForm = this._formBuilder.group({
-            email: new FormControl('', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-            ])),
-            password: new FormControl('', Validators.required),
-            cnfPassword: new FormControl('', Validators.required)
-        });
+        this.accountDetailsForm = this._formBuilder.group(
+            {
+                email: new FormControl('', Validators.compose([
+                    Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+                ])),
+                password: new FormControl('', Validators.compose([
+                    Validators.minLength(5),
+                    Validators.required
+                    // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+                ])),
+                cnfPassword: new FormControl('', Validators.required)
+            });
 
         this.profileDetailForm = this._formBuilder.group({
             firstName: new FormControl('', Validators.compose([
@@ -109,6 +114,13 @@ export class SignUpComponent {
         }
     }
 
+    validatePassword() {
+        if (this.applicationUser.password != this.applicationUser.cnfPassword) {
+            this.accountDetailsForm.controls['cnfPassword'].setErrors({ 'areEqual': true });
+            this.accountDetailsForm.controls['cnfPassword'].markAsDirty();
+        }
+    }
+
     save() {
         try {
             this.showSpinner = true;
@@ -119,7 +131,8 @@ export class SignUpComponent {
                         this.showSpinner = false;
                         if (result != undefined) {
                             this.toastr.info(result);
-                            this.router.navigate(["acc-cnf-email-sent"]);
+                            //this.router.navigate(["acc-cnf-email-sent"]);
+                            this.router.navigate(["/profile"]);
                         }
                     },
                     (error) => {

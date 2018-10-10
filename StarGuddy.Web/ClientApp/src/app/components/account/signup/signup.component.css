@@ -6,6 +6,10 @@ input.ng-dirty[required] {
     border-left: none !important;
 }
 
+.btn{
+    min-width:100px;
+}
+
 input.ng-invalid {
     border-left: none !important;
 }

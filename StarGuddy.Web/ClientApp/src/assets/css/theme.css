@@ -40,7 +40,7 @@
 
 
 
-.yellow-txt {
+.txt-yellow {
     color: #F88017;
 }
 
@@ -54,15 +54,8 @@
 .theme-control-label {
     color: #F88017;
     font-size: 16px;
-    font-family: 'Roboto Condensed', Helvetica Neue, Helvetica,'Roboto Condensed',Arial,sans-serif;
 }
 
-.theme-control-padding {
-    padding: 5px 12px 5px 12px;
-}
-
-/*.theme-control-label {
-}*/
 
 .theme-texbox-custom {
     height: 40px;
@@ -72,20 +65,14 @@
     padding: 2px;
     padding-left: 8px;
 }
+
+
 /* form controls */
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
 /****************************************************** Validation color **************************************************/
-.info-color {
-    background-color: #337ab7 !important;
-}
-
-.text-white {
-    color: white !important;
-}
-
 .error {
     padding: 0 0 5px 2px;
     color: red;

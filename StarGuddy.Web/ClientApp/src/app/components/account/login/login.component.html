@@ -1,6 +1,5 @@
 <div style="padding-top:80px;">
     <div class="container-login">
-        <!--<div class="info-color text-white text-center padding-15"><span style="font-size:20px; padding:10px;">Sign In</span></div>-->
         <mat-card style="border:solid 1px #CCC; border-radius:10px;">
             <mat-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -19,7 +18,7 @@
                         </mat-error>
                     </mat-form-field>
                     <div class="form-group padding-top-10">
-                        <button type="submit" class="btn btn-lg theme-button btn-block margin-bottom-10">
+                        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-lg theme-button btn-block margin-bottom-10">
                             <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
                             <span>Sign in</span>
                         </button>

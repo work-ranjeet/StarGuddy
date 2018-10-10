@@ -27,7 +27,7 @@
                                     <div class="margin-top-10 hidden-xs"></div>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
-                                            <input matInput placeholder="Password" formControlName="password" required autocomplete="off" [(ngModel)]="applicationUser.password">
+                                            <input  type="password" matInput placeholder="Password" formControlName="password" required autocomplete="off" [(ngModel)]="applicationUser.password">
                                             <mat-error *ngFor="let validation of signup_validation_messages.password">
                                                 <mat-error class="error-message" *ngIf="accountDetailsForm.get('password').hasError(validation.type) &&
                                                        (accountDetailsForm.get('password').dirty || accountDetailsForm.get('password').touched)">
@@ -40,7 +40,7 @@
                                     <div class="margin-top-10 hidden-xs"></div>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
-                                            <input matInput placeholder="Confirm password" formControlName="cnfPassword" required autocomplete="off" [(ngModel)]="applicationUser.cnfPassword">
+                                            <input type="password" matInput placeholder="Confirm password" (blur)="validatePassword()" formControlName="cnfPassword" required autocomplete="off" [(ngModel)]="applicationUser.cnfPassword">
                                             <mat-error *ngFor="let validation of signup_validation_messages.cnfPassword">
                                                 <mat-error class="error-message" *ngIf="accountDetailsForm.get('cnfPassword').hasError(validation.type) &&
                                                        (accountDetailsForm.get('cnfPassword').dirty || accountDetailsForm.get('cnfPassword').touched)">

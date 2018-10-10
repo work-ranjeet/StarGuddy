@@ -3,7 +3,7 @@
 body {
     padding: 0px;
     margin: 0px;
-    font-family: 'Roboto Condensed', Helvetica Neue, Helvetica,'Roboto Condensed',Arial,sans-serif;
+    font-family: 'Roboto Condensed',Arial,sans-serif;
     background-color: #f3f3f3 !important;
     font-size: 14px;
     line-height: 20px;
@@ -17,7 +17,7 @@ body {
     margin-top: 52px;
 }
 
-.mob-only {
+.body-mob, .mob-only {
     width: 350px;
     margin: auto !important;
 }
@@ -78,17 +78,12 @@ body {
 }
 /* -------------------------------------------------------------------End Container ----------------------------------------------------*/
 a {
-    cursor: pointer !important;
-}
-
-a, .nav-sign-in > a {
     text-decoration: none !important;
+    cursor: pointer !important;
 }
 
     a:hover, a:hover > span, a:hover > i, .nav-sign-in > a:hover, .nav-sign-in > a:focus {
         color: rgb(248, 128, 23) !important;
-        text-decoration: none !important;
-        cursor: pointer;
     }
 
     a:focus {
@@ -97,24 +92,8 @@ a, .nav-sign-in > a {
     }
 
 h1, .h1, h2, .h2, h3, .h3 {
-    margin-top: 10px !important;
-    margin-bottom: -10px !important;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: 700;
-    padding-left: 5px;
-}
-
-h2 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-h3 {
-    font-size: 12px;
-    font-weight: 700;
+    margin-top: 5px !important;
+    margin-bottom: -5px !important;
 }
 
 
@@ -126,9 +105,7 @@ dl {
 .dl-horizontal dt {
     text-align: left;
 }
-/*dd {
-    margin-left:  calc(100% - 100px)!important;
-}*/
+
 
 ul {
     list-style: none;
@@ -143,13 +120,9 @@ ul {
         margin: 0px;
     }
 
-/*ul > li > a {
-            color: #ebdfdf;
-        }*/
-
-li.border-bottom {
+/*li.border-bottom {
     border-bottom: solid 1px #ccc;
-}
+}*/
 
 
 
@@ -181,20 +154,15 @@ textarea {
     border: 1px solid #E5E5E5;
     background: #FAFAFA;
     outline: 0;
-    font-size: 1rem;
-    font-weight: 400;
     width: 100%;
     height: auto;
-    padding: .5rem;
-    -webkit-appearance: none;
     box-sizing: border-box;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-appearance: none;
 }
 
 select {
     border: solid thin #ccc;
     height: 30px;
-    font-size: 16px;
 }
 
     select:hover {
@@ -223,7 +191,6 @@ table {
 hr {
     border: 0;
     height: 0;
-    margin-bottom: 2px !important;
 }
 
     hr.no-margin {
@@ -233,6 +200,7 @@ hr {
     hr.seperator {
         margin: 1px !important;
         padding: 10px 0 10px 0;
+        border-bottom: solid thin #f8f6f6;
     }
 
     hr.style-one {
@@ -258,26 +226,7 @@ hr {
     }
 
 
-.text-bottom {
-    display: block;
-    font-size: 12px;
-    color: #949494;
-    line-height: 22px;
-    font-weight: normal;
-    font-family: "Open Sans", Trebuchet, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding: 0px !important;
-    margin: 0px !important;
-}
-
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-.btn{
-    min-width:90px!important;
-}
+/* ----------------------------------------------- Buttons ---------------------------------------------*/
 
 .btn-bracketed::before {
     display: inline-block;
@@ -304,11 +253,16 @@ hr {
         background-color: #cecccc;
     }
 
+/* -----------------------------------------------Carousel -----------------------------------------------*/
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
 }
 
-/* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
     .carousel-caption {
@@ -317,7 +271,7 @@ hr {
 }
 
 
-/****************************** Pading *******************************/
+/****************************** paddings *******************************/
 .padding-0 {
     padding: 0px !important;
 }
@@ -507,8 +461,6 @@ hr {
     margin-bottom: 50px;
 }
 
-
-
 .margin-left-5 {
     margin-left: 5px;
 }
@@ -569,7 +521,6 @@ margin-right-10 {
         }
 
         .c-table .heading > span {
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-size: 22px;
         }
 
@@ -601,8 +552,6 @@ margin-right-10 {
     .c-table .c-column-4 .video-card {
         margin: 1px;
     }
-
-
 
         .c-table .c-column .video-card img {
             width: 100%;
@@ -644,20 +593,18 @@ margin-right-10 {
             font-size: 14px;
         }
 
-
+/*--------------------------------------Pointer-----------------------------------------*/
 .cursor-hand {
     cursor: pointer;
 }
 
+/*---------------------------------------border----------------------------------------*/
 .border-bottom {
     padding: 0px 2px 0px 2px;
     border-bottom: solid 1px #ccc;
 }
 
-.width-per-100 {
-    width: 100%;
-}
-
+/*----------------------------------------text--------------------------------------------*/
 .text-s {
     font-size: 10px;
 }
@@ -674,22 +621,48 @@ margin-right-10 {
     vertical-align: text-bottom;
 }
 
-.d-block {
-    display: block;
+.text-white {
+    color: white !important;
+}
+
+.text-disclosure {
+    font-size: 11px;
+    line-height: 14px;
+    color: #337ab7;
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .text-disclosure a {
+        -webkit-transition: color 250ms linear;
+        -moz-transition: color 250ms linear;
+        -o-transition: color 250ms linear;
+        transition: color 250ms linear;
+        color: #000;
+        text-decoration: none;
+    }
+
+        .text-disclosure a:hover {
+            color: #F88017;
+        }
+
+/*-------------------------------------common-------------------------------------------*/
+.display-inline {
+    display: inline !important;
+}
+
+.display-block {
+    display: block !important;
+}
+
+.display-inline-block {
+    display: inline-block !important;
 }
 
 .shadow {
     -moz-box-shadow: inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow: inset 0 0 10px #000000;
-}
-
-.v-text-top {
-    vertical-align: text-top;
-}
-
-.v-text-bottom {
-    vertical-align: text-bottom;
 }
 
 .edit-icon-l, .edit-icon-m, .edit-icon-s {
@@ -706,22 +679,12 @@ margin-right-10 {
     font-size: 15px !important;
 }
 
-.display-inline {
-    display: inline !important;
-}
-
-.display-block {
-    display: block !important;
-}
-
-.display-inline-block {
-    display: inline-block !important;
-}
 
 .rounded {
     border-radius: 50%;
 }
 
+/* -----------------------------------------------------item avatar ------------------------------*/
 .item-avatar-80, .item-avatar-100 {
     margin: auto;
     position: relative;

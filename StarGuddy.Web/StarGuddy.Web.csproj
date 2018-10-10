@@ -19,13 +19,23 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\assets\css\icons\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\assets\css\icons\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\assets\css\icons\NewFolder\**" />
+    <None Remove="ClientApp\src\assets\css\icons\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\Helper\PasswordValidatore.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="ClientApp\src\assets\css\bootstrap_4.0_custom.css" />
-    <Content Include="ClientApp\src\assets\css\bootstrap_alingment.css" />
     <Content Include="ClientApp\src\assets\css\common.css" />
     <Content Include="ClientApp\src\assets\css\ng2-toastr.min.css" />
     <Content Include="ClientApp\src\assets\css\site.css" />
@@ -45,15 +55,10 @@
     <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff" />
     <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="ClientApp\src\assets\fonts\FontAwesome.otf" />
-    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="ClientApp\src\assets\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\assets\css\icons\NewFolder\" />
+    <TypeScriptCompile Include="ClientApp\src\app\Helper\PasswordValidatore.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
