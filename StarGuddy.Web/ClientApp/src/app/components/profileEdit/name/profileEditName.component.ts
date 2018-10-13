@@ -3,6 +3,9 @@ import { ProfileEditService } from "../../profileEdit/profileEdit.Service";
 import IUserNameModel = App.Client.Profile.IUserNameModel;
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { MatRadioGroup,  MatRadioButton, MatRadioChange } from "@angular/material";
+import { FormBuilder, Validators, FormGroup, FormControl} from "@angular/forms";
+import { ToastrService } from '../../../Services/ToastrService';
 
 
 
@@ -17,12 +20,27 @@ export class ProfileEditNameComponent {
     public fullName: string = "Ranjeet Kumar";
     public shortName: string = "Ranjeet K";
     public userNameModel: IUserNameModel = {} as IUserNameModel;
+    public frmEditName: FormGroup;
 
     constructor(
+        private _formBuilder: FormBuilder,
         private readonly router: Router,
+        private toastr: ToastrService,
         private readonly profileService: ProfileEditService) { }
 
     ngOnInit() {
+        this.frmEditName = this._formBuilder.group({
+            firstName: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('[a-zA-Z][a-zA-Z]+')
+            ])),
+            lastName: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('[a-zA-Z][a-zA-Z]+')
+            ])),
+            orgName: new FormControl('')
+        });
+
         this.load();
     }
 
@@ -38,7 +56,7 @@ export class ProfileEditNameComponent {
                 this.shortName = response.firstName + " " + (response.lastName != "" ? response.lastName.slice(0, 1) : "");
             }
             else {
-                console.info("Got empty result: IDancingModel");
+                this.toastr.info("Got empty result");
             }
         });
     }
@@ -46,11 +64,11 @@ export class ProfileEditNameComponent {
     save() {
         this.profileService.SaveUserNameDetail(this.userNameModel).subscribe(response => {
             if (response != null && response) {
-                console.info("Updated");
+                this.toastr.success("Updated successfully");
                 this.router.navigate(["/profile"]);
             }
             else {
-                console.warn("not updated: SaveUserNameDetail()");
+                this.toastr.warning("Ops! There is some issue...");
             }
         });
     }
@@ -66,4 +84,17 @@ export class ProfileEditNameComponent {
         this.shortName = this.userNameModel.firstName + " " + (inputVal != "" ? inputVal.slice(0, 1) : "");
     }
 
+    radioChange(event: MatRadioChange) {
+        this.userNameModel.displayName = event.value;
+    }
+
+    public validation_messages = {
+        'name': [
+            { type: 'required', message: 'Email is required' },
+            { type: 'pattern', message: 'Enter a valid email' }
+        ],
+        'password': [
+            { type: 'required', message: 'Password is required' }
+        ]
+    }
 }

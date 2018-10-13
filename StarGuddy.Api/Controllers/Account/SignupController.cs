@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Account
 {
+    [AllowAnonymous]
     [Route("api/Account")]
     [Produces("application/json")]
     public class SignupController : Controller
@@ -35,9 +36,7 @@ namespace StarGuddy.Api.Controllers.Account
             _securityManager = securityManager;
             _emailManager = emailManager;
         }
-
-
-        [AllowAnonymous]
+      
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp([FromBody]ApplicationUser applicationUser)
         {
@@ -67,7 +66,7 @@ namespace StarGuddy.Api.Controllers.Account
                 {
                     var userResult = await _signUpManager.PasswordSignInAsync(applicationUser.UserName, password, rememberMe: false, lockoutOnFailure: false);
 
-                    var emailVerificationToken = _securityManager.GetEmailVerificationCodeAsync(userResult);
+                    var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
 
                     await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com");
                     
@@ -83,35 +82,28 @@ namespace StarGuddy.Api.Controllers.Account
             return BadRequest();
         }
 
-        //[HttpPost("change-password")]
-        //public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordModel changePasswordModel)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [HttpGet]        
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return BadRequest();
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound($"Oops! {userId} is invalid. Please try again.");
+            }
+            // var result = await _userManager.ConfirmEmailAsync(user, code);
+            return Ok();
+        }
 
-        //    if(string.IsNullOrEmpty(changePasswordModel.NewPassword) && string.IsNullOrEmpty(changePasswordModel.ConfirmPassword) && changePasswordModel.NewPassword == changePasswordModel.OldPassword)
-        //    {
-        //        return BadRequest("The new password and confirmation password do not match.");
-        //    }
+        [HttpGet]      
+        public async Task<IActionResult> ConfirmEmailSent()
+        {
+            return await Task.Run(() => View());
+        }
 
-        //    var userName = "er.ranjeetkumar@gmail.com";
-
-        //    //var result = 2; // await _signUpManager.CreateAsync(changePasswordModel);
-        //    //if (result > 0)
-        //    //{
-        //    //    var userResult = await _accountManager.PasswordSignInAsync(applicationUser.Email, applicationUser.Password, rememberMe: false, lockoutOnFailure: false);
-
-        //    //    if (userResult.Id == Guid.Empty)
-        //    //    {
-        //    //        return StatusCode(StatusCodes.Status204NoContent, NotFound("email or password incorrect")); 
-        //    //    }
-
-        //    //    return Ok(_jwtPacketManager.CreateJwtPacketAsync(userResult));
-        //    //}
-
-        //    return StatusCode(StatusCodes.Status204NoContent, NotFound("email or password incorrect"));
-        //}
+      
     }
 }

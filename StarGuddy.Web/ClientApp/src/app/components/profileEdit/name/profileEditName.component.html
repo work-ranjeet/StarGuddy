@@ -1,93 +1,89 @@
-<!--<div id="editName" class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <nav aria-label="...">
-            <ul class="pager">
-                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
-                <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
-            </ul>
-        </nav>
-    </div>
-</div>-->
-<div class="container-fluid">
+<div class="container-fluid padding-top-20">
     <div class="row">
         <div class="col-md-5 col-sm-7 col-xs-12 margin-auto" style="float:none;">
-            <form #frmProfileEditName="ngForm">
+            <form [formGroup]="frmEditName" (ngSubmit)="save()">
                 <div class="card">
-                    <div class="card-header card-title-s">Name</div>
+                    <div class="card-header">Name</div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="firstName" class="required">First Name</label>
-                            <input id="firstName" name="firstName" type="text" class="form-control" autofocus
-                                   [(ngModel)]="userNameModel.firstName"
-                                   placeholder="First Name" pattern="[a-zA-Z][a-zA-Z ]+" required
-                                   #firstName="ngModel"
-                                   (input)="firstNameChange($event.target.value)" />
-                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="error">
-                                <div [hidden]="!firstName.hasError('required')">First name is required.</div>
-                                <div [hidden]="!firstName.hasError('pattern')">Only alphabets allowed.</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="required">Last Name</label>
-                            <input id="lastName" name="lastName" type="text" class="form-control" autofocus
-                                   [(ngModel)]="userNameModel.lastName"
-                                   placeholder="Last Name" pattern="[a-zA-Z][a-zA-Z ]+" required
-                                   #lastName="ngModel"
-                                   (input)="lastNameChange($event.target.value)" />
-                            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="error">
-                                <div [hidden]="!lastName.hasError('required')">Last name is required.</div>
-                                <div [hidden]="!lastName.hasError('pattern')">Only alphabets allowed.</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="orgName">Organization Name</label>
-                            <input id="orgName" name="orgName" type="text" class="form-control" autofocus
-                                   [(ngModel)]="userNameModel.orgName"
-                                   placeholder="Organization Name" pattern="[a-zA-Z][a-zA-Z ]+"
-                                   #orgName="ngModel" />
-                            <div *ngIf="orgName.errors && (orgName.dirty || orgName.touched)" class="error">
-                                <div [hidden]="!orgName.hasError('pattern')">Only alphabets allowed.</div>
-                            </div>
-                        </div>
-                        <hr class="seperator" />
-                        <div class="form-group">
-                            <label class="required">Display Name</label>
-                            <sub style="display:block;">Name will show on your profile.</sub>
-                            <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
-                                <div class="form-check">
-                                    <input id="dispFullName" type="radio" name="agentGroup" class="form-check-input"
-                                           [value]="fullName"
-                                           [(ngModel)]="userNameModel.displayName"
-                                           [checked]="userNameModel.displayName==''||userNameModel.displayName==fullName">
-                                    <label for="dispFullName" style="vertical-align:middle;" class="form-check-label text-l">My full name:&nbsp;<strong>{{fullName}}</strong></label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-check">
-                                    <input id="dispShortName" type="radio" name="agentGroup" class="form-check-input"
-                                           [value]="shortName"
-                                           [(ngModel)]="userNameModel.displayName"
-                                           [checked]="userNameModel.displayName==shortName">
-                                    <label for="dispShortName" style="vertical-align:middle;" class="form-check-label text-l">My short name:&nbsp;<strong>{{shortName}}</strong></label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-check">
-                                    <input id="dispOrgName" type="radio" name="agentGroup" class="form-check-input"
-                                           [value]="userNameModel.orgName"
-                                           [(ngModel)]="userNameModel.displayName"
-                                           [checked]="userNameModel.displayName==orgName">
-                                    <label for="dispOrgName" style="vertical-align:middle;" class="form-check-label text-l">Organization name:&nbsp;<strong>{{userNameModel.orgName}}</strong></label>
-                                </div>
-                            </div>
+                        <mat-form-field class="full-width padding-top-10">
+                            <input matInput placeholder="First name" formControlName="firstName" required autocomplete="off" [(ngModel)]="userNameModel.firstName" (input)="firstNameChange($event.target.value)">
+                            <mat-error *ngFor="let validation of validation_messages.name">
+                                <mat-error class="error-message" *ngIf="frmEditName.get('firstName').hasError(validation.type) && (frmEditName.get('firstName').dirty || frmEditName.get('firstName').touched)">
+                                    {{validation.message}}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Last name" formControlName="lastName" required autocomplete="off" [(ngModel)]="userNameModel.lastName" (input)="lastNameChange($event.target.value)">
+                            <mat-error *ngFor="let validation of validation_messages.name">
+                                <mat-error class="error-message" *ngIf="frmEditName.get('lastName').hasError(validation.type) && (frmEditName.get('lastName').dirty || frmEditName.get('lastName').touched)">
+                                    {{validation.message}}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Organization name" formControlName="orgName" autocomplete="on" [(ngModel)]="userNameModel.orgName">
+                        </mat-form-field>
+                        <div class="form-group padding-top-20">
+                            <span class="required">Display Name</span>
+                            <sub style="display:block;" class="padding-top-10">Name will show on your profile.</sub>
+                            <hr class="seperator" />
+                            <mat-radio-group>
+                                <mat-radio-button class="display-block  padding-top-10 padding-left-15" value="{{fullName}}" (change)="radioChange($event)"
+                                                  [checked]="userNameModel.displayName==''||userNameModel.displayName==fullName">
+                                    <span class="mat-label-light ">My full name:</span>&nbsp;<strong>{{fullName}}</strong>
+                                </mat-radio-button>
+                                <mat-radio-button class="display-block padding-top-10 padding-left-15" value="{{shortName}}" (change)="radioChange($event)"
+                                                  [checked]="userNameModel.displayName==shortName">
+                                    <span class="mat-label-light ">My short name:</span>&nbsp;<strong>{{shortName}}</strong>
+                                </mat-radio-button>
+                                <mat-radio-button class="display-block  padding-top-10 padding-left-15" value="{{userNameModel.orgName}}" (change)="radioChange($event)"
+                                                  [checked]="userNameModel.displayName==orgName">
+                                    <span class="mat-label-light ">Organization name:</span>&nbsp;<strong>{{userNameModel.orgName}}</strong>
+                                </mat-radio-button>
+                            </mat-radio-group>
                         </div>
                         <hr class="seperator" />
-                        <div class="col-sm-12 text-center padding-15">
-                            <button id="btnSave" type="submit" class="btn-profile-save btn btn-success" (click)="save()" [disabled]="!frmProfileEditName.form.valid">Save</button>
+                        <div class="col-sm-12 text-center padding-10">
+                            <button id="btnSave" type="submit" class="btn btn-m  btn-success" [disabled]="!frmEditName.valid">Save</button>
                         </div>
                     </div>
+
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
+<!--<div class="form-group">
+    <label class="required">Display Name</label>
+    <sub style="display:block;">Name will show on your profile.</sub>
+    <div class="col-md-12 col-sm-12 col-xs-12 margin-top-15">
+        <div class="form-check">
+            <input id="dispFullName" type="radio" name="agentGroup" class="form-check-input"
+                   [value]="fullName"
+                   [(ngModel)]="userNameModel.displayName"
+                   [checked]="userNameModel.displayName==''||userNameModel.displayName==fullName">
+            <label for="dispFullName" style="vertical-align:middle;" class="form-check-label text-l">My full name:&nbsp;<strong>{{fullName}}</strong></label>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="form-check">
+            <input id="dispShortName" type="radio" name="agentGroup" class="form-check-input"
+                   [value]="shortName"
+                   [(ngModel)]="userNameModel.displayName"
+                   [checked]="userNameModel.displayName==shortName">
+            <label for="dispShortName" style="vertical-align:middle;" class="form-check-label text-l">My short name:&nbsp;<strong>{{shortName}}</strong></label>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="form-check">
+            <input id="dispOrgName" type="radio" name="agentGroup" class="form-check-input"
+                   [value]="userNameModel.orgName"
+                   [(ngModel)]="userNameModel.displayName"
+                   [checked]="userNameModel.displayName==orgName">
+            <label for="dispOrgName" style="vertical-align:middle;" class="form-check-label text-l">Organization name:&nbsp;<strong>{{userNameModel.orgName}}</strong></label>
+        </div>
+    </div>
+</div>-->

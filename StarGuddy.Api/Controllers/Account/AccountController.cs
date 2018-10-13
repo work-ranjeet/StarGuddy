@@ -25,28 +25,36 @@ namespace StarGuddy.Api.Controllers.Account
             this._userManager = userManager;
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return BadRequest();
-            }
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound($"Oops! {userId} is invalid. Please try again.");
-            }
-           // var result = await _userManager.ConfirmEmailAsync(user, code);
-            return Ok();
-        }
+        //[HttpPost("change-password")]
+        //public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordModel changePasswordModel)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmailSent()
-        {
-            return await Task.Run(() => View());
-        }
+        //    if(string.IsNullOrEmpty(changePasswordModel.NewPassword) && string.IsNullOrEmpty(changePasswordModel.ConfirmPassword) && changePasswordModel.NewPassword == changePasswordModel.OldPassword)
+        //    {
+        //        return BadRequest("The new password and confirmation password do not match.");
+        //    }
+
+        //    var userName = "er.ranjeetkumar@gmail.com";
+
+        //    //var result = 2; // await _signUpManager.CreateAsync(changePasswordModel);
+        //    //if (result > 0)
+        //    //{
+        //    //    var userResult = await _accountManager.PasswordSignInAsync(applicationUser.Email, applicationUser.Password, rememberMe: false, lockoutOnFailure: false);
+
+        //    //    if (userResult.Id == Guid.Empty)
+        //    //    {
+        //    //        return StatusCode(StatusCodes.Status204NoContent, NotFound("email or password incorrect")); 
+        //    //    }
+
+        //    //    return Ok(_jwtPacketManager.CreateJwtPacketAsync(userResult));
+        //    //}
+
+        //    return StatusCode(StatusCodes.Status204NoContent, NotFound("email or password incorrect"));
+        //}
+
     }
 }

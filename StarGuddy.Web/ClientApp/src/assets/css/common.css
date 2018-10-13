@@ -3,7 +3,7 @@
 body {
     padding: 0px;
     margin: 0px;
-    font-family: 'Roboto Condensed',Arial,sans-serif;
+    font-family: 'Raleway:300','Roboto Condensed',Arial,sans-serif;
     background-color: #f3f3f3 !important;
     font-size: 14px;
     line-height: 20px;
@@ -199,8 +199,8 @@ hr {
 
     hr.seperator {
         margin: 1px !important;
-        padding: 10px 0 10px 0;
-        border-bottom: solid thin #f8f6f6;
+        padding: 5px 0 5px 0;
+        border-top: solid thin #f8f6f6;
     }
 
     hr.style-one {
@@ -623,6 +623,10 @@ margin-right-10 {
 
 .text-white {
     color: white !important;
+}
+
+.text-mute {
+    color: #CCC;
 }
 
 .text-disclosure {

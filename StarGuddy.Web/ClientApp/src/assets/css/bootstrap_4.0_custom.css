@@ -72,6 +72,10 @@
 }
 
 .card-header {
+    padding: 10px;
+    font-family: 'Raleway:300','Roboto Condensed',Arial,sans-serif;
+    font-size: 22px;
+    min-height: 45px;
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -360,8 +364,8 @@
     visibility: hidden;
 }*/
 
-input[type=checkbox]:checked + label {
+/*input[type=checkbox]:checked + label {
     left: 43px;
-}
+}*/
 
 /* end .slideCheckBox */

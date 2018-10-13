@@ -1,7 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule, } from "@angular/material";
+
 import { AuthGuard } from "../../Services/AuthenticationGuard";
 import { ProfileEditActingComponent } from "./acting/profileEditActing.component";
 import { ProfileEditAddressComponent } from "./address/profileEditAddress.component";
@@ -17,7 +19,6 @@ import { ProfileEditModelingComponent } from "./modeling/profileEditModeling.com
 import { ProfileEditNameComponent } from "./name/profileEditName.component";
 import { ProfileEditPhotosComponent } from "./photos/profileEditPhotos.component";
 import { ProfileEditPhysicalComponent } from "./physicalDetails/profileEditPhysical.component";
-//import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule, MatSelectModule } from '@angular/material';
 import { ProfileEditService } from "./profileEdit.Service";
 import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.component";
 
@@ -30,8 +31,8 @@ import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.
     ],
     imports: [        
         CommonModule,
-        FormsModule,
-        //MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule, MatSelectModule,
+        FormsModule, ReactiveFormsModule,
+        MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule
         RouterModule.forRoot([
             {
                 path: "profile",

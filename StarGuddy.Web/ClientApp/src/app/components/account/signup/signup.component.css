@@ -18,10 +18,10 @@ input.border-left-none {
     border-left: none !important;
 }
 
-mat-card {
+/*mat-card {
     border: solid 1px #CCC;
     border-radius: 10px
-}
+}*/
 
 .mat-step-label-selected {
     font-size: 13px!important;
