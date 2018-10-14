@@ -1,15 +1,10 @@
 .profile-img-container {
-    width: 235px;
-    height: 265px;
+    width: 202px;
+    height: 249px;
     z-index: 9;
 }
 
-    .profile-img-container .profile-img {
-        width: inherit;
-        height: inherit;
-    }
-
-        .profile-img-container .profile-img .img-size {
+        .profile-img-container .img-size {
             width: inherit;
             height: inherit;
             border-radius: 50%;
@@ -18,8 +13,8 @@
 
     .profile-img-container .img-edit-icon {
         position: absolute;
-        margin-top: -64px;
-        margin-left: 187px;
+        margin-top: -76px;
+        margin-left: 170px
     }
 
         .profile-img-container .img-edit-icon > a {
@@ -32,14 +27,9 @@
     height: 170px;
     margin: auto;
 }
+   
 
-    .profile-img-container-mob .profile-img {
-        width: inherit;
-        height: inherit;
-        z-index: -1;
-    }
-
-        .profile-img-container-mob .profile-img .img-size {
+        .profile-img-container-mob .img-size {
             width: inherit;
             height: inherit;
             border-radius: 50%;

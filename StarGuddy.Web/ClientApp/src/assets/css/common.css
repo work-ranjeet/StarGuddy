@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 body {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Raleway:300','Roboto Condensed',Arial,sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-family: 'Raleway:300','Roboto Condensed',Arial,sans-serif !important;
     background-color: #f3f3f3 !important;
-    font-size: 14px;
-    line-height: 20px;
-    color: #383838;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    color: #383838 !important;
 }
 
 .body-content {
@@ -224,7 +224,6 @@ hr {
         border: 0;
         box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
     }
-
 
 /* ----------------------------------------------- Buttons ---------------------------------------------*/
 
@@ -651,6 +650,10 @@ margin-right-10 {
         }
 
 /*-------------------------------------common-------------------------------------------*/
+.hidden {
+    visibility: hidden !important;
+}
+
 .display-inline {
     display: inline !important;
 }
@@ -670,17 +673,19 @@ margin-right-10 {
 }
 
 .edit-icon-l, .edit-icon-m, .edit-icon-s {
-    font-size: 18px !important;
+    font-size: 15px !important;
     padding: 5px !important;
     display: inline !important;
+    font-style:normal;
+    font-weight:400;
 }
 
 .edit-icon-l {
-    font-size: 20px !important;
+    font-size: 18px !important;
 }
 
 .edit-icon-s {
-    font-size: 15px !important;
+    font-size: 13px !important;
 }
 
 

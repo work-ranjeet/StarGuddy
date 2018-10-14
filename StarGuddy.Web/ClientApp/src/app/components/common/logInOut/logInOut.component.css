@@ -88,7 +88,8 @@ ul.nav-logout-menu {
 }
 
     .user-setting-menu .content {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-family: Raleway, Arial !important;
+        font-weight:400;
     }
 
         .user-setting-menu .content > ul > li {

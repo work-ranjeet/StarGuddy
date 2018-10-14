@@ -41,11 +41,11 @@
                     </div>-->
                     <div class="content">
                         <ul>
-                            <li class="pull-left"><a class="fa fa-user-o" [routerLink]="['/profile']"> &nbsp;&nbsp; My Profile</a></li>
+                            <li class="pull-left"><a [routerLink]="['/profile']"><i class="fa fa-user"></i> &nbsp;&nbsp; My Profile</a></li>
                             <!--<li class="pull-left"><a class="fa fa-bell-o" [routerLink]="['/Notification']"> &nbsp;&nbsp; Notifications</a></li>-->
-                            <li class="pull-left"><a class="fa fa-gears" [routerLink]="['/profileSetting']"> &nbsp;&nbsp; Settings</a></li>
+                            <li class="pull-left"><a  [routerLink]="['/profileSetting']"><i class="fa fa-cogs"></i> &nbsp;&nbsp; Settings</a></li>
                             <li class="pull-left">
-                                <span class="fa fa-sign-out">&nbsp;</span>
+                                <i class="glyphicon glyphicon-log-out">&nbsp;</i>
                                 <a style="font-size: 13px; color: #CC0000;" (click)="logOut()">Sign Out</a>
                             </li>
                         </ul>

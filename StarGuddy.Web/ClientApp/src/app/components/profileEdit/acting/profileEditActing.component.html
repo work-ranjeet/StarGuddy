@@ -4,8 +4,8 @@
             <div class="card-header card-title-m">
                 <span>Acting</span>
                 <span class="pull-right">
-                    <i *ngIf="!showEditHtml" class="fa fa-edit text-success" (click)="edit()"></i>
-                    <i *ngIf="showEditHtml" class="fa fa-window-close-o text-danger" (click)="edit()"></i>
+                    <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
                 </span>
             </div>
             <div *ngIf="!showEditHtml" class="card-body">

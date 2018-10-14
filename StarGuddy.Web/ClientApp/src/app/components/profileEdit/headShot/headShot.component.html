@@ -1,50 +1,60 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-sm-10 col-xs-12 margin-auto" style="float:none;">
-            <div class="page-heading padding-bottom-10">
+        <div class="col-md-12">
+            <div class="page-heading">
                 <h2 class="card-title">Change your profile image</h2>
             </div>
-            <sub class="padding-10" style="font-size:12px;">Choose your any image with clear face.</sub>
+            <sub class="padding-5" style="font-size:12px;">Choose your any image with clear face.</sub>
         </div>
     </div>
-    <div class="margin-top-15">
-
-        <form #frmProfileHeadShot="ngForm" class="padding-top-20">
-            <div class="row">
-                <div class="col-md-8 col-sm-10 col-xs-12 margin-auto" style="float:none;">
-                    <div class="form-group">
-                        <label for="imgCaption" class="text-muted required">Caption</label>
-                        <input type="text" id="imgCaption" name="imgCaption" class="form-control" required [(ngModel)]="headShotModel.caption" />
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <img [src]="headShotModel.dataUrl" style="height:210px; width:200px; border:solid 1px #CCC;" />
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-xs-12">
-                            <div class="hidden-xs" style="margin-top:80px;">&nbsp;</div>
-                            <div class="form-group">
-                                <label for="fileUploder" class="text-muted display-inline-block">Select image</label>
-                                <sub style="font-weight:bold;color:green; float:right;" *ngIf="progress > 0 && progress < 100">
-                                    {{progress}}%
-                                </sub>
-
-                                <!--<div class="progress display-inline-block pull-right" style="margin-bottom:0px!important; width:50%; border:solid 1px #ccc;" >
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="50" style="width:{{progress}}%;">
-                                        {{progress}}%
-                                    </div>
-                                </div>-->
-                                <sub style="font-weight:bold;color:green;  float:right;" *ngIf="message">
-                                    {{message}}
-                                </sub>
-                                <input type="file" id="fileUploder" name="fileUploder" class="form-control" #image accept="image/*" (change)="handleFileInput($event.target.files)" />
-                            </div>
-                            <div class="form-group">
-                                <button id="btnSave" type="submit" class="btn-profile-save btn btn-success" (click)="uploadImage()" [disabled]="!frmProfileHeadShot.form.valid || image.value==''">Upload Image</button>
-                            </div>
-                        </div>
-                    </div>
+    <form #frmProfileHeadShot="ngForm" class="padding-top-20">
+        <div class="row padding-5">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <label class="btn btn-success">
+                    <i class="fa fa-paperclip" style="font-size:16px;"></i>&nbsp;Select file
+                    <input type="file" id="fileUploder" name="fileUploder" class="hidden" #image accept="image/*" (change)="handleFileInput($event)" />
+                </label>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4  text-right">
+                <button *ngIf="showImgeCropper" id="btnSave" type="submit" class="btn-profile-save btn btn-success" (click)="uploadImage()" [disabled]="!frmProfileHeadShot.form.valid || image.value==''">
+                    <span *ngIf="!message && !(progress > 0 && progress < 100)">
+                        <i class="fa fa-upload"></i>&nbsp;Upload Image
+                    </span>
+                    <sub style="font-weight:bold;" *ngIf="progress > 0 && progress < 100">{{progress}}%</sub>
+                    <sub style="font-weight:bold;" *ngIf="message">{{message}}</sub>
+                </button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+            </div>
+        </div>
+        <div *ngIf="showImgeCropper" class="row">
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <!-- [imageChangedEvent]="imageChangedEvent" -->
+                <image-cropper format="png,jpeg" class="img-fluid img-thumbnail" [cropper]="coordinates" style="max-height:500px;"
+                               [imageBase64]="cropperBase64" [maintainAspectRatio]="true" [aspectRatio]="4/5" [resizeToWidth]="192"
+                               (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()">
+                </image-cropper>
+               
+                <div class="col-md-6 margin-auto padding-5" style="float:none;">
+                    <label class="btn btn-info pull-right" (click)="rotate(true);">
+                        <i *ngIf="!isLeftRotating" class="fa fa-redo" style="font-size:12px;"></i>
+                        <i *ngIf="isLeftRotating" class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                        &nbsp;&nbsp;Rotate right
+                    </label>
+                    <label class="btn btn-info" (click)="rotate(false);">
+                        <i *ngIf="!isRightRotating"  class="fa fa-undo" style="font-size:12px;" ></i>
+                        <i *ngIf="isRightRotating"  class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                        &nbsp;&nbsp;Rotate left
+                    </label>
                 </div>
             </div>
-        </form>
-    </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 rounded">
+            <img [src]="headShotModel.dataUrl" class="img-fluid img-thumbnail rounded" style="max-height: 250px; max-width: 200px;"/>
+            </div>
+        </div>
+        <!--<label for="imgCaption" class="text-muted required">Caption</label>
+        <input type="text" id="imgCaption" name="imgCaption" class="form-control" required [(ngModel)]="headShotModel.caption" />-->
+        <!--<img [src]="headShotModel.dataUrl" style="height:210px; width:200px; border:solid 1px #CCC;" />-->
+    </form>
+
 </div>

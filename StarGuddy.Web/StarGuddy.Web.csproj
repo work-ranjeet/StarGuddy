@@ -49,12 +49,6 @@
     <Content Include="ClientApp\src\assets\css\icons\search-section-bck.jpg" />
     <Content Include="ClientApp\src\assets\css\img\arti.jpg" />
     <Content Include="ClientApp\src\assets\css\img\artiwa.JPG" />
-    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.eot" />
-    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.ttf" />
-    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff" />
-    <Content Include="ClientApp\src\assets\fonts\fontawesome-webfont.woff2" />
-    <Content Include="ClientApp\src\assets\fonts\FontAwesome.otf" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
