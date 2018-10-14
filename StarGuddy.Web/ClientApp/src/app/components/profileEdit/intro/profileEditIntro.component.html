@@ -17,24 +17,24 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="txtAboutMe" class="required">About me</label>
-                            <textarea id="txtAboutMe" name="txtAboutMe" style="width:100%; min-height:200px;" class="form-control" [(ngModel)]="userDetailModel.about" #about="ngModel"></textarea>
+                            <textarea id="txtAboutMe" name="txtAboutMe" required style="width:100%; min-height:200px;" class="form-control" [(ngModel)]="userDetailModel.about" #about="ngModel"></textarea>
                             <sub>{{1400-(userDetailModel.about==undefined? 0 :userDetailModel.about.length)}} characters remaining</sub>
                             <div *ngIf="about.invalid && (about.dirty || about.touched)" class="error">
                                 <div *ngIf="about.errors.required">Dance experience is required.</div>
                             </div>
                         </div>
-                        <div class="col-md-10 margin-top-20 padding-top-20">
+                        <!--<div class="col-md-10 margin-top-20 padding-top-20 hidden">
                             <label for="profileAddress" class="required display-block">Profile address</label>
                             <sub style="vertical-align: super;">Choose the web address for your profile page</sub>
                             <div class="input-group">
-                                <span class="input-group-addon" id="profileAddress">https://www.StarGuddy.com/</span>
+                                <span class="input-group-addon" id="profileAddress">https://www.StarGuddy.com/star/</span>
                                 <input id="profileAddress" name="profileAddress" type="text" class="form-control border-left-none" aria-describedby="profileAddress"
                                        [(ngModel)]="userDetailModel.profileAddress" required #profileAddress="ngModel" />
                             </div>
                             <div *ngIf="profileAddress.errors && (profileAddress.dirty || profileAddress.touched)" class="error">
                                 <div [hidden]="!profileAddress.hasError('required')">Profile address is required.</div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <hr class="seperator" />
                     <div class="col-sm-12 text-center padding-15">

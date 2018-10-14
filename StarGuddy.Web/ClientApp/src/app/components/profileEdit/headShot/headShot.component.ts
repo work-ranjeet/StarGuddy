@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import IHeadShot = App.Client.Profile.IImageModel;
 import { HttpEventType, HttpEvent } from '@angular/common/http';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
+import { ToastrService } from '../../../Services/ToastrService';
 
 
 /** @title Simple form field */
@@ -37,6 +38,7 @@ export class ProfileHeadShotComponent {
     get Gender(): string { return this._gender; }
 
     constructor(
+        private toastr: ToastrService,
         private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
         private readonly profileService: ProfileEditService) { }
@@ -112,8 +114,10 @@ export class ProfileHeadShotComponent {
         this.profileService.UploadHeadShotImage(this.headShotModel).subscribe((event: any) => {
             if (event.type === HttpEventType.UploadProgress)
                 this.progress = Math.round(100 * event.loaded / event.total);
-            else if (event.type === HttpEventType.Response)
-                this.message = event.body.toString();
+            else if (event.type === HttpEventType.Response) {
+                //this.message = event.body.toString();
+                this.toastr.success(event.body.toString());
+            }
         });
     }
 

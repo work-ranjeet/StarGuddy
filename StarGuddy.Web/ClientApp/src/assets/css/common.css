@@ -79,7 +79,6 @@ body {
 /* -------------------------------------------------------------------End Container ----------------------------------------------------*/
 a {
     text-decoration: none !important;
-    cursor: pointer !important;
 }
 
     a:hover, a:hover > span, a:hover > i, .nav-sign-in > a:hover, .nav-sign-in > a:focus {
@@ -149,7 +148,12 @@ ul {
         color: #fff;
     }
 
-
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+     font-weight:400 !important;
+}
 textarea {
     border: 1px solid #E5E5E5;
     background: #FAFAFA;
@@ -678,6 +682,7 @@ margin-right-10 {
     display: inline !important;
     font-style:normal;
     font-weight:400;
+    cursor:pointer!important;
 }
 
 .edit-icon-l {

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { ToastModule } from "ng5-toastr";
+import { ToastModule, ToastOptions } from "ng5-toastr";
 
 import { ProfileModuleShared } from "../app/components/profile/profile.module.shared";
 import { ProfileEditModuleShared } from "../app/components/profileEdit/profileEdit.module.shared";
@@ -24,7 +24,7 @@ import { JwtInterceptor } from "./Interceptor/jwt.interceptor";
 import { AuthGuard } from "./Services/AuthenticationGuard";
 import { BaseService } from "./Services/BaseService";
 import { HttpService } from "./Services/HttpClient";
-import { ToastrService } from "./Services/ToastrService";
+import { ToastrService, ToasterOption } from "./Services/ToastrService";
 
 @NgModule({
     declarations: [
@@ -43,7 +43,8 @@ import { ToastrService } from "./Services/ToastrService";
 
         ])
     ],
-    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService, ToastrService, ToastModule,
+    providers: [AppConstant, DbOperation, DataConverter, DataValidator, BaseService, AuthGuard, HttpService, ToastModule,
+        ToastrService, { provide: ToastOptions, useClass: ToasterOption },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
