@@ -39,6 +39,11 @@ INSERT INTO ExpertLavel(Code, Lavel, Detail) VALUES (2,'Intermediate', 'Intermed
 INSERT INTO ExpertLavel(Code, Lavel, Detail) VALUES (3,'Expert', 'Expert')
 -------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO ImageType(Code,Name,[Description]) VALUES(1, 'HeadShotActive', 'Head Shot Active image to show in profile')
+INSERT INTO ImageType(Code,Name,[Description]) VALUES(2, 'GallaryImage', 'it will show on profile')
+
+INSERT INTO ApprovalStatus(Code,Name,[Description]) VALUES(1, 'Approval Pending', 'Approval Pending')
+INSERT INTO ApprovalStatus(Code,Name,[Description]) VALUES(11, 'Approval in progress', 'Approval In Progress')
+INSERT INTO ApprovalStatus(Code,Name,[Description]) VALUES(21, 'Not Approved', 'Not Approval')
 
 ---------------------------------------------Experience-----------------------------------------------------------------------------------
 ----Exp Type-

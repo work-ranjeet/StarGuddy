@@ -623,20 +623,21 @@ IF EXISTS (
 		)
 	DROP PROCEDURE GetProfileEditHeader
 GO
---EXEC GetProfileHeader 'D40B2C5D-2881-4E8B-844A-B503DEB090BE'
+--EXEC GetProfileEditHeader 'D40B2C5D-2881-4E8B-844A-B503DEB090BE'
 CREATE PROCEDURE GetProfileEditHeader (@UserId UNIQUEIDENTIFIER)
 AS
 BEGIN
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	SELECT U.Id, U.FirstName, U.LastName, U.DisplayName, UA.CityOrTown, UA.StateOrProvince, UA.Country, UP.PhoneNumber, UE.Email, UD.About, UI.ImageUrl, UI.DataUrl
-	FROM users U
+	SELECT U.Id, U.FirstName, U.LastName, U.DisplayName, UA.CityOrTown, UA.StateOrProvince, UA.Country, UP.PhoneNumber, UE.Email, UD.About, UI.ImageUrl, UI.DataUrl, UI.StatusCode, APS.Name AS StatusText
+	FROM Users U
 	LEFT JOIN UserAddress UA ON UA.UserId = U.Id AND UA.IsActive = 1 AND UA.IsDeleted = 0
 	LEFT JOIN UserPhones UP ON UP.UserId = U.Id AND UP.IsActive = 1 AND UP.IsDeleted = 0
 	LEFT JOIN UserEmails UE ON UE.UserId = U.Id AND UE.IsActive = 1 AND UE.IsDeleted = 0
 	LEFT JOIN UserDetail UD ON UD.UserId = U.Id AND UD.IsActive = 1 AND UD.IsDeleted = 0
 	LEFT JOIN UserImage UI ON UI.UserId = U.Id AND UI.IsActive = 1 AND UI.IsDeleted = 0 AND UI.ImageType = 1
+	LEFT JOIN ApprovalStatus APS ON APS.Code = UI.StatusCode AND APS.IsActive = 1 AND APS.IsDeleted = 0
 	WHERE U.Id = @UserId
 
 	EXEC GetUserJobGroup @UserId
@@ -668,7 +669,7 @@ BEGIN
 	LEFT JOIN UserPhones UP ON UP.UserId = U.Id AND UP.IsActive = 1 AND UP.IsDeleted = 0
 	LEFT JOIN UserEmails UE ON UE.UserId = U.Id AND UE.IsActive = 1 AND UE.IsDeleted = 0
 	LEFT JOIN UserDetail UD ON UD.UserId = U.Id AND UD.IsActive = 1 AND UD.IsDeleted = 0
-	LEFT JOIN UserImage UI ON UI.UserId = U.Id AND UI.IsActive = 1 AND UI.IsDeleted = 0 AND UI.ImageType = 1
+	LEFT JOIN UserImage UI ON UI.UserId = U.Id AND UI.IsActive = 1 AND UI.IsDeleted = 0 AND UI.ImageType = 1 AND UI.StatusCode = 111
 	WHERE U.Id = @UserId
 
 	EXEC GetUserJobGroup @UserId

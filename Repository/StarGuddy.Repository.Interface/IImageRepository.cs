@@ -1,4 +1,5 @@
-﻿using StarGuddy.Data.Entities;
+﻿using StarGuddy.Core.Enums;
+using StarGuddy.Data.Entities;
 using StarGuddy.Data.Entities.Interface;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace StarGuddy.Repository.Interface
         Task<IUserImage> GetUserImageAsync(Guid userId);
 
         Task<UserImage> GetUserHeadShotImages(Guid userId, int imageType);
+
+        Task<IEnumerable<UserImage>> GetUserImagesAsync(Guid userId, ImageType imageType);
 
         Task<bool> PerformSaveAndUpdateOperationAsync(IUserImage userImage);
     }

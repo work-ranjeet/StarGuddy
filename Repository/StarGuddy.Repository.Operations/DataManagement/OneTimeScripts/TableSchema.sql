@@ -400,6 +400,14 @@ CREATE TABLE ImageType(
 	DttmModified DATETIME2 DEFAULT (getutcdate()),
 )
 GO
+CREATE TABLE ApprovalStatus(
+	Code INT PRIMARY KEY NOT NULL, 
+	Name NVARCHAR(250) NOT NUll,	
+	[Description] NVARCHAR(1000) NULL,
+	IsActive bit NOT NULL DEFAULT(1),
+	IsDeleted bit NOT NULL DEFAULT(0)
+)
+GO
 CREATE TABLE UserImage(
 	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL,
 	UserId UNIQUEIDENTIFIER NOT NULL,
@@ -411,11 +419,16 @@ CREATE TABLE UserImage(
 	ImageType INT NOT NUll,
 	IsActive bit NOT NULL DEFAULT(1),
 	IsDeleted bit NOT NULL DEFAULT(0),
+	StatusCode int NOT NULL DEFAULT(1),
+	ApprovalId UNIQUEIDENTIFIER NULL,
 	DttmCreated DATETIME2 DEFAULT (getutcdate()),
 	DttmModified DATETIME2 DEFAULT (getutcdate()),
 	FOREIGN KEY (UserId) REFERENCES Users(Id),
+	FOREIGN KEY (ApprovalId) REFERENCES Users(Id),
+	FOREIGN KEY (StatusCode) REFERENCES ApprovalStatus(Code),
 	FOREIGN KEY (ImageType) REFERENCES ImageType(Code)
 )
+
 
 GO
 CREATE TABLE SettingsMaster (

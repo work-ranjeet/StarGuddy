@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\StarGuddy.Core\StarGuddy.Core.csproj" />
     <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities.Interface\StarGuddy.Data.Entities.Interface.csproj" />
     <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities\StarGuddy.Data.Entities.csproj" />
   </ItemGroup>

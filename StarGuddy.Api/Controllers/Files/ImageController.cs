@@ -55,6 +55,19 @@ namespace StarGuddy.Api.Controllers.Files
             return StatusCode(StatusCodes.Status304NotModified, "Oops! there are some error occurred. Please try after some times");
         }
 
+        [HttpGet]
+        [Route("all")]
+        public async Task<IActionResult> GetImages()
+        {
+            var result = await _imageManager.GetAllImages();
+            if (result == null || !result.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
         //[HttpPost]
         //[Route("UploadImage")]
         //public IActionResult UploadImage(IFormFile file)

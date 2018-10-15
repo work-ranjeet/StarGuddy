@@ -275,6 +275,8 @@ namespace StarGuddy.Business.Modules.Profile
 
             return detailModel;
         }
-        #endregion
+        #endregion      
+
+       
     }
 }

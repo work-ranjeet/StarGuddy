@@ -1,4 +1,4 @@
-﻿namespace App.Client.PublicProfile {
+namespace App.Client.PublicProfile {
 
     import Profile = App.Client.Profile;
 
@@ -18,6 +18,8 @@
         about: string;
         cityOrTown: string;
         stateOrProvince: string;
+        statusCode: number;
+        statusText: string;
         country: string;
         phoneNumber: string;
         email: string;

@@ -11,4 +11,19 @@ namespace StarGuddy.Core.Enums
         Expert = 20
     }
 
+    public enum ImageType
+    {
+        AllImage = 0,
+        HeadShotActive = 1,
+        GallaryImage = 2
+    }
+
+    public enum ApprovalStatus
+    {
+        ApprovalPending = 1,
+        ApprovalInProgress = 11,
+        NotApproved = 21,
+        Approved = 111
+    }
+
 }

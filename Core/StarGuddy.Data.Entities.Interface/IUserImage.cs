@@ -16,6 +16,8 @@ namespace StarGuddy.Data.Entities.Interface
         int ImageType { get; set; }
         bool IsActive { get; set; }
         bool IsDeleted { get; set; }
+        int StatusCode { get; set; }
+        Guid ApprovalId { get; set; }
         DateTime? DttmCreated { get; set; }
         DateTime? DttmModified { get; set; }
     }

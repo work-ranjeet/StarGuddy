@@ -24,7 +24,7 @@ namespace App.Client.Profile {
     }
 
     export interface IUserCreditRequest {
-        userCreditList:Array<IUserCreditModel>;
+        userCreditList: Array<IUserCreditModel>;
     }
 
     export interface IDancingStyleModel {
@@ -159,5 +159,18 @@ namespace App.Client.Profile {
         imageUrl: string;
         dataUrl: string;
         imageType: number;
+    }
+
+    export interface IUserImageModel {
+        id: string;
+        userId: string;
+        name: string;
+        caption: string;
+        imageUrl: string;
+        size: number;
+        dataUrl: string;
+        imageType: number;
+        statusCode: number;
+        statusText: string;
     }
 }

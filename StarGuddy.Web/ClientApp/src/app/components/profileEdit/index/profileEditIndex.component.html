@@ -1,6 +1,13 @@
 <div *ngIf="!showLoadingSpinner" class="container">
     <profile-edit-header [jobGroupNames]="GroupNames" [profileHeader]="ProfileHeader"></profile-edit-header>
     <profile-edit-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-edit-menu>
+
+
+    <div id="photos">
+        <profile-edit-photos></profile-edit-photos>
+    </div>
+
+
     <profile-edit-physicalDetails></profile-edit-physicalDetails>
 
     <div id="1003" *ngIf="SetionVisbility.showExtras"><profile-edit-credits></profile-edit-credits></div>
@@ -12,6 +19,4 @@
     <div class="loading"><ul class="spinner"><li></li><li></li><li></li></ul></div>
 </div>
 
-<!--<div id="photos">
-      <profile-edit-photos></profile-edit-photos>
-  </div>-->
+

@@ -20,6 +20,10 @@ namespace StarGuddy.Data.Entities
 
         public string StateOrProvince { get; set; }
 
+        public int StatusCode { get; set; }
+
+        public string StatusText { get; set; }
+
         public string Country { get; set; }
 
         public string PhoneNumber { get; set; }

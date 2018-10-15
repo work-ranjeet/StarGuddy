@@ -370,6 +370,6 @@ namespace StarGuddy.Api.Controllers.Profile
             }
 
             return StatusCode(StatusCodes.Status304NotModified, this);
-        }
+        }       
     }
 }

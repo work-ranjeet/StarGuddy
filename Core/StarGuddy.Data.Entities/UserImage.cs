@@ -17,6 +17,8 @@ namespace StarGuddy.Data.Entities
         public int ImageType { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+        public int StatusCode { get; set; }
+        public Guid ApprovalId { get; set; }
         public DateTime? DttmCreated { get; set; }
         public DateTime? DttmModified { get; set; }
     }

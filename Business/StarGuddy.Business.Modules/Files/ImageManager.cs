@@ -17,8 +17,10 @@ namespace StarGuddy.Business.Modules.Files
     using StarGuddy.Api.Models.ActionResult;
     using StarGuddy.Api.Models.Files;
     using StarGuddy.Api.Models.Interface.ActionResult;
+    using StarGuddy.Api.Models.Profile;
     using StarGuddy.Business.Interface.Files;
     using StarGuddy.Core.Context;
+    using StarGuddy.Core.Enums;
     using StarGuddy.Data.Entities;
     using StarGuddy.Repository.Interface;
     #endregion
@@ -61,7 +63,7 @@ namespace StarGuddy.Business.Modules.Files
 
         public async Task<ImageModel> GetHeadShotImageDetail()
         {
-            var userImage =  await _imageRepository.GetUserHeadShotImages(UserContext.Current.UserId, 1);
+            var userImage = await _imageRepository.GetUserHeadShotImages(UserContext.Current.UserId, 1);
             if (userImage.IsNotNull())
             {
                 return _mapper.Map<ImageModel>(userImage);
@@ -78,6 +80,25 @@ namespace StarGuddy.Business.Modules.Files
 
             return await _imageRepository.PerformSaveAndUpdateOperationAsync(userImage);
         }
+        public async Task<IEnumerable<UserImageModel>> GetAllImages()
+        {
+            var images = await _imageRepository.GetUserImagesAsync(UserContext.Current.UserId, ImageType.AllImage);
+            try
+            {
+                var imageModelResut = _mapper.Map<List<UserImageModel>>(images);
+                if (imageModelResut != null)
+                {
+                    imageModelResut.ForEach(x => x.StatusText = ApprovalText((ApprovalStatus)x.StatusCode));
+                }
+
+                return imageModelResut;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         /// <summary>
         /// Gets this instance.
@@ -186,6 +207,30 @@ namespace StarGuddy.Business.Modules.Files
         public Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request)
         {
             throw new NotImplementedException();
+        }
+
+        private string ApprovalText(ApprovalStatus approvalStatus)
+        {
+            string text = string.Empty;
+            switch (approvalStatus)
+            {
+                case ApprovalStatus.Approved:
+                    text = "Approved";
+                    break;
+
+                case ApprovalStatus.NotApproved:
+                    text = "Not Approved";
+                    break;
+
+                case ApprovalStatus.ApprovalPending:
+                    text = "Approval Pending";
+                    break;
+
+                case ApprovalStatus.ApprovalInProgress:
+                    text = "Approval In Progress";
+                    break;
+            }
+            return text;
         }
     }
 }

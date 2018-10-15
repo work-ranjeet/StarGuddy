@@ -100,7 +100,7 @@ export class ProfileEditCreditsComponent {
 
     deleteCredits(selectedYear: string) {
 
-        var actionResult = confirm("Do you want to delete this entry?")
+        var actionResult = confirm("Do you want to delete this entry?");
         if (actionResult && selectedYear != undefined && selectedYear != ";") {
 
             let index = this.CreditsList.findIndex(x => x.workYear == parseInt(selectedYear));

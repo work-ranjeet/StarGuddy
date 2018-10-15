@@ -24,6 +24,5 @@ export class ProfileEditPhotosComponent {
     ngOnInit() {
        
     }
-
-    
+        
 }

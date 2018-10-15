@@ -24,6 +24,7 @@ namespace StarGuddy.Business.Modules.Mapper
             CreateMap<UserModeling, UserModelingModel>().ReverseMap();
             CreateMap<UserSettings, UserSettingDto>().ReverseMap();
             CreateMap<JobGroup, JobGroupModel>().ReverseMap();
+            CreateMap<UserImage, UserImageModel>().ReverseMap();
             CreateMap<PhysicalAppearance, PhysicalAppearanceModal>().ReverseMap();
 
             CreateMap<User, AppUserDto>().ReverseMap();

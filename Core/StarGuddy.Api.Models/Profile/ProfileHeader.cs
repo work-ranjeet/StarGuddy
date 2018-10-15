@@ -18,7 +18,11 @@ namespace StarGuddy.Api.Models.Profile
         public string About { get; set; }
 
         public string CityOrTown { get; set; }
-        public string StateOrProvince { get; set; }        
+        public string StateOrProvince { get; set; }
+
+        public int StatusCode { get; set; }
+
+        public string StatusText { get; set; }
 
         public string Country { get; set; }
 

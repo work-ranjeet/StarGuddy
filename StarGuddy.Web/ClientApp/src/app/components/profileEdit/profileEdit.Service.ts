@@ -17,6 +17,7 @@ import IUserDetailModel = App.Client.Profile.IUserDetailModel;
 import IAddress = App.Client.Profile.IAddressDto;
 import IHeadShot = App.Client.Profile.IImageModel;
 import IUserCreditRequest = App.Client.Profile.IUserCreditRequest;
+import IUserImageModel = App.Client.Profile.IUserImageModel;
 
 @Injectable()
 export class ProfileEditService {
@@ -379,4 +380,22 @@ export class ProfileEditService {
     //                }
     //            });
     //}
+
+    
+
+    /// ------------------------------ Images ---------------------------
+    GetAllImages(): Observable<Array<IUserImageModel>> {
+        return this.baseService.HttpService.getData<Array<IUserImageModel>>("Profile/Image/all")
+            .map(
+                (result: any) => {
+                    return result;
+                },
+                (err: HttpErrorResponse) => {
+                    if (err.error instanceof Error) {
+                        console.log("Client-side error occurred. Error:" + err.message);
+                    } else {
+                        console.log("Server-side error occurred. Error:" + err.message);
+                    }
+                });
+    }
 }

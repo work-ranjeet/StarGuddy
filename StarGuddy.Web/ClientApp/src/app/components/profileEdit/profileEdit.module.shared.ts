@@ -22,15 +22,19 @@ import { ProfileEditPhotosComponent } from "./photos/profileEditPhotos.component
 import { ProfileEditPhysicalComponent } from "./physicalDetails/profileEditPhysical.component";
 import { ProfileEditService } from "./profileEdit.Service";
 import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.component";
+import { ProfileEditPhotosManagerComponent } from "./photosManager/photosManager.component";
+import { ProfilePhotoUploadComponent } from "./photoUpload/photoUpload.component";
+
+
 
 @NgModule({
     declarations: [
-        ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent,
-        ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent,
+        ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent, ProfilePhotoUploadComponent,
+        ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent, ProfileEditPhotosManagerComponent,
         ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent,
         ProfileHeadShotComponent
     ],
-    imports: [        
+    imports: [
         CommonModule,
         FormsModule, ReactiveFormsModule, ImageCropperModule,
         MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule,
@@ -44,6 +48,8 @@ import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.
                     { path: "intro", component: ProfileEditIntroComponent, canActivateChild: [AuthGuard] },
                     { path: "address", component: ProfileEditAddressComponent, canActivateChild: [AuthGuard] },
                     { path: "interests", component: JobGroupComponent, canActivateChild: [AuthGuard] },
+                    { path: "photoManager", component: ProfileEditPhotosManagerComponent, canActivateChild: [AuthGuard] },
+                    { path: "photoUpload", component: ProfilePhotoUploadComponent, canActivateChild: [AuthGuard] },
                     { path: "head-shot/:?gender", component: ProfileHeadShotComponent, canActivateChild: [AuthGuard] }
                 ]
             }
@@ -52,8 +58,8 @@ import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.
     providers: [ProfileEditService],
     exports: [
 
-        ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent,
-        ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent,
+        ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent, ProfilePhotoUploadComponent,
+        ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent, ProfileEditPhotosManagerComponent,
         ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent,
         ProfileHeadShotComponent
     ],

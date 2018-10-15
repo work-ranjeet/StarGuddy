@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using StarGuddy.Core.Enums;
 using StarGuddy.Data.Entities;
 using StarGuddy.Data.Entities.Interface;
 using StarGuddy.Repository.Base;
@@ -26,7 +27,14 @@ namespace StarGuddy.Repository.Operations
             var allImages = await FindAllActiveByUserIdAsync(userId);
 
             return allImages.FirstOrDefault(x => x.ImageType == imageType);
-       }
+        }
+
+        public async Task<IEnumerable<UserImage>> GetUserImagesAsync(Guid userId, ImageType imageType)
+        {
+            var allImages = await FindAllActiveByUserIdAsync(userId);
+
+            return imageType == ImageType.AllImage ? allImages : allImages.Where(x => x.ImageType == imageType.GetHashCode());
+        }
 
         public async Task<bool> PerformSaveAndUpdateOperationAsync(IUserImage userImage)
         {
