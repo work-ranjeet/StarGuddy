@@ -9,9 +9,11 @@ namespace StarGuddy.Api.Controllers.Account
     /// Account Controller
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
+
+    [ApiController]
     [Route("api/Account")]
     [Produces("application/json")]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         private readonly IUserManager _userManager;
 

@@ -31,10 +31,8 @@ export class ProfileEditPhotosComponent {
             }
         },
             error => {
-                if (!error.ok && error.status == 404) {
-                    this.userImageModel = [];
-                    this.showPhotoSection = false;
-                }
+               this.userImageModel = [];
+               this.showPhotoSection = false;
             }
         );
     }

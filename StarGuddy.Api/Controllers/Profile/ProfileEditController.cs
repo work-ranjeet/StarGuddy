@@ -9,7 +9,9 @@ using StarGuddy.Api.Models.UserJobs;
 using StarGuddy.Business.Interface.Account;
 using StarGuddy.Business.Interface.Profile;
 using StarGuddy.Business.Interface.UserJobs;
+using StarGuddy.Core.Constants;
 using StarGuddy.Core.Context;
+using StarGuddy.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +20,12 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Profile
 {
-    [Authorize]
+    
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Operations")]
-    public class ProfileEditController : BaseApiController
+    [Authorize(Policy = nameof(Policy.JwtToken))]
+    public class ProfileEditController : ControllerBase
     {
         /// <summary>
         /// The account manager

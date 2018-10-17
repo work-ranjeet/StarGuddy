@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using StarGuddy.Api.Handler;
 using StarGuddy.Business.Modules.Mapper;
 using StarGuddy.Core.Constants;
-using Swashbuckle.AspNetCore.Swagger;
+using System.Text;
 
 namespace StarGuddy.Api
 {
@@ -34,16 +29,17 @@ namespace StarGuddy.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(option => { option.AllowEmptyInputInBodyModelBinding = true; }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddAutoMapper(x =>
+            services.TryAddSingleton<IAuthorizationHandler, JwtTokenHandler>();
+            services.AddAuthorization(authOption =>
             {
-                x.AllowNullCollections = true;
-                x.AllowNullDestinationValues = true;
-                x.ValidateInlineMaps = false;
-                x.AddProfile<InitMapper>();
+                authOption.AddPolicy(nameof(Policy.JwtToken), policy =>
+                {
+                    policy.Requirements.Add(new JwtTokenRequirement());
+                    //policy.RequireClaim(JwtRegisteredClaimNames.Sid);
+                    //policy.RequireClaim(JwtRegisteredClaimNames.Email);
+                });
             });
 
-            services.AddCors(options => options.AddPolicy("Cors", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,9 +47,7 @@ namespace StarGuddy.Api
 
             }).AddJwtBearer(jwtBearerCnfg =>
             {
-                var signingKey =
-
-                jwtBearerCnfg.RequireHttpsMetadata = false;
+                var signingKey = jwtBearerCnfg.RequireHttpsMetadata = false;
                 jwtBearerCnfg.SaveToken = true;
                 jwtBearerCnfg.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -65,47 +59,17 @@ namespace StarGuddy.Api
                     ValidAudience = Configuration.GetAppSettingValue(AppSettings.JwtAudience),
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetAppSettingValue(AppSettings.JwtSecret)))
                 };
-
-                //jwtBearerCnfg.Events = new JwtBearerEvents
-                //{
-                //    OnAuthenticationFailed = context =>
-                //    {
-                //        Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-                //        return Task.CompletedTask;
-                //    },
-                //    OnTokenValidated = context =>
-                //    {
-                //        Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-                //        return Task.CompletedTask;
-                //    }
-                //};
-
-                //services.AddSwaggerGen(c =>
-                //{
-                //    c.SwaggerDoc("v1", new Info
-                //    {
-                //        Version = "v1",
-                //        Title = "My First API",
-                //        Description = "My First ASP.NET Core 2.0 Web API",
-                //        TermsOfService = "None",
-                //        Contact = new Contact() { Name = "Neel Bhatt", Email = "neel.bhatt40@gmail.com", Url = "https://neelbhatt40.wordpress.com/" }
-                //    });
-                //});
             });
 
-            services.AddAuthorization(authOption =>
+            services.AddCors(options => options.AddPolicy("Cors", builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); }));
+            services.AddMvc(option => { option.AllowEmptyInputInBodyModelBinding = true; }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper(x =>
             {
-                //options.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-                //    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
-                //    .RequireAuthenticatedUser().Build());
-
-                authOption.AddPolicy("Member", policy =>
-                {
-                    policy.RequireClaim(JwtRegisteredClaimNames.Sid);
-                    policy.RequireClaim(JwtRegisteredClaimNames.Email);
-                });
+                x.AllowNullCollections = true;
+                x.AllowNullDestinationValues = true;
+                x.ValidateInlineMaps = false;
+                x.AddProfile<InitMapper>();
             });
-
             services.AddHttpContextAccessor();
 
             //// Dependency Injection

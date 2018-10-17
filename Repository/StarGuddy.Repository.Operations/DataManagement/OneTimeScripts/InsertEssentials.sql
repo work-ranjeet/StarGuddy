@@ -92,7 +92,7 @@ INSERT INTO Languages (Name, Code, CountryCode) values('Hindi',1002,'')
 INSERT INTO Languages (Name, Code, CountryCode) values('Urdu',1003,'')
 
 --------------------------------------Accents----------------------------------------
-INSERT INTO Accents (Name, Code, LanguageCode) values('Indian',2000,'')
-INSERT INTO Accents (Name, Code, LanguageCode) values('German',2001,'')
-INSERT INTO Accents (Name, Code, LanguageCode) values('French',2002,'')
-INSERT INTO Accents (Name, Code, LanguageCode) values('Magahi',2003,'')
+INSERT INTO Accents (Name, Code, LanguageCode, IsActive) values('Indian',2000,'', 1)
+INSERT INTO Accents (Name, Code, LanguageCode, IsActive) values('German',2001,'', 1)
+INSERT INTO Accents (Name, Code, LanguageCode, IsActive) values('French',2002,'', 1)
+INSERT INTO Accents (Name, Code, LanguageCode, IsActive) values('Magahi',2003,'', 1)

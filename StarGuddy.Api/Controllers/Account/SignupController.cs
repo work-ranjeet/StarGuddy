@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 namespace StarGuddy.Api.Controllers.Account
 {
     [AllowAnonymous]
+    [ApiController]
     [Route("api/Account")]
     [Produces("application/json")]
-    public class SignupController : Controller
+    public class SignupController : ControllerBase
     {
         private readonly ISignupManager _signUpManager;
         private readonly IUserManager _userManager;
@@ -66,11 +67,11 @@ namespace StarGuddy.Api.Controllers.Account
                 {
                     var userResult = await _signUpManager.PasswordSignInAsync(applicationUser.UserName, password, rememberMe: false, lockoutOnFailure: false);
 
-                    var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
+                   // var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
 
-                    await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com");
+                   // await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com");
                     
-                    return Ok($"Welcome :)");
+                    return Ok($"Welcome! {userResult.FirstName}." );
                 }
 
             }
@@ -98,11 +99,11 @@ namespace StarGuddy.Api.Controllers.Account
             return Ok();
         }
 
-        [HttpGet]      
-        public async Task<IActionResult> ConfirmEmailSent()
-        {
-            return await Task.Run(() => View());
-        }
+        //[HttpGet]      
+        //public async Task<IActionResult> ConfirmEmailSent()
+        //{
+        //    return await Task.Run(() => View());
+        //}
 
       
     }

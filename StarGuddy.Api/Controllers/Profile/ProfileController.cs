@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Profile
 {
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Profile")]
-    public class ProfileController : BaseApiController
+    public class ProfileController : ControllerBase
     {
         /// <summary>
         /// The account manager

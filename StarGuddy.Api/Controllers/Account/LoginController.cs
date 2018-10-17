@@ -12,7 +12,8 @@ namespace StarGuddy.Api.Controllers.Account
 {
     [Route("api/Account")]
     [Produces("application/json")]
-    public class LoginController : Controller
+    [ApiController]
+    public class LoginController : ControllerBase
     {
         private readonly ISignupManager _signUpManager;
         private readonly ISecurityManager _securityManager;

@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Search
 {
-
+    [ApiController]
     [Route("api/Search")]
     [Produces("application/json")]
-    public class SearchController : BaseApiController
+    public class SearchController : ControllerBase
     {
 
         private readonly ISearchManager _searchManager;

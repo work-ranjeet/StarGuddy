@@ -52,10 +52,11 @@ export class ProfileEditCreditsComponent {
     }
 
     workYearChange($event: any) {
-        var creditsObj = this.CreditsList.find(x => x.workYear == $event.target.value && x.action != this.dbOperation.Delete);
-        if (creditsObj != undefined) {
-            this.Credits = Object.assign({}, creditsObj);
-
+        if (this.CreditsList != undefined && this.CreditsList != null) {
+            var creditsObj = this.CreditsList.find(x => x.workYear == $event.target.value && x.action != this.dbOperation.Delete);
+            if (creditsObj != undefined) {
+                this.Credits = Object.assign({}, creditsObj);
+            }
         }
     }
 
@@ -66,7 +67,7 @@ export class ProfileEditCreditsComponent {
         if (newCreditsObj != undefined && newCreditsObj.workYear != 0 && newCreditsObj.workPlace != "") {
             newCreditsObj.action = newCreditsObj.id == this.EmptyGuid ? this.dbOperation.Insert : this.dbOperation.Update;
 
-            let index = this.CreditsList.findIndex(x => x.workYear == newCreditsObj.workYear);
+            let index = this.CreditsList != undefined && this.CreditsList != null ? this.CreditsList.findIndex(x => x.workYear == newCreditsObj.workYear) : -1;
             if (index > -1) {
                 this.CreditsList[index] = Object.assign({}, newCreditsObj);
             }
@@ -128,8 +129,10 @@ export class ProfileEditCreditsComponent {
     loadCredits() {
         this.userProfileService.GetUserCredits().subscribe(
             response => {
-                this.showCredits = response.length > 0;
-                this.CreditsList = response;
+                if (response != undefined && response != null) {
+                    this.showCredits = response.length > 0;
+                    this.CreditsList = response;
+                }
             },
             error => {
                 this.showCredits = false;
@@ -149,6 +152,7 @@ export class ProfileEditCreditsComponent {
                     }
 
                     this.showEditHtml = false;
+                    this.loadCredits();
                 },
                 err => {
                     //console.warn(err.error);

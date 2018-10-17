@@ -15,9 +15,10 @@ using System.Threading.Tasks;
 namespace StarGuddy.Api.Controllers.Files
 {
     [Authorize]
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Image")]
-    public class ImageController : BaseApiController
+    public class ImageController : ControllerBase
     {
         private readonly IImageManager _imageManager;
         private readonly IHttpContextAccessor _httpContextAccessor;

@@ -9,14 +9,14 @@ namespace StarGuddy.Core.Enums
         Beginner = 1,
         Intermediate = 10,
         Expert = 20
-    }
+    };
 
     public enum ImageType
     {
         AllImage = 0,
         HeadShot = 1,
         GallaryImage = 2
-    }
+    };
 
     public enum ApprovalStatus
     {
@@ -24,6 +24,6 @@ namespace StarGuddy.Core.Enums
         ApprovalInProgress = 11,
         NotApproved = 21,
         Approved = 111
-    }
+    };
 
 }

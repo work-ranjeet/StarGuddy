@@ -63,14 +63,6 @@ namespace StarGuddy.Api.Controllers
                         UserContext.Current.UserId = userId;
                         UserContext.Current.UserName = (userPayloadToken).Claims.FirstOrDefault(m => m.Type == JwtRegisteredClaimNames.Email).Value;
                         UserContext.Current.Email = (userPayloadToken).Claims.FirstOrDefault(m => m.Type == JwtRegisteredClaimNames.Email).Value;
-
-                        //var applicationUser = DecryptObject<ApplicationUser>(userData);
-                        //if(applicationUser != null)
-                        //{
-                        //    UserContext.FirstName = applicationUser.FirstName;
-                        //    UserContext.LastName = applicationUser.LastName;
-                        //    UserContext.IsCastingProfessional = applicationUser.IsCastingProfessional;
-                        //}
                     }
                 }
             }

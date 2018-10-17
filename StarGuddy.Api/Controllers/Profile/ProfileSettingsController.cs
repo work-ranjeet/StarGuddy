@@ -13,9 +13,10 @@ using StarGuddy.Business.Interface.Profile;
 namespace StarGuddy.Api.Controllers.Profile
 {
     [Authorize]
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
-    public class ProfileSettingsController : Controller
+    public class ProfileSettingsController : ControllerBase
     {
         /// <summary>
         /// The account manager

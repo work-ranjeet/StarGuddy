@@ -9,8 +9,8 @@
                     <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
                 </a>
             </div>
-            <div *ngIf="!showEditHtml" class="card-body">
-                <div *ngIf="showCredits">
+            <div *ngIf="showCredits">
+                <div *ngIf="!showEditHtml" class="card-body">
                     <div class="padding-10 margin-bottom-10" *ngFor="let credit of CreditsList">
                         <strong class="padding-5">{{credit.workYear}}</strong>
                         <ul class="padding-left-20">
@@ -18,9 +18,6 @@
                         </ul>
                     </div>
                 </div>
-                <!--<div *ngIf="!showCredits">
-                    <span class="text-info text-m">Please enter your credits detail.</span>
-                </div>-->
             </div>
 
             <div id="creditEdit" *ngIf="showEditHtml" class="card-body text-muted">
