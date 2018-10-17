@@ -663,7 +663,16 @@ BEGIN
 	FROM UserSettings
 	WHERE ProfileUrl = @ProfileUrl AND IsActive = 1 AND IsDeleted = 0
 
-	SELECT U.Id, U.FirstName, U.LastName, U.DisplayName, UA.CityOrTown, UA.StateOrProvince, UA.Country, UP.PhoneNumber, UE.Email, UD.About, UI.ImageUrl, UI.DataUrl
+	DECLARE @Gender NVARCHAR(10)
+	SELECT @Gender = Gender FROM Users WHERE Id =@UserId
+
+	DECLARE @ImageUrl NVARCHAR(200)	
+	SELECT @ImageUrl = (CASE WHEN @Gender ='M' THEN 'assets/css/icons/mail.png' 
+							 WHEN @Gender ='F' THEN 'assets/css/icons/femail.png' 
+							 ELSE 'assets/css/icons/other.png' END)  
+
+	SELECT U.Id, U.FirstName, U.LastName, U.DisplayName, UA.CityOrTown, UA.StateOrProvince, UA.Country, UP.PhoneNumber, UE.Email, UD.About, 
+	CASE WHEN UI.ImageUrl IS NUll OR UI.ImageUrl ='' THEN  @ImageUrl END AS ImageUrl, COALESCE( UI.DataUrl, '') AS DataUrl
 	FROM users U
 	LEFT JOIN UserAddress UA ON UA.UserId = U.Id AND UA.IsActive = 1 AND UA.IsDeleted = 0
 	LEFT JOIN UserPhones UP ON UP.UserId = U.Id AND UP.IsActive = 1 AND UP.IsDeleted = 0

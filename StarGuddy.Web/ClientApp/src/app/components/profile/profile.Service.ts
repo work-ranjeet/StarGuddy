@@ -45,7 +45,7 @@ export class ProfileService {
 
     // Profile Header
     GetUserProfileHeader(): Observable<IProfileHeader> {
-        return this.baseService.HttpService.getData<IProfileHeader>("Profile/header/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IProfileHeader>("/Profile/" + this.ProfileUrl + "/header")
             .map(
                 (result: IProfileHeader) => {
                     return result;
@@ -60,7 +60,7 @@ export class ProfileService {
     }
 
     GetUserPhysicalAppreance(): Observable<IPhysicalAppearance> {
-        return this.baseService.HttpService.getData<IPhysicalAppearance>("Profile/PhysicalApperance/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IPhysicalAppearance>("Profile/" + this.ProfileUrl + "/PhysicalApperance")
             .map(
                 (result: IPhysicalAppearance) => {
                     return result;
@@ -75,7 +75,7 @@ export class ProfileService {
     }
 
     GetUserCredits(): Observable<IUserCredits[]> {
-        return this.baseService.HttpService.getData<IUserCredits[]>("Profile/Credit/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IUserCredits[]>("Profile/" + this.ProfileUrl + "/Credit")
             .map(
                 (result: IUserCredits[]) => {
                     return result;
@@ -90,7 +90,7 @@ export class ProfileService {
     }
 
     GetUserDanceDetail(): Observable<IDancingModel> {
-        return this.baseService.HttpService.getData<IDancingModel>("Profile/Dancing/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IDancingModel>("Profile/" + this.ProfileUrl + "/Dancing")
             .map(
                 (result: IDancingModel) => {
                     return result;
@@ -105,7 +105,7 @@ export class ProfileService {
     }
 
     GetUserActingDetail(): Observable<IActingDetailModel> {
-        return this.baseService.HttpService.getData<IActingDetailModel>("Profile/Acting/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IActingDetailModel>("Profile/" + this.ProfileUrl + "/Acting")
             .map(
                 (result: IActingDetailModel) => {
                     return result;
@@ -120,9 +120,9 @@ export class ProfileService {
     }
 
     GetUserModelingDetail(): Observable<IUserModelingModel> {
-        return this.baseService.HttpService.getData<IUserModelingModel>("Profile/Modeling/" + this.ProfileUrl)
+        return this.baseService.HttpService.getData<IUserModelingModel>("Profile/" + this.ProfileUrl + "/Modeling")
             .map(
-            (result: IUserModelingModel) => {
+                (result: IUserModelingModel) => {
                     return result;
                 },
                 (err: HttpErrorResponse) => {

@@ -10,24 +10,28 @@ import IJobGroupModel = App.Client.Profile.IJobGroupModel;
 
 
 export class ProfileHeader {
-    public imageUrl: string = "";
-    public _jobGroupName: string = "";   
-    public _profileHeader: IProfileHeader = {} as IProfileHeader
 
-    public showAddress: boolean = false;
-    public computedAddress: string = "Address not update.";
+    public imageUrl: string = "";
+    public computedAddress: string = "Address not update yet.";
+    private _jobGroupName: string = "";
+    private _profileHeader: IProfileHeader = {} as IProfileHeader
 
     @Input()
     set jobGroupNames(jobGroupNames: string) { this._jobGroupName = jobGroupNames; }
-    get jobGroupNames(): string { return this._jobGroupName; }
+    get jobGroupNames(): string {
+        if (this._jobGroupName == undefined || this._jobGroupName == "") {
+            this._jobGroupName = "Your interest not updated yet.";
+        }
+        return this._jobGroupName;
+    }
 
     @Input()
     set profileHeader(profileHeader: IProfileHeader) {
         if (JSON.stringify(profileHeader) != "{}") {
             this._profileHeader = profileHeader;
 
-            this.showAddress = profileHeader.cityOrTown != null && profileHeader.stateOrProvince != null && profileHeader.country != null;
-            this.computedAddress = profileHeader.cityOrTown + ", " + profileHeader.stateOrProvince + ", " + profileHeader.country;
+            this.computedAddress = profileHeader.cityOrTown != null && profileHeader.stateOrProvince != null && profileHeader.country != null ?
+                profileHeader.cityOrTown + ", " + profileHeader.stateOrProvince + ", " + profileHeader.country : "Address not update yet.";
 
             this.imageUrl = profileHeader.dataUrl == "" ? profileHeader.imageUrl : profileHeader.dataUrl;
         }

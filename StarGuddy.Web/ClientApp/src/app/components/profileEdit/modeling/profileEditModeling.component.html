@@ -10,17 +10,17 @@
             </div>
             <div *ngIf="!showEditHtml" class="card-body">
                 <div class="experiance">Modeling experience</div>
-                <div class="padding-top-5 padding-left-20 text-l">{{modelingDetailModel.expText}}</div>
+                <div class="padding-top-5 padding-left-20 text-sm">{{modelingDetailModel.expText}}</div>
                 <div *ngIf="showWebsite">
                     <hr class="seperator" />
                     <div class="experiance padding-top-10">Modeling website</div>
                     <div class="padding-top-5 padding-left-15 text-l">
-                        <a href="http://{{modelingDetailModel.webSite}}" target="_blank"><i class="fa fa-hand-o-right text-success padding-5"></i>{{modelingDetailModel.webSite}}</a>
+                        <a href="http://{{modelingDetailModel.webSite}}" target="_blank"><i class="glyphicon glyphicon-hand-right text-success padding-5"></i>{{modelingDetailModel.webSite}}</a>
                     </div>
                 </div>
                 <div *ngIf="showExperiance">
                     <hr class="seperator" />
-                    <p class="padding-top-10 text-l text-muted">{{modelingDetailModel.experiance}}</p>
+                    <p class="padding-top-10 text-s text-muted">{{modelingDetailModel.experiance}}</p>
                 </div>
             </div>
             <div *ngIf="showEditHtml" class="card-body text-muted">

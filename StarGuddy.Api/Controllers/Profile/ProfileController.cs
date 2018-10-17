@@ -55,7 +55,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("Header/{profileUrl}")]
+        [Route("{profileUrl}/Header")]
         public async Task<IActionResult> GetProfileHeader(string profileUrl)
         {
             try
@@ -66,10 +66,10 @@ namespace StarGuddy.Api.Controllers.Profile
                 }
 
                 var result = await _profileManager.GetProfileHeaderByProfileUrl(profileUrl);
-                //if (result.IsNull())
-                //{
-                //    return NotFound();
-                //}
+                if (result.IsNull())
+                {
+                    return NotFound();
+                }
 
                 return Ok(result);
             }
@@ -83,7 +83,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("PhysicalApperance/{profileUrl}")]
+        [Route("{profileUrl}/PhysicalApperance")]
         public async Task<IActionResult> GetPhysicalApperance(string profileUrl)
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
@@ -103,7 +103,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("Credit/{profileUrl}")]
+        [Route("{profileUrl}/Credit")]
         public async Task<IActionResult> GetUserCredits(string profileUrl)
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
@@ -127,7 +127,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("Dancing/{profileUrl}")]
+        [Route("{profileUrl}/Dancing")]
         public async Task<IActionResult> GetUserDancing(string profileUrl)
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
@@ -146,7 +146,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("Acting/{profileUrl}")]
+        [Route("{profileUrl}/Acting")]
         public async Task<IActionResult> GetUserActingDetails(string profileUrl)
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
@@ -165,7 +165,7 @@ namespace StarGuddy.Api.Controllers.Profile
         }
 
         [HttpGet]
-        [Route("Modeling/{profileUrl}")]
+        [Route("{profileUrl}/Modeling")]
         public async Task<IActionResult> GetUserModelingDetails(string profileUrl)
         {
             if (string.IsNullOrWhiteSpace(profileUrl))

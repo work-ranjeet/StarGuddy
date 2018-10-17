@@ -613,8 +613,16 @@ margin-right-10 {
     font-size: 12px;
 }
 
+.text-sm {
+    font-size: 13px;
+}
+
 .text-m {
     font-size: 14px;
+}
+
+text-ml {
+    font-size: 15px;
 }
 
 .text-l {
@@ -755,3 +763,6 @@ margin-right-10 {
         color: white;
         margin-right: -10px;
     }
+.card-body {
+    padding: 5px 5px 10px 10px!important;
+}

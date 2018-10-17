@@ -4,7 +4,7 @@
             <mat-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <mat-form-field class="form-group full-width">
-                        <input matInput placeholder="Enter your email" formControlName="email" required autocomplete="off" [(ngModel)]="loginData.userName">
+                        <input matInput placeholder="Enter your email" formControlName="email" required autofocus autocomplete="off" [(ngModel)]="loginData.userName">
                         <mat-error *ngFor="let validation of account_validation_messages.email">
                             <mat-error class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
                                 {{validation.message}}
