@@ -14,7 +14,7 @@ namespace StarGuddy.Core.Enums
     public enum ImageType
     {
         AllImage = 0,
-        HeadShotActive = 1,
+        HeadShot = 1,
         GallaryImage = 2
     }
 

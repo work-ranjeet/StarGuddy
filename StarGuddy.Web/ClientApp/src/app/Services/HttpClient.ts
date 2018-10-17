@@ -24,7 +24,7 @@ export class HttpService {
     }
 
     getData<T>(Url: string) {
-        return this.http.get<T>(this.UrlPrifix + Url);
+        return this.http.get<any>(this.UrlPrifix + Url);
     }
 
     post(Url: string, data: any) {
@@ -32,7 +32,7 @@ export class HttpService {
     }
 
     postData<T>(Url: string, data: any) {
-        return this.http.post<T>(this.UrlPrifix + Url, data);
+        return this.http.post<any>(this.UrlPrifix + Url, data);
     } 
 
     postDataWithProgress<T>(Url: string, data: any) {

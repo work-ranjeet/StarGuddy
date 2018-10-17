@@ -50,15 +50,15 @@ namespace StarGuddy.Business.Modules.Files
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImageManager"/> class.
-        /// </summary>
-        /// <param name="workingFolder">The working folder.</param>
-        public ImageManager(string workingFolder)
-        {
-            this.WorkingFolder = workingFolder;
-            this.CheckTargetDirectory();
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the <see cref="ImageManager"/> class.
+        ///// </summary>
+        ///// <param name="workingFolder">The working folder.</param>
+        //public ImageManager(string workingFolder)
+        //{
+        //    this.WorkingFolder = workingFolder;
+        //    this.CheckTargetDirectory();
+        //}
 
 
         public async Task<ImageModel> GetHeadShotImageDetail()
@@ -72,15 +72,16 @@ namespace StarGuddy.Business.Modules.Files
             return null;
         }
 
-        public async Task<bool> SaveUpdateHeadShot(ImageModel imageModel)
+        public async Task<bool> SaveUpdateHeadShotAsync(ImageModel imageModel)
         {
             imageModel.UserId = UserContext.Current.UserId;
 
             var userImage = _mapper.Map<UserImage>(imageModel);
 
-            return await _imageRepository.PerformSaveAndUpdateOperationAsync(userImage);
+            return await _imageRepository.PerformSaveAndUpdateHeadShotAsync(userImage);
         }
-        public async Task<IEnumerable<UserImageModel>> GetAllImages()
+
+        public async Task<IEnumerable<UserImageModel>> GetAllImagesAsync()
         {
             var images = await _imageRepository.GetUserImagesAsync(UserContext.Current.UserId, ImageType.AllImage);
             try
@@ -99,115 +100,30 @@ namespace StarGuddy.Business.Modules.Files
             }
         }
 
-
-        /// <summary>
-        /// Gets this instance.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IEnumerable<ImageModel>> Get()
+        public async Task<bool> SaveImageAsync(UserImageModel imageModel)
         {
-            List<ImageModel> photos = new List<ImageModel>();
+            imageModel.UserId = UserContext.Current.UserId;
 
-            DirectoryInfo photoFolder = new DirectoryInfo(this.WorkingFolder);
+            var userImage = _mapper.Map<UserImage>(imageModel);
 
-            await Task.Factory.StartNew(() =>
-            {
-                photos = photoFolder.EnumerateFiles()
-                                            .Where(fi => new[] { ".jpg", ".bmp", ".png", ".gif", ".tiff" }.Contains(fi.Extension.ToLower()))
-                                            .Select(fi => new ImageModel
-                                            {
-                                                Name = fi.Name,
-                                                Size = fi.Length / 1024
-                                            })
-                                            .ToList();
-            });
-
-            return photos;
+            return await _imageRepository.PerformSaveImageOperationAsync(userImage);
         }
 
-        /// <summary>
-        /// Deletes the specified file name.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns></returns>
-        public async Task<IImageActionResult> Delete(string fileName)
-        {
-            try
-            {
-                var filePath = Directory.GetFiles(this.WorkingFolder, fileName)
-                                .FirstOrDefault();
-
-                await Task.Factory.StartNew(() =>
-                {
-                    File.Delete(filePath);
-                });
-
-                return new ImageActionResult { Successful = true, Message = fileName + "deleted successfully" };
-            }
-            catch (Exception ex)
-            {
-                return new ImageActionResult { Successful = false, Message = "error deleting fileName " + ex.GetBaseException().Message };
-            }
+        public async Task<bool> DeleteImageAsync(Guid ImageId)
+        {   
+            return await _imageRepository.PerformDeleteAsync(ImageId);
         }
 
-        /// <summary>
-        /// Adds the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns></returns>
-        //public async Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request)
+        //public async Task<bool> UpdateStatusAsync(UserImageModel imageModel)
         //{
-        //    var provider = new ImageMultipartFormDataStreamProvider(this.WorkingFolder);
+        //    imageModel.UserId = UserContext.Current.UserId;
 
-        //    //await request.Content.ReadAsMultipartAsync(provider);
+        //    var userImage = _mapper.Map<UserImage>(imageModel);
 
-        //    var photos = new List<ImageModel>();
-
-        //    //foreach (var file in provider.FileData)
-        //    //{
-        //    //    var fileInfo = new FileInfo(file.LocalFileName);
-
-        //    //    photos.Add(new ImageModel
-        //    //    {
-        //    //        Name = fileInfo.Name,
-        //    //        Created = fileInfo.CreationTime,
-        //    //        Modified = fileInfo.LastWriteTime,
-        //    //        Size = fileInfo.Length / 1024
-        //    //    });
-        //    //}
-
-        //    return photos;
+        //    return await _imageRepository.PerformSaveImageOperationAsync(userImage);
         //}
 
-        /// <summary>
-        /// Files the exists.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns></returns>
-        public bool FileExists(string fileName)
-        {
-            var file = Directory.GetFiles(this.WorkingFolder, fileName)
-                                .FirstOrDefault();
-
-            return file != null;
-        }
-
-        /// <summary>
-        /// Checks the target directory.
-        /// </summary>
-        /// <exception cref="ArgumentException">the destination path " + this.WorkingFolder + " could not be found</exception>
-        private void CheckTargetDirectory()
-        {
-            if (!Directory.Exists(this.WorkingFolder))
-            {
-                throw new ArgumentException("the destination path " + this.WorkingFolder + " could not be found");
-            }
-        }
-
-        public Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request)
-        {
-            throw new NotImplementedException();
-        }
+        #region Private Methods
 
         private string ApprovalText(ApprovalStatus approvalStatus)
         {
@@ -232,5 +148,119 @@ namespace StarGuddy.Business.Modules.Files
             }
             return text;
         }
+        #endregion
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public async Task<IEnumerable<ImageModel>> Get()
+//{
+//    List<ImageModel> photos = new List<ImageModel>();
+
+//    DirectoryInfo photoFolder = new DirectoryInfo(this.WorkingFolder);
+
+//    await Task.Factory.StartNew(() =>
+//    {
+//        photos = photoFolder.EnumerateFiles()
+//                                    .Where(fi => new[] { ".jpg", ".bmp", ".png", ".gif", ".tiff" }.Contains(fi.Extension.ToLower()))
+//                                    .Select(fi => new ImageModel
+//                                    {
+//                                        Name = fi.Name,
+//                                        Size = fi.Length / 1024
+//                                    })
+//                                    .ToList();
+//    });
+
+//    return photos;
+//}
+
+
+//public async Task<IImageActionResult> Delete(string fileName)
+//{
+//    try
+//    {
+//        var filePath = Directory.GetFiles(this.WorkingFolder, fileName)
+//                        .FirstOrDefault();
+
+//        await Task.Factory.StartNew(() =>
+//        {
+//            File.Delete(filePath);
+//        });
+
+//        return new ImageActionResult { Successful = true, Message = fileName + "deleted successfully" };
+//    }
+//    catch (Exception ex)
+//    {
+//        return new ImageActionResult { Successful = false, Message = "error deleting fileName " + ex.GetBaseException().Message };
+//    }
+//}
+
+////public async Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request)
+////{
+////    var provider = new ImageMultipartFormDataStreamProvider(this.WorkingFolder);
+
+////    //await request.Content.ReadAsMultipartAsync(provider);
+
+////    var photos = new List<ImageModel>();
+
+////    foreach (var file in provider.FileData)
+////    {
+////        var fileInfo = new FileInfo(file.LocalFileName);
+
+////        photos.Add(new ImageModel
+////        {
+////            Name = fileInfo.Name,
+////            Created = fileInfo.CreationTime,
+////            Modified = fileInfo.LastWriteTime,
+////            Size = fileInfo.Length / 1024
+////        });
+////    }
+
+////    return photos;
+////}
+
+//public bool FileExists(string fileName)
+//{
+//    var file = Directory.GetFiles(this.WorkingFolder, fileName)
+//                        .FirstOrDefault();
+
+//    return file != null;
+//}
+
+//private void CheckTargetDirectory()
+//{
+//    if (!Directory.Exists(this.WorkingFolder))
+//    {
+//        throw new ArgumentException("the destination path " + this.WorkingFolder + " could not be found");
+//    }
+//}
+
+//public Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request)
+//{
+//    throw new NotImplementedException();
+//}

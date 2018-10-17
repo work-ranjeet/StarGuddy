@@ -764,33 +764,7 @@ BEGIN
 		END
 	END	
 GO
-GO
-IF EXISTS (
-		SELECT *
-		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'HeadShotImageSaveUpdate') AND type IN (N'P', N'PC')
-		)
-	DROP PROCEDURE HeadShotImageSaveUpdate
-GO
-CREATE PROCEDURE HeadShotImageSaveUpdate (@UserId UNIQUEIDENTIFIER, @Name NVARCHAR(450), @Caption NVARCHAR(200), @ImageUrl NVARCHAR(1000), @Size BIGINT, @DataUrl NVARCHAR(MAX), @ImageType INT)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SET XACT_ABORT ON;
 
-	IF (EXISTS (SELECT TOP 1 Id  FROM UserImage WHERE UserId = @UserId AND IsActive = 1 AND IsDeleted = 0 AND ImageType = @ImageType))
-	BEGIN
-		UPDATE UserImage
-		SET Name = @Name, Caption = @Caption, ImageUrl = @ImageUrl, Size = @Size, DataUrl = @DataUrl, IsActive = 1, IsDeleted = 0, DttmModified = getutcdate()
-		WHERE UserId = @UserId AND ImageType = @ImageType
-	END
-	ELSE
-	BEGIN
-		INSERT INTO UserImage (Id, UserId, Name, Caption, ImageUrl, Size, DataUrl, ImageType, IsActive, IsDeleted)
-		VALUES (NEWID(), @UserId, @Name, @Caption, @ImageUrl, @Size, @DataUrl, @ImageType, 1, 0)
-	END
-END
-GO
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
@@ -828,3 +802,123 @@ BEGIN
 	GROUP BY JB.Id, JB.Code, JB.Name, JB.Detail, JB.ImageUrl, JB.DisplayOrder, JB.IsActive, JB.IsDeleted
 	ORDER BY JB.DisplayOrder
 END
+GO
+-------------------------------------------------------------------Image ------------------------------------------------
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'HeadShotImageSaveUpdate') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE HeadShotImageSaveUpdate
+GO
+CREATE PROCEDURE HeadShotImageSaveUpdate (@UserId UNIQUEIDENTIFIER, @Name NVARCHAR(450), @Caption NVARCHAR(200), @ImageUrl NVARCHAR(1000), @Size BIGINT, @DataUrl NVARCHAR(MAX))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+	IF (EXISTS (SELECT TOP 1 Id  FROM UserImage WHERE UserId = @UserId AND IsActive = 1 AND IsDeleted = 0 AND ImageType = 1))
+	BEGIN
+		UPDATE UserImage
+		SET Name = @Name, Caption = @Caption, ImageUrl = @ImageUrl, Size = @Size, DataUrl = @DataUrl, IsActive = 1, IsDeleted = 0, DttmModified = getutcdate()
+		WHERE UserId = @UserId AND ImageType = 1
+	END
+	ELSE
+	BEGIN
+		INSERT INTO UserImage (Id, UserId, Name, Caption, ImageUrl, Size, DataUrl, ImageType, IsActive, IsDeleted, StatusCode)
+		VALUES (NEWID(), @UserId, @Name, @Caption, @ImageUrl, @Size, @DataUrl, 1, 1, 0, 1)
+	END
+END
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserImageSave') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE UserImageSave
+GO
+CREATE PROCEDURE UserImageSave (@UserId UNIQUEIDENTIFIER, @Name NVARCHAR(450), @Caption NVARCHAR(200), @ImageUrl NVARCHAR(1000), @Size BIGINT, @DataUrl NVARCHAR(MAX), @ImageType INT)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;	
+		INSERT INTO UserImage (Id, UserId, Name, Caption, ImageUrl, Size, DataUrl, ImageType, IsActive, IsDeleted, StatusCode)
+		VALUES (NEWID(), @UserId, @Name, @Caption, @ImageUrl, @Size, @DataUrl, @ImageType, 1, 0, 1)
+END
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserImageStatusUpdate') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE UserImageStatusUpdate
+GO
+CREATE PROCEDURE UserImageStatusUpdate (@ImageId UNIQUEIDENTIFIER, @StatusCode INT, @ApprovalId UNIQUEIDENTIFIER)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+	
+		UPDATE UserImage SET StatusCode = @StatusCode, ApprovalId = @ApprovalId
+		WHERE Id = @ImageId 
+END
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserImageCaptionUpdate') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE UserImageCaptionUpdate
+GO
+CREATE PROCEDURE UserImageCaptionUpdate (@ImageId UNIQUEIDENTIFIER, @Caption NVARCHAR(200))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+	
+		UPDATE UserImage SET Caption = @Caption	WHERE Id = @ImageId 
+END
+
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserImageDelete') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE UserImageDelete
+GO
+CREATE PROCEDURE UserImageDelete (@ImageId UNIQUEIDENTIFIER)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+	DECLARE @ImageType INT
+	DECLARE @Gender NVARCHAR(10)	
+	DECLARE @ImageUrl NVARCHAR(200)	
+	DECLARE @UserId UNIQUEIDENTIFIER
+
+	SELECT @ImageType = ImageType, @UserId = UserId FROM UserImage WHERE Id = @ImageId
+	SELECT @Gender = Gender FROM Users WHERE Id = @UserId
+
+	SELECT @ImageUrl = (CASE WHEN @Gender ='M' THEN 'assets/css/icons/mail.png' 
+							 WHEN @Gender ='F' THEN 'assets/css/icons/femail.png' 
+							 ELSE 'assets/css/icons/other.png' END)  
+
+	IF (@ImageType =1) 
+		BEGIN		
+			UPDATE UserImage SET ImageUrl =@ImageUrl, DataUrl = NULL WHERE Id = @ImageId 
+		END
+	ELSE
+		BEGIN
+			UPDATE UserImage SET IsActive =1, IsDeleted =1	WHERE Id = @ImageId 
+		END
+END
+----------------------------------------------------------End Image ------------------------------------------------------
+
+
+	
+
+
+	

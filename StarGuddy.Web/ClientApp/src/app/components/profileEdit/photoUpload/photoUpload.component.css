@@ -1,0 +1,34 @@
+.thumb-nail {
+    width: auto;
+    height: 470px
+}
+
+label.fileupload {
+    height: 260px;
+    width: 320px;
+    border: dotted 2px #ccc;
+}
+
+    label.fileupload .symbol {
+        font-size: 35px;
+        margin-top: 25%;
+        margin-left: 2%;
+        cursor: pointer;
+    }
+
+.cropper-width {
+    max-width: 500px;
+    height: auto;
+    float: none;
+}
+
+.progress-count {
+    margin-top: -15%;
+    left: 42%;
+    position: absolute;
+    color: #f7f2f2;
+    opacity: 0.8;
+    background: transparent;
+    font-size:25px;
+}
+

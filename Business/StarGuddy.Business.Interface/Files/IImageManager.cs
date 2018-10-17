@@ -24,35 +24,13 @@ namespace StarGuddy.Business.Interface.Files
 
         Task<ImageModel> GetHeadShotImageDetail();
 
-        Task<bool> SaveUpdateHeadShot(ImageModel imageModel);
+        Task<bool> SaveUpdateHeadShotAsync(ImageModel imageModel);
 
-        Task<IEnumerable<UserImageModel>> GetAllImages();
+        Task<IEnumerable<UserImageModel>> GetAllImagesAsync();
 
-        /// <summary>
-        /// Gets this instance.
-        /// </summary>
-        /// <returns></returns>
-        //Task<IEnumerable<ImageModel>> Get();
+        Task<bool> SaveImageAsync(UserImageModel imageModel);
 
-        /// <summary>
-        /// Deletes the specified file name.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns></returns>
-        Task<IImageActionResult> Delete(string fileName);
+        Task<bool> DeleteImageAsync(Guid ImageId);
 
-        /// <summary>
-        /// Adds the specified request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns></returns>
-        //Task<IEnumerable<ImageModel>> Add(HttpRequestMessage request);
-
-        /// <summary>
-        /// Files the exists.
-        /// </summary>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns></returns>
-        bool FileExists(string fileName);
     }
 }

@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row"  style="background: white; ">
+        <!--<div class="col-md-12">
+           
+            <div class="margin-auto text-center" style="width:300px; padding: 16px; opacity: 0.5; font-size:16px;">
+                <a class="display-inline " [routerLink]="['/profile/photoManager']">
+                    <i class="glyphicon glyphicon-arrow-left" style="font-size:16px; "></i>
+                </a>
+                <a class="display-inline padding-left-20" [routerLink]="['/']">
+                    <span style="margin-right:-3px;">St</span>
+                    <i class="fa fa-star theme-brand-star"></i>
+                    <span _ngcontent-c0="" style="margin-left:-3px;">r Guddy</span>
+                </a>
+            </div>
+        </div>-->
+    </div>
+    <div class="row padding-top-20">
+        <div class="col-md-12">           
+            <div class="page-heading margin-auto text-center" style="width:300px;">
+                <a class="display-inline" [routerLink]="['/profile/photoManager']">
+                    <i class="glyphicon glyphicon-arrow-left" style="font-size:27px; "></i>
+                </a>
+                <h1 class="display-inline padding-left-20">Add Photo</h1>
+            </div>
+        </div>
+    </div>
+    <form #frmProfileFileUpload="ngForm" class="padding-top-20">
+        <div class="row">
+            <div *ngIf="!showImage" class="col-md-12  text-center margin-top-10">
+                <label class="fileupload ">
+                    <a class="glyphicon glyphicon-cloud-upload symbol"><span class="display-block" style="font-size:20px;">Upload</span></a>
+                    <input type="file" id="fileUploder" name="fileUploder" class="hidden" #image accept="image/*" (change)="handleFileInput($event)" />
+                </label>
+            </div>
+            <div *ngIf="showImage" class="col-md-12  text-center">
+                <div class="margin-auto cropper-width">
+                    <a class="btn btn-default" [routerLink]="['/profile/photoManager']">
+                        <i class="glyphicon glyphicon-arrow-left" style="font-size:16px;"></i>
+                    </a>
+                    <button class="btn btn-info" (click)="rotate(false);">
+                        <i *ngIf="!isRightRotating" class="glyphicon glyphicon-circle-arrow-left" style="font-size:13px;"></i>
+                        <i *ngIf="isRightRotating" class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                        &nbsp;Rotate
+                    </button>
+                    <button class="btn btn-info" (click)="rotate(true);">
+                        Rotate&nbsp;
+                        <i *ngIf="!isLeftRotating" class="glyphicon glyphicon-circle-arrow-right" style="font-size:13px;"></i>
+                        <i *ngIf="isLeftRotating" class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                    </button>
+                    <button class="btn btn-danger" (click)="reset();">
+                        <i *ngIf="!isLeftRotating" class="fa fa-undo" style="font-size:12px;"></i>
+                    </button>
+                </div>
+                <div class="margin-top-10 margin-auto cropper-width">
+                    <image-cropper format="png,jpeg" class="img-fluid img-thumbnail" [cropper]="coordinates" style="max-height:500px;"
+                                   [imageBase64]="cropperBase64" [maintainAspectRatio]="false" [aspectRatio]="4/5" [resizeToWidth]="512"
+                                   (imageCropped)="imageCropped($event)">
+                    </image-cropper>
+                </div>
+                <div class="progress-count">
+                    <span *ngIf="progress > 0 && progress < 100">{{progress}}%</span>
+                    <span *ngIf="message">{{message}}</span>
+                </div>
+                <div class="margin-auto padding-top-10 cropper-width">
+                    <input type="text" id="imgCaption" placeholder="Add caption for this photo" name="imgCaption" class="form-control" required [(ngModel)]="userImageModel.caption" />
+                </div>
+                <div class="margin-auto padding-top-10 cropper-width padding-bottom-20">
+                    <button id="btnSave" type="submit" class="btn-profile-save btn btn-success btn-m" (click)="uploadImage()" [disabled]="!frmProfileFileUpload.form.valid">
+                        <i class="fa fa-upload"></i>&nbsp;Upload Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

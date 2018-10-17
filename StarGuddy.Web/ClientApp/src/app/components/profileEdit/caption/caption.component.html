@@ -1,0 +1,28 @@
+<div class="container-fluid padding-top-20">
+    <div class="row">
+        <div class="col-md-5 col-sm-7 col-xs-12 margin-auto" style="float:none;">
+            <form [formGroup]="frmEditPhotoCaption" (ngSubmit)="save()">
+                <div class="card">
+                    <div class="card-header">Edit caption</div>
+                    <div class="card-body">
+                        <mat-form-field class="full-width padding-top-10">
+                            <input matInput placeholder="Enter caption" formControlName="photoCaption" required autocomplete="off" [(ngModel)]="caption">
+                            <mat-error *ngFor="let validation of validation_messages.caption">
+                                <mat-error class="error-message" *ngIf="frmEditPhotoCaption.get('photoCaption').hasError(validation.type) && (frmEditPhotoCaption.get('photoCaption').dirty || frmEditPhotoCaption.get('photoCaption').touched)">
+                                    {{validation.message}}
+                                </mat-error>
+                            </mat-error>
+                        </mat-form-field>                      
+                        <hr class="seperator" />
+                        <div class="col-sm-12 text-center padding-10">
+                            <button id="btnSave" type="submit" class="btn btn-m  btn-success" [disabled]="!frmEditPhotoCaption.valid">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

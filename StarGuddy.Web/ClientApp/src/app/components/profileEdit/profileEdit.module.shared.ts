@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from "ngx-image-cropper";
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule } from "@angular/material";
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule, MatDialogModule } from "@angular/material";
 
 import { AuthGuard } from "../../Services/AuthenticationGuard";
 import { ProfileEditActingComponent } from "./acting/profileEditActing.component";
@@ -37,7 +37,7 @@ import { ProfilePhotoUploadComponent } from "./photoUpload/photoUpload.component
     imports: [
         CommonModule,
         FormsModule, ReactiveFormsModule, ImageCropperModule,
-        MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule,
+        MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule, MatDialogModule,
         RouterModule.forRoot([
             {
                 path: "profile",

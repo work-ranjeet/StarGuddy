@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using StarGuddy.Api.Models.Files;
+using StarGuddy.Api.Models.Profile;
 using StarGuddy.Business.Interface.Files;
+using StarGuddy.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Files
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Profile/Image")]
     public class ImageController : BaseApiController
@@ -31,13 +35,13 @@ namespace StarGuddy.Api.Controllers.Files
         {
 
             var result = await _imageManager.GetHeadShotImageDetail();
-            if(result.IsNull())
+            if (result.IsNull())
             {
                 return NotFound();
             }
 
             return Ok(result);
-             
+
         }
 
         [HttpPost]
@@ -47,9 +51,42 @@ namespace StarGuddy.Api.Controllers.Files
             if (imageModel.IsNull() || imageModel.DataUrl == string.Empty)
                 return BadRequest();
 
-            if (await _imageManager.SaveUpdateHeadShot(imageModel))
+            if (await _imageManager.SaveUpdateHeadShotAsync(imageModel))
             {
-                return Ok("Upload Successful.");
+                return Ok("Uploaded Successfully.");
+            }
+
+            return StatusCode(StatusCodes.Status304NotModified, "Oops! there are some error occurred. Please try after some times");
+        }
+
+        [HttpPost]
+        [Route("uploadGallery")]
+        public async Task<IActionResult> UploadGalleryImage([FromBody]UserImageModel imageModel)
+        {
+            if (imageModel.IsNull() || imageModel.DataUrl == string.Empty)
+                return BadRequest();
+
+            imageModel.ImageType = ImageType.GallaryImage.GetHashCode();
+
+            if (await _imageManager.SaveImageAsync(imageModel))
+            {
+                return Ok("Uploaded Successfully.");
+            }
+
+            return StatusCode(StatusCodes.Status304NotModified, "Oops! there are some error occurred. Please try after some times");
+        }
+
+        [HttpPost]
+        [Route("delete")]
+        public async Task<IActionResult> DeleteIamge([FromBody]UserImageDeleteModel deleteModel)
+        {
+
+            if (deleteModel.IsNull() || deleteModel.Id == Guid.Empty)
+                return BadRequest();
+
+            if (await _imageManager.DeleteImageAsync(deleteModel.Id))
+            {
+                return Ok("Deleted Successfully.");
             }
 
             return StatusCode(StatusCodes.Status304NotModified, "Oops! there are some error occurred. Please try after some times");
@@ -59,7 +96,7 @@ namespace StarGuddy.Api.Controllers.Files
         [Route("all")]
         public async Task<IActionResult> GetImages()
         {
-            var result = await _imageManager.GetAllImages();
+            var result = await _imageManager.GetAllImagesAsync();
             if (result == null || !result.Any())
             {
                 return NotFound();
@@ -67,6 +104,8 @@ namespace StarGuddy.Api.Controllers.Files
 
             return Ok(result);
         }
+
+
 
         //[HttpPost]
         //[Route("UploadImage")]

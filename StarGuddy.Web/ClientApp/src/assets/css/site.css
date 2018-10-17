@@ -230,21 +230,18 @@
 /*----------------- end page loader------------------- */
 
 .page-heading {
-    font-family: Papyrus, fantasy;
+   
 }
 
     .page-heading h1 {
-        font-size: 26px;
-        font-weight: 700;
+        font-size: 30px;
     }
 
     .page-heading h2 {
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 26px;
     }
 
     .page-heading h3 {
         font-size: 22px;
-        font-weight: 700;
     }
 

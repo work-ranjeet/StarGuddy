@@ -18,6 +18,7 @@ namespace StarGuddy.Business.Modules.Common
     using StarGuddy.Business.Interface.Common;
     using StarGuddy.Core.Constants;
     using StarGuddy.Repository.Interface;
+    using StarGuddy.Repository.Operations;
     using System;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
@@ -108,37 +109,35 @@ namespace StarGuddy.Business.Modules.Common
         /// </returns>
         private async Task<string> GetJwtSecurityTokenAsync(IApplicationUser appUser)
         {
-            return await Task.Factory.StartNew(() =>
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.SeceretKey));
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256Signature, SecurityAlgorithms.Sha256Digest);
+            var expireDuration = Convert.ToInt32(await _settingsMaseterRepository.GetSettingsValue(SettingMaster.ExpiryDuration));
+
+            var claims = new Claim[]
             {
-                var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.SeceretKey));
-                var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256Signature, SecurityAlgorithms.Sha256Digest);
+                new Claim(JwtRegisteredClaimNames.Sid, appUser.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, appUser.UserName)
+                //new Claim(ClaimTypes.UserData, EncryptObject(appUser))
+            };
 
-                var claims = new Claim[]
-                {
-                    new Claim(JwtRegisteredClaimNames.Sid, appUser.UserId.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Email, appUser.UserName)
-                    //new Claim(ClaimTypes.UserData, EncryptObject(appUser))
-                };
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                SigningCredentials = signingCredentials,
+                Issuer = _configuration.GetAppSettingValue(AppSettings.JwtIssuer),
+                Audience = _configuration.GetAppSettingValue(AppSettings.JwtAudience),
+                Expires = DateTime.UtcNow.AddMinutes(expireDuration)
+            };
 
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(claims),
-                    SigningCredentials = signingCredentials,
-                    Issuer = _configuration.GetAppSettingValue(AppSettings.JwtIssuer),
-                    Audience = _configuration.GetAppSettingValue(AppSettings.JwtAudience),
-                    Expires = DateTime.UtcNow.AddMinutes(30)
-                };
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
 
-                var jwtTokenHandler = new JwtSecurityTokenHandler();
+            if (jwtTokenHandler.CanWriteToken)
+            {
+                var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+                return jwtTokenHandler.WriteToken(token);
+            }
 
-                if (jwtTokenHandler.CanWriteToken)
-                {
-                    var token = jwtTokenHandler.CreateToken(tokenDescriptor);
-                    return jwtTokenHandler.WriteToken(token);
-                }
-
-                return string.Empty;
-            });
+            return string.Empty;
         }
         #endregion
 

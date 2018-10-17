@@ -16,6 +16,14 @@ namespace StarGuddy.Repository.Interface
 
         Task<IEnumerable<UserImage>> GetUserImagesAsync(Guid userId, ImageType imageType);
 
-        Task<bool> PerformSaveAndUpdateOperationAsync(IUserImage userImage);
+        Task<bool> PerformSaveAndUpdateHeadShotAsync(IUserImage userImage);
+
+        Task<bool> PerformSaveImageOperationAsync(IUserImage userImage);
+
+        Task<bool> PerformUpdateStatusAsync(Guid ImageId, ApprovalStatus Status, Guid ApprovalId);
+
+        Task<bool> PerformUpdateCaptionAsync(Guid ImageId, string Caption);
+
+        Task<bool> PerformDeleteAsync(Guid ImageId);
     }
 }

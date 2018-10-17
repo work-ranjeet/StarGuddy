@@ -18,6 +18,7 @@ import IAddress = App.Client.Profile.IAddressDto;
 import IHeadShot = App.Client.Profile.IImageModel;
 import IUserCreditRequest = App.Client.Profile.IUserCreditRequest;
 import IUserImageModel = App.Client.Profile.IUserImageModel;
+import IUserImageDeleteModel = App.Client.Profile.IUserImageDeleteModel;
 
 @Injectable()
 export class ProfileEditService {
@@ -143,9 +144,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetUserActingDetail: Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetUserActingDetail: Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -157,9 +158,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("SaveUserActingDetails: Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("SaveUserActingDetails: Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -173,9 +174,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetUserModelingDetail: Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetUserModelingDetail: Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -187,9 +188,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("SaveUserModelingDetails: Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("SaveUserModelingDetails: Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -203,9 +204,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetUserInterestDetail: Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetUserInterestDetail: Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -217,9 +218,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("SaveUserInterestDetail:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("SaveUserInterestDetail:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -233,9 +234,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetUserNameDetail:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetUserNameDetail:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -248,9 +249,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("SaveUserNameDetail:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("SaveUserNameDetail:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -296,9 +297,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("SaveUserIntro:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("SaveUserIntro:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -312,9 +313,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetUserCurrentAddress:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetUserCurrentAddress:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -326,9 +327,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("UpdateUserAddress:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("UpdateUserAddress:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -342,9 +343,9 @@ export class ProfileEditService {
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("GetHeadShotDetails:Client-side error occurred. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("GetHeadShotDetails:Server-side error occurred. Error:" + err.message);
                     }
                 });
     }
@@ -385,17 +386,36 @@ export class ProfileEditService {
 
     /// ------------------------------ Images ---------------------------
     GetAllImages(): Observable<Array<IUserImageModel>> {
-        return this.baseService.HttpService.getData<Array<IUserImageModel>>("Profile/Image/all")
+        return this.baseService.HttpService.getData<Array<IUserImageModel>>("Profile/Image/all");
+    }
+
+    UploadImage(image: IUserImageModel): Observable<any> {
+        return this.baseService.HttpService.postDataWithProgress<any>("Profile/Image/uploadGallery", image)
             .map(
                 (result: any) => {
                     return result;
                 },
                 (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
+                        console.log("UploadImage. Error:" + err.message);
                     } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
+                        console.log("UploadImage. Error:" + err.message);
                     }
                 });
     }
+
+    DeleteImage(imageId: string): Observable<any> {
+        return this.baseService.HttpService.postData<any>("Profile/Image/delete", { id: imageId } as IUserImageDeleteModel )
+            .map(
+                (result: any) => {
+                    return result;
+                },
+                (err: HttpErrorResponse) => {
+                    if (err.error instanceof Error) {
+                        console.log("DeleteImage. Error:" + err.message);
+                    } else {
+                        console.log("DeleteImage. Error:" + err.message);
+                    }
+                });
+    }  
 }

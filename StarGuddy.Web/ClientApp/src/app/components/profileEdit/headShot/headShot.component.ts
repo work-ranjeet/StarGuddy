@@ -25,7 +25,7 @@ export class ProfileHeadShotComponent {
 
     public coordinates: any = { x: 0 };
     //public imageChangedEvent: any = '';
-    public croppedImage: any = '';
+    //public croppedImage: any = '';
     public cropperBase64: any;
 
     //private imageUrl: string = "/css/icons/mail.png";
@@ -117,6 +117,7 @@ export class ProfileHeadShotComponent {
             else if (event.type === HttpEventType.Response) {
                 //this.message = event.body.toString();
                 this.toastr.success(event.body.toString());
+                this.router.navigate(["/profile"]);
             }
         });
     }

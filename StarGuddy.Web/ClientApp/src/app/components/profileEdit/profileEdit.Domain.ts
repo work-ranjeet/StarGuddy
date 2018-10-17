@@ -173,4 +173,8 @@ namespace App.Client.Profile {
         statusCode: number;
         statusText: string;
     }
+
+    export interface IUserImageDeleteModel {
+        id: string;
+    }
 }

@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-heading">
+                <h2 class="card-title">Manage my photos</h2>
+            </div>
+            <sub class="padding-5" style="font-size:12px;">Choose your any image with clear face.</sub>
+        </div>
+    </div>
+    <form #frmProfileEditPhotoManager="ngForm" class="padding-top-20">
+        <div class="row padding-5">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <a class="btn btn-default" [routerLink]="['/profile']">
+                    <i class="glyphicon glyphicon-arrow-left" style="font-size:16px;"></i>
+                </a>
+                <a class="btn btn-success" [routerLink]="['/profile/photoUpload']">
+                    <i class="fa fa-upload" style="font-size:16px;"></i>&nbsp;Upload Image
+                </a>
+            </div>
+        </div>
+
+        <div id="gallary">
+            <div class="" *ngFor="let image of userImageModel">
+                <img src="{{image.dataUrl}}" alt="photo">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left text-success"></i>&nbsp;Caption</button>
+                    <button type="button" class="btn btn-default" (click)="deleteImage(image.id);"><i class="glyphicon glyphicon-trash text-danger"></i>&nbsp;Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div *ngIf="resultCount == 1">
+         <div class="thumbnail thumb-nail" *ngFor="let image of userImageModel">
+             <img src="{{image.dataUrl}}" alt="photo" class="full-width">
+             <div class="btn-group" role="group">
+                 <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left text-success"></i>&nbsp;Caption</button>
+                 <button type="button" class="btn btn-default" (click)="deleteImage(image.id);"><i class="glyphicon glyphicon-trash text-danger"></i>&nbsp;Delete</button>
+             </div>
+         </div>
+         <div class="thumbnail thumb-nail" >
+             <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_9219016.jpg" alt="photo" class="full-width">
+             <div class="btn-group" role="group">
+                 <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left text-success"></i>&nbsp;Caption</button>
+                 <button type="button" class="btn btn-default" (click)="deleteImage(image.id);"><i class="glyphicon glyphicon-trash text-danger"></i>&nbsp;Delete</button>
+             </div>
+         </div>
+
+     </div>-->

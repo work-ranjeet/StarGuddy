@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\Core\StarGuddy.Core\StarGuddy.Core.csproj" />
     <ProjectReference Include="..\..\Core\StarGuddy.Data.Entities\StarGuddy.Data.Entities.csproj" />
     <ProjectReference Include="..\..\Repository\StarGuddy.Repository.Interface\StarGuddy.Repository.Interface.csproj" />
+    <ProjectReference Include="..\..\Repository\StarGuddy.Repository.Operations\StarGuddy.Repository.Operations.csproj" />
     <ProjectReference Include="..\StarGuddy.Business.Interface\StarGuddy.Business.Interface.csproj" />
   </ItemGroup>
 

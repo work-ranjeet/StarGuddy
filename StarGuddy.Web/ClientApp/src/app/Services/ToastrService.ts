@@ -36,14 +36,14 @@ export class ToastrService {
 }
 
 export class ToasterOption extends ToastOptions {
-    positionClass = "toast-top-center";
-    animate = 'flyRight'; 
+    positionClass = "toast-top-center";   
     newestOnTop = true;
     showCloseButton = true;
     showPinButton = true;
 }
 
 //this.options = {
+//animate = 'flyRight'; 
 //    "closeButton": true,
 //    "debug": true,
 //    "newestOnTop": true,

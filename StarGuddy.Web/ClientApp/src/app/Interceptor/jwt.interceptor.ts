@@ -1,19 +1,21 @@
 import { isPlatformBrowser } from "@angular/common";
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { AppConstant } from "../Constants/AppConstant";
-
-//import { Observable } from 'rxjs';
-//import { catchError } from 'rxjs/operators';
-//import 'rxjs/add/observable/throw'
-//import 'rxjs/add/operator/catch';
+import { Router } from "@angular/router";
+import { BaseService } from "../Services/BaseService";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
     constructor(
         @Inject(PLATFORM_ID) private platformId: Object,
+        private readonly router: Router,
+        private readonly baseService: BaseService,
         private appConstant: AppConstant) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -27,27 +29,21 @@ export class JwtInterceptor implements HttpInterceptor {
                 });
             }
 
-            //return next.handle(request).catch(error => {
-            //    if (error instanceof HttpErrorResponse) {
-            //        if (error.status === 401) {
-            //            //Unauthorized Error response
-            //            if (isPlatformBrowser(this.platformId)) {
-            //                localStorage.clear();
-            //            }
-            //            console.info(error.statusText);
-            //            location.reload(true);
-            //        }
-            //    };
-
-            //    return Observable.of(error);
-            //    //return Observable.throw(error.message || error.statusText);
-            //});
-
+            return next.handle(request)
+                .catch((error: any) => {
+                    if (error instanceof HttpErrorResponse) {
+                        if (error.status === 401) {
+                            console.info(error.statusText); //Unauthorized Error response
+                            this.baseService.isLoggedInSource.next(false);
+                            this.baseService.cancleAuthention();
+                            this.router.navigate(['/login']);
+                            return Observable.throw(error);
+                        }
+                    };
+                });
         }
         catch (er) {
             console.error(er);
         }
-
-        return next.handle(request);
     }
 }

@@ -1,8 +1,9 @@
-<div id="credits" class="row margin-top-15">
+<div id="credits" class="row margin-top-10">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header card-title-m">
-                <span>Credits</span>
+                <span *ngIf="showCredits">Credits</span>
+                <span *ngIf="!showCredits" class="text-info text-m">Please enter your credits detail.</span>
                 <a href="javascript:void(0);" class="pull-right">
                     <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l" (click)="edit()"></i>
                     <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
@@ -17,9 +18,9 @@
                         </ul>
                     </div>
                 </div>
-                <div *ngIf="!showCredits">
+                <!--<div *ngIf="!showCredits">
                     <span class="text-info text-m">Please enter your credits detail.</span>
-                </div>
+                </div>-->
             </div>
 
             <div id="creditEdit" *ngIf="showEditHtml" class="card-body text-muted">

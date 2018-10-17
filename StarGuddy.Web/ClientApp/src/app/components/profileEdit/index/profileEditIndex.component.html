@@ -2,12 +2,7 @@
     <profile-edit-header [jobGroupNames]="GroupNames" [profileHeader]="ProfileHeader"></profile-edit-header>
     <profile-edit-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-edit-menu>
 
-
-    <div id="photos">
-        <profile-edit-photos></profile-edit-photos>
-    </div>
-
-
+    <profile-edit-photos></profile-edit-photos>
     <profile-edit-physicalDetails></profile-edit-physicalDetails>
 
     <div id="1003" *ngIf="SetionVisbility.showExtras"><profile-edit-credits></profile-edit-credits></div>

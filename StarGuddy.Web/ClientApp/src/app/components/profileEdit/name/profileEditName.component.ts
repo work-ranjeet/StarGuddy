@@ -17,8 +17,8 @@ import { ToastrService } from '../../../Services/ToastrService';
 })
 export class ProfileEditNameComponent {
 
-    public fullName: string = "Ranjeet Kumar";
-    public shortName: string = "Ranjeet K";
+    public fullName: string = "";
+    public shortName: string = "";
     public userNameModel: IUserNameModel = {} as IUserNameModel;
     public frmEditName: FormGroup;
 

@@ -1,8 +1,9 @@
-<div id="dancing" class="row margin-top-15">
+<div id="dancing" class="row margin-top-10">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header card-title-m">
-                <span>Dancing</span>
+                <span *ngIf="showDancing">Dancing</span>
+                <span *ngIf="!showDancing" class="text-info text-m">Please enter your dancing detail.</span>
                 <a href="javascript:void(0);" class="pull-right">
                     <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l" (click)="edit()"></i>
                     <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
@@ -32,9 +33,9 @@
                         <p class="padding-top-10 text-l text-muted">{{dancingResult.experience}}</p>
                     </div>
                 </div>
-                <div *ngIf="!showDancing">
+                <!--<div *ngIf="!showDancing">
                     <span class="text-info text-m">Please enter your dancing detail.</span>
-                </div>
+                </div>-->
             </div>
             <div *ngIf="showEditHtml" class="card-body text-muted">
                 <form #frmUserDanceEdit="ngForm">

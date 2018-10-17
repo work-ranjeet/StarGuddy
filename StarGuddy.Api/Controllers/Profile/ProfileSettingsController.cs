@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StarGuddy.Api.Models.Account;
@@ -11,6 +12,7 @@ using StarGuddy.Business.Interface.Profile;
 
 namespace StarGuddy.Api.Controllers.Profile
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
     public class ProfileSettingsController : Controller

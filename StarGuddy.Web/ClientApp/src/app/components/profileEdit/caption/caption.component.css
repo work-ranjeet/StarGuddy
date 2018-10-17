@@ -1,0 +1,19 @@
+.ng-dirty,
+input.ng-dirty,
+input.ng-valid,
+input.ng-valid[required],
+input.ng-dirty[required] {
+    border-left: none !important;
+}
+
+.btn {
+    min-width: 100px;
+}
+
+input.ng-invalid {
+    border-left: none !important;
+}
+
+input.border-left-none {
+    border-left: none !important;
+}

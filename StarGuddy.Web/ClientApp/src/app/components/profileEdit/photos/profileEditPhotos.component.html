@@ -1,42 +1,41 @@
-<div class="card">
-    <div class="card-header card-title-m">
+<!--<div class="card" >
+    <div class="card-header">
         <span>Photos</span>
         <a [routerLink]="['/profile/photoManager']" class="pull-right">
             <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l"></i>
         </a>
     </div>
-    <div id="gallary" class="card-body">
-        <div class="img-wrapper">
-            <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_9219016.jpg" alt="photo">
+    <div class="card-body">
+        <div id="gallary" *ngIf="showPhotoSection">
+            <div class="img-wrapper" *ngFor="let image of userImageModel">
+                <img [src]="image.dataUrl" alt="photo">
+            </div>
         </div>
-        <div class="img-wrapper">
-            <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_4293171.jpg" alt="photo">
+        <div *ngIf="!showPhotoSection">
+            <p class="text-info  text-l">You haven't added any photos yet</p>
+            <a [routerLink]="['/profile/photoManager']" class="pull-right">
+                <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l"></i>
+            </a>
         </div>
-        <div class="img-wrapper">
-            <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_8480589.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://thunder-team.com/friend-finder/images/album/4.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_9219054.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://thunder-team.com/friend-finder/images/album/6.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://snusercontent.global.ssl.fastly.net/member-profile-full/96/1505896_4054660.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://thunder-team.com/friend-finder/images/album/8.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://thunder-team.com/friend-finder/images/album/8.jpg" alt="photo">
-        </div>
-        <div class="img-wrapper">
-            <img src="https://thunder-team.com/friend-finder/images/album/8.jpg" alt="photo">
-        </div>
-
+    </div>
+</div>-->
+<div class="card">
+    <div class="card-header">
+        <span *ngIf="showPhotoSection">Photos</span>
+        <span *ngIf="!showPhotoSection" class="text-m text-info">You haven't added any photos yet</span>
+        <a [routerLink]="['/profile/photoManager']" class="pull-right">
+            <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l"></i>
+        </a>
     </div>
 </div>
-
+<div id="gallary" *ngIf="showPhotoSection">
+    <div *ngFor="let image of userImageModel">
+        <img [src]="image.dataUrl" alt="photo">
+    </div>
+</div>
+<!--<div *ngIf="!showPhotoSection">
+    <p class="text-info  text-l">You haven't added any photos yet</p>
+    <a [routerLink]="['/profile/photoManager']" class="pull-right">
+        <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l"></i>
+    </a>
+</div>-->

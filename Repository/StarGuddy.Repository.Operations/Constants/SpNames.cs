@@ -134,6 +134,10 @@ namespace StarGuddy.Repository.Opertions.Constants
         public struct UserImage
         {
             public const string HeadShotImageSaveUpdate = "HeadShotImageSaveUpdate";
+            public const string SaveImage = "UserImageSave";
+            public const string UpdateStatus = "UserImageStatusUpdate";
+            public const string UpdateCaption = "UserImageCaptionUpdate";
+            public const string Delete = "UserImageDelete";
         }
 
         public struct SettingsMaaster

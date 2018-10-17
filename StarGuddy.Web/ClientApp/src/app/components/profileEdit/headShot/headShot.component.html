@@ -31,7 +31,7 @@
             <div class="col-md-8 col-sm-8 col-xs-8">
                 <!-- [imageChangedEvent]="imageChangedEvent" -->
                 <image-cropper format="png,jpeg" class="img-fluid img-thumbnail" [cropper]="coordinates" style="max-height:500px;"
-                               [imageBase64]="cropperBase64" [maintainAspectRatio]="true" [aspectRatio]="4/5" [resizeToWidth]="192"
+                               [imageBase64]="cropperBase64" [maintainAspectRatio]="true" [aspectRatio]="4/5" [resizeToWidth]="512"
                                (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()">
                 </image-cropper>
                

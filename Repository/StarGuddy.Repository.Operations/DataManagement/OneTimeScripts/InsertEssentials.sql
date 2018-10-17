@@ -9,6 +9,7 @@ insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 's
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email_password', 'dnr_sguddy_1783', 'send mail password')
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email_port_number', '25', 'port number')
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'relay-hostimg.secureserver.net', '25', 'host')
+insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'token_expiry_duration', '5', 'token expiry duration')
 
 INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Acting', 1001, 'Acting group', 1)
 INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Modeling', 1002, 'Modeling group', 2)
