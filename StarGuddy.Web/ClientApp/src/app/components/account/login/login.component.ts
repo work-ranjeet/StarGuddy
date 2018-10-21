@@ -45,13 +45,12 @@ export class AccountLoginComponent {
         if (this.dataValidator.IsValidObject(this.loginData)) {
             this.accountService.login(this.loginData).subscribe(
                 data => {
-                    //if (data.isEmailVerified)
-                    //    this.router.navigate([this.returnUrl]);
-                    //else {
-                    //    this.router.navigate(['acc-cnf-email-sent']);
-                    //}
                     this.showSpinner = false;
-                    this.router.navigate([this.returnUrl]);
+                    if (data.isEmailVerified)
+                        this.router.navigate([this.returnUrl]);
+                    else {
+                        this.router.navigate(['acc-cnf-email-sent', "Welcome back! " + data.firstName]);
+                    }
                 },
                 error => {
                     this.showSpinner = false;

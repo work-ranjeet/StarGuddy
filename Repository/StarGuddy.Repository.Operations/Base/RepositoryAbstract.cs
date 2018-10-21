@@ -159,20 +159,20 @@ namespace StarGuddy.Repository.Base
         /// <returns>
         /// Query to get all entities
         /// </returns>
-        public virtual IEnumerable<T> GetAll()
-        {
-            using (var connection = OpenConnection)
-            {
-                return connection.Query<T>("SELECT * FROM " + this.tableName);
-            }
-        }
-        public virtual async Task<IEnumerable<T>> GetAllAsync()
-        {
-            using (var connection = OpenConnectionAsync)
-            {
-                return await connection.QueryAsync<T>("SELECT * FROM " + tableName);
-            }
-        }
+        //public virtual IEnumerable<T> GetAll()
+        //{
+        //    using (var connection = OpenConnection)
+        //    {
+        //        return connection.Query<T>("SELECT * FROM " + this.tableName);
+        //    }
+        //}
+        //public virtual async Task<IEnumerable<T>> GetAllAsync()
+        //{
+        //    using (var connection = OpenConnectionAsync)
+        //    {
+        //        return await connection.QueryAsync<T>("SELECT * FROM " + tableName);
+        //    }
+        //}
 
         /// <summary>
         /// Gets all by parameter.
@@ -182,20 +182,20 @@ namespace StarGuddy.Repository.Base
         /// <returns>
         /// Query to get all entities
         /// </returns>
-        public virtual IEnumerable<T> GetAllByParameter(string query, dynamic parameter)
-        {
-            using (var connection = OpenConnection)
-            {
-                return SqlMapper.Query<T>(connection, query, parameter, commandType: CommandType.Text);
-            }
-        }
-        public virtual async Task<IEnumerable<T>> GetAllByParameterAsync(string query, dynamic parameter)
-        {
-            using (var connection = OpenConnectionAsync)
-            {
-                return await SqlMapper.QueryAsync<T>(connection, query, parameter, commandType: CommandType.Text);
-            }
-        }
+        //public virtual IEnumerable<T> GetAllByParameter(string query, dynamic parameter)
+        //{
+        //    using (var connection = OpenConnection)
+        //    {
+        //        return SqlMapper.Query<T>(connection, query, parameter, commandType: CommandType.Text);
+        //    }
+        //}
+        //public virtual async Task<IEnumerable<T>> GetAllByParameterAsync(string query, dynamic parameter)
+        //{
+        //    using (var connection = OpenConnectionAsync)
+        //    {
+        //        return await SqlMapper.QueryAsync<T>(connection, query, parameter, commandType: CommandType.Text);
+        //    }
+        //}
 
         /// <summary>
         /// Gets the procedure data.
@@ -204,20 +204,20 @@ namespace StarGuddy.Repository.Base
         /// <returns>
         /// Query to get all entities
         /// </returns>
-        public virtual IEnumerable<T> GetProcedureData(string storeProcedureName)
-        {
-            using (var connection = OpenConnection)
-            {
-                return SqlMapper.Query<T>(connection, storeProcedureName, commandType: CommandType.StoredProcedure);
-            }
-        }
-        public virtual async Task<IEnumerable<T>> GetProcedureDataAsync(string storeProcedureName)
-        {
-            using (var connection = OpenConnectionAsync)
-            {
-                return await SqlMapper.QueryAsync<T>(connection, storeProcedureName, commandType: CommandType.StoredProcedure);
-            }
-        }
+        //public virtual IEnumerable<T> GetProcedureData(string storeProcedureName)
+        //{
+        //    using (var connection = OpenConnection)
+        //    {
+        //        return SqlMapper.Query<T>(connection, storeProcedureName, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
+        //public virtual async Task<IEnumerable<T>> GetProcedureDataAsync(string storeProcedureName)
+        //{
+        //    using (var connection = OpenConnectionAsync)
+        //    {
+        //        return await SqlMapper.QueryAsync<T>(connection, storeProcedureName, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
 
         /// <summary>
         /// Gets the procedure data.
@@ -271,6 +271,14 @@ namespace StarGuddy.Repository.Base
                 return (await SqlMapper.QueryAsync<T>(conn, "SELECT * FROM " + this.tableName + " WHERE UserId = @UserId AND IsActive = @IsActive AND IsDeleted = @IsDeleted",
                     new { UserId = userId, IsActive = 1, IsDeleted = 0 },
                     commandType: CommandType.Text)).FirstOrDefault();
+            }
+        }
+
+        public virtual async Task<IEnumerable<T>> FindAllByUserIdAsync(Guid userId)
+        {
+            using (var conn = OpenConnectionAsync)
+            {
+                return (await SqlMapper.QueryAsync<T>(conn, "SELECT * FROM " + this.tableName + " WHERE UserId = @UserId", new { UserId = userId }, commandType: CommandType.Text));
             }
         }
 

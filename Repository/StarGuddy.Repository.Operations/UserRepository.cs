@@ -78,7 +78,7 @@ namespace StarGuddy.Repository.Operations
             var userObj =  await FindSingleAsync("SELECT * FROM Users WHERE UserName=@UserName", new { UserName = userName }).ConfigureAwait(false);
             if(userObj.IsNotNull())
             {
-                var emailObj = await _userEmailsRepository.GetUserEmailAsync(userObj.Id).ConfigureAwait(false);
+                var emailObj = await _userEmailsRepository.GetCurrentActiveEmailAsync(userObj.Id).ConfigureAwait(false);
                 if(emailObj.IsNotNull())
                 {
                     userObj.Email = emailObj.Email;

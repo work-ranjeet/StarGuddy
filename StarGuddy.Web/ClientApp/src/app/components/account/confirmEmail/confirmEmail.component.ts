@@ -1,42 +1,35 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { AccountService } from "../Account.Service";
+import { ToastrService } from "../../../Services/ToastrService";
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
 
 @Component({
     selector: "account-confirm-email",
-    template: `<div style="padding-top:140px;">
-                    <div class="container-box">
-                            <p>
-                                Thank you for confirming your email. Please <a [routerLink]="['/login']">Click here to Log in</a>.
-                            </p>
-                     </div>
-                 </div>`
+    templateUrl: "././confirmEmail.html"
 })
 
 export class AccountConfirmEmailComponent {
-    private router: Router;
-    private returnUrl: string;
-    private authenticateRoute: ActivatedRoute;   
+    public verificationCode: string = "";
 
-    constructor(router: Router, authRoute: ActivatedRoute) {
-        this.router = router;
-        this.authenticateRoute = authRoute;
-        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
+    constructor(
+
+        private readonly router: Router,
+        private readonly authRoute: ActivatedRoute,
+        private readonly toastr: ToastrService,
+        private readonly accountService: AccountService) {
+        this.authRoute.params.subscribe(param => this.verificationCode = param['code']);
     }
 
-    //ngOnInit() { 
-    //    // get return url from route parameters or default to '/'
-    //    this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
-    //}
+    ngOnInit() {
+        this.activate();
+    }
 
-    //login() {
-    //    if (this.dataValidator.IsValidObject(this.loginData)) {
-    //        this.accountService.login(this.loginData).subscribe(
-    //            result => {
-    //                this.router.navigate([this.returnUrl]);
-    //            },
-    //            error => {
-    //                console.error(error);
-    //            });
-    //    }
-    //}
+    activate() {
+        this.accountService.activateEmail(this.verificationCode).subscribe(
+            result => {
+                this.toastr.info(result);
+            });
+    }
 }

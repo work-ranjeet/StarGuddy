@@ -146,6 +146,25 @@ BEGIN
 	END CATCH
 END
 GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'ActivateEmail') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE ActivateEmail
+GO
+
+CREATE PROCEDURE ActivateEmail (@UserId UNIQUEIDENTIFIER, @UserEmail NVARCHAR(256))
+AS
+BEGIN
+	BEGIN TRY
+		UPDATE UserEmails SET EmailConfirmed =1,  IsActive = 1, IsDeleted = 0, DttmModified = getutcdate()  WHERE UserId = @UserId AND Email = @UserEmail
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
 
 -------------------------------------------------------------------- End UpdateEmail ----------------------------------------------------------------------------------
 -------------------------------------------------------------------- PhysicalAppreance --------------------------------------------------------------------------------

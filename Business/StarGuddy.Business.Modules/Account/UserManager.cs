@@ -152,19 +152,14 @@ namespace StarGuddy.Business.Modules.Account
             };
         }
 
-        /// <summary>
-        /// Finds the by identifier asynchronous.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <returns>
-        /// IApplication User
-        /// </returns>
-        public async Task<IApplicationUser> FindByIdAsync(string userId)
+       
+        public async Task<IApplicationUser> FindByIdAsync(Guid userId)
         {
-            return await Task.Factory.StartNew(() =>
-            {
-                return new ApplicationUser();
-            });
+            var result = await _userRepository.FindByIdAsync(userId);
+            var mappedResult =  _mapper.Map<ApplicationUser>(result);
+            mappedResult.UserId = result.Id;
+
+            return mappedResult;
         }
 
         public void ConfirmEmailAsync(string userId, string code)
@@ -176,7 +171,7 @@ namespace StarGuddy.Business.Modules.Account
         {
             var appUserTask = _userRepository.FindByIdAsync(userId);
             var addressTask = _addressRepository.GetAsync(userId);
-            var emalTask = _userEmailsRepository.GetUserEmailAsync(userId);
+            var emalTask = _userEmailsRepository.GetCurrentActiveEmailAsync(userId);
             var phoneTask = _userPhonesRepository.GetUserPhoneDetailByUserId(userId);
             var detailTask = _userDetailRepository.GetUserDetailByUserId(userId);
 

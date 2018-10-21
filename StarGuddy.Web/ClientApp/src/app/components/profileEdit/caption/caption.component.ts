@@ -16,7 +16,7 @@ import IUserNameModel = App.Client.Profile.IUserNameModel;
 export class ProfileEditCaptionComponent {
 
     public caption: string = "";
-    public frmEditPhotoCaption: FormGroup;
+    public frmEditCaption: FormGroup;
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -25,14 +25,14 @@ export class ProfileEditCaptionComponent {
         private readonly profileService: ProfileEditService) { }
 
     ngOnInit() {
-        this.frmEditPhotoCaption = this._formBuilder.group({
+        this.frmEditCaption = this._formBuilder.group({
             photoCaption: new FormControl('', Validators.compose([
                 Validators.required,
                 Validators.pattern('[a-zA-Z][a-zA-Z]+')
             ]))
         });
     }
-
+    save() {}
     //load() {
     //    this.profileService.GetUserNameDetail().subscribe(response => {
     //        if (response != null) {

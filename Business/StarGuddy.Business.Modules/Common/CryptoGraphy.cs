@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -208,7 +209,7 @@ namespace StarGuddy.Business.Modules.Common
         #endregion
 
         #region /// Object Encryption
-        public static string EncryptObject(dynamic value)
+        public static string ConvertToBase64(dynamic value)
         {
             using (var ms = new MemoryStream())
             {
@@ -217,9 +218,31 @@ namespace StarGuddy.Business.Modules.Common
             }
 
         }
-        public static dynamic DecryptObject<T>(string base64String)
+        public static T ConvertBase64ToObject<T>(string base64String)
         {
             var bytes = Convert.FromBase64String(base64String);
+            using (var ms = new MemoryStream(bytes, 0, bytes.Length))
+            {
+                ms.Write(bytes, 0, bytes.Length);
+                ms.Position = 0;
+
+                return (T)new BinaryFormatter().Deserialize(ms);
+            }
+        }
+
+        public static string ConvertToBase64Url(dynamic value)
+        {
+            using (var ms = new MemoryStream())
+            {
+                new BinaryFormatter().Serialize(ms, value);
+                return Base64UrlEncoder.Encode(ms.ToArray());
+            }
+
+        }
+
+        public static T ConvertBase64UrlToObject<T>(string base64StringUrl)
+        {
+            var bytes = Base64UrlEncoder.DecodeBytes(base64StringUrl);
             using (var ms = new MemoryStream(bytes, 0, bytes.Length))
             {
                 ms.Write(bytes, 0, bytes.Length);

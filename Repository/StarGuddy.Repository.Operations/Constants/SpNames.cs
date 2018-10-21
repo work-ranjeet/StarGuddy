@@ -72,6 +72,7 @@ namespace StarGuddy.Repository.Opertions.Constants
         public struct UserEmails
         {
             public const string UpdateEmail = "UpdateEmail";
+            public const string ActivateEmail = "ActivateEmail";
         }
 
         public struct PhysicalAppearance

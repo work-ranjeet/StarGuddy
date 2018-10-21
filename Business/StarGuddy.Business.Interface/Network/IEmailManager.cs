@@ -13,9 +13,7 @@ namespace StarGuddy.Business.Interface.Network
     public interface IEmailManager
     {
         Task<bool> SendMail(string subject, string body, string emailTo);
-
-        Task<bool> SendMail(string subject, string body, string emailFrom, string emailTo);
-
-        Task<bool> SendMail(string subject, string body, string emailFrom, string emailTo, bool isHtml = true);
+        Task<string> GetCurrentEmailAsync(Guid UserId);
+        Task<bool> ActivateEmailAsync(Guid userId, string emailId);
     }
 }

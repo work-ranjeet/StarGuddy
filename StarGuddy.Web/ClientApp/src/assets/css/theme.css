@@ -19,6 +19,12 @@
         .theme-brand:hover .theme-brand-star {
             color: white !important;
         }
+@media screen and (max-width: 450px) {
+    .theme-brand {
+        color: white;
+        font-size: 20px !important;
+    }
+}
 
 
 .theme-color {
@@ -42,7 +48,7 @@
 }
 
 .btn-m {
-    min-width:105px;
+    min-width: 105px;
 }
 
 .btn-s {
@@ -179,10 +185,11 @@ span.text-shadow, label.text-shadow {
 }
 
 .mat-radio-button.mat-accent .mat-radio-inner-circle {
-    background-color: #5cb85c!important;
+    background-color: #5cb85c !important;
 }
+
 .mat-label-light {
-    color:#535353;
-    font-weight:300;
+    color: #535353;
+    font-weight: 300;
 }
 /* --------------------------------- End Angular Materials ----------------------------------------*/

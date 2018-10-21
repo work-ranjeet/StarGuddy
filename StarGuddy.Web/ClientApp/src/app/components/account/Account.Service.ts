@@ -1,6 +1,8 @@
 
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { DataConverter } from "../../Helper/DataConverter";
@@ -29,10 +31,11 @@ export class AccountService {
     login(loginData: ILoginData): Observable<any> {
         return this.baseService.HttpService.postSimple("Account/login", loginData).map(response => {
             if (response != null && response.token != null && response.token != "") {
-                //if (response.isEmailVerified) {
-                this.baseService.isLoggedInSource.next(true);
                 this.baseService.authenticate(response);
-                //}
+
+                if (response.isEmailVerified) {
+                    this.baseService.isLoggedInSource.next(true);
+                }
             }
 
             return response;
@@ -62,5 +65,23 @@ export class AccountService {
     //    });
     //}
 
+    activateEmail(token: string): Observable<any>  {
+        return this.baseService.HttpService.postSimple("Email/activate", { "AuthToken": token })
+            .map(response => {
+                return response;
+            })
+            .catch(error => {
+                return Observable.throw(error);
+            });
+    };
 
+    resendEmailActivationCode(): Observable<any>  {
+        return this.baseService.HttpService.get("Email/verify")
+            .map(response => {
+                return response;
+            })
+            .catch(error => {
+                return Observable.throw(error);
+            });
+    };
 }

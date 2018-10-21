@@ -4,12 +4,12 @@
     z-index: 9;
 }
 
-        .profile-img-container .img-size {
-            width: inherit;
-            height: inherit;
-            border-radius: 50%;
-            border: 5px solid #fcf9f9;
-        }
+    .profile-img-container .img-size {
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        border: 5px solid #fcf9f9;
+    }
 
     .profile-img-container .img-edit-icon {
         position: absolute;
@@ -22,19 +22,21 @@
             color: cornflowerblue;
         }
 
+
+
 .profile-img-container-mob {
     width: 150px;
     height: 170px;
     margin: auto;
 }
-   
 
-        .profile-img-container-mob .img-size {
-            width: inherit;
-            height: inherit;
-            border-radius: 50%;
-            border: 5px solid #fcf9f9;
-        }
+
+    .profile-img-container-mob .img-size {
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        border: 5px solid #fcf9f9;
+    }
 
     .profile-img-container-mob .img-edit-icon {
         position: absolute;
@@ -51,6 +53,10 @@
     .profile-info-detail-mob {
         text-align: center;
     }
+
+    .profile-info-name {
+        font-size: 20px;
+    }
 }
 
 .profile-info-detail > h2 {
@@ -66,7 +72,7 @@
 
 .profile-info-detail-mob > div {
     padding: 5px 0 5px 0;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .profile-info-detail .profile-address {

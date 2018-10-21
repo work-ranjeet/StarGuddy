@@ -89,14 +89,22 @@ namespace StarGuddy.Business.Modules.Common
         {
             return await Task.Factory.StartNew(() =>
             {
-                return CryptoGraphy.EncryptObject(
+                return CryptoGraphy.ConvertToBase64Url(
                      new EmailVerification
                      {
                          UserId = applicationUser.UserId.ToString(),
                          Email = applicationUser.Email,
                          SecurityStamp = applicationUser.SecurityStamp,
-                         ExpiryHour = DateTime.UtcNow
+                         ExpiryHour = DateTime.UtcNow.AddHours(24)
                      });
+            });
+        }
+
+        public async Task<EmailVerification> GetEmailVerificationObjAsync(string code)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return CryptoGraphy.ConvertBase64UrlToObject<EmailVerification>(code);
             });
         }
 

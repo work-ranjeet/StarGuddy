@@ -34,8 +34,8 @@ import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSen
         RouterModule.forRoot([
             { path: "login", component: AccountLoginComponent },
             { path: "signup", component: SignUpComponent },
-            { path: "acc-cnf-email", component: AccountConfirmEmailComponent },
-            { path: "acc-cnf-email-sent", component: AccountConfirmEmailSentComponent }
+            { path: "acc-cnf-email/:code", component: AccountConfirmEmailComponent },
+            { path: "acc-cnf-email-sent/:firstName", component: AccountConfirmEmailSentComponent }
             //{ path: "acc-forgot-pwd", component: AccountForgotPwdComponent }
             //{ path: "acc-send-code", component: AccountSendCodeComponent },
             //{ path: "acc-verify-code", component: AccountVerifyCodeComponent }

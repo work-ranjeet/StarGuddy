@@ -5,6 +5,7 @@ using StarGuddy.Api.Models.Account;
 using StarGuddy.Business.Interface.Account;
 using StarGuddy.Business.Interface.Common;
 using StarGuddy.Business.Interface.Network;
+using StarGuddy.Core.Context;
 using System;
 using System.Threading.Tasks;
 
@@ -37,7 +38,7 @@ namespace StarGuddy.Api.Controllers.Account
             _securityManager = securityManager;
             _emailManager = emailManager;
         }
-      
+
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp([FromBody]ApplicationUser applicationUser)
         {
@@ -66,12 +67,14 @@ namespace StarGuddy.Api.Controllers.Account
                 if (await _userManager.CreateAsync(applicationUser))
                 {
                     var userResult = await _signUpManager.PasswordSignInAsync(applicationUser.UserName, password, rememberMe: false, lockoutOnFailure: false);
+                    try
+                    {
+                        var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
+                        await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", userResult.Email);
+                    }
+                    catch { }
 
-                   // var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
-
-                   // await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", "er.ranjeetkumar@gmail.com");
-                    
-                    return Ok($"Welcome! {userResult.FirstName}." );
+                    return Ok($"Welcome! {userResult.FirstName}.");
                 }
 
             }
@@ -83,8 +86,8 @@ namespace StarGuddy.Api.Controllers.Account
             return BadRequest();
         }
 
-        [HttpGet]        
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(Guid userId, string code)
         {
             if (userId == null || code == null)
             {
@@ -105,6 +108,6 @@ namespace StarGuddy.Api.Controllers.Account
         //    return await Task.Run(() => View());
         //}
 
-      
+
     }
 }

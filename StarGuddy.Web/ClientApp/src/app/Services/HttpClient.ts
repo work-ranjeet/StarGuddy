@@ -49,6 +49,10 @@ export class HttpService {
         return this.http.patch<T>(this.UrlPrifix + Url, data);
     }
 
+    put(Url: string, data: any) {
+        return this.http.put(this.UrlPrifix + Url, data);
+    }
+
     putData<T>(Url: string, data: any) {
         return this.http.put<T>(this.UrlPrifix + Url, data);
     }

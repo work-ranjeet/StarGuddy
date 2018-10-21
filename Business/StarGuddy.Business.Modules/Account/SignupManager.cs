@@ -81,7 +81,7 @@ namespace StarGuddy.Business.Modules.Account
                 return null;
             }
 
-            var email = await _userEmailsRepository.GetUserEmailAsync(user.Id);
+            var email = await _userEmailsRepository.GetCurrentActiveEmailAsync(user.Id);
 
             return new ApplicationUser
             {

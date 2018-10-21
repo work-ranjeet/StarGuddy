@@ -62,7 +62,7 @@
                                     <ng-template matStepLabel>Profile Details</ng-template>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
-                                            <input matInput placeholder="First name" formControlName="firstName" required autocomplete="off" [(ngModel)]="applicationUser.firstName">
+                                            <input matInput placeholder="First name" formControlName="firstName" required autofocus autocomplete="off" [(ngModel)]="applicationUser.firstName">
                                             <mat-error *ngFor="let validation of signup_validation_messages.name">
                                                 <mat-error class="error-message" *ngIf="profileDetailForm.get('firstName').hasError(validation.type) &&
                                                        (profileDetailForm.get('firstName').dirty || profileDetailForm.get('firstName').touched)">

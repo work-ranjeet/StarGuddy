@@ -9,6 +9,7 @@ using StarGuddy.Api.Models.Account;
 using StarGuddy.Business.Interface.Account;
 using StarGuddy.Business.Interface.Common;
 using StarGuddy.Business.Interface.Profile;
+using StarGuddy.Core.Constants;
 
 namespace StarGuddy.Api.Controllers.Profile
 {
@@ -16,6 +17,7 @@ namespace StarGuddy.Api.Controllers.Profile
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
+    [Authorize(Policy = nameof(Policy.JwtToken))]
     public class ProfileSettingsController : ControllerBase
     {
         /// <summary>

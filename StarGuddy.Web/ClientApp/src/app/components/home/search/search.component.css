@@ -1,7 +1,15 @@
 .home-section {
-    min-height: 340px;
+    min-height: 350px;
     padding-top: 5%;
     background-color: #f3f3f3;
+}
+
+@media screen and (max-width: 767px) {
+    .home-section {
+        min-height: 250px;
+        padding-top: 5%;
+        background-color: #f3f3f3;
+    }
 }
 
 .home-hero-section {

@@ -40,23 +40,9 @@ namespace StarGuddy.Business.Interface.Account
         /// </returns>
         Task<bool> CreateAsync(IApplicationUser applicationUser);
 
-        /// <summary>
-        /// Adds the new user.
-        /// </summary>
-        /// <param name="user">The user.</param>
-        /// <returns>
-        /// User Object
-        /// </returns>
         Task<int> UpdateUser(IApplicationUser applicationUser);
 
-        /// <summary>
-        /// Finds the by identifier asynchronous.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <returns>
-        /// IApplication User
-        /// </returns>
-        Task<IApplicationUser> FindByIdAsync(string userId);
+        Task<IApplicationUser> FindByIdAsync(Guid userId);
 
         Task<IApplicationUser> FindByUserNameAsync(string userName);
 

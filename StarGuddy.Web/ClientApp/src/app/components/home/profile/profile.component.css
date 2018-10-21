@@ -1,4 +1,4 @@
-﻿
+
 .home-profile-section {
     padding-top: 2%;
     padding-bottom:1%;
@@ -37,3 +37,35 @@
 
     .home-profile-section .home-plan-price {
     }
+
+
+@media screen and (max-width: 767px) {
+    .home-profile-section .home-create-profile,
+    .home-profile-section .home-plan-price {
+        height: 50px;
+        min-width: 202px;
+        font-size: 16px;
+        color: white;
+        margin: 10px 10px 0px 10px;
+        padding-top: 13px;
+    }
+
+    .home-profile-section .heading {
+        display: block;
+        font-size: 25px;
+        font-style: italic;
+        text-align: center;
+        line-height: 55px;
+        padding: 0px 10px 0px 10px;
+        text-shadow: 5px 4px 20px #333;
+    }
+
+    .home-profile-section .heading-title,
+    .home-profile-section .heading-subtitle {
+        display: block;
+        text-align: center;
+        font-size: 15px;
+        padding: 10px 10px 0px 10px;
+        text-shadow: 0 0 10px rgba(0,0,0,.4);
+    }
+}

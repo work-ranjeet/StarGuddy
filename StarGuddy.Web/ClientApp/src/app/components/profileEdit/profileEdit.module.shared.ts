@@ -24,6 +24,7 @@ import { ProfileEditService } from "./profileEdit.Service";
 import { ProfileEditTrainingsComponent } from "./trainings/profileEditTrainings.component";
 import { ProfileEditPhotosManagerComponent } from "./photosManager/photosManager.component";
 import { ProfilePhotoUploadComponent } from "./photoUpload/photoUpload.component";
+import { ProfileEditCaptionComponent } from "./caption/caption.component";
 
 
 
@@ -31,7 +32,7 @@ import { ProfilePhotoUploadComponent } from "./photoUpload/photoUpload.component
     declarations: [
         ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent, ProfilePhotoUploadComponent,
         ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent, ProfileEditPhotosManagerComponent,
-        ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent,
+        ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent, ProfileEditCaptionComponent,
         ProfileHeadShotComponent
     ],
     imports: [
@@ -60,7 +61,7 @@ import { ProfilePhotoUploadComponent } from "./photoUpload/photoUpload.component
 
         ProfileEditActingComponent, ProfileEditCreditsComponent, ProfileEditDancingComponent, ProfileEditModelingComponent, ProfilePhotoUploadComponent,
         ProfileEditPhotosComponent, ProfileEditTrainingsComponent, ProfileEditPhysicalComponent, ProfileEditAddressComponent, ProfileEditPhotosManagerComponent,
-        ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent,
+        ProfileEditIndex, ProfileEditHeader, ProfileEditMenu, JobGroupComponent, ProfileEditNameComponent, ProfileEditIntroComponent, ProfileEditCaptionComponent,
         ProfileHeadShotComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

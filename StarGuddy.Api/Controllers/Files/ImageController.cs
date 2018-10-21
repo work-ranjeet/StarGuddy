@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using StarGuddy.Api.Models.Files;
 using StarGuddy.Api.Models.Profile;
 using StarGuddy.Business.Interface.Files;
+using StarGuddy.Core.Constants;
 using StarGuddy.Core.Enums;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace StarGuddy.Api.Controllers.Files
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Image")]
+    [Authorize(Policy = nameof(Policy.JwtToken))]
     public class ImageController : ControllerBase
     {
         private readonly IImageManager _imageManager;

@@ -38,7 +38,7 @@
                                     <span class="mat-label-light ">My short name:</span>&nbsp;<strong>{{shortName}}</strong>
                                 </mat-radio-button>
                                 <mat-radio-button class="display-block  padding-top-10 padding-left-15" value="{{userNameModel.orgName}}" (change)="radioChange($event)"
-                                                  [checked]="userNameModel.displayName==orgName">
+                                                  [checked]="userNameModel.displayName==userNameModel.orgName">
                                     <span class="mat-label-light ">Organization name:</span>&nbsp;<strong>{{userNameModel.orgName}}</strong>
                                 </mat-radio-button>
                             </mat-radio-group>

@@ -6,6 +6,7 @@
 namespace StarGuddy.Business.Interface.Common
 {
     using StarGuddy.Api.Models.Interface.Account;
+    using StarGuddy.Api.Models.Security;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -27,5 +28,6 @@ namespace StarGuddy.Business.Interface.Common
         Task<IJwtPacket> CreateJwtPacketAsync(IApplicationUser applicationUser);
 
         Task<string> GetEmailVerificationCodeAsync(IApplicationUser applicationUser);
+        Task<EmailVerification> GetEmailVerificationObjAsync(string code);
     }
 }

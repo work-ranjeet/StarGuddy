@@ -17,10 +17,7 @@ namespace StarGuddy.Repository.Operations
     public class JobGroupRepository : RepositoryAbstract<JobGroup>, IJobGroupRepository
     {
         public JobGroupRepository(IConfigurationSingleton configurationSingleton) : base(configurationSingleton, SqlTable.JobGroup) { }
-
-
-        public async Task<IEnumerable<IJobGroup>> GetActiveJobGroupAsync() => await GetAllAsync();
-
+        
         public async Task<IEnumerable<JobGroup>> GetUserJobGroupByUserIdAsync(Guid userId)
         {
             using (var conn = await Connection.OpenConnectionAsync())

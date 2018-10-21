@@ -131,8 +131,7 @@ export class SignUpComponent {
                         this.showSpinner = false;
                         if (result != undefined) {
                             this.toastr.info(result);
-                            //this.router.navigate(["acc-cnf-email-sent"]);
-                            this.router.navigate(["/profile"]);
+                            this.router.navigate(["acc-cnf-email-sent", result]);
                         }
                     },
                     (error) => {

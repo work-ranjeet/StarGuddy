@@ -11,8 +11,7 @@ import { ToastrService } from '../../../Services/ToastrService';
 /** @title Simple form field */
 @Component({
     selector: "profile-head-shot",
-    templateUrl: "././headShot.component.html",
-    styleUrls: ['././headShot.component.css']
+    templateUrl: "././headShot.component.html"
 })
 export class ProfileHeadShotComponent {
     private _gender: string = "";
