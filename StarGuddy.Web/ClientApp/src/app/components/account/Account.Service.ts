@@ -1,8 +1,6 @@
 
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { DataConverter } from "../../Helper/DataConverter";
@@ -49,36 +47,30 @@ export class AccountService {
 
     signup(userData: any): Observable<any> {
         return this.baseService.HttpService.postSimple("Account/signup", userData).map(response => {
-            //if (response != null)// && response.token != null && response.token != "") {
-            //    this.isLoggedInSource.next(true);
-            //    this.baseService.authenticate(response);
-            //}
-
             return response;
         });
     }
 
-    //register(user) {
-    //    delete user.confirmPassword;
-    //    this.http.post(this.BASE_URL + "/register", user).subscribe(res => {
-    //        this.authenticate(res);
-    //    });
-    //}
-
-    activateEmail(token: string): Observable<any>  {
-        return this.baseService.HttpService.postSimple("Email/activate", { "AuthToken": token })
-            .map(response => {
+    activateEmail(token: string): Observable<any> {
+        return this.baseService.HttpService.postDataWithTextResponseType<any>("Email/activate", { "AuthToken": token }).map(
+            response => {
                 return response;
+            },
+            (error) => {
+                return Observable.throw(error);
             })
             .catch(error => {
-                return Observable.throw(error);
+                return Observable.throw(error); 
             });
     };
 
-    resendEmailActivationCode(): Observable<any>  {
-        return this.baseService.HttpService.get("Email/verify")
-            .map(response => {
+    resendEmailActivationCode(userId: string): Observable<any> {
+        return this.baseService.HttpService.getDataWithResponseType<any>("Email/verify/" + userId, "text").map(
+            response => {
                 return response;
+            },
+            (error) => {
+                return Observable.throw(error);
             })
             .catch(error => {
                 return Observable.throw(error);

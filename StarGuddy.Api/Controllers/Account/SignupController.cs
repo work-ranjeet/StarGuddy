@@ -74,7 +74,7 @@ namespace StarGuddy.Api.Controllers.Account
                     }
                     catch { }
 
-                    return Ok($"Welcome! {userResult.FirstName}.");
+                    return Ok(new { Name = $"Welcome! {userResult.FirstName}.", Id = userResult.UserId });
                 }
 
             }

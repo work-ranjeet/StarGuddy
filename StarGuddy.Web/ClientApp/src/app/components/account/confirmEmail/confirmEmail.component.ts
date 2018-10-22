@@ -11,6 +11,7 @@ import 'rxjs/add/operator/catch';
 })
 
 export class AccountConfirmEmailComponent {
+    public isEmailVerified: boolean = false;
     public verificationCode: string = "";
 
     constructor(
@@ -28,8 +29,15 @@ export class AccountConfirmEmailComponent {
 
     activate() {
         this.accountService.activateEmail(this.verificationCode).subscribe(
-            result => {
-                this.toastr.info(result);
+            (data: Response) => {
+                this.isEmailVerified = true;
+                var message = data.body;
+                if (message != null) {
+                    this.toastr.success(message.toString());
+                }
+            },
+            (error) => {
+                this.toastr.error(error.message == undefined ? "Oops! try again." : error.message);
             });
     }
 }

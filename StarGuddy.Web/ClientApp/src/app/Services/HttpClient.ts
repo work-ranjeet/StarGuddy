@@ -14,8 +14,7 @@ export class HttpService {
 
     }
 
-    private get UrlPrifix()
-    {
+    private get UrlPrifix() {
         return this.apiUrl + "api/";
     }
 
@@ -27,17 +26,29 @@ export class HttpService {
         return this.http.get<any>(this.UrlPrifix + Url);
     }
 
+    getDataWithResponseType<T>(Url: string, responseType: string) {
+        return this.http.request<T>(
+            new HttpRequest('GET', this.UrlPrifix + Url, { responseType: responseType })
+        );
+    }
+
     post(Url: string, data: any) {
         return this.http.post(this.UrlPrifix + Url, data);
     }
 
     postData<T>(Url: string, data: any) {
         return this.http.post<any>(this.UrlPrifix + Url, data);
-    } 
+    }
 
     postDataWithProgress<T>(Url: string, data: any) {
         return this.http.request<T>(
             new HttpRequest('POST', this.UrlPrifix + Url, data, { reportProgress: true })
+        );
+    }
+
+    postDataWithTextResponseType<T>(Url: string, data: any) {
+        return this.http.request<T>(
+            new HttpRequest('POST', this.UrlPrifix + Url, data, { responseType: 'text' })
         );
     }
 
@@ -47,10 +58,6 @@ export class HttpService {
 
     patchData<T>(Url: string, data: any) {
         return this.http.patch<T>(this.UrlPrifix + Url, data);
-    }
-
-    put(Url: string, data: any) {
-        return this.http.put(this.UrlPrifix + Url, data);
     }
 
     putData<T>(Url: string, data: any) {

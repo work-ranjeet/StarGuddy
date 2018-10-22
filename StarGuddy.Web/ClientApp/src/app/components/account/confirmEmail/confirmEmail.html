@@ -1,7 +1,11 @@
 <div style="padding: 10px; padding-top:100px!important;">
     <div class="container-box">
         <div style="width:550px;" class="text-center margin-auto">
-            <p>
+            <p *ngIf="!isEmailVerified">
+                Wait, We are verifying your email.
+                <i class="fa fa-spinner fa-spin btn-spinner"></i>
+            </p>
+            <p *ngIf="isEmailVerified">
                 Thank you for confirming your email. Please <a [routerLink]="['/login']">Click here to Log in</a>.
             </p>
         </div>

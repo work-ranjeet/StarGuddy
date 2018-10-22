@@ -49,7 +49,7 @@ export class AccountLoginComponent {
                     if (data.isEmailVerified)
                         this.router.navigate([this.returnUrl]);
                     else {
-                        this.router.navigate(['acc-cnf-email-sent', "Welcome back! " + data.firstName]);
+                        this.router.navigate(['acc-cnf-email-sent', "Welcome back! " + data.firstName, data.userId]);
                     }
                 },
                 error => {
