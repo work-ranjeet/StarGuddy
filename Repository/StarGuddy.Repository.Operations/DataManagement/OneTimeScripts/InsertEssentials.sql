@@ -11,17 +11,18 @@ insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 's
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email_host', 'mail.starguddy.com', 'host')
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'token_expiry_duration', '30', 'token expiry duration')
 
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Acting', 1001, 'Acting group', 1)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Modeling', 1002, 'Modeling group', 2)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Extras', 1003, 'Extras group', 3)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Presenter', 1004, 'Presenter group', 4)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Musician', 1005, 'Musician group', 5)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Photography', 1006, 'Photography group', 6)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('TV & Reality', 1007, 'TV and Reality group', 7)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Dancing', 1008, 'Dancing group', 8)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Film & Stage Crew', 1009, 'Film & Stage Crew group', 9)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Hair, Makeup, & Styling', 1010, 'Hair, Makeup, & Styling group', 10)
-INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder) values('Survival Jobs', 1011, 'Survival Jobs group', 11)
+
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Acting', 1001, 'Acting group', 1, 'assets/css/icons/group/acting.png', 1)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Modeling', 1002, 'Modeling group', 2, 'assets/css/icons/group/modeling.png', 1)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Extras', 1003, 'Extras group', 3, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Presenter', 1004, 'Presenter group', 4, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Musician', 1005, 'Musician group', 5, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Photography', 1006, 'Photography group', 6, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('TV & Reality', 1007, 'TV and Reality group', 7, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Dancing', 1008, 'Dancing group', 8, 'assets/css/icons/group/dance.png', 1)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Film & Stage Crew', 1009, 'Film & Stage Crew group', 9, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Hair, Makeup, & Styling', 1010, 'Hair, Makeup, & Styling group', 10, 'assets/css/icons/group/default.png', 0)
+INSERT INTO JobGroup (Name, Code, Detail, DisplayOrder, ImageUrl, IsActive) values('Survival Jobs', 1011, 'Survival Jobs group', 11, 'assets/css/icons/group/default.png', 0)
 
 
 

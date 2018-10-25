@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "../../../Services/ToastrService";
 import { AccountService } from "../Account.Service";
-import { HttpResponse } from "@angular/common/http";
 
 @Component({
     selector: "account-confirm-email-sent",
@@ -15,6 +14,9 @@ export class AccountConfirmEmailSentComponent {
 
     public id: string = "";
     public name: string = "";
+    public sender: string = "";
+    public message: string = "";
+    public isMailSending: boolean = false;
 
     constructor(router: Router, authRoute: ActivatedRoute,
         private readonly accountService: AccountService,
@@ -28,18 +30,28 @@ export class AccountConfirmEmailSentComponent {
         this.authenticateRoute.params.subscribe(param => {
             this.name = param['firstName'];
             this.id = param['id'];
+            this.sender = param['sender'];
         });
+
+        //if (this.sender != undefined && this.sender == "signup") {
+        //    this.sendMail();
+        //}
     }
 
-    resend() {
+
+    sendMail() {
+        this.isMailSending = true;
         this.accountService.resendEmailActivationCode(this.id).subscribe(
-            (data: Response) => {
-                var message = data.body;
-                if (message != null) {
-                    this.toastr.info(message.toString());
+            (data: any) => {
+                var message = data.message;
+                if (message != undefined && message != null) {
+                    console.info(message.toString());
                 }
+
+                this.isMailSending = false;
             },
             error => {
+                this.isMailSending = false;
                 this.toastr.error(error.message == undefined ? "Oops! try again." : error.message);
             });
     }

@@ -40,6 +40,8 @@ export class JwtInterceptor implements HttpInterceptor {
                             return Observable.throw(error);
                         }
                     };
+
+                    console.error(error.status);
                 });
         }
         catch (er) {

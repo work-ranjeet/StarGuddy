@@ -40,4 +40,8 @@ namespace App.Client.Account {
         key: string;
         value: string;
     }
+
+    export interface IEmailVerifyRequest {
+        userId: string;
+    }
 }

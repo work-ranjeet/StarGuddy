@@ -5,9 +5,7 @@ import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
-import IJwtPacket = App.Client.Account.IJwtPacket;
 import ILoginData = App.Client.Account.ILoginData;
-import IUserData = App.Client.Account.IApplicationUser;
 
 
 @Injectable()
@@ -52,28 +50,16 @@ export class AccountService {
     }
 
     activateEmail(token: string): Observable<any> {
-        return this.baseService.HttpService.postDataWithTextResponseType<any>("Email/activate", { "AuthToken": token }).map(
+        return this.baseService.HttpService.putData<any>("Email/activate", { "AuthToken": token }).map(
             response => {
                 return response;
-            },
-            (error) => {
-                return Observable.throw(error);
-            })
-            .catch(error => {
-                return Observable.throw(error); 
             });
     };
 
     resendEmailActivationCode(userId: string): Observable<any> {
-        return this.baseService.HttpService.getDataWithResponseType<any>("Email/verify/" + userId, "text").map(
+        return this.baseService.HttpService.putData<string>("Email/verify" , { UserId: userId }).map(
             response => {
                 return response;
-            },
-            (error) => {
-                return Observable.throw(error);
-            })
-            .catch(error => {
-                return Observable.throw(error);
             });
     };
 }

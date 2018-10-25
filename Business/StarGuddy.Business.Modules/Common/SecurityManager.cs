@@ -12,6 +12,7 @@ namespace StarGuddy.Business.Modules.Common
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
+    using Newtonsoft.Json;
     using StarGuddy.Api.Models.Account;
     using StarGuddy.Api.Models.Interface.Account;
     using StarGuddy.Api.Models.Security;
@@ -89,22 +90,23 @@ namespace StarGuddy.Business.Modules.Common
         {
             return await Task.Factory.StartNew(() =>
             {
-                return CryptoGraphy.ConvertToBase64Url(
-                     new EmailVerification
-                     {
-                         UserId = applicationUser.UserId.ToString(),
-                         Email = applicationUser.Email,
-                         SecurityStamp = applicationUser.SecurityStamp,
-                         ExpiryHour = DateTime.UtcNow.AddHours(24)
-                     });
+                var jsonObj = JsonConvert.SerializeObject(new EmailVerification
+                {
+                    UserId = applicationUser.UserId.ToString(),
+                    Email = applicationUser.Email,
+                    ExpiryHour = DateTime.UtcNow.AddHours(24)
+                });
+
+                return CryptoGraphy.ConvertToBase64Url(jsonObj);
             });
         }
 
         public async Task<EmailVerification> GetEmailVerificationObjAsync(string code)
         {
             return await Task.Factory.StartNew(() =>
-            {
-                return CryptoGraphy.ConvertBase64UrlToObject<EmailVerification>(code);
+            {                
+                var encryptedText = CryptoGraphy.ConvertBase64UrlToObject<string>(code);
+                return JsonConvert.DeserializeObject<EmailVerification>(encryptedText);
             });
         }
 

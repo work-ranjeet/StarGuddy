@@ -132,6 +132,9 @@
         margin: auto;
     }
 
+    .page-loading-container .loader-small {
+    }
+
 .loader .loader-dot {
     animation-name: loader;
     animation-timing-function: ease-in-out;
@@ -145,47 +148,60 @@
     border: 1px solid #afafaf;
 }
 
-    .loader .loader-dot:first-child {
-        background-color: #8cc759;
-        animation-delay: 0.5s;
-    }
+.loader-small .loader-dot {
+    animation-name: loader;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    height: 8px;
+    width: 8px;
+    border-radius: 100%;
+    background-color: black;
+    position: absolute;
+    border: 1px solid #afafaf;
+}
 
-    .loader .loader-dot:nth-child(2) {
-        background-color: #8c6daf;
-        animation-delay: 0.4s;
-    }
+.loader .loader-dot:first-child {
+    background-color: #8cc759;
+    animation-delay: 0.5s;
+}
 
-    .loader .loader-dot:nth-child(3) {
-        background-color: #ef5d74;
-        animation-delay: 0.3s;
-    }
+.loader .loader-dot:nth-child(2) {
+    background-color: #8c6daf;
+    animation-delay: 0.4s;
+}
 
-    .loader .loader-dot:nth-child(4) {
-        background-color: #f9a74b;
-        animation-delay: 0.2s;
-    }
+.loader .loader-dot:nth-child(3) {
+    background-color: #ef5d74;
+    animation-delay: 0.3s;
+}
 
-    .loader .loader-dot:nth-child(5) {
-        background-color: #60beeb;
-        animation-delay: 0.1s;
-    }
+.loader .loader-dot:nth-child(4) {
+    background-color: #f9a74b;
+    animation-delay: 0.2s;
+}
 
-    .loader .loader-dot:nth-child(6) {
-        background-color: #fbef5a;
-        animation-delay: 0s;
-    }
+.loader .loader-dot:nth-child(5) {
+    background-color: #60beeb;
+    animation-delay: 0.1s;
+}
+
+.loader .loader-dot:nth-child(6) {
+    background-color: #fbef5a;
+    animation-delay: 0s;
+}
 
 .loader .loader-text {
     position: absolute;
     top: 200%;
     left: 0;
     right: 0;
-    width: 4rem;
+    width: 100%;
     margin: auto;
 }
 
     .loader .loader-text:after {
-        content: "Loading....";
+        /*content: "Loading....";*/
         animation-name: loading-text;
         animation-duration: 5s;
         animation-iteration-count: infinite;
@@ -230,7 +246,6 @@
 /*----------------- end page loader------------------- */
 
 .page-heading {
-   
 }
 
     .page-heading h1 {
@@ -244,4 +259,3 @@
     .page-heading h3 {
         font-size: 22px;
     }
-

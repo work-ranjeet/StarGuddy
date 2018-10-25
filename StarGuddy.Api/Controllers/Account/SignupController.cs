@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StarGuddy.Api.Constants;
 using StarGuddy.Api.Models.Account;
 using StarGuddy.Business.Interface.Account;
 using StarGuddy.Business.Interface.Common;
@@ -51,13 +52,13 @@ namespace StarGuddy.Api.Controllers.Account
 
                 if (applicationUser.Password != applicationUser.CnfPassword)
                 {
-                    return StatusCode(StatusCodes.Status204NoContent, NotFound("Password and Confirm password is not matching."));
+                    return StatusCode(StatusCodes.Status204NoContent, NotFound(new { Message = "Password and Confirm password is not matching." }));
                 }
 
                 var existUser = await _userManager.FindByUserNameAsync(applicationUser.Email);
                 if (existUser.IsNotNull())
                 {
-                    return StatusCode(StatusCodes.Status409Conflict, BadRequest("User name already register with us."));
+                    return StatusCode(StatusCodes.Status409Conflict, BadRequest(new { Message = "User name already register with us." }));
                 }
 
                 string password = applicationUser.Password;
@@ -70,10 +71,11 @@ namespace StarGuddy.Api.Controllers.Account
                     try
                     {
                         var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
-                        await _emailManager.SendMail("StarGuddy - email verification code - expire in 24 hours", $"<h1>testing</h1><div>{emailVerificationToken}</div>", userResult.Email);
+                        await _emailManager.SendMail(
+                            HtmlTemplate.ConfirmMailSentBody, string.Format(HtmlTemplate.ConfirmMailSentSubject, userResult.FirstName, emailVerificationToken), 
+                            applicationUser.UserName);
                     }
                     catch { }
-
                     return Ok(new { Name = $"Welcome! {userResult.FirstName}.", Id = userResult.UserId });
                 }
 
@@ -96,7 +98,7 @@ namespace StarGuddy.Api.Controllers.Account
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Oops! {userId} is invalid. Please try again.");
+                return NotFound(new { Message = $"Oops! {userId} is invalid. Please try again." });
             }
             // var result = await _userManager.ConfirmEmailAsync(user, code);
             return Ok();

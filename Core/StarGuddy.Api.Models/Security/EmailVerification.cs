@@ -11,8 +11,6 @@ namespace StarGuddy.Api.Models.Security
 
         public string Email { get; set; }
 
-        public string SecurityStamp { get; set; }
-
         public DateTime ExpiryHour { get; set; }
     }
 }

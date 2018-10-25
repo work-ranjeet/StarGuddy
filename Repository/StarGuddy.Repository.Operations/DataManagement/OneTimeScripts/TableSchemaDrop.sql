@@ -1,6 +1,21 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'ApprovalStatus') AND type IN (N'U')
+		)
+	DROP TABLE ApprovalStatus
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'SettingsMaster') AND type IN (N'U')
+		)
+	DROP TABLE SettingsMaster
+GO
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
 		WHERE object_id = OBJECT_ID(N'UserImage') AND type IN (N'U')
 		)
 	DROP TABLE UserImage

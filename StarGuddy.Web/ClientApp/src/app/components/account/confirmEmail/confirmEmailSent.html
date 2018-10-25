@@ -3,12 +3,28 @@
         <div style="max-width:350px;" class="text-center margin-auto">
             <h2>{{name}}</h2>
         </div>
-        <p class="text-info text-center padding-top-20">We sent, email verification link to your email address. Please verify it to proceed....</p>
-        <div style="min-width:100px; margin:auto; margin-top: 40px; text-align: center;">
-            <!--<a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" class="btn btn-success display-bloack">Go to Gmail</a>-->
-            <button class="btn btn-success display-bloack" (click)="resend();">
-                <span>Re-Send </span>           
-            </button>
+        <div [hidden]="!isMailSending" class="sending">
+            <div class="text-info text-center padding-top-20">
+                We are sending, email verification link to your email.
+            </div>
+            <div class="page-loading-container">
+                <div class="loader loader-small">
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-text"></div>
+                </div>
+            </div>
         </div>
+        <div [hidden]="isMailSending" class="sent">
+            <p class="text-info text-center padding-top-20">We sent, email verification link to your email address. Please verify it to proceed....</p>
+            <div style="min-width:100px; margin:auto; margin-top: 40px; text-align: center;">
+                <!--<a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" class="btn btn-success display-bloack">Go to Gmail</a>-->
+                <button class="btn btn-success display-bloack" (click)="sendMail();">Re-Send</button>
+            </div>
+        </div>        
     </div>
 </div>

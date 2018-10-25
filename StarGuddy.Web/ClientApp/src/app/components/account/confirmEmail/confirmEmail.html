@@ -1,10 +1,19 @@
 <div style="padding: 10px; padding-top:100px!important;">
     <div class="container-box">
-        <div style="width:550px;" class="text-center margin-auto">
-            <p *ngIf="!isEmailVerified">
-                Wait, We are verifying your email.
-                <i class="fa fa-spinner fa-spin btn-spinner"></i>
-            </p>
+        <div style="max-width:550px;" class="text-center margin-auto">
+            
+            <div *ngIf="!isEmailVerified" class="page-loading-container">
+                <div class="loader loader-small">
+                    <div class="loader-text">Wait, We are verifying your email....</div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+
+                </div>
+            </div>
             <p *ngIf="isEmailVerified">
                 Thank you for confirming your email. Please <a [routerLink]="['/login']">Click here to Log in</a>.
             </p>

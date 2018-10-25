@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpService {
@@ -22,7 +23,7 @@ export class HttpService {
         return this.http.get(this.UrlPrifix + Url);
     }
 
-    getData<T>(Url: string) {
+    getData<T>(Url: string): Observable<any> {
         return this.http.get<any>(this.UrlPrifix + Url);
     }
 
@@ -43,12 +44,6 @@ export class HttpService {
     postDataWithProgress<T>(Url: string, data: any) {
         return this.http.request<T>(
             new HttpRequest('POST', this.UrlPrifix + Url, data, { reportProgress: true })
-        );
-    }
-
-    postDataWithTextResponseType<T>(Url: string, data: any) {
-        return this.http.request<T>(
-            new HttpRequest('POST', this.UrlPrifix + Url, data, { responseType: 'text' })
         );
     }
 
