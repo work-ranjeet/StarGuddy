@@ -19,7 +19,7 @@ namespace StarGuddy.Api.Controllers.Files
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Image")]
-    [Authorize(Policy = nameof(Policy.JwtToken))]
+    [Authorize(Policy = Policy.JwtToken)]
     public class ImageController : ControllerBase
     {
         private readonly IImageManager _imageManager;

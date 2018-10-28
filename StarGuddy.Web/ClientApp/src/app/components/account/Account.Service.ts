@@ -50,14 +50,14 @@ export class AccountService {
     }
 
     activateEmail(token: string): Observable<any> {
-        return this.baseService.HttpService.putData<any>("Email/activate", { "AuthToken": token }).map(
+        return this.baseService.HttpService.postData<any>("Email/activate", { "AuthToken": token }).map(
             response => {
                 return response;
             });
     };
 
     resendEmailActivationCode(userId: string): Observable<any> {
-        return this.baseService.HttpService.putData<string>("Email/verify" , { UserId: userId }).map(
+        return this.baseService.HttpService.postData<any>("Email/verify", { UserId: userId }).map(
             response => {
                 return response;
             });

@@ -130,8 +130,8 @@ export class SignUpComponent {
                     result => {
                         this.showSpinner = false;
                         if (result != undefined) {
-                            this.toastr.info(result.message);
-                            this.router.navigate(["/login"]);
+                            console.info(result.name);
+                            this.router.navigate(["acc-cnf-email-sent", result.name, result.id, 'signup']);
                         }
                     },
                     (error) => {

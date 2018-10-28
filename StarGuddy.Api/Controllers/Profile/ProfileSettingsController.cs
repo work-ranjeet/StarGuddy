@@ -17,7 +17,7 @@ namespace StarGuddy.Api.Controllers.Profile
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
-    [Authorize(Policy = nameof(Policy.JwtToken))]
+    [Authorize(Policy = Policy.JwtToken)]
     public class ProfileSettingsController : ControllerBase
     {
         /// <summary>

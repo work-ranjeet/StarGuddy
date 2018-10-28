@@ -72,7 +72,7 @@ namespace StarGuddy.Api.Controllers.Account
                     {
                         var emailVerificationToken = await _securityManager.GetEmailVerificationCodeAsync(userResult);
                         await _emailManager.SendMail(
-                            HtmlTemplate.ConfirmMailSentBody, string.Format(HtmlTemplate.ConfirmMailSentSubject, userResult.FirstName, emailVerificationToken), 
+                            HtmlTemplate.ConfirmMailSentSubject, string.Format(HtmlTemplate.ConfirmMailSentBody, userResult.FirstName, emailVerificationToken), 
                             applicationUser.UserName);
                     }
                     catch { }

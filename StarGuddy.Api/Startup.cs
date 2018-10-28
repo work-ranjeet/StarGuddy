@@ -32,7 +32,7 @@ namespace StarGuddy.Api
             services.TryAddSingleton<IAuthorizationHandler, JwtTokenHandler>();
             services.AddAuthorization(authOption =>
             {
-                authOption.AddPolicy(nameof(Policy.JwtToken), policy =>
+                authOption.AddPolicy(Policy.JwtToken, policy =>
                 {
                     policy.Requirements.Add(new JwtTokenRequirement());
                     //policy.RequireClaim(JwtRegisteredClaimNames.Sid);

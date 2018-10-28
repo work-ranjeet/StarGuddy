@@ -1,12 +1,9 @@
 import { isPlatformBrowser } from "@angular/common";
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+import { Router } from "@angular/router";
 import { Observable } from 'rxjs/Observable';
 import { AppConstant } from "../Constants/AppConstant";
-import { Router } from "@angular/router";
 import { BaseService } from "../Services/BaseService";
 
 @Injectable()
@@ -29,20 +26,19 @@ export class JwtInterceptor implements HttpInterceptor {
                 });
             }
 
-            return next.handle(request)
-                .catch((error: any) => {
-                    if (error instanceof HttpErrorResponse) {
-                        if (error.status === 401) {
-                            console.info(error.statusText); //Unauthorized Error response
-                            this.baseService.isLoggedInSource.next(false);
-                            this.baseService.cancleAuthention();
-                            this.router.navigate(['/login']);
-                            return Observable.throw(error);
-                        }
-                    };
+            return next.handle(request);
+                //.catch((error: any) => {
+                //    if (error instanceof HttpErrorResponse) {
+                //        if (error.status === 401) {
+                //            console.info(error.statusText); //Unauthorized Error response
+                //            this.baseService.isLoggedInSource.next(false);
+                //            this.baseService.cancleAuthention();
+                //            this.router.navigate(['/login']);
+                //        }
+                //    };
 
-                    console.error(error.status);
-                });
+                //    console.error(error.status);
+                //});
         }
         catch (er) {
             console.error(er);

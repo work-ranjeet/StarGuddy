@@ -16,6 +16,7 @@ export class AccountConfirmEmailSentComponent {
     public name: string = "";
     public sender: string = "";
     public message: string = "";
+    public isSignup: boolean = false;
     public isMailSending: boolean = false;
 
     constructor(router: Router, authRoute: ActivatedRoute,
@@ -36,6 +37,8 @@ export class AccountConfirmEmailSentComponent {
         //if (this.sender != undefined && this.sender == "signup") {
         //    this.sendMail();
         //}
+
+        this.isSignup = this.sender == "signup";
     }
 
 
