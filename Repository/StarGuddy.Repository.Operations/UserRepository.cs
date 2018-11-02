@@ -221,32 +221,6 @@ namespace StarGuddy.Repository.Operations
                 parameter.AccessFailedCount = 0;
                 parameter.ConcurrencyStamp = "b8c6e4a2-fb40-4706-b608-f05a4a6ff708";
                 parameter.LockoutEnd = DateTime.UtcNow;
-                parameter.IsTwoFactorEnabled = false;
-
-                //var parameter = new
-                //{
-                //    AccessFailedCount = 0,
-                //    ConcurrencyStamp = "b8c6e4a2-fb40-4706-b608-f05a4a6ff708",
-                //    //Email = user.Email,
-                //    //EmailConfirmed = user.EmailConfirmed,
-                //    //FirstName = user.FirstName,
-                //    //Gender = user.Gender,
-                //    //IsCastingProfessional = user.IsCastingProfessional,
-                //    //LastName = user.LastName,
-                //    //LockoutEnabled = user.LockoutEnabled,
-                //    LockoutEnd = DateTime.UtcNow,
-                //    //NormalizedEmail = user.NormalizedEmail,
-                //    //NormalizedUserName = user.NormalizedUserName,
-                //    //Designation = user.Designation,
-                //    //OrgName = user.OrgName,
-                //    //OrgWebsite = user.OrgWebsite,
-                //    //PasswordHash = user.PasswordHash,
-                //    //PhoneNumber = user.PhoneNumber,
-                //    //PhoneNumberConfirmed = false,
-                //    //SecurityStamp = user.SecurityStamp,
-                //    TwoFactorEnabled = false,
-                //    //UserName = user.UserName
-                //};
 
                 return conn.Execute(SpNames.User.UpdateUser, param: parameter, commandType: CommandType.StoredProcedure);
             }
@@ -259,12 +233,14 @@ namespace StarGuddy.Repository.Operations
         /// <param name="userName">Name of the user.</param>
         /// <param name="password">The password.</param>
         /// <returns></returns>
-        public int UpdatePassword(string userName, string password)
+        public async Task<bool> UpdatePasswordAsync(Guid userId, string password)
         {
             using (var conn = this.OpenConnectionAsync)
             {
-                var query = string.Format("update Users set PasswordHash='{0}' where UserName = '{1}'", password, userName);
-                return conn.Execute(query, commandType: CommandType.Text);
+                var query = string.Format("update Users set PasswordHash='{0}' where Id = '{1}'", userId, password);
+                await SqlMapper.ExecuteAsync(conn, query, commandType: CommandType.Text);
+
+                return true;
             }
         }
 

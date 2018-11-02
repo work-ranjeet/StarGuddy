@@ -1,14 +1,23 @@
 @charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
 
+html, body {
+    height: 100%
+}
 body {
-    padding: 0px !important;
-    margin: 0px !important;
-    font-family: 'Raleway','Roboto Condensed',Arial,sans-serif !important;
-    background-color: #f3f3f3 !important;
-    font-size: 14px !important;
-    line-height: 20px !important;
-    color: #383838 !important;
-    font-weight: 400;
+    font-family: Roboto,'Segoe UI',sans-serif;
+    color: #444;
+    display: table;
+    width: 100%;
+    background-color: #f3f3f3;
+    /*font-size: 14px !important;*/
+    /*line-height: 20px !important;
+    color: #383838 !important;*/
+    /*font-weight: 400;*/
 }
 
 .body-content {
@@ -119,12 +128,6 @@ ul {
         padding: 0px;
         margin: 0px;
     }
-
-/*li.border-bottom {
-    border-bottom: solid 1px #ccc;
-}*/
-
-
 
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
@@ -504,99 +507,6 @@ margin-right-10 {
     margin-right: -13px;
 }
 
-/****************************** custome table *******************************/
-.table-container {
-    margin-top: 15px;
-}
-
-.c-table {
-    width: 100%;
-}
-
-    .c-table .heading {
-        height: 45px;
-        font-size: 18px;
-        color: #696969;
-        padding: 10px;
-    }
-
-        .c-table .heading > i {
-            zoom: 1.2;
-        }
-
-        .c-table .heading > span {
-            font-size: 22px;
-        }
-
-    .c-table .c-column-2 {
-        width: 50%;
-        float: left;
-    }
-
-    .c-table .c-column {
-        width: 33.333333%;
-        float: left;
-    }
-
-    .c-table .c-column-4 {
-        width: 25%;
-        float: left;
-    }
-
-    .c-table .c-column .c-card {
-        margin: 1px;
-    }
-
-        .c-table .c-column .c-card img {
-            width: 100%;
-            border: solid 4px transparent;
-        }
-
-    .c-table .c-column .video-card,
-    .c-table .c-column-4 .video-card {
-        margin: 1px;
-    }
-
-        .c-table .c-column .video-card img {
-            width: 100%;
-        }
-
-        .c-table .c-column .video-card figure {
-            z-index: 0;
-            border: solid 0.5px #eeeded;
-        }
-
-        .c-table .c-column .video-card .btn-video-play {
-            height: 50px;
-            width: 50px;
-            position: absolute;
-            z-index: 1;
-            margin-top: -20%;
-            margin-left: 15%;
-            color: gainsboro;
-        }
-
-        .c-table .c-column .video-card .title,
-        .c-table .c-column .video-card .upload-time {
-            font-weight: 400;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-decoration: none;
-            border-bottom: none;
-            line-height: 1.3em;
-            padding: 5px;
-            display: block;
-        }
-
-        .c-table .c-column .video-card .title {
-            font-size: 18px;
-        }
-
-        .c-table .c-column .video-card .upload-time {
-            font-size: 14px;
-        }
-
 /*--------------------------------------Pointer-----------------------------------------*/
 .cursor-hand {
     cursor: pointer;
@@ -685,21 +595,24 @@ text-ml {
     box-shadow: inset 0 0 10px #000000;
 }
 
-.edit-icon-l, .edit-icon-m, .edit-icon-s {
-    font-size: 15px !important;
+.icon-l, .icon-m, .icon-s {
     padding: 5px !important;
     display: inline !important;
-    font-style:normal;
-    font-weight:400;
-    cursor:pointer!important;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer !important;
 }
 
-.edit-icon-l {
+.icon-l {
     font-size: 18px !important;
 }
 
-.edit-icon-s {
-    font-size: 13px !important;
+.icon-m {
+    font-size: 16px !important;
+}
+
+.icon-s {
+    font-size: 14px !important;
 }
 
 
@@ -766,3 +679,47 @@ text-ml {
 .card-body {
     padding: 5px 5px 10px 10px!important;
 }
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: #eee
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaa
+}
+
+::-webkit-scrollbar-corner {
+    background: #000
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+}
+
+.fadeIn-1s {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+.fadeIn-1-5s {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+}
+
+
+

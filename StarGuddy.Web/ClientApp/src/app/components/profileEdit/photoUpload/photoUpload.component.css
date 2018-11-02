@@ -4,16 +4,18 @@
 }
 
 label.fileupload {
+    padding: 8%;
     height: 260px;
     width: 320px;
+    cursor: pointer;
     border: dotted 2px #ccc;
 }
 
+    label.fileupload:hover {
+    }
+
     label.fileupload .symbol {
         font-size: 35px;
-        margin-top: 25%;
-        margin-left: 2%;
-        cursor: pointer;
     }
 
 .cropper-width {
@@ -29,6 +31,5 @@ label.fileupload {
     color: #f7f2f2;
     opacity: 0.8;
     background: transparent;
-    font-size:25px;
+    font-size: 25px;
 }
-

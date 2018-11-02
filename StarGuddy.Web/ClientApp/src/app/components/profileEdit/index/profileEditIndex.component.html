@@ -1,4 +1,4 @@
-<div *ngIf="!showLoadingSpinner" class="container">
+<div *ngIf="!showLoadingSpinner" class="container fadeIn">
     <profile-edit-header [jobGroupNames]="GroupNames" [profileHeader]="ProfileHeader"></profile-edit-header>
     <profile-edit-menu [selectedJobGroup]="SelectedGroups" [about]="AboutMe" (menuSelectionChange)="ChangeMenuSelection($event)"></profile-edit-menu>
 

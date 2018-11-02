@@ -24,11 +24,11 @@
         <span *ngIf="showPhotoSection">Photos</span>
         <span *ngIf="!showPhotoSection" class="text-m text-info">You haven't added any photos yet</span>
         <a [routerLink]="['/profile/photoManager']" class="pull-right">
-            <i class="glyphicon glyphicon-edit text-success edit-icon-l"></i>
+            <i class="icon icon-edit text-success"></i>
         </a>
     </div>
 </div>
-<div id="gallary" *ngIf="showPhotoSection">
+<div *ngIf="showPhotoSection" id="gallary" >
     <div *ngFor="let image of userImageModel">
         <img [src]="image.dataUrl" alt="photo">
     </div>

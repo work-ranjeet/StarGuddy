@@ -154,14 +154,6 @@ namespace StarGuddy.Data.Entities
         public bool IsCastingProfessional { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is two factor enabled.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is two factor enabled; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsTwoFactorEnabled { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether this instance is active.
         /// </summary>
         /// <value>

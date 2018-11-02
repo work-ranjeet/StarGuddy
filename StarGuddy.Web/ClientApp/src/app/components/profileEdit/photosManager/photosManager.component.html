@@ -11,20 +11,20 @@
         <div class="row padding-5">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <a class="btn btn-default" [routerLink]="['/profile']">
-                    <i class="glyphicon glyphicon-arrow-left" style="font-size:16px;"></i>
+                    <i class="icon icon-arrow-left"></i>
                 </a>
                 <a class="btn btn-success" [routerLink]="['/profile/photoUpload']">
-                    <i class="fa fa-upload" style="font-size:16px;"></i>&nbsp;Upload Image
+                    <i class="icon icon-upload" style="font-size:16px;"></i>&nbsp;Upload Image
                 </a>
             </div>
         </div>
 
         <div id="gallary">
-            <div class="" *ngFor="let image of userImageModel">
+            <div class="fadeIn-1s" *ngFor="let image of userImageModel">
                 <img src="{{image.dataUrl}}" alt="photo">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-align-left text-success"></i>&nbsp;Caption</button>
-                    <button type="button" class="btn btn-default" (click)="deleteImage(image.id);"><i class="glyphicon glyphicon-trash text-danger"></i>&nbsp;Delete</button>
+                    <button type="button" class="btn btn-default"><i class="icon icon-paragraph-left text-success"></i>&nbsp;Caption</button>
+                    <button type="button" class="btn btn-default" (click)="deleteImage(image.id);"><i class="icon icon-bin text-danger"></i>&nbsp;Delete</button>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
         <div class="col-md-12">           
             <div class="page-heading margin-auto text-center" style="width:300px;">
                 <a class="display-inline" [routerLink]="['/profile/photoManager']">
-                    <i class="glyphicon glyphicon-arrow-left" style="font-size:27px; "></i>
+                    <i class="icon icon-back" style="font-size:25px; "></i>
                 </a>
                 <h1 class="display-inline padding-left-20">Add Photo</h1>
             </div>
@@ -28,27 +28,27 @@
         <div class="row">
             <div *ngIf="!showImage" class="col-md-12  text-center margin-top-10">
                 <label class="fileupload ">
-                    <a class="glyphicon glyphicon-cloud-upload symbol"><span class="display-block" style="font-size:20px;">Upload</span></a>
+                    <a class="icon icon-cloud-upload symbol"><span class="display-block" style="font-size:20px;">Upload</span></a>
                     <input type="file" id="fileUploder" name="fileUploder" class="hidden" #image accept="image/*" (change)="handleFileInput($event)" />
                 </label>
             </div>
             <div *ngIf="showImage" class="col-md-12  text-center">
                 <div class="margin-auto cropper-width">
-                    <a class="btn btn-default" [routerLink]="['/profile/photoManager']">
-                        <i class="glyphicon glyphicon-arrow-left" style="font-size:16px;"></i>
-                    </a>
+                    <!--<a class="btn btn-default" [routerLink]="['/profile/photoManager']">
+                        <i class="icon icon-arrow-left" style="font-size:16px;"></i>
+                    </a>-->
                     <button class="btn btn-info" (click)="rotate(false);">
-                        <i *ngIf="!isRightRotating" class="glyphicon glyphicon-circle-arrow-left" style="font-size:13px;"></i>
-                        <i *ngIf="isRightRotating" class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                        <i *ngIf="!isRightRotating" class="icon icon-arrow-left" style="font-size:13px;"></i>
+                        <i *ngIf="isRightRotating" class="icon icon-spinner spin btn-spinner" style="font-size:12px;"></i>
                         &nbsp;Rotate
                     </button>
                     <button class="btn btn-info" (click)="rotate(true);">
                         Rotate&nbsp;
-                        <i *ngIf="!isLeftRotating" class="glyphicon glyphicon-circle-arrow-right" style="font-size:13px;"></i>
-                        <i *ngIf="isLeftRotating" class="fa fa-spinner fa-spin btn-spinner" style="font-size:12px;"></i>
+                        <i *ngIf="!isLeftRotating" class="icon icon-arrow-right" style="font-size:13px;"></i>
+                        <i *ngIf="isLeftRotating" class="icon icon-spinner spin btn-spinner" style="font-size:12px;"></i>
                     </button>
                     <button class="btn btn-danger" (click)="reset();">
-                        <i *ngIf="!isLeftRotating" class="fa fa-undo" style="font-size:12px;"></i>
+                        <i *ngIf="!isLeftRotating" class="icon icon-undo icon-m"></i>
                     </button>
                 </div>
                 <div class="margin-top-10 margin-auto cropper-width">

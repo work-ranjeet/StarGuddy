@@ -1,7 +1,7 @@
 <div id="logInOut">
     <div *ngIf="!isLoggedIn" class="nav-sign-in" style="height:50px; padding: 15px 0px 0px 0px;">
-        <a [routerLink]="['/signup']" class="join-free"><span >Join Free</span></a>&nbsp;
-        <a [routerLink]="['/login']" class="padding-left-5"><span ><i class="fa fa-sign-in"></i>&nbsp;Log In</span></a>
+        <a [routerLink]="['/signup']" class="join-free"><span>Join Free</span></a>&nbsp;
+        <a [routerLink]="['/login']" class="padding-left-5"><span>Log In</span></a>
     </div>
     <div *ngIf="isLoggedIn">
         <ul class="pull-right nav-logout-menu">
@@ -35,23 +35,18 @@
             <li (click)="toggleUserSettingMenu()" [style.background-color]="!showUserSettingMenu? 'white':null" [style.color]="!showUserSettingMenu? '#F88017':null">
                 <span style="text-transform:capitalize;">{{UserFirstName}}</span>
                 <div [hidden]="showUserSettingMenu" class="user-setting-menu" (blur)="toggleUserSettingMenu()">
-
-                    <!--<div class="heading">
-                        <span class="fa fa-gears"></span>&nbsp;<span>Account & Settings</span>
-                    </div>-->
-                    <div class="content">
-                        <ul>
-                            <li class="pull-left"><a [routerLink]="['/profile']"><i class="fa fa-user"></i> &nbsp;&nbsp; My Profile</a></li>
-                            <!--<li class="pull-left"><a class="fa fa-bell-o" [routerLink]="['/Notification']"> &nbsp;&nbsp; Notifications</a></li>-->
-                            <li class="pull-left"><a  [routerLink]="['/profileSetting']"><i class="fa fa-cogs"></i> &nbsp;&nbsp; Settings</a></li>
-                            <li class="pull-left">
-                                <i class="glyphicon glyphicon-log-out">&nbsp;</i>
-                                <a style="font-size: 13px; color: #CC0000;" (click)="logOut()">Sign Out</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li class="pull-left" [routerLink]="['/profile']"><a><i class="icon icon-user"></i> &nbsp;&nbsp; My Profile</a></li>
+                        <li class="pull-left" [routerLink]="['/profileSetting']"><a><i class="icon icon-settings"></i> &nbsp;&nbsp; Settings</a></li>
+                        <li class="pull-left">
+                            <i class="glyphicon glyphicon-log-out">&nbsp;</i>
+                            <a style="font-size: 13px; color: #CC0000;" (click)="logOut()">Sign Out</a>
+                        </li>
+                    </ul>
                 </div>
             </li>
         </ul>
     </div>
 </div>
+
+<!--<li class="pull-left"><a class="fa fa-bell-o" [routerLink]="['/Notification']"> &nbsp;&nbsp; Notifications</a></li>-->

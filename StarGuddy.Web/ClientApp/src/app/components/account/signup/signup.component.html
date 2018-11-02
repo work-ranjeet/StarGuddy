@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <mat-card style="border:solid 1px #CCC; border-radius:10px">
+                <mat-card class="fadeIn" style="border:solid 1px #CCC; border-radius:10px">
                     <page-heading text="Sign up"></page-heading>
-                    <div class="padding-5 margin-top-10"><sub> Get started - it's free. It takes few minutes to create your profile.</sub></div>
+                    <div class="margin-top-10"><sub> Get started - it's free. It takes few minutes to create your profile.</sub></div>
                     <hr class="seperator" />
                     <mat-card-content>
                         <mat-horizontal-stepper [linear]="true" #stepper>
 
                             <mat-step [stepControl]="accountDetailsForm">
                                 <form [formGroup]="accountDetailsForm">
-                                    <ng-template matStepLabel>Account Details</ng-template>
+                                    <ng-template matStepLabel>Account</ng-template>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
                                             <input matInput placeholder="Enter your email" formControlName="email" required autocomplete="off" [(ngModel)]="applicationUser.email">
@@ -27,7 +27,7 @@
                                     <div class="margin-top-10 hidden-xs"></div>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
-                                            <input  type="password" matInput placeholder="Password" formControlName="password" required autocomplete="off" [(ngModel)]="applicationUser.password">
+                                            <input type="password" matInput placeholder="Password" formControlName="password" required autocomplete="off" [(ngModel)]="applicationUser.password">
                                             <mat-error *ngFor="let validation of signup_validation_messages.password">
                                                 <mat-error class="error-message" *ngIf="accountDetailsForm.get('password').hasError(validation.type) &&
                                                        (accountDetailsForm.get('password').dirty || accountDetailsForm.get('password').touched)">
@@ -59,7 +59,7 @@
                             </mat-step>
                             <mat-step [stepControl]="profileDetailForm">
                                 <form [formGroup]="profileDetailForm">
-                                    <ng-template matStepLabel>Profile Details</ng-template>
+                                    <ng-template matStepLabel>Profile</ng-template>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
                                             <input matInput placeholder="First name" formControlName="firstName" required autofocus autocomplete="off" [(ngModel)]="applicationUser.firstName">
@@ -107,7 +107,7 @@
                             </mat-step>
                             <mat-step [stepControl]="orgDetailForm">
                                 <form [formGroup]="orgDetailForm">
-                                    <ng-template matStepLabel>Organization Details</ng-template>
+                                    <ng-template matStepLabel>Organization</ng-template>
                                     <div class="row">
                                         <mat-form-field class="col-md-6 col-sm-6 col-xs-12">
                                             <mat-select placeholder="Sign up to..." formControlName="signupType" [(ngModel)]="signTypeSelected">
@@ -168,13 +168,13 @@
                                 </form>
                             </mat-step>
                             <mat-step>
-                                <ng-template matStepLabel>Done <span class="fa fa-smile"></span></ng-template>
+                                <ng-template matStepLabel>Done<span class="fa fa-smile"></span></ng-template>
                                 <p class="padding-top-20 text-info">
                                     You are almost done! Please click 'Complete Sign up' to Finish..
                                 </p>
                                 <button class="btn btn-default" matStepperPrevious>Back</button>
                                 <button type="submit" class="btn btn-primary" (click)="save()">
-                                    <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
+                                    <i *ngIf="showSpinner" class="icon icon-spinner spin btn-spinner"></i>
                                     <span>Sign up</span>
                                 </button>
                             </mat-step>

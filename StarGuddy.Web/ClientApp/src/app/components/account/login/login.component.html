@@ -1,6 +1,6 @@
 <div style="padding-top:80px;">
     <div class="container-login">
-        <mat-card style="border:solid 1px #CCC; border-radius:10px;">
+        <mat-card class="fadeIn" style="border:solid 1px #CCC; border-radius:10px;">
             <mat-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <mat-form-field class="form-group full-width">
@@ -19,8 +19,8 @@
                     </mat-form-field>
                     <div class="form-group padding-top-10">
                         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-lg theme-button btn-block margin-bottom-10">
-                            <i *ngIf="showSpinner" class="fa fa-spinner fa-spin btn-spinner"></i>
-                            <span>Sign in</span>
+                            <i *ngIf="showSpinner" class="icon icon-spinner spin btn-spinner"></i>
+                            <span>Log in</span>
                         </button>
                     </div>
                 </form>

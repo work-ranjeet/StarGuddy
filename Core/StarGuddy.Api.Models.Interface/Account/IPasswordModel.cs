@@ -34,22 +34,6 @@ namespace StarGuddy.Api.Models.Interface.Account
         Guid UserId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the user.
-        /// </summary>
-        /// <value>
-        /// The name of the user.
-        /// </value>
-        string UserName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the email.
-        /// </summary>
-        /// <value>
-        /// The email.
-        /// </value>
-        string Email { get; set; }
-
-        /// <summary>
         /// Gets or sets the old password.
         /// </summary>
         /// <value>

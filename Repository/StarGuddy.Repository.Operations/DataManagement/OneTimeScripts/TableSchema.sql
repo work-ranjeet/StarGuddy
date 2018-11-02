@@ -16,7 +16,6 @@ CREATE TABLE Users (
 	PasswordHash NVARCHAR(max) NULL,
 	SecurityStamp NVARCHAR(max) NULL,
 	IsCastingProfessional BIT NOT NULL,
-	IsTwoFactorEnabled BIT NOT NULL DEFAULT(0),
 	IsActive BIT NOT NULL DEFAULT(1),
 	IsDeleted BIT NOT NULL DEFAULT(0),
 	DttmCreated DATETIME NOT NULL DEFAULT(GETUTCDATE()),

@@ -3,7 +3,9 @@
         <div class=" profile-img-container">
             <img class="img-size" [src]="imageUrl" />
             <div class="img-edit-icon">
-                <a [routerLink]="['/profile/head-shot','m']" class="glyphicon glyphicon-camera" title="User Image"></a>
+                <a [routerLink]="['/profile/head-shot','m']"  title="User Image">
+                    <i class="icon icon-camera-full"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -11,15 +13,15 @@
     <div class="col-lg-9 col-md-8 padding-top-5">
         <div class="profile-info-detail">
             <h2 class="display-inline-block  profile-info-name">{{profileHeader.displayName}}</h2>
-            <a routerLink="/profile/name" class="glyphicon glyphicon-edit edit-icon-m"></a>
+            <a routerLink="/profile/name" class="icon icon-edit icon-m"></a>
             <div class="text-muted">
                 <span class="display-inline-block">{{jobGroupNames}}</span>
-                <a routerLink="/profile/interests" class="glyphicon glyphicon-edit edit-icon-m"></a>
+                <a routerLink="/profile/interests" class="icon icon-edit icon-m"></a>
             </div>
             <div class="profile-address">
                 <i class="glyphicon glyphicon-map-marker"></i>
                 <span class="text-muted display-inline-block">{{computedAddress}}</span>
-                <a routerLink="/profile/address" class="glyphicon glyphicon-edit edit-icon-m"></a>
+                <a routerLink="/profile/address" class="icon icon-edit icon-m"></a>
             </div>
         </div>
     </div>
@@ -30,18 +32,18 @@
         <div class="profile-img-container-mob">
             <img class="img-size" [src]="imageUrl" />
             <div class="img-edit-icon">
-                <a [routerLink]="['/profile/head-shot','m']" class="glyphicon glyphicon-camera" title="User Image"></a>
+                <a [routerLink]="['/profile/head-shot','m']" class="icon icon-camera-full" title="User Image"></a>
             </div>
         </div>
     </div>
     <div class="col-sm-8  col-xs-12 hidden-md hidden-lg">
         <div class="profile-info-detail-mob">
             <h2 class="display-inline-block profile-info-name">{{profileHeader.displayName}}</h2>
-            <a routerLink="/profile/name" class="glyphicon glyphicon-edit edit-icon-s"></a>
+            <a routerLink="/profile/name" class="icon icon-edit icon-s"></a>
             <div class="profile-address">
-                <i class="glyphicon glyphicon-map-marker"></i>
+                <i class="icon icon-location"></i>
                 <span class="text-muted">{{computedAddress}}</span>
-                <a routerLink="/profile/address" class="glyphicon glyphicon-edit edit-icon-s"></a>
+                <a routerLink="/profile/address" class="icon icon-edit icon-s"></a>
             </div>
         </div>
 

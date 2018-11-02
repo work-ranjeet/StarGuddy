@@ -5,8 +5,8 @@
                 <span *ngIf="showDancing">Dancing</span>
                 <span *ngIf="!showDancing" class="text-info text-m">Please enter your dancing detail.</span>
                 <a href="javascript:void(0);" class="pull-right">
-                    <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l" (click)="edit()"></i>
-                    <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
+                    <i *ngIf="!showEditHtml" class="icon icon-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="icon icon-delete-circle text-danger" (click)="edit()"></i>
                 </a>
             </div>
             <div *ngIf="!showEditHtml" class="card-body">

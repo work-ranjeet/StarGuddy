@@ -12,24 +12,15 @@ using StarGuddy.Business.Interface.Profile;
 using StarGuddy.Core.Constants;
 
 namespace StarGuddy.Api.Controllers.Profile
-{
-    [Authorize]
+{  
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
     [Authorize(Policy = Policy.JwtToken)]
     public class ProfileSettingsController : ControllerBase
     {
-        /// <summary>
-        /// The account manager
-        /// </summary>
         private readonly IAccountManager _accountManager;
-
-        /// <summary>
-        /// The password manager
-        /// </summary>
         private readonly IPasswordManager _passwordManager;
-
         private readonly IProfileSettingManager _profileSettingManager;
 
         /// <summary>
@@ -44,6 +35,12 @@ namespace StarGuddy.Api.Controllers.Profile
             this._profileSettingManager = profileSettingManager;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpPost]
         [ActionName("UpdateEmail")]
         public async Task<bool> UpdateEmail(Guid userId, string email)

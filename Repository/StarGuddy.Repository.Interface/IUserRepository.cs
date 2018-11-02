@@ -80,7 +80,7 @@ namespace StarGuddy.Repository.Interface
         /// <param name="userName">Name of the user.</param>
         /// <param name="password">The password.</param>
         /// <returns></returns>
-        int UpdatePassword(string userName, string password);
+        Task<bool> UpdatePasswordAsync(Guid userId, string password);
 
         Task<bool> UpdateNameDetails(IUser user);
 

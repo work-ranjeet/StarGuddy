@@ -10,6 +10,7 @@ namespace StarGuddy.Business.Modules.Common
     using System.Threading.Tasks;
     using StarGuddy.Api.Models.Interface.Account;
     using StarGuddy.Business.Interface.Common;
+    using StarGuddy.Core.Context;
     using StarGuddy.Repository.Interface;
 
     /// <summary>
@@ -76,22 +77,23 @@ namespace StarGuddy.Business.Modules.Common
         /// <returns></returns>
         public async Task<bool> ChangePassword(IPasswordModel pwdModel)
         {
-            return await Task.Factory.StartNew(() =>
+
+            if (pwdModel.IsNull() || pwdModel.NewPassword != pwdModel.ConfirmPassword)
             {
-                if (pwdModel.NewPassword != pwdModel.ConfirmPassword)
-                {
-                    return false;
-                }
-
-                var isValidPwd = _userRepository.GetVerifiedUser(pwdModel.UserName, pwdModel.OldPassword).Where(x => !x.LockoutEnabled).Any();
-                if (isValidPwd)
-                {
-                    var result = _userRepository.UpdatePassword(pwdModel.UserName, pwdModel.NewPassword);
-                    return result > decimal.Zero;
-                }
-
                 return false;
-            });
+            }
+
+            var user = await _userRepository.FindByIdAsync(UserContext.Current.UserId);
+            if (user.IsNotNull())
+            {
+                if (await _securityManager.VerifyHashedPassword(user.PasswordHash, pwdModel.OldPassword))
+                {
+                    var hashedPasword = await _securityManager.GetHashPassword(pwdModel.NewPassword);
+                    return await _userRepository.UpdatePasswordAsync(UserContext.Current.UserId, hashedPasword);
+                }
+            }
+
+            return false;
         }
     }
 }

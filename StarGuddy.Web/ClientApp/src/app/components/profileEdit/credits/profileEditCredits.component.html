@@ -5,8 +5,8 @@
                 <span *ngIf="showCredits">Credits</span>
                 <span *ngIf="!showCredits" class="text-info text-sm">Please enter your credits detail.</span>
                 <a href="javascript:void(0);" class="pull-right">
-                    <i *ngIf="!showEditHtml" class="glyphicon glyphicon-edit text-success edit-icon-l" (click)="edit()"></i>
-                    <i *ngIf="showEditHtml" class="fa fa-times-circle text-danger edit-icon-l" (click)="edit()"></i>
+                    <i *ngIf="!showEditHtml" class="icon icon-edit text-success" (click)="edit()"></i>
+                    <i *ngIf="showEditHtml" class="icon icon-delete-circle text-danger" (click)="edit()"></i>
                 </a>
             </div>
             <div *ngIf="showCredits">

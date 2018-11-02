@@ -35,10 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ClientApp\src\assets\css\bootstrap_4.0_custom.css" />
+    <Content Include="ClientApp\src\assets\css\bootstrap.min.css" />
     <Content Include="ClientApp\src\assets\css\common.css" />
-    <Content Include="ClientApp\src\assets\css\ng2-toastr.min.css" />
-    <Content Include="ClientApp\src\assets\css\site.css" />
+    <Content Include="ClientApp\src\assets\css\toastr.min.css" />
+    <Content Include="ClientApp\src\assets\css\page-spinner.css" />
     <Content Include="ClientApp\src\assets\css\theme.css" />
     <Content Include="ClientApp\src\assets\css\icons\black-thin-bg.jpg" />
     <Content Include="ClientApp\src\assets\css\icons\femail.png" />

@@ -16,12 +16,12 @@
             "tsconfig": "tsconfig.app.json",
             "prefix": "",
             "styles": [
-                "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-                "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-                "assets/css/bootstrap_4.0_custom.css",
-                "assets/css/fontawesome.min.css",
-                "assets/css/ng2-toastr.min.css",
-                "assets/css/site.css",
+                "assets/css/bootstrap.css",
+                "assets/css/material.css",
+                "assets/css/bootstrap.min.css",
+                "assets/css/toastr.min.css",
+                "assets/css/icons.css",
+                "assets/css/page-spinner.css",
                 "assets/css/common.css",
                 "assets/css/theme.css"
             ],
