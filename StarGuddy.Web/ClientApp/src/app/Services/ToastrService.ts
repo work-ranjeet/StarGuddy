@@ -1,41 +1,42 @@
 import { Injectable } from "@angular/core";
-import { ToastsManager, ToastOptions } from "ng5-toastr";
+//import { ToastsManager, ToastOptions } from "ng5-toastr";
 
 @Injectable()
 export class ToastrService {
 
     public options: any;
 
-    constructor(private toastr: ToastsManager) {
+    //constructor(private toastr: ToastsManager) {
        
-    }
+    //}
 
     ngOnInit() {
         
     }
 
     public success(message: string, title?: string) {
-        this.toastr.success(message, title);
+        //this.toastr.success(message, title);
     }
 
     public error(message: string, title?: string) {
-        this.toastr.error(message, title);
+        //this.toastr.error(message, title);
     }
 
     public warning(message: string, title?: string) {
-        this.toastr.warning(message, title);
+        //this.toastr.warning(message, title);
     }
 
     public info(message: string, title?: string) {
-        this.toastr.info(message, title);
+        //this.toastr.info(message, title);
     }
 
     showCustom() {
-        this.toastr.custom('<span style="color: red">Message in red.</span>', null, { enableHTML: true });
+        //this.toastr.custom('<span style="color: red">Message in red.</span>', null, { enableHTML: true });
     }
 }
 
-export class ToasterOption extends ToastOptions {
+export class ToasterOption //extends ToastOptions
+{
     positionClass = "toast-top-center";   
     newestOnTop = true;
     showCloseButton = true;

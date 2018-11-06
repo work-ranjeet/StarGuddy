@@ -1,8 +1,9 @@
 
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
+//import { Observable } from "rxjs/Observable";
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
 import ILoginData = App.Client.Account.ILoginData;
@@ -25,17 +26,19 @@ export class AccountService {
     }
 
     login(loginData: ILoginData): Observable<any> {
-        return this.baseService.HttpService.postSimple("Account/login", loginData).map(response => {
-            if (response != null && response.token != null && response.token != "") {
-                this.baseService.authenticate(response);
+        return this.baseService.HttpService.postSimple("Account/login", loginData).pipe(
+            map(response => {
+                if (response != null && response.token != null && response.token != "") {
+                    this.baseService.authenticate(response);
 
-                if (response.isEmailVerified) {
-                    this.baseService.isLoggedInSource.next(true);
+                    if (response.isEmailVerified) {
+                        this.baseService.isLoggedInSource.next(true);
+                    }
                 }
-            }
 
-            return response;
-        });
+                return response;
+            })
+        );
     }
 
     logOut() {
@@ -44,22 +47,23 @@ export class AccountService {
     }
 
     signup(userData: any): Observable<any> {
-        return this.baseService.HttpService.postSimple("Account/signup", userData).map(response => {
-            return response;
-        });
+        return this.baseService.HttpService.postSimple("Account/signup", userData).pipe(
+            map(response => {
+                return response;
+            }));
     }
 
     activateEmail(token: string): Observable<any> {
-        return this.baseService.HttpService.postData<any>("Email/activate", { "AuthToken": token }).map(
-            response => {
+        return this.baseService.HttpService.postData<any>("Email/activate", { "AuthToken": token }).pipe(
+            map(response => {
                 return response;
-            });
+            }));
     };
 
     resendEmailActivationCode(userId: string): Observable<any> {
-        return this.baseService.HttpService.postData<any>("Email/verify", { UserId: userId }).map(
-            response => {
+        return this.baseService.HttpService.postData<any>("Email/verify", { UserId: userId }).pipe(
+            map(response => {
                 return response;
-            });
+            }));
     };
 }

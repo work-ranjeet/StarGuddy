@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef } from "@angular/core";
-import { ToastsManager } from "ng5-toastr";
+//import { ToastsManager } from "ng5-toastr";
 
 @Component({
   selector: "app-root",
@@ -7,7 +7,7 @@ import { ToastsManager } from "ng5-toastr";
 })
 export class AppIndexComponent {
     title = 'app';
-    constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
-        this.toastr.setRootViewContainerRef(vcr);
-    }
+    //constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+    //    this.toastr.setRootViewContainerRef(vcr);
+    //}
 }

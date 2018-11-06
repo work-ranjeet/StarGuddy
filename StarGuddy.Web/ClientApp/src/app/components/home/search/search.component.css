@@ -15,12 +15,11 @@
 .home-hero-section {
     font-size: 24px;
     color: #fff;
-    background: url('../../../../assets/css/icons/header_back_2.jpeg') no-repeat center center fixed;
-    -webkit-background-size: auto;
-    -moz-background-size: auto;
-    -o-background-size: auto;
-    background-size: auto;
-    background-position: center;
+    background: url('../../../../assets/css/icons/header_back_2.jpeg') no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .home-hero-section .heading {

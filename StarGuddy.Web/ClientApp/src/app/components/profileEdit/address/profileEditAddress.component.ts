@@ -43,7 +43,7 @@ export class ProfileEditAddressComponent {
                 this.router.navigate(["/profile"]);
             }
             else {
-                console.warn(response.statusText);
+                //console.warn(response.statusText);
             }
         });
     }

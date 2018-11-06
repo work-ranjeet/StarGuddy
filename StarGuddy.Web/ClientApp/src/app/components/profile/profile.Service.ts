@@ -1,8 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
-import "rxjs/add/operator/map";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
+import { Observable, BehaviorSubject } from "rxjs";
+import { map } from 'rxjs/operators';
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
 import IUserProfile = App.Client.PublicProfile.IUserProfile;
@@ -29,108 +28,31 @@ export class ProfileService {
 
     //-------------Profile details-------------------------------//
     GetProfileDetails(): Observable<IUserProfile> {
-        return this.baseService.HttpService.getData<IUserProfile>("Profile/" + this.ProfileUrl)
-            .map(
-                (result: IUserProfile) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IUserProfile>("Profile/" + this.ProfileUrl);
     }
 
     // Profile Header
     GetUserProfileHeader(): Observable<IProfileHeader> {
-        return this.baseService.HttpService.getData<IProfileHeader>("/Profile/" + this.ProfileUrl + "/header")
-            .map(
-                (result: IProfileHeader) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IProfileHeader>("/Profile/" + this.ProfileUrl + "/header");
     }
 
     GetUserPhysicalAppreance(): Observable<IPhysicalAppearance> {
-        return this.baseService.HttpService.getData<IPhysicalAppearance>("Profile/" + this.ProfileUrl + "/PhysicalApperance")
-            .map(
-                (result: IPhysicalAppearance) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IPhysicalAppearance>("Profile/" + this.ProfileUrl + "/PhysicalApperance");
     }
 
     GetUserCredits(): Observable<IUserCredits[]> {
-        return this.baseService.HttpService.getData<IUserCredits[]>("Profile/" + this.ProfileUrl + "/Credit")
-            .map(
-                (result: IUserCredits[]) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IUserCredits[]>("Profile/" + this.ProfileUrl + "/Credit");
     }
 
     GetUserDanceDetail(): Observable<IDancingModel> {
-        return this.baseService.HttpService.getData<IDancingModel>("Profile/" + this.ProfileUrl + "/Dancing")
-            .map(
-                (result: IDancingModel) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IDancingModel>("Profile/" + this.ProfileUrl + "/Dancing");
     }
 
     GetUserActingDetail(): Observable<IActingDetailModel> {
-        return this.baseService.HttpService.getData<IActingDetailModel>("Profile/" + this.ProfileUrl + "/Acting")
-            .map(
-                (result: IActingDetailModel) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IActingDetailModel>("Profile/" + this.ProfileUrl + "/Acting");
     }
 
     GetUserModelingDetail(): Observable<IUserModelingModel> {
-        return this.baseService.HttpService.getData<IUserModelingModel>("Profile/" + this.ProfileUrl + "/Modeling")
-            .map(
-                (result: IUserModelingModel) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<IUserModelingModel>("Profile/" + this.ProfileUrl + "/Modeling");
     }
 }

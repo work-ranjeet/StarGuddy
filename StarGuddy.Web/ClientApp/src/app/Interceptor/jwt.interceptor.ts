@@ -2,7 +2,7 @@ import { isPlatformBrowser } from "@angular/common";
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AppConstant } from "../Constants/AppConstant";
 import { BaseService } from "../Services/BaseService";
 

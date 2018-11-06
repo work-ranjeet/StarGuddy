@@ -1,8 +1,8 @@
 //import { Observable } from "rxjs/Observable";
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import "rxjs/add/operator/map";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { map } from 'rxjs/operators';
+import { BehaviorSubject } from "rxjs";
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
 import IUserEmail = App.Client.Profile.Setting.IUserEmail;

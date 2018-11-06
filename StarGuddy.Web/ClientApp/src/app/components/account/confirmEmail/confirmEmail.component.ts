@@ -2,8 +2,6 @@ import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AccountService } from "../Account.Service";
 import { ToastrService } from "../../../Services/ToastrService";
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
 
 @Component({
     selector: "account-confirm-email",

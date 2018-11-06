@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
+import { map } from 'rxjs/operators';
+import { Observable } from "rxjs";
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
 import ITalentGroupModel = App.Client.Search.ITalentGroupModel;
@@ -18,17 +18,6 @@ export class SearchService {
 
     //load groups
     GetTalentGroupDetail(): Observable<Array<ITalentGroupModel>> {
-        return this.baseService.HttpService.getData<Array<ITalentGroupModel>>("Search/TalentGroups")
-            .map(
-                (result: Array<ITalentGroupModel>) => {
-                    return result;
-                },
-                (err: HttpErrorResponse) => {
-                    if (err.error instanceof Error) {
-                        console.log("Client-side error occurred. Error:" + err.message);
-                    } else {
-                        console.log("Server-side error occurred. Error:" + err.message);
-                    }
-                });
+        return this.baseService.HttpService.getData<Array<ITalentGroupModel>>("Search/TalentGroups");
     }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpService {
