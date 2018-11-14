@@ -1,58 +1,126 @@
 <div id="profileSettingIndexForm" class="form form-horizontal container fadeIn">
-    <page-heading text="Settings" class="padding-top-10"></page-heading>
-    <hr class="style-one" />
-    <div class="row">
-        <div class="col-md-6">
-            <section id="Privecy">
-                <heading text="Privecy Options" cssClass="card-title"></heading>
-                <div class="card">
-                    <div class="card-body">
-                        <ul class="card-ul">
-                            <li>
-                                <span>Profile visibility :&nbsp;</span>
-                                <span class="text-muted">Public&nbsp;</span>
-                                <i class="fa fa-edit padding-left-5 cursor-hand"></i>
-                            </li>
-                            <li>
-                                <span>Your Profile address:&nbsp;</span>
-                                <a href="http://localhost:65393/profile/star/ranjeet_kumar" target="_blank">starguddy.com/ranjukumar&nbsp;</a>
-                                <i class="fa fa-edit padding-left-5 cursor-hand"></i>
-                            </li>
-                            <li>
-                                <div style="display:inline-block;" class="pull-left">
-                                    <span>Allow comments on profile&nbsp;&nbsp;</span>
-                                </div>
-                                <div class="slideCheckBox" style="display:inline-block; margin-top: -5px;">
-                                    <input type="checkbox" value="None" id="slideCheckBox" name="check" checked  style="visibility:hidden;"/>
-                                    <label for="slideCheckBox"></label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+    <page-heading text="Settings" showInfo="true" info="This changes will change you profile settings too." class="padding-top-10"></page-heading>
+
+    <div class="row margin-top-20">
+        <div class="col-md-6 col-sm-6 col-xs-12 padding-bottom-20">
+            <div class="card">
+                <div class="card-header">
+                    <span>Privacy</span>
                 </div>
-            </section>
-        </div>
-        <div class="col-md-6">
-            <section id="AccountOptions">
-                <heading text="Account Options" cssClass="card-title"></heading>
-                <div class="card">
-                    <div class="card-body">
-                        <ul class="card-ul">
-                            <li>
-                                <span class="text-primary cursor-hand">Change which emails I receive</span>
-                            </li>
-                            <li><a class="" routerLink="/profileSetting/changeEmail">Change email</a></li>
-                            <li><a class="" routerLink="/profileSetting/changePwd">Change password</a></li>
-                            <li>
-                                <span class="text-primary cursor-hand"> Manage my subscription</span>
-                            </li>
-                            <li>
-                                <span class="text-danger cursor-hand">Remove my profile</span>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="card-body">
+                    <ul class="card-ul">
+                        <li>
+                            <span>Profile visibility :&nbsp;</span>
+                            <mat-radio-group class="margin-left-20">
+                                <mat-radio-button value="1">Public</mat-radio-button>
+                                <mat-radio-button class="margin-left-15" value="2">Private</mat-radio-button>
+                            </mat-radio-group>
+                        </li>
+                        
+                        <li>
+                            <div style="width:120px;" class="pull-left padding-top-5">
+                                <span>Show Mobile No&nbsp;&nbsp;</span>
+                            </div>
+                            <label class="switch" for="chkShowMobile">
+                                <input type="checkbox" id="chkShowMobile" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+                        </li>
+                        <li>
+                            <div style="width:90px;" class="pull-left padding-top-5">
+                                <span>Show Email&nbsp;&nbsp;</span>
+                            </div>
+                            <label class="switch" for="chkShowEmail">
+                                <input type="checkbox" id="chkShowEmail" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+                        </li>
+                        <li>
+                            <div style="width:140px;" class="pull-left padding-top-5">
+                                <span>Show profile photo&nbsp;&nbsp;</span>
+                            </div>
+
+                            <label class="switch" for="chkShowProfilePhoto">
+                                <input type="checkbox" id="chkShowProfilePhoto" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+                        </li>
+
+                        <li>
+                            <div style="width:190px;" class="pull-left padding-top-5">
+                                <span>Allow comments on profile&nbsp;&nbsp;</span>
+                            </div>
+
+                            <label class="switch" for="chkAllowComments">
+                                <input type="checkbox" id="chkAllowComments" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+
+                        </li>
+                        <li>
+                            <div style="width:235px;" class="pull-left padding-top-5">
+                                <span>Enable two factor authentication&nbsp;&nbsp;</span>
+                            </div>
+
+                            <label class="switch" for="chkEnableTwoFactors">
+                                <input type="checkbox" id="chkEnableTwoFactors" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+                        </li>
+                        <li>
+                            <div style="width:180px;" class="pull-left padding-top-5">
+                                <span>Allow comment on profile&nbsp;&nbsp;</span>
+                            </div>
+
+                            <label class="switch" for="chkAllowCommentOnProfile">
+                                <input type="checkbox" id="chkAllowCommentOnProfile" />
+                                <i class="slider round">
+                                    <span>Yes</span>
+                                    <span class="padding-left-10">No</span>
+                                </i>
+                            </label>
+                        </li>
+
+                    </ul>
                 </div>
-            </section>
+            </div>
         </div>
+        <div class="col-md-6 col-sm-6 col-xs-12  padding-bottom-20">
+            <div class="card">
+                <div class="card-header">
+                    <span>Account</span>
+                </div>
+                <div class="card-body">
+                    <ul class="card-ul">
+                        <li><a class="" routerLink="/profileSetting/changeEmail">Change email</a></li>
+                        <li><a class="" routerLink="/profileSetting/changePwd">Change password</a></li>
+                        <li><a class="" routerLink="/profileSetting/changePwd">Change phone number</a></li>
+                        <li><a class="" routerLink="/profileSetting/changeEmail"> Manage my subscription</a></li>
+                        <!--<li>
+                            <span class="text-success">View as public:&nbsp;</span>
+                            <a href="http://localhost:65393/profile/star/ranjeet_kumar" target="_blank">starguddy.com/ranjukumar&nbsp;</a>
+                            <i class="fa fa-edit padding-left-5 cursor-hand"></i>
+                        </li>-->
+                        <!--<li><a class="link-remove" routerLink="/profileSetting/changeEmail">Remove my profile</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

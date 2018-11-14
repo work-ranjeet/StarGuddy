@@ -14,10 +14,10 @@ namespace App.Client.Account {
     }
 
     export interface IChangePassword {
-        UserName: string;
-        Password: string;
-        NewPassword: string;
-        CnfPassword: string;
+        userName: string;
+        password: string;
+        newPassword: string;
+        cnfPassword: string;
     }
 
     export interface IApplicationUser {

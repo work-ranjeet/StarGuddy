@@ -38,10 +38,10 @@ export class SignUpComponent {
 
     ngOnInit() {
         this.initFormData();
-        this.initLoginForm();
+        this.initSignUpForm();
     }
 
-    initLoginForm() {
+    initSignUpForm() {
         this.accountDetailsForm = this._formBuilder.group(
             {
                 email: new FormControl('', Validators.compose([

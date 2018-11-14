@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { ProfileSettingsService } from "../../profileSettings/profileSettings.Service";
 import { DataValidator } from "../../../Helper/DataValidator";
 import IChangePassword = App.Client.Account.IChangePassword;
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
     selector: "account-management-change-password",
@@ -11,30 +12,45 @@ import IChangePassword = App.Client.Account.IChangePassword;
 })
 
 export class ChangePwdComponent {
-    router: Router;
-    returnUrl: string;
-    authenticateRoute: ActivatedRoute;
-    changePwd: IChangePassword = {} as IChangePassword;
-    manageAccountService: ProfileSettingsService;
+    public changePwdForm: FormGroup;
+    public changePwd: IChangePassword = {} as IChangePassword;
 
-    private readonly dataValidator: DataValidator
-
-    constructor(router: Router, authRoute: ActivatedRoute, manageAccountService: ProfileSettingsService, dataValidator: DataValidator) {
-        this.router = router;
-        this.authenticateRoute = authRoute;
-        this.manageAccountService = manageAccountService;
-        this.dataValidator = dataValidator;
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
-    }
+    constructor(
+        private _formBuilder: FormBuilder,
+        private router: Router,
+        private authRoute: ActivatedRoute,
+        private service: ProfileSettingsService,
+        private dataValidator: DataValidator) { }
 
     ngOnInit() {
         this.changePwd = {} as IChangePassword;
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
+        this.initForm();
     }
+
+    initForm() {
+        this.changePwdForm = this._formBuilder.group(
+            {
+                password: new FormControl('', Validators.compose([
+                    Validators.minLength(5),
+                    Validators.required
+                ])),
+                newPassword: new FormControl('', Validators.compose([
+                    Validators.minLength(5),
+                    Validators.required
+                ])),
+                cnfPassword: new FormControl('', Validators.required)
+            });
+    }
+
+    validatePassword() {
+        if (this.changePwd.newPassword != this.changePwd.cnfPassword) {
+            this.changePwdForm.controls['cnfPassword'].setErrors({ 'areEqual': true });
+            this.changePwdForm.controls['cnfPassword'].markAsDirty();
+        }
+    }
+
+
+
 
     //login() {
     //    if (this.dataValidator.IsValidObject(this.loginData)) {
@@ -47,4 +63,14 @@ export class ChangePwdComponent {
     //            });
     //    }
     //}
+
+    public validation_messages = {       
+        'password': [
+            { type: 'required', message: 'Password is required' }
+        ],
+        'cnfPassword': [
+            { type: 'required', message: 'Confirm password is required' },
+            { type: 'areEqual', message: 'Password mismatch' }
+        ]
+    }
 }

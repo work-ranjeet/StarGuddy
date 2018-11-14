@@ -1,14 +1,14 @@
-﻿namespace App.Client.Profile.Setting {
+namespace App.Client.Profile.Setting {
 
     export interface IUserEmail {
-        UserId: string;
-        Email: string;
+        userId: string;
+        email: string;
     }
 
     export interface IChangePassword {
-        UserId: string;
-        OldPassword: string;
-        NewPassword: string;
-        ConfirmPassword: string;
+        userId: string;
+        oldPassword: string;
+        newPassword: string;
+        confirmPassword: string;
     }
 }

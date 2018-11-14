@@ -12,7 +12,7 @@ using StarGuddy.Business.Interface.Profile;
 using StarGuddy.Core.Constants;
 
 namespace StarGuddy.Api.Controllers.Profile
-{  
+{
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Setting")]
@@ -43,18 +43,21 @@ namespace StarGuddy.Api.Controllers.Profile
         /// <returns></returns>
         [HttpPost]
         [ActionName("UpdateEmail")]
-        public async Task<bool> UpdateEmail(Guid userId, string email)
+        public async Task<IActionResult> UpdateEmail(Guid userId, string email)
         {
             return await this._profileSettingManager.UpdateEmail(userId, email);
         }
 
         [HttpPost]
         [ActionName("ChangePassword")]
-        public async Task<bool> ChangePassword(PasswordModel changePassword)
+        public async Task<IActionResult> ChangePassword(PasswordModel changePassword)
         {
-            return await this._passwordManager.ChangePassword(changePassword);
+            if (changePassword.IsNull() || changePassword.NewPassword != changePassword.ConfirmPassword)
+            {
+                return BadRequest(new { Message = "", Code = 0 });
+            }
+
+            return Ok(await this._passwordManager.ChangePassword(changePassword);
         }
-
-
     }
 }

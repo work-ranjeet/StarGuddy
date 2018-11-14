@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from "ngx-image-cropper";
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule, MatDialogModule } from "@angular/material";
 
+
+import { CommonModuleShared } from "../common/common.module.shared";
 import { AuthGuard } from "../../Services/AuthenticationGuard";
 import { ProfileEditActingComponent } from "./acting/profileEditActing.component";
 import { ProfileEditAddressComponent } from "./address/profileEditAddress.component";
@@ -36,7 +38,7 @@ import { ProfileEditCaptionComponent } from "./caption/caption.component";
         ProfileHeadShotComponent
     ],
     imports: [
-        CommonModule,
+        CommonModule, CommonModuleShared,
         FormsModule, ReactiveFormsModule, ImageCropperModule,
         MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule, MatRadioModule, MatDialogModule,
         RouterModule.forRoot([

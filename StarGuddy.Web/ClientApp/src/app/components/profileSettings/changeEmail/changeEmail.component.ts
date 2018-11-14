@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { ProfileSettingsService } from "../../profileSettings/profileSettings.Service";
 import { DataValidator } from "../../../Helper/DataValidator";
 import IUserEmail = App.Client.Profile.Setting.IUserEmail;
+import { FormBuilder, Validators, FormGroup, FormControl } from "@angular/forms";
 
 @Component({
     selector: "account-management-change-email",
@@ -11,25 +12,31 @@ import IUserEmail = App.Client.Profile.Setting.IUserEmail;
 })
 
 export class ChangeEmailComponent {
+   
+    public returnUrl: string;
+    public changeEmailForm: FormGroup;
+    public userEmail: IUserEmail = {} as IUserEmail;
 
-    router: Router;
-    returnUrl: string;
-    authenticateRoute: ActivatedRoute;
-    userEmail: IUserEmail = {} as IUserEmail;
-    profileSettingService: ProfileSettingsService;
+    constructor(
+        private _formBuilder: FormBuilder, 
+        private router: Router,
+        private authenticateRoute: ActivatedRoute,
+        private profileSettingService: ProfileSettingsService,
+        private dataValidator: DataValidator) {  }
 
-    private readonly dataValidator: DataValidator
 
-    constructor(router: Router, authRoute: ActivatedRoute, profileSettingService: ProfileSettingsService, dataValidator: DataValidator) {
-        this.router = router;
-        this.authenticateRoute = authRoute;
-        this.profileSettingService = profileSettingService;
-        this.dataValidator = dataValidator;
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.authenticateRoute.snapshot.queryParams["returnUrl"] || "/";
+    ngOnInit() {
+        this.initForm();
     }
 
+    initForm() {
+        this.changeEmailForm = this._formBuilder.group({
+            email: new FormControl('', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            ]))
+        });
+    }
 
     updateEmail() {
         if (this.dataValidator.IsValidObject(this.userEmail)) {
@@ -41,5 +48,12 @@ export class ChangeEmailComponent {
                     console.error(error);
                 });
         }
+    }
+
+    public validation_messages = {
+        'email': [
+            { type: 'required', message: 'Email is required' },
+            { type: 'pattern', message: 'Enter a valid email' }
+        ]
     }
 }

@@ -29,7 +29,7 @@ import { AccountConfirmEmailSentComponent } from "./confirmEmail/confirmEmailSen
     ],
     imports: [
         CommonModule, CommonModuleShared,
-        FormsModule, ReactiveFormsModule,
+        FormsModule, ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatSelectModule,
         RouterModule.forRoot([
             { path: "login", component: AccountLoginComponent },

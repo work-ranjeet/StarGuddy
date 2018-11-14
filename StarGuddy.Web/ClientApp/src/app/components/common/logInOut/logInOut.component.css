@@ -14,7 +14,7 @@ ul.nav-logout-menu {
     cursor: pointer;
     float: left;
     height: 50px;
-    padding: 12px;
+    padding-top: 12px;
     -webkit-transition: height .25s ease .1s;
     -moz-transition: height .25s ease .1s;
     -o-transition: height .25s ease .1s;

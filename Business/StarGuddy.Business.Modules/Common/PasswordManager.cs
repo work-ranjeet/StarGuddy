@@ -77,7 +77,6 @@ namespace StarGuddy.Business.Modules.Common
         /// <returns></returns>
         public async Task<bool> ChangePassword(IPasswordModel pwdModel)
         {
-
             if (pwdModel.IsNull() || pwdModel.NewPassword != pwdModel.ConfirmPassword)
             {
                 return false;

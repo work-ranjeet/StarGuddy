@@ -1,35 +1,27 @@
-<div id="changeEmail" class="form container-small margin-top-5Per">    
-    <div class="card">
-        <div class="card-title">
-            <page-heading text="Change Email"></page-heading>
-            <hr class="style-three" />
-        </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="Email" class="required label-control">Email address</label>
-                <input type="email" id="Email" class="form-control"
-                       [(ngModel)]="userEmail.Email"
-                       #username="ngModel"
-                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                       placeholder="Email address" required autofocus />
-                <div *ngIf="username.errors && (username.dirty || username.touched)" class="error">
-                    <div [hidden]="!username.hasError('required')">Email is required.</div>
-                    <div [hidden]="!username.hasError('pattern')">Email format should be &nbsp;<small><b>joe@abc.com</b></small></div>
+<div id="changeEmail" class="container-s margin-top-5Per padding-10 fadeIn">
+    <div class="card padding-15 rounded-border-l">
+        <page-heading text="Change Email" showInfo="true" info="Once you change you email, your login user will be changed. "></page-heading>
+        <form [formGroup]="changeEmailForm" (ngSubmit)="updateEmail()">
+            <div class="row margin-top-20">
+                <div class="col-md-12">
+
+                    <mat-form-field class="form-group full-width padding-top-10">
+                        <input matInput placeholder="Enter your email" formControlName="email" required autofocus autocomplete="off" [(ngModel)]="userEmail.email">
+                        <mat-error *ngFor="let validation of validation_messages.email">
+                            <mat-error class="error-message" *ngIf="changeEmailForm.get('email').hasError(validation.type) && (changeEmailForm.get('email').dirty || changeEmailForm.get('email').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
             </div>
-            <!--<div class="form-group">
-                <label class="required  label-control">Password</label>
-                <input type="password" id="Password" class="form-control" [(ngModel)]="loginData.Password" #password="ngModel" placeholder="Password" required />
-                <div *ngIf="password.errors && (password.dirty || password.touched)" class="error">
-                    <div [hidden]="!password.hasError('required')">Email is required.</div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-m btn-success margin-5" (click)="updateEmail()">Update</button>
+                    <a class="btn btn-m btn-default margin-5" [routerLink]="['/profileSetting']">Cancel</a>
                 </div>
-            </div>-->
-        </div>
-        <!--<hr />-->
-        <div class="card-footer text-center">
-            <a class="btn btn-default" [routerLink]="['/profileSetting']">Cancel</a>
-            <button type="submit" class="btn btn-success" (click)="updateEmail()">Update</button>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 

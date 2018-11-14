@@ -9,6 +9,7 @@
         height: inherit;
         border-radius: 50%;
         border: 5px solid #fcf9f9;
+        box-shadow: 1px 1px 10px 0px #888888;
     }
 
     .profile-img-container .img-edit-icon {
@@ -36,6 +37,7 @@
         height: inherit;
         border-radius: 50%;
         border: 5px solid #fcf9f9;
+        box-shadow: 1px 1px 10px 0px #888888;
     }
 
     .profile-img-container-mob .img-edit-icon {

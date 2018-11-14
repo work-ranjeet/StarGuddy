@@ -1,4 +1,4 @@
-@charset "utf-8";
+
 * {
     margin: 0;
     padding: 0;
@@ -8,16 +8,15 @@
 html, body {
     height: 100%
 }
+
 body {
-    font-family: Roboto,'Segoe UI',sans-serif;
+    background: #f3f3f3;
     color: #444;
     display: table;
     width: 100%;
-    background-color: #f3f3f3;
-    /*font-size: 14px !important;*/
-    /*line-height: 20px !important;
-    color: #383838 !important;*/
-    /*font-weight: 400;*/
+    font-family: Roboto,'Segoe UI',sans-serif;
+    font-size: 15px;
+    font-weight: 300;
 }
 
 .body-content {
@@ -36,6 +35,11 @@ body {
     width: 99% !important;
 }
 
+.page-title {
+    font-size: 27px;
+    padding: 2px 2px 2px 0px;
+    font-weight:300;
+}
 /* --------------------------------------------------------- Container ------------------------------------------------*/
 .container-login {
     padding: 5px;
@@ -87,12 +91,25 @@ body {
     }
 }
 /* -------------------------------------------------------------------End Container ----------------------------------------------------*/
+
+
 a {
-    text-decoration: none !important;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: transparent;
 }
 
-    a:hover, a:hover > span, a:hover > i, .nav-sign-in > a:hover, .nav-sign-in > a:focus {
-        color: rgb(248, 128, 23) !important;
+a, button {
+    user-select: none
+}
+
+
+    a:hover, a:focus, .link:hover, a:hover > span, a:hover > i,
+    .nav-sign-in > a:hover, nav-sign-in > a:focus,
+    .card-ul > ul > a:hover, .card-ul > ul > a:focus {
+        color: rgb(248, 128, 23)!important;
+        text-decoration: none;
     }
 
     a:focus {
@@ -100,11 +117,44 @@ a {
         outline-offset: -2px;
     }
 
+    a, a:visited, .link {
+        color: #337ab7;
+    }
+
+.link-remove {
+    color: red !important;
+}
+
+    .link-remove:hover {
+        color: red;
+    }
+
+
 h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 5px !important;
     margin-bottom: -5px !important;
 }
 
+.h1, .h2 {
+    font-weight: 100
+}
+
+.h1 {
+    font-size: 36px
+}
+
+.h2 {
+    font-size: 24px
+}
+
+.h3 {
+    font-size: 18px;
+    font-weight: 400
+}
+
+.h4 {
+    font-size: 16px
+}
 
 dl {
     margin: 0px;
@@ -156,8 +206,9 @@ label {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
-     font-weight:400 !important;
+    font-weight: 400 !important;
 }
+
 textarea {
     border: 1px solid #E5E5E5;
     background: #FAFAFA;
@@ -620,6 +671,18 @@ text-ml {
     border-radius: 50%;
 }
 
+.rounded-border-s{
+    border-radius:10px;
+}
+
+.rounded-border-m {
+    border-radius: 15px;
+}
+
+.rounded-border-l {
+    border-radius: 20px;
+}
+
 /* -----------------------------------------------------item avatar ------------------------------*/
 .item-avatar-80, .item-avatar-100 {
     margin: auto;
@@ -676,8 +739,9 @@ text-ml {
         color: white;
         margin-right: -10px;
     }
+
 .card-body {
-    padding: 5px 5px 10px 10px!important;
+    padding: 5px 5px 10px 10px !important;
 }
 
 
@@ -720,6 +784,6 @@ text-ml {
     animation-name: fadeIn;
     animation-duration: 1.5s;
 }
-
-
-
+.mat-input-element{
+    font-weight:300!important;
+}
