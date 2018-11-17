@@ -2,11 +2,12 @@
 import { Inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { DataConverter } from "../../Helper/DataConverter";
 import { BaseService } from "../../Services/BaseService";
 import IUserEmail = App.Client.Profile.Setting.IUserEmail;
-import IUserData = App.Client.Account.IApplicationUser;
+import IUserSettingDto = App.Client.Profile.Setting.IUserSettingDto;
+import { HttpErrorResponse } from "@angular/common/http";
 
 
 @Injectable()
@@ -14,51 +15,28 @@ export class ProfileSettingsService {
 
     private isLoggedInSource = new BehaviorSubject<boolean>(false);
 
-    constructor( @Inject(BaseService) private readonly baseService: BaseService,
+    constructor(@Inject(BaseService) private readonly baseService: BaseService,
         private readonly router: Router,
         private readonly dataConverter: DataConverter) { }
 
-    updateEmail(userEmail: IUserEmail) {
+
+    UpdateEmail(userEmail: IUserEmail) {
         return this.baseService.HttpService.post("Profile/Setting/UpdateEmail", userEmail);
     }
 
+    GetUserSettings(): Observable<IUserSettingDto> {
+        return this.baseService.HttpService.getData<IUserSettingDto>("Profile/Setting").pipe(
+            map((result: IUserSettingDto) => {
+                return result;
+            },
+                (err: HttpErrorResponse) => {
+                    if (err.error instanceof Error) {
+                        console.log("Client-side error occurred. Error:" + err.message);
+                    } else {
+                        console.log("Server-side error occurred. Error:" + err.message);
+                    }
+                })
+        );
+    }
 
-    //get IsLoggedIn() { return this.isLoggedInSource.asObservable(); }
-
-    //get IsAuthenticated() { return this.baseService.IsAuthenticated; }
-
-    //getUserFirstName(): string {
-    //    return this.dataConverter.ConvertToString(this.baseService.UserFirstName);
-    //}
-
-    //login(loginData: ILoginData) {
-    //    var v = "";
-    //    return this.http.post(this.baseService.BaseApiUrl + "Account/login", loginData).map(response => {
-    //        if (response.ok) {
-    //            this.isLoggedInSource.next(true);
-    //            this.baseService.authenticate(response);
-    //        }
-    //    });
-    //}
-
-    //logOut() {
-    //    this.isLoggedInSource.next(false);
-    //    this.baseService.cancleAuthention();
-    //}
-
-    //signup(userData: IUserData) {
-    //    return this.http.post(this.baseService.BaseApiUrl + "Account/signup", userData).map(response => {
-    //        if (response.ok) {
-    //            this.isLoggedInSource.next(true);
-    //            this.baseService.authenticate(response);
-    //        }
-    //    });
-    //}
-
-    //register(user) {
-    //    delete user.confirmPassword;
-    //    this.http.post(this.BASE_URL + "/register", user).subscribe(res => {
-    //        this.authenticate(res);
-    //    });
-    //}
 }

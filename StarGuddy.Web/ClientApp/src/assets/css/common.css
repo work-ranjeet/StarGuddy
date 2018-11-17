@@ -38,7 +38,7 @@ body {
 .page-title {
     font-size: 27px;
     padding: 2px 2px 2px 0px;
-    font-weight:300;
+    font-weight: 300;
 }
 /* --------------------------------------------------------- Container ------------------------------------------------*/
 .container-login {
@@ -108,7 +108,7 @@ a, button {
     a:hover, a:focus, .link:hover, a:hover > span, a:hover > i,
     .nav-sign-in > a:hover, nav-sign-in > a:focus,
     .card-ul > ul > a:hover, .card-ul > ul > a:focus {
-        color: rgb(248, 128, 23)!important;
+        color: rgb(248, 128, 23) !important;
         text-decoration: none;
     }
 
@@ -671,8 +671,8 @@ text-ml {
     border-radius: 50%;
 }
 
-.rounded-border-s{
-    border-radius:10px;
+.rounded-border-s {
+    border-radius: 10px;
 }
 
 .rounded-border-m {
@@ -784,6 +784,8 @@ text-ml {
     animation-name: fadeIn;
     animation-duration: 1.5s;
 }
-.mat-input-element{
-    font-weight:300!important;
+
+.mat-input-element {
+    font-weight: 300 !important;
 }
+

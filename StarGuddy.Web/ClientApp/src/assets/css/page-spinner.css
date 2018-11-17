@@ -37,6 +37,7 @@
                 transform-origin: 50% 250% 0;
             }
 
+
             .loading > .spinner li:nth-child(2) {
                 animation: 1.86s linear 0s normal none infinite running rota, 4.29s ease-in-out 0s alternate none infinite running opa;
                 background: #ff003c none repeat scroll 0 0;

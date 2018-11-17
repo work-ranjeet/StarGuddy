@@ -40,7 +40,7 @@ export class ChangeEmailComponent {
 
     updateEmail() {
         if (this.dataValidator.IsValidObject(this.userEmail)) {
-            this.profileSettingService.updateEmail(this.userEmail).subscribe(
+            this.profileSettingService.UpdateEmail(this.userEmail).subscribe(
                 result => {
 
                 },

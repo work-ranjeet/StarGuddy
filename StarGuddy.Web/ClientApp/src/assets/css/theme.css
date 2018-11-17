@@ -19,6 +19,7 @@
         .theme-brand:hover .theme-brand-star {
             color: white !important;
         }
+
 @media screen and (max-width: 450px) {
     .theme-brand {
         color: white;
@@ -111,7 +112,7 @@ input.ng-dirty[required] {
 }
 
 input.ng-invalid {
-    border-left: 5px solid #a94442!important;
+    border-left: 5px solid #a94442 !important;
 }
 
 input.border-left-none {
@@ -166,11 +167,17 @@ span.text-shadow, label.text-shadow {
     -webkit-font-smoothing: antialiased;
 }
 
+
+
 .mat-step-header .mat-step-icon {
     background-color: rgb(248, 128, 23);
     color: #fff;
 }
-
+.mat-step-icon .mat-icon {
+    font-size: 14px;
+    height: 0px;
+    width: 13px;
+}
 .mat-form-field-valid .mat-form-field-label {
     color: #42A948 !important;
 }
@@ -193,9 +200,8 @@ span.text-shadow, label.text-shadow {
     font-weight: 300;
 }
 
-.mat-placeholder-required, .mat-form-field-required-marker
-{
-    color:#d06464;
+.mat-placeholder-required, .mat-form-field-required-marker {
+    color: #d06464;
     /*font-size:12px;*/
 }
 /* --------------------------------- End Angular Materials ----------------------------------------*/

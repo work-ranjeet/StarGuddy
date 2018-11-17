@@ -11,7 +11,7 @@ import { ChangePwdComponent } from "./changePassword/changePwd.component";
 import { ProfileSettingsService } from "./profileSettings.Service";
 import { UserProfileSettingsIndex } from "./userProfileSettingsIndex/userProfileSettingsIndex.component";
 import { VerifyPhoneNumberComponent } from "./verifyPhoneNumber/verifyPhoneNumber.component";
-import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModule } from "@angular/material";
+import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModule, MatSelectModule } from "@angular/material";
 
 
 //import { MatRadioModule } from "@angular/material";
@@ -28,7 +28,7 @@ import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModul
     imports: [
         CommonModule,
         FormsModule, ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
-        MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModule,
+        MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModule, MatSelectModule,
         CommonModuleShared,
 
         RouterModule.forRoot([

@@ -11,18 +11,21 @@
                     <ul class="card-ul">
                         <li>
                             <span>Profile visibility :&nbsp;</span>
-                            <mat-radio-group class="margin-left-20">
-                                <mat-radio-button value="1">Public</mat-radio-button>
-                                <mat-radio-button class="margin-left-15" value="2">Private</mat-radio-button>
-                            </mat-radio-group>
+                            <mat-form-field class="padding-left-20">
+                                <mat-select placeholder="Select groups" [(ngModel)]="userSettings.visibilityGroupId">
+                                    <mat-option *ngFor="let visbilityGroup of visibilityGroupList" [value]="visbilityGroup.id">
+                                        {{visbilityGroup.groupName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </li>
-
                         <li>
                             <div style="width:120px;" class="pull-left padding-top-5">
                                 <span>Show Mobile No&nbsp;&nbsp;</span>
                             </div>
                             <label class="switch" for="chkShowMobile">
-                                <input type="checkbox" id="chkShowMobile" />
+                                <input type="checkbox" id="chkShowMobile" value="{{userSettings.isMobileVisible}}"
+                                       [checked]="userSettings.isMobileVisible" (change)="showHideMobile($event)" />
                                 <i class="slider round">
                                     <span>Yes</span>
                                     <span class="padding-left-10">No</span>
@@ -34,7 +37,8 @@
                                 <span>Show Email&nbsp;&nbsp;</span>
                             </div>
                             <label class="switch" for="chkShowEmail">
-                                <input type="checkbox" id="chkShowEmail" />
+                                <input type="checkbox" id="chkShowEmail" value="{{userSettings.isEmailVisible}}"
+                                       [checked]="userSettings.isEmailVisible" (change)="showHideEmail($event)" />
                                 <i class="slider round">
                                     <span>Yes</span>
                                     <span class="padding-left-10">No</span>
@@ -47,21 +51,22 @@
                             </div>
 
                             <label class="switch" for="chkShowProfilePhoto">
-                                <input type="checkbox" id="chkShowProfilePhoto" />
+                                <input type="checkbox" id="chkShowProfilePhoto" value="{{userSettings.isProfilePhotoVisibile}}"
+                                       [checked]="userSettings.isProfilePhotoVisibile" (change)="showHideProfilePhoto($event)" />
                                 <i class="slider round">
                                     <span>Yes</span>
                                     <span class="padding-left-10">No</span>
                                 </i>
                             </label>
                         </li>
-
                         <li>
                             <div style="width:190px;" class="pull-left padding-top-5">
                                 <span>Allow comments on profile&nbsp;&nbsp;</span>
                             </div>
 
                             <label class="switch" for="chkAllowComments">
-                                <input type="checkbox" id="chkAllowComments" />
+                                <input type="checkbox" id="chkAllowComments" value="{{userSettings.isProfileCommentAllowed}}"
+                                       [checked]="userSettings.isProfileCommentAllowed" (change)="allowCommentOnProfileChange($event)" />
                                 <i class="slider round">
                                     <span>Yes</span>
                                     <span class="padding-left-10">No</span>
@@ -75,27 +80,14 @@
                             </div>
 
                             <label class="switch" for="chkEnableTwoFactors">
-                                <input type="checkbox" id="chkEnableTwoFactors" />
+                                <input type="checkbox" id="chkEnableTwoFactors" value="{{userSettings.isTwoFactorEnabled}}"
+                                       [checked]="userSettings.isTwoFactorEnabled" (change)="enableDisabelTowFactorAuth($event)" />
                                 <i class="slider round">
                                     <span>Yes</span>
                                     <span class="padding-left-10">No</span>
                                 </i>
                             </label>
                         </li>
-                        <li>
-                            <div style="width:180px;" class="pull-left padding-top-5">
-                                <span>Allow comment on profile&nbsp;&nbsp;</span>
-                            </div>
-
-                            <label class="switch" for="chkAllowCommentOnProfile">
-                                <input type="checkbox" id="chkAllowCommentOnProfile" />
-                                <i class="slider round">
-                                    <span>Yes</span>
-                                    <span class="padding-left-10">No</span>
-                                </i>
-                            </label>
-                        </li>
-
                     </ul>
                 </div>
             </div>

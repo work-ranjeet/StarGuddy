@@ -4,6 +4,7 @@ using StarGuddy.Api.Models.Dto;
 using StarGuddy.Api.Models.Files;
 using StarGuddy.Api.Models.Profile;
 using StarGuddy.Api.Models.Search;
+using StarGuddy.Api.Models.Settings;
 using StarGuddy.Api.Models.UserJobs;
 using StarGuddy.Data.Entities;
 
@@ -13,16 +14,17 @@ namespace StarGuddy.Business.Modules.Mapper
     {
         public InitMapper()
         {
-            this.InitAutoMapper();            
+            this.InitAutoMapper();
         }
 
         private void InitAutoMapper()
         {
-            CreateMap<Accents, AccentsDto>().ReverseMap(); 
+            CreateMap<Accents, AccentsDto>().ReverseMap();
             CreateMap<Language, LanguageDto>().ReverseMap();
             CreateMap<JobSubGroup, AuditionsAndJobsGroupDto>().ReverseMap();
             CreateMap<UserModeling, UserModelingModel>().ReverseMap();
             CreateMap<UserSettings, UserSettingDto>().ReverseMap();
+            CreateMap<VisibilityGroup, VisibilityGroupDto>().ReverseMap();
             CreateMap<JobGroup, JobGroupModel>().ReverseMap();
             CreateMap<UserImage, UserImageModel>().ReverseMap();
             CreateMap<PhysicalAppearance, PhysicalAppearanceModal>().ReverseMap();
@@ -36,8 +38,10 @@ namespace StarGuddy.Business.Modules.Mapper
 
             CreateMap<UserDetailModel, UserDetail>().ReverseMap();
             CreateMap<ImageModel, UserImage>().ReverseMap();
+            CreateMap<JobGroup, TalentGroup>().ReverseMap();
 
-            CreateMap<JobGroup, TalentGroup>().ReverseMap();  
+
+
         }
     }
 }

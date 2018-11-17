@@ -57,7 +57,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (physicalAppearance.IsNull())
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             physicalAppearance.UserId = UserContext.Current.UserId;
@@ -102,7 +102,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (credits.IsNull())
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var isSuccess = await _profileEditManager.SaveUserCredits(credits);
@@ -120,7 +120,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (userId == Guid.Empty)
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var isDeleted = await _profileEditManager.DeleteUserCredits(userId);
@@ -155,7 +155,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (dancingModel.IsNull())
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var isSuccess = await _profileEditManager.SaveUserDancingAsync(dancingModel);
@@ -228,7 +228,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (userModelingModel.IsNull())
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var isSuccess = await _profileEditManager.SaveUserModelingDetailsAsync(userModelingModel);

@@ -177,7 +177,6 @@ namespace StarGuddy.Repository.Operations
                         AccessFailedCount = 0,
                         ConcurrencyStamp = Guid.NewGuid(),
                         LockoutEnd = DateTime.UtcNow.AddSeconds(-1),
-                        IsTwoFactorEnabled = false,
                         Email = email,
                         user.FirstName,
                         user.Gender,

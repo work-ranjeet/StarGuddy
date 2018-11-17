@@ -1,4 +1,5 @@
-﻿using StarGuddy.Data.Entities.Interface;
+﻿using StarGuddy.Data.Entities;
+using StarGuddy.Data.Entities.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace StarGuddy.Repository.Interface
 {
     public interface IUserSettingsRepository
     {
-        Task<IUserSettings> GetUsetSettingByUserIdAsync(Guid userId);
+        Task<UserSettings> GetUsetSettingByUserIdAsync(Guid userId);
 
         Task<Guid> GetUserIdByProfilUrl(string profileUrl);
 
@@ -23,5 +24,7 @@ namespace StarGuddy.Repository.Interface
         Task<bool> EnableTwoFactorAuth(Guid userId, bool status);
 
         Task<bool> SetProfileVisibility(Guid userId, Guid visibilityGroupId);
+
+        Task<IEnumerable<VisibilityGroup>> GetVisibilityGroupByUserIdAsync(Guid userId);
     }
 }

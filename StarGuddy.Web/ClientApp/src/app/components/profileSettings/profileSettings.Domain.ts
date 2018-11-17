@@ -11,4 +11,23 @@ namespace App.Client.Profile.Setting {
         newPassword: string;
         confirmPassword: string;
     }
+
+    export interface IVisibilityGroupDto {
+        id: string;
+        groupName: string;
+        groupOwnerId: string;
+    }
+
+    export interface IUserSettingDto {
+        id: string;
+        userId: string;
+        visibilityGroupId: string;
+        visibilityGroups: Array<IVisibilityGroupDto>;
+        isProfilePhotoVisibile: boolean;
+        isProfileCommentAllowed: boolean;
+        isMobileVisible: boolean;
+        isEmailVisible: boolean;
+        profileUrl: string;
+        isProfileDisabled: boolean;
+    }
 }

@@ -8,6 +8,7 @@ using StarGuddy.Repository.Opertions.Constants;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,9 +20,16 @@ namespace StarGuddy.Repository.Operations
         {
         }
 
-        public async Task<IUserSettings> GetUsetSettingByUserIdAsync(Guid userId)
+        public async Task<UserSettings> GetUsetSettingByUserIdAsync(Guid userId)
         {
-            return await base.FindActiveByUserIdAsync(userId);
+            using (var conn = await Connection.OpenConnectionAsync())
+            {
+                var param = new { UserId = userId };
+
+                var result = await SqlMapper.QueryAsync<UserSettings>(conn, SpNames.UserSettings.GetUserSettings, param, commandType: CommandType.StoredProcedure);
+
+                return result.FirstOrDefault();
+            }
         }
 
         public async Task<Guid> GetUserIdByProfilUrl(string profileUrl)
@@ -90,7 +98,7 @@ namespace StarGuddy.Repository.Operations
             {
                 var param = new { UserId = userId, Status = status };
 
-                await SqlMapper.ExecuteAsync(conn, SpNames.User.EnableDisableTowFactor, param, commandType: CommandType.StoredProcedure);
+                await SqlMapper.ExecuteAsync(conn, SpNames.UserSettings.EnableDisableTowFactor, param, commandType: CommandType.StoredProcedure);
 
                 return true;
             }
@@ -109,6 +117,14 @@ namespace StarGuddy.Repository.Operations
         }
 
 
+        public async Task<IEnumerable<VisibilityGroup>> GetVisibilityGroupByUserIdAsync(Guid userId)
+        {
+            using (var conn = await Connection.OpenConnectionAsync())
+            {
+                var param = new { UserId = userId };
 
+                return await SqlMapper.QueryAsync<VisibilityGroup>(conn, SpNames.VisibilityGroup.GetVisibilityGroup, param, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

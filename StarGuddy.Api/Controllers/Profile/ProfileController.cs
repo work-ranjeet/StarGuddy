@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using StarGuddy.Api.Constants;
+using StarGuddy.Api.Models.ActionResult;
 using StarGuddy.Business.Interface.Account;
 using StarGuddy.Business.Interface.Profile;
 using StarGuddy.Business.Interface.UserJobs;
@@ -42,7 +44,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var profileResult = await _profileManager.GetUserProfile(profileUrl);
@@ -88,7 +90,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var result = await _profileManager.GetPhysicalAppreance(profileUrl);
@@ -108,7 +110,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var creditResult = await _profileManager.GetUserCredits(profileUrl);
@@ -132,7 +134,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var dancingResult = await _profileManager.GetUserDancingAsync(profileUrl);
@@ -151,7 +153,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var actingResult = await _profileManager.GetUserActingDetailAsync(profileUrl);
@@ -170,7 +172,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatus.InvalidRequest);
+                return BadRequest(new MessageResult { Message = ErrorMessage.BadRequest, Code = StatusCodes.Status400BadRequest });
             }
 
             var actingResult = await _profileManager.GetUserModelingDetailAsync(profileUrl);

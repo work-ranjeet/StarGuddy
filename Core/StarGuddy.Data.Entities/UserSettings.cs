@@ -17,6 +17,7 @@ namespace StarGuddy.Data.Entities
         public string ProfileUrl { get; set; }
         public bool IsActive { get; set; }
         public bool IsProfileDisabled { get; set; }
+        public bool IsTwoFactorEnabled { get; set; }
         public DateTime DttmCreated { get; set; }
         public DateTime DttmModified { get; set; }
     }
