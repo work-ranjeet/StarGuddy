@@ -1,0 +1,25 @@
+<div id="changePhone" class="container-s margin-top-5Per padding-10 fadeIn">
+    <div class="card padding-15 rounded-border-l">
+        <page-heading text="Change Phone Number" showInfo="true" info="Change your current phone number. "></page-heading>
+        <form [formGroup]="changePhoneForm">
+            <div class="row margin-top-20">
+                <mat-form-field class="col-md-12">
+                    <input type="text" matInput placeholder="Mobile number" formControlName="mobileNumber" required autocomplete="off" [(ngModel)]="mobNumber">
+                    <mat-error *ngFor="let validation of validation_messages.mobile">
+                        <mat-error class="error-message" *ngIf="changePhoneForm.get('mobileNumber').hasError(validation.type) && (changePhoneForm.get('mobileNumber').dirty || changePhoneForm.get('mobileNumber').touched)">
+                            {{validation.message}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+         
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-m btn-success margin-5" [disabled]="!changePhoneForm.valid">Update</button>
+                    <a class="btn btn-m btn-default margin-5" [routerLink]="['/profileSetting']">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

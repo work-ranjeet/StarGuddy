@@ -1,11 +1,129 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'Settings_SetVisibility') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE Settings_SetVisibility
+GO
+CREATE PROCEDURE Settings_SetVisibility (@UserId UNIQUEIDENTIFIER, @VisibilityGroupId UNIQUEIDENTIFIER)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE UserSettings SET VisibilityGroupId = @VisibilityGroupId where UserId = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'Settings_ShowHideEmail') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE Settings_ShowHideEmail
+GO
+CREATE PROCEDURE Settings_ShowHideEmail (@UserId UNIQUEIDENTIFIER, @Status BIT)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE UserSettings SET IsEmailVisible =@Status where UserId = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'Settings_ShowHideMobile') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE Settings_ShowHideMobile
+GO
+CREATE PROCEDURE Settings_ShowHideMobile (@UserId UNIQUEIDENTIFIER, @Status BIT)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE UserSettings SET IsMobileVisible = @Status where UserId = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'Settings_ShowHideProfilePhoto') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE Settings_ShowHideProfilePhoto
+GO
+CREATE PROCEDURE Settings_ShowHideProfilePhoto (@UserId UNIQUEIDENTIFIER, @Status BIT)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE UserSettings SET IsProfilePhotoVisibile = @Status where UserId = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'Settings_AllowProfileComment') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE Settings_AllowProfileComment
+GO
+
+CREATE PROCEDURE Settings_AllowProfileComment (@UserId UNIQUEIDENTIFIER, @Status BIT)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE UserSettings SET IsProfileCommentAllowed = @Status where UserId = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'User_EnableDisableTowFactor') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE User_EnableDisableTowFactor
+GO
+CREATE PROCEDURE User_EnableDisableTowFactor (@UserId UNIQUEIDENTIFIER, @Status BIT)
+AS
+BEGIN
+	BEGIN TRY	
+		UPDATE Users SET IsTwoFactorEnabled = @Status where Id = @UserId
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+GO
+
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
 		WHERE object_id = OBJECT_ID(N'GetVarifiedUser') AND type IN (N'P', N'PC')
 		)
 	DROP PROCEDURE GetVarifiedUser
 GO
-
 CREATE PROCEDURE GetVarifiedUser (@UserName NVARCHAR(256), @Password NVARCHAR(max))
 AS
 BEGIN
@@ -58,13 +176,9 @@ BEGIN
 		INSERT INTO Users (Id, UserName, DisplayName, AccessFailedCount, ConcurrencyStamp, FirstName, Gender, IsCastingProfessional, LastName, LockoutEnabled, LockoutEnd, Designation, OrgName, OrgWebsite, PasswordHash, SecurityStamp)
 		VALUES (@userId, @UserName, @FirstName, @AccessFailedCount, @ConcurrencyStamp, @FirstName, @Gender, @IsCastingProfessional, @LastName, @LockoutEnabled, @LockoutEnd, @Designation, @OrgName, @OrgWebsite, @PasswordHash, @SecurityStamp)
 
-		INSERT INTO UserEmails (UserId, Email, EmailConfirmed, IsActive, IsDeleted)
-		VALUES (@userId, @Email, 0, 1, 0)
-
-		INSERT INTO UserDetail(UserId)VALUES (@userId) 
-
-		INSERT INTO UserSettings(UserId, ProfileUrl, Visibility, IsCommnetAlowed, IsActive, IsDeleted)
-	    VALUES (@userId, NEWID(), 0, 0, 1, 0)
+		INSERT INTO UserDetail(UserId) VALUES (@userId)
+		INSERT INTO UserSettings(UserId, ProfileUrl, IsActive) VALUES (@userId, NEWID(), 1)
+		INSERT INTO UserEmails (UserId, Email, EmailConfirmed, IsActive, IsDeleted) VALUES (@userId, @Email, 0, 1, 0)
 
 		DECLARE @imageUrl NVARCHAR(200) = (CASE WHEN @Gender ='M' THEN 'assets/css/icons/mail.png' WHEN @Gender ='F' THEN 'assets/css/icons/femail.png' ELSE 'assets/css/icons/other.png' END) 
 		INSERT INTO UserImage(Id, UserId, Name, Caption, ImageUrl, DataUrl, ImageType, IsActive, IsDeleted)
@@ -145,6 +259,37 @@ BEGIN
 	BEGIN CATCH
 	END CATCH
 END
+GO
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UpdateMobile') AND type IN (N'P', N'PC')
+		)
+	DROP PROCEDURE UpdateMobile
+GO
+CREATE PROCEDURE UpdateMobile (@UserId UNIQUEIDENTIFIER, @MobileNumber NVARCHAR(20))
+AS
+BEGIN
+	BEGIN TRY
+		DECLARE @id UNIQUEIDENTIFIER
+
+		SELECT @id = id
+		FROM UserPhones
+		WHERE UserId = @UserId AND IsActive = 1 AND IsDeleted = 0
+
+		UPDATE UserPhones
+		SET IsActive = 0, IsDeleted = 0
+		WHERE id = @id
+
+		INSERT INTO UserPhones (UserId, PhoneNumber, TwoFactorCode, IsActive, IsDeleted)
+		VALUES (@UserId, @MobileNumber, 0, 0, 0)
+	END TRY
+
+	BEGIN CATCH
+	END CATCH
+END
+
 GO
 IF EXISTS (
 		SELECT *
@@ -944,6 +1089,7 @@ BEGIN
 		END
 END
 ----------------------------------------------------------End Image ------------------------------------------------------
+
 
 
 	

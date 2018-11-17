@@ -9,5 +9,6 @@ namespace StarGuddy.Repository.Interface
     public interface IUserPhonesRepository
     {
         Task<UserPhones> GetUserPhoneDetailByUserId(Guid userId);
+        Task<bool> UpdateMobileAsync(Guid userId, string mobileNumber);
     }
 }

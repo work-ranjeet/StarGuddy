@@ -1,6 +1,28 @@
 IF EXISTS (
 		SELECT *
 		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserVisibilityGroup') AND type IN (N'U')
+		)
+	DROP TABLE UserVisibilityGroup
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'VisibilityGroup') AND type IN (N'U')
+		)
+	DROP TABLE VisibilityGroup
+GO
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
+		WHERE object_id = OBJECT_ID(N'UserSettings') AND type IN (N'U')
+		)
+	DROP TABLE UserSettings
+GO
+
+IF EXISTS (
+		SELECT *
+		FROM sys.objects
 		WHERE object_id = OBJECT_ID(N'ApprovalStatus') AND type IN (N'U')
 		)
 	DROP TABLE ApprovalStatus
@@ -129,14 +151,6 @@ IF EXISTS (
 		WHERE object_id = OBJECT_ID(N'UserCredits') AND type IN (N'U')
 		)
 	DROP TABLE UserCredits
-GO
-
-IF EXISTS (
-		SELECT *
-		FROM sys.objects
-		WHERE object_id = OBJECT_ID(N'UserSettings') AND type IN (N'U')
-		)
-	DROP TABLE UserSettings
 GO
 
 IF EXISTS (

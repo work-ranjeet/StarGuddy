@@ -42,7 +42,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var profileResult = await _profileManager.GetUserProfile(profileUrl);
@@ -88,7 +88,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var result = await _profileManager.GetPhysicalAppreance(profileUrl);
@@ -108,7 +108,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var creditResult = await _profileManager.GetUserCredits(profileUrl);
@@ -132,7 +132,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var dancingResult = await _profileManager.GetUserDancingAsync(profileUrl);
@@ -151,7 +151,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var actingResult = await _profileManager.GetUserActingDetailAsync(profileUrl);
@@ -170,7 +170,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (string.IsNullOrWhiteSpace(profileUrl))
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var actingResult = await _profileManager.GetUserModelingDetailAsync(profileUrl);

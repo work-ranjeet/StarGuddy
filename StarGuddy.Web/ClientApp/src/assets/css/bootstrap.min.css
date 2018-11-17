@@ -364,8 +364,12 @@ input:checked + .slider {
 
     .slider.round > span {
         padding: 8px;
-        font-size:12px;
-        font-family:monospace;
-        text-transform:uppercase;
+        font-size: 12px;
+        font-family: monospace;
+        text-transform: uppercase;
         vertical-align: -webkit-baseline-middle;
     }
+
+.form-control {
+    height: 35px !important;
+}

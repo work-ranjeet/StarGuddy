@@ -4,8 +4,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AuthGuard } from "../../Services/AuthenticationGuard";
 import { CommonModuleShared } from "../common/common.module.shared";
-import { AddEmailComponent } from "./addEmail/addEmail.component";
-import { AddPhoneNumberComponent } from "./addPhoneNumber/addPhoneNumber.component";
+import { ChangePhoneNumberComponent } from "./changePhoneNumber/changePhoneNumber.component";
 import { ChangeAddressComponent } from "./changeAddress/changeAddress.component";
 import { ChangeEmailComponent } from "./changeEmail/changeEmail.component";
 import { ChangePwdComponent } from "./changePassword/changePwd.component";
@@ -19,8 +18,7 @@ import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModul
 
 @NgModule({
     declarations: [
-        AddEmailComponent,
-        AddPhoneNumberComponent,
+        ChangePhoneNumberComponent,
         ChangeAddressComponent,
         ChangePwdComponent,
         ChangeEmailComponent,
@@ -38,9 +36,8 @@ import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModul
                 path: "profileSetting",
                 canActivate: [AuthGuard],
                 children: [
-                    { path: "", component: UserProfileSettingsIndex },
-                    { path: "addEmail", component: AddEmailComponent, canActivateChild: [AuthGuard] },
-                    { path: "addPhoneNumber", component: AddPhoneNumberComponent, canActivateChild: [AuthGuard] },
+                    { path: "", component: UserProfileSettingsIndex },                    
+                    { path: "changePhoneNumber", component: ChangePhoneNumberComponent, canActivateChild: [AuthGuard] },
                     { path: "changeAddress", component: ChangeAddressComponent, canActivateChild: [AuthGuard] },
                     { path: "changePwd", component: ChangePwdComponent, canActivateChild: [AuthGuard] },
                     { path: "changeEmail", component: ChangeEmailComponent, canActivateChild: [AuthGuard] },
@@ -51,8 +48,7 @@ import { MatRadioModule, MatInputModule, MatAutocompleteModule, MatCheckboxModul
     ],
     providers: [ProfileSettingsService],
     exports: [
-        AddEmailComponent,
-        AddPhoneNumberComponent,
+        ChangePhoneNumberComponent,
         ChangeAddressComponent,
         ChangePwdComponent,
         ChangeEmailComponent,

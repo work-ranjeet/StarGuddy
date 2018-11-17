@@ -49,7 +49,7 @@ import { ProfileEditCaptionComponent } from "./caption/caption.component";
                     { path: "edit", component: ProfileEditIndex, canActivate: [AuthGuard] },
                     { path: "name", component: ProfileEditNameComponent, canActivate: [AuthGuard] },
                     { path: "intro", component: ProfileEditIntroComponent, canActivateChild: [AuthGuard] },
-                    { path: "address", component: ProfileEditAddressComponent, canActivateChild: [AuthGuard] },
+                    { path: "address/:?caller", component: ProfileEditAddressComponent, canActivateChild: [AuthGuard] },
                     { path: "interests", component: JobGroupComponent, canActivateChild: [AuthGuard] },
                     { path: "photoManager", component: ProfileEditPhotosManagerComponent, canActivateChild: [AuthGuard] },
                     { path: "photoUpload", component: ProfilePhotoUploadComponent, canActivateChild: [AuthGuard] },

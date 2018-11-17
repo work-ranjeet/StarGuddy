@@ -4,10 +4,9 @@
             <div class="card">
                 <div class="card-header card-title-m">
                     <span>My Address</span>
-                    <a href="#" class="pull-right">
-                        <i  class="icon icon-undo text-success" (click)="reset()"></i>
-                    </a>
+                    <i class="icon icon-undo text-success pull-right cursor-hand" (click)="reset()"></i>
                 </div>
+
                 <form #frmAddress="ngForm" class="form padding-10">
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12">
@@ -127,8 +126,12 @@
                         </div>
                     </div>
                     <hr class="seperator" />
-                    <div class="col-sm-12 text-center padding-15">
-                        <button id="btnSave" class="btn-profile-save btn btn-success" [disabled]="!frmAddress.form.valid" (click)="save()">Save</button>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <!--<button type="submit" class="btn btn-m btn-primary margin-5" [disabled]="frmAddress.touched" (click)="reset()">Reset</button>-->
+                            <button type="submit" class="btn btn-m btn-success margin-5" [disabled]="!frmAddress.valid">Update</button>
+                            <button type="reset" class="btn btn-m btn-default margin-5" (click)="cancle()">Cancel</button>
+                        </div>
                     </div>
                 </form>
             </div>

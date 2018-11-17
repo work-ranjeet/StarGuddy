@@ -21,7 +21,7 @@
             <div class="profile-address">
                 <i class="glyphicon glyphicon-map-marker"></i>
                 <span class="text-muted display-inline-block">{{computedAddress}}</span>
-                <a routerLink="/profile/address" class="icon icon-edit icon-m"></a>
+                <a [routerLink]="['/profile/address','self']" class="icon icon-edit icon-m"></a>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
             <div class="profile-address">
                 <i class="icon icon-location"></i>
                 <span class="text-muted">{{computedAddress}}</span>
-                <a routerLink="/profile/address" class="icon icon-edit icon-s"></a>
+                <a [routerLink]="['/profile/address','self']" class="icon icon-edit icon-s"></a>
             </div>
         </div>
 

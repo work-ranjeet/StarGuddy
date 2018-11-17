@@ -57,6 +57,9 @@ namespace StarGuddy.Repository.Opertions.Constants
             /// The get verified user
             /// </summary>
             public const string GetProfileHeader = "GetProfileHeader";
+
+
+            public const string EnableDisableTowFactor = "User_EnableDisableTowFactor";
         }
 
         public struct UserDetail
@@ -67,12 +70,22 @@ namespace StarGuddy.Repository.Opertions.Constants
         public struct UserSettings
         {
             public const string GetProfileUserId = "GetProfileUserId";
+            public const string SetVisibility = "Settings_SetVisibility";
+            public const string ShowHideEmail = "Settings_ShowHideEmail";
+            public const string ShowHideMobile = "Settings_ShowHideMobile";
+            public const string ShowHideProfilePhoto = "Settings_ShowHideProfilePhoto";
+            public const string AllowProfileComment = "Settings_AllowProfileComment";
         }
 
         public struct UserEmails
         {
             public const string UpdateEmail = "UpdateEmail";
             public const string ActivateEmail = "ActivateEmail";
+        }
+
+        public struct UserPhones
+        {
+            public const string UpdateMobile = "UpdateMobile";
         }
 
         public struct PhysicalAppearance

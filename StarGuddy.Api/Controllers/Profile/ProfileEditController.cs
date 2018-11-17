@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StarGuddy.Api.Constants;
+using StarGuddy.Api.Models.ActionResult;
 using StarGuddy.Api.Models.Dto;
 using StarGuddy.Api.Models.Interface.Profile;
 using StarGuddy.Api.Models.Profile;
@@ -20,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace StarGuddy.Api.Controllers.Profile
 {
-    
+
     [ApiController]
     [Produces("application/json")]
     [Route("api/Profile/Operations")]
@@ -56,7 +57,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (physicalAppearance.IsNull())
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             physicalAppearance.UserId = UserContext.Current.UserId;
@@ -101,7 +102,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (credits.IsNull())
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var isSuccess = await _profileEditManager.SaveUserCredits(credits);
@@ -119,7 +120,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (userId == Guid.Empty)
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var isDeleted = await _profileEditManager.DeleteUserCredits(userId);
@@ -154,7 +155,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (dancingModel.IsNull())
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var isSuccess = await _profileEditManager.SaveUserDancingAsync(dancingModel);
@@ -188,7 +189,12 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (userActingModel.IsNull())
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(
+                    new MessageResult
+                    {
+                        Message = ErrorMessage.BadRequest,
+                        Code = StatusCodes.Status400BadRequest
+                    });
             }
 
             var isSuccess = await _profileEditManager.SaveUserActingDetailsAsync(userActingModel);
@@ -197,7 +203,7 @@ namespace StarGuddy.Api.Controllers.Profile
                 return Ok(isSuccess);
             }
 
-            return StatusCode(StatusCodes.Status304NotModified, this);
+            return StatusCode(StatusCodes.Status304NotModified, new MessageResult { Message = ErrorMessage.NotModified, Code = StatusCodes.Status304NotModified });
         }
         #endregion
 
@@ -222,7 +228,7 @@ namespace StarGuddy.Api.Controllers.Profile
         {
             if (userModelingModel.IsNull())
             {
-                return BadRequest(HttpStatusText.InvalidRequest);
+                return BadRequest(HttpStatus.InvalidRequest);
             }
 
             var isSuccess = await _profileEditManager.SaveUserModelingDetailsAsync(userModelingModel);
@@ -231,7 +237,7 @@ namespace StarGuddy.Api.Controllers.Profile
                 return Ok(isSuccess);
             }
 
-            return StatusCode(StatusCodes.Status304NotModified, this);
+            return StatusCode(StatusCodes.Status304NotModified, new MessageResult { Message = "", Code = 0 });
         }
         #endregion
 
@@ -263,7 +269,7 @@ namespace StarGuddy.Api.Controllers.Profile
                 return Ok(true);
             }
 
-            return StatusCode(StatusCodes.Status304NotModified, HttpStatusText.NotModified);
+            return StatusCode(StatusCodes.Status304NotModified, ErrorMessage.NotModified);
         }
         #endregion
 
@@ -374,6 +380,6 @@ namespace StarGuddy.Api.Controllers.Profile
             }
 
             return StatusCode(StatusCodes.Status304NotModified, this);
-        }       
+        }
     }
 }

@@ -5,6 +5,9 @@
 --INSERT into Users ( AccessFailedCount, ConcurrencyStamp, FirstName, Gender, IsCastingProfessional, LastName, LockoutEnabled, LockoutEnd, Designation, OrgName, OrgWebsite, PasswordHash, SecurityStamp, IsTwoFactorEnabled, UserName)
 --VALUES ( 0, N'b8c6e4a2-fb40-4706-b608-f05a4a6ff708', N'Ranjeet', N'M', 0, N'Kumar', 0, NULL, NULL, NULL, NULL, N'janeman', N'39d292dc-8713-4f03-9cfb-90784159f854', 0, N'er.ranjeetkumar@gmail.com')
 
+INSERT INTO visibilityGroup (GroupName, GroupOwnerId) VALUES ('Public', '6BE29181-E504-4B39-A2EE-AAA51C8799A0')
+INSERT INTO visibilityGroup (GroupName, GroupOwnerId) VALUES ('Private', '302150D0-90F0-4F9E-BDA2-6590D36CC61E')
+
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email', 'donotreply@starguddy.com', 'send mail')
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email_password', 'dnr_sguddy_1783', 'send mail password')
 insert into SettingsMaster (id, [key], value, [description]) values (NEWID(), 'send_no_reply_email_port_number', '25', 'port number')

@@ -8,8 +8,21 @@ namespace StarGuddy.Business.Interface.Profile
 {
     public interface IProfileSettingManager
     {
-        Task<bool> UpdateEmail(Guid userId, string email);
+        Task<bool> UpdateEmailAsync(string email);
 
-        Task<UserSettingDto> GetUserSettings(Guid userId);
+        Task<UserSettingDto> GetUserSettingsAsync();
+
+        Task<bool> UpdateMobileAsync(string mobileNumber);
+
+        Task<bool> ShowHideMobileAsync(bool showHideMobile);
+
+        Task<bool> ShowEmailDetailsAsync(bool showEmailDetails);
+        Task<bool> ShowProfilePhotoAsync(bool showProfilePhoto);
+
+        Task<bool> AllowCommnetOnProfileAsync(bool allowCommnetOnProfile);
+
+        Task<bool> EnableTwoFactorAuthAsync(bool enableTwoFactorAuth);
+
+        Task<bool> SetVisibilityAsync(Guid visibilityGroupId);
     }
 }

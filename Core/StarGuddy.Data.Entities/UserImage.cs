@@ -19,6 +19,7 @@ namespace StarGuddy.Data.Entities
         public bool IsDeleted { get; set; }
         public int StatusCode { get; set; }
         public Guid ApprovalId { get; set; }
+        public Guid VisibilityGroupId { get; set; }
         public DateTime? DttmCreated { get; set; }
         public DateTime? DttmModified { get; set; }
     }

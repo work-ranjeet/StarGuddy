@@ -17,10 +17,7 @@ export class ChangePwdComponent {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private router: Router,
-        private authRoute: ActivatedRoute,
-        private service: ProfileSettingsService,
-        private dataValidator: DataValidator) { }
+        private service: ProfileSettingsService) { }
 
     ngOnInit() {
         this.changePwd = {} as IChangePassword;

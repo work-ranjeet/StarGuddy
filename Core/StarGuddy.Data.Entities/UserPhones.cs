@@ -8,68 +8,14 @@ namespace StarGuddy.Data.Entities
 
     public class UserPhones : IUserPhones
     {
-        /// <summary>
-        /// Gets or sets the user identifier.
-        /// </summary>
-        /// <value>
-        /// The user identifier.
-        /// </value>
+        public Guid Id { get; set; }
         public Guid UserId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the phone number.
-        /// </summary>
-        /// <value>
-        /// The phone number.
-        /// </value>
-        public String PhoneNumber { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether [phone number confirmed].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [phone number confirmed]; otherwise, <c>false</c>.
-        /// </value>
-        public Boolean PhoneNumberConfirmed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the two factor code.
-        /// </summary>
-        /// <value>
-        /// The two factor code.
-        /// </value>
-        public Int32? TwoFactorCode { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is active.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is active; otherwise, <c>false</c>.
-        /// </value>
-        public Boolean IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is deleted.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is deleted; otherwise, <c>false</c>.
-        /// </value>
-        public Boolean IsDeleted { get; set; }
-
-        /// <summary>
-        /// Gets or sets the DTTM created.
-        /// </summary>
-        /// <value>
-        /// The DTTM created.
-        /// </value>
+        public string PhoneNumber { get; set; }
+        public bool IsConfirmed { get; set; }
+        public int? TwoFactorCode { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime DttmCreated { get; set; }
-
-        /// <summary>
-        /// Gets or sets the DTTM modified.
-        /// </summary>
-        /// <value>
-        /// The DTTM modified.
-        /// </value>
         public DateTime DttmModified { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ProfileEditService } from "../../profileEdit/profileEdit.Service";
-import IAddress = App.Client.Profile.IAddressDto;import * as _ from "lodash";
+import IAddress = App.Client.Profile.IAddressDto; import * as _ from "lodash";
 ;
 
 @Component({
@@ -15,12 +15,15 @@ export class ProfileEditAddressComponent {
 
     private addressReset: IAddress = {} as IAddress;
     public address: IAddress = {} as IAddress;
-
+    public caller: string = "self";
     constructor(
         private readonly router: Router,
+        private readonly activatedRoute: ActivatedRoute,
         private readonly userProfileService: ProfileEditService) { }
 
     ngOnInit() {
+
+        this.activatedRoute.params.subscribe(param => this.caller = param['caller']);
         this.load();
     }
 
@@ -50,5 +53,11 @@ export class ProfileEditAddressComponent {
 
     reset() {
         this.address = this.addressReset;
+        return false;
+    }
+
+    cancle() {
+        var returnUrl = this.caller === "self" ? "/profile" : "/profileSetting";
+        this.router.navigate([returnUrl]);
     }
 }

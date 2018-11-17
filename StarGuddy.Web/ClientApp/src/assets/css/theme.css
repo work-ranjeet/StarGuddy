@@ -111,7 +111,7 @@ input.ng-dirty[required] {
 }
 
 input.ng-invalid {
-    border-left: 5px solid #a94442;
+    border-left: 5px solid #a94442!important;
 }
 
 input.border-left-none {
@@ -191,5 +191,11 @@ span.text-shadow, label.text-shadow {
 .mat-label-light {
     color: #535353;
     font-weight: 300;
+}
+
+.mat-placeholder-required, .mat-form-field-required-marker
+{
+    color:#d06464;
+    /*font-size:12px;*/
 }
 /* --------------------------------- End Angular Materials ----------------------------------------*/
